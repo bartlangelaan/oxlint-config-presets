@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Oxlint configurations ported from popular ESLint styleguides",
   "license": "MIT",
+  "packageManager": "pnpm@10.29.3",
   "type": "module",
   "publishConfig": {
     "directory": "configs"
