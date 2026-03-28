@@ -148,17 +148,39 @@ function createReporter() {
 }
 
 interface ConfigEntry {
-  /** Human-readable label used in console output */
-  label: string;
-  /** Package export name, e.g. 'oxlint-config-presets/airbnb' */
-  exportName: string;
-  /** Equivalent ESLint config name */
-  eslintEquivalent: string;
-  /** Output path relative to configsDir */
-  output: string;
+  /** npm package name of the source ESLint config, e.g. 'eslint-config-airbnb' */
+  sourcePackage: string;
+  /** config variant within the package, e.g. 'base'; empty string for the main export */
+  sourceConfig: string;
   /** Returns the flat map of ESLint rules to migrate */
   resolveRules: () => EslintRules;
 }
+
+/**
+ * Maps a source package name to the directory name used under configs/.
+ * Strips eslint-config-/eslint-plugin- prefixes and normalises scoped packages.
+ * eslint-config-eslint → eslint-team (special-cased to avoid clashing with the tool name).
+ */
+function pkgToDirName(pkg: string): string {
+  if (pkg.startsWith('@')) {
+    const withoutAt = pkg.slice(1);
+    const slash = withoutAt.indexOf('/');
+    const scope = withoutAt.slice(0, slash);
+    const name = withoutAt.slice(slash + 1);
+    const cleanName = name.replace(/^eslint-(config|plugin)-?/, '');
+    return cleanName ? `${scope}-${cleanName}` : scope;
+  }
+  const clean = pkg.replace(/^eslint-(config|plugin)-/, '');
+  return clean === 'eslint' ? 'eslint-team' : clean;
+}
+
+/** Output path relative to configsDir, e.g. 'airbnb/base.json' */
+const outputFor = (cfg: ConfigEntry) =>
+  `${pkgToDirName(cfg.sourcePackage)}/${cfg.sourceConfig || 'index'}.json`;
+
+/** Full import path as used in an oxlintrc extends array */
+const oxlintConfigFor = (cfg: ConfigEntry) =>
+  `oxlint-config-presets/${outputFor(cfg)}`;
 
 // Shorthand for old-style shareable configs resolved via flattenRules.
 const fromPackage = (pkg: string) => () => flattenRules(req.resolve(pkg));
@@ -221,219 +243,47 @@ const fromAntfu = () => {
 
 const configs: ConfigEntry[] = [
   // ── airbnb ────────────────────────────────────────────────────────────────
-  {
-    label: 'airbnb',
-    exportName: 'oxlint-config-presets/airbnb',
-    eslintEquivalent: 'eslint-config-airbnb',
-    output: 'airbnb/index.json',
-    resolveRules: fromPackage('eslint-config-airbnb'),
-  },
-  {
-    label: 'airbnb/base',
-    exportName: 'oxlint-config-presets/airbnb/base',
-    eslintEquivalent: 'eslint-config-airbnb/base',
-    output: 'airbnb/base.json',
-    resolveRules: fromPackage('eslint-config-airbnb/base'),
-  },
-  {
-    label: 'airbnb/hooks',
-    exportName: 'oxlint-config-presets/airbnb/hooks',
-    eslintEquivalent: 'eslint-config-airbnb/hooks',
-    output: 'airbnb/hooks.json',
-    resolveRules: fromPackage('eslint-config-airbnb/hooks'),
-  },
-  {
-    label: 'airbnb/legacy',
-    exportName: 'oxlint-config-presets/airbnb/legacy',
-    eslintEquivalent: 'eslint-config-airbnb/legacy',
-    output: 'airbnb/legacy.json',
-    resolveRules: fromPackage('eslint-config-airbnb/legacy'),
-  },
-  {
-    label: 'airbnb/whitespace',
-    exportName: 'oxlint-config-presets/airbnb/whitespace',
-    eslintEquivalent: 'eslint-config-airbnb/whitespace',
-    output: 'airbnb/whitespace.json',
-    resolveRules: fromPackage('eslint-config-airbnb/whitespace'),
-  },
+  { sourcePackage: 'eslint-config-airbnb', sourceConfig: '', resolveRules: fromPackage('eslint-config-airbnb') },
+  { sourcePackage: 'eslint-config-airbnb', sourceConfig: 'base', resolveRules: fromPackage('eslint-config-airbnb/base') },
+  { sourcePackage: 'eslint-config-airbnb', sourceConfig: 'hooks', resolveRules: fromPackage('eslint-config-airbnb/hooks') },
+  { sourcePackage: 'eslint-config-airbnb', sourceConfig: 'legacy', resolveRules: fromPackage('eslint-config-airbnb/legacy') },
+  { sourcePackage: 'eslint-config-airbnb', sourceConfig: 'whitespace', resolveRules: fromPackage('eslint-config-airbnb/whitespace') },
 
-  // ── standard ──────────────────────────────────────────────────────────────
-  {
-    label: 'standard',
-    exportName: 'oxlint-config-presets/standard',
-    eslintEquivalent: 'eslint-config-standard',
-    output: 'standard/index.json',
-    resolveRules: fromPackage('eslint-config-standard'),
-  },
-
-  // ── google ────────────────────────────────────────────────────────────────
-  {
-    label: 'google',
-    exportName: 'oxlint-config-presets/google',
-    eslintEquivalent: 'eslint-config-google',
-    output: 'google/index.json',
-    resolveRules: fromPackage('eslint-config-google'),
-  },
+  // ── standard / google ─────────────────────────────────────────────────────
+  { sourcePackage: 'eslint-config-standard', sourceConfig: '', resolveRules: fromPackage('eslint-config-standard') },
+  { sourcePackage: 'eslint-config-google', sourceConfig: '', resolveRules: fromPackage('eslint-config-google') },
 
   // ── @typescript-eslint ────────────────────────────────────────────────────
-  {
-    label: 'typescript-eslint/recommended',
-    exportName: 'oxlint-config-presets/typescript-eslint/recommended',
-    eslintEquivalent: '@typescript-eslint/eslint-plugin — recommended',
-    output: 'typescript-eslint/recommended.json',
-    resolveRules: fromTsEslint('flat/recommended'),
-  },
-  {
-    label: 'typescript-eslint/recommended-type-checked',
-    exportName: 'oxlint-config-presets/typescript-eslint/recommended-type-checked',
-    eslintEquivalent: '@typescript-eslint/eslint-plugin — recommended-type-checked',
-    output: 'typescript-eslint/recommended-type-checked.json',
-    resolveRules: fromTsEslint('flat/recommended-type-checked'),
-  },
-  {
-    label: 'typescript-eslint/strict',
-    exportName: 'oxlint-config-presets/typescript-eslint/strict',
-    eslintEquivalent: '@typescript-eslint/eslint-plugin — strict',
-    output: 'typescript-eslint/strict.json',
-    resolveRules: fromTsEslint('flat/strict'),
-  },
-  {
-    label: 'typescript-eslint/strict-type-checked',
-    exportName: 'oxlint-config-presets/typescript-eslint/strict-type-checked',
-    eslintEquivalent: '@typescript-eslint/eslint-plugin — strict-type-checked',
-    output: 'typescript-eslint/strict-type-checked.json',
-    resolveRules: fromTsEslint('flat/strict-type-checked'),
-  },
-  {
-    label: 'typescript-eslint/stylistic',
-    exportName: 'oxlint-config-presets/typescript-eslint/stylistic',
-    eslintEquivalent: '@typescript-eslint/eslint-plugin — stylistic',
-    output: 'typescript-eslint/stylistic.json',
-    resolveRules: fromTsEslint('flat/stylistic'),
-  },
-  {
-    label: 'typescript-eslint/stylistic-type-checked',
-    exportName: 'oxlint-config-presets/typescript-eslint/stylistic-type-checked',
-    eslintEquivalent: '@typescript-eslint/eslint-plugin — stylistic-type-checked',
-    output: 'typescript-eslint/stylistic-type-checked.json',
-    resolveRules: fromTsEslint('flat/stylistic-type-checked'),
-  },
-  {
-    label: 'typescript-eslint/all',
-    exportName: 'oxlint-config-presets/typescript-eslint/all',
-    eslintEquivalent: '@typescript-eslint/eslint-plugin — all',
-    output: 'typescript-eslint/all.json',
-    resolveRules: fromTsEslint('flat/all'),
-  },
+  { sourcePackage: '@typescript-eslint/eslint-plugin', sourceConfig: 'recommended', resolveRules: fromTsEslint('flat/recommended') },
+  { sourcePackage: '@typescript-eslint/eslint-plugin', sourceConfig: 'recommended-type-checked', resolveRules: fromTsEslint('flat/recommended-type-checked') },
+  { sourcePackage: '@typescript-eslint/eslint-plugin', sourceConfig: 'strict', resolveRules: fromTsEslint('flat/strict') },
+  { sourcePackage: '@typescript-eslint/eslint-plugin', sourceConfig: 'strict-type-checked', resolveRules: fromTsEslint('flat/strict-type-checked') },
+  { sourcePackage: '@typescript-eslint/eslint-plugin', sourceConfig: 'stylistic', resolveRules: fromTsEslint('flat/stylistic') },
+  { sourcePackage: '@typescript-eslint/eslint-plugin', sourceConfig: 'stylistic-type-checked', resolveRules: fromTsEslint('flat/stylistic-type-checked') },
+  { sourcePackage: '@typescript-eslint/eslint-plugin', sourceConfig: 'all', resolveRules: fromTsEslint('flat/all') },
 
   // ── @eslint/js ────────────────────────────────────────────────────────────
-  {
-    label: 'eslint-js/recommended',
-    exportName: 'oxlint-config-presets/eslint-js/recommended',
-    eslintEquivalent: '@eslint/js — recommended',
-    output: 'eslint-js/recommended.json',
-    resolveRules: () => eslintJs.configs.recommended.rules,
-  },
-  {
-    label: 'eslint-js/all',
-    exportName: 'oxlint-config-presets/eslint-js/all',
-    eslintEquivalent: '@eslint/js — all',
-    output: 'eslint-js/all.json',
-    resolveRules: () => eslintJs.configs.all.rules,
-  },
+  { sourcePackage: '@eslint/js', sourceConfig: 'recommended', resolveRules: () => eslintJs.configs.recommended.rules },
+  { sourcePackage: '@eslint/js', sourceConfig: 'all', resolveRules: () => eslintJs.configs.all.rules },
 
-  // ── xo ───────────────────────────────────────────────────────────────────
-  {
-    label: 'xo',
-    exportName: 'oxlint-config-presets/xo',
-    eslintEquivalent: 'eslint-config-xo',
-    output: 'xo/index.json',
-    resolveRules: fromXo,
-  },
-
-  // ── problems ──────────────────────────────────────────────────────────────
-  {
-    label: 'problems',
-    exportName: 'oxlint-config-presets/problems',
-    eslintEquivalent: 'eslint-config-problems',
-    output: 'problems/index.json',
-    resolveRules: () => problemsConfig.rules,
-  },
-
-  // ── hardcore ──────────────────────────────────────────────────────────────
-  {
-    label: 'hardcore',
-    exportName: 'oxlint-config-presets/hardcore',
-    eslintEquivalent: 'eslint-config-hardcore',
-    output: 'hardcore/index.json',
-    resolveRules: fromPackage('eslint-config-hardcore'),
-  },
-
-  // ── wikimedia ─────────────────────────────────────────────────────────────
-  {
-    label: 'wikimedia',
-    exportName: 'oxlint-config-presets/wikimedia',
-    eslintEquivalent: 'eslint-config-wikimedia',
-    output: 'wikimedia/index.json',
-    resolveRules: fromPackage('eslint-config-wikimedia'),
-  },
+  // ── xo / problems / hardcore / wikimedia ──────────────────────────────────
+  { sourcePackage: 'eslint-config-xo', sourceConfig: '', resolveRules: fromXo },
+  { sourcePackage: 'eslint-config-problems', sourceConfig: '', resolveRules: () => problemsConfig.rules },
+  { sourcePackage: 'eslint-config-hardcore', sourceConfig: '', resolveRules: fromPackage('eslint-config-hardcore') },
+  { sourcePackage: 'eslint-config-wikimedia', sourceConfig: '', resolveRules: fromPackage('eslint-config-wikimedia') },
 
   // ── eslint-team ───────────────────────────────────────────────────────────
-  {
-    label: 'eslint-team',
-    exportName: 'oxlint-config-presets/eslint-team',
-    eslintEquivalent: 'eslint-config-eslint',
-    output: 'eslint-team/index.json',
-    resolveRules: fromFlatArray('eslint-config-eslint'),
-  },
-  {
-    label: 'eslint-team/base',
-    exportName: 'oxlint-config-presets/eslint-team/base',
-    eslintEquivalent: 'eslint-config-eslint/base',
-    output: 'eslint-team/base.json',
-    resolveRules: fromFlatArray('eslint-config-eslint/base'),
-  },
+  { sourcePackage: 'eslint-config-eslint', sourceConfig: '', resolveRules: fromFlatArray('eslint-config-eslint') },
+  { sourcePackage: 'eslint-config-eslint', sourceConfig: 'base', resolveRules: fromFlatArray('eslint-config-eslint/base') },
 
   // ── alloy ─────────────────────────────────────────────────────────────────
-  {
-    label: 'alloy',
-    exportName: 'oxlint-config-presets/alloy',
-    eslintEquivalent: 'eslint-config-alloy',
-    output: 'alloy/index.json',
-    resolveRules: fromPackage('eslint-config-alloy'),
-  },
-  {
-    label: 'alloy/react',
-    exportName: 'oxlint-config-presets/alloy/react',
-    eslintEquivalent: 'eslint-config-alloy/react',
-    output: 'alloy/react.json',
-    resolveRules: fromPackage('eslint-config-alloy/react'),
-  },
-  {
-    label: 'alloy/typescript',
-    exportName: 'oxlint-config-presets/alloy/typescript',
-    eslintEquivalent: 'eslint-config-alloy/typescript',
-    output: 'alloy/typescript.json',
-    resolveRules: fromPackage('eslint-config-alloy/typescript'),
-  },
+  { sourcePackage: 'eslint-config-alloy', sourceConfig: '', resolveRules: fromPackage('eslint-config-alloy') },
+  { sourcePackage: 'eslint-config-alloy', sourceConfig: 'react', resolveRules: fromPackage('eslint-config-alloy/react') },
+  { sourcePackage: 'eslint-config-alloy', sourceConfig: 'typescript', resolveRules: fromPackage('eslint-config-alloy/typescript') },
 
-  // ── prettier ──────────────────────────────────────────────────────────────
-  {
-    label: 'prettier',
-    exportName: 'oxlint-config-presets/prettier',
-    eslintEquivalent: 'eslint-config-prettier',
-    output: 'prettier/index.json',
-    resolveRules: () => prettierConfig.rules,
-  },
-
-  // ── antfu ─────────────────────────────────────────────────────────────────
-  {
-    label: 'antfu',
-    exportName: 'oxlint-config-presets/antfu',
-    eslintEquivalent: '@antfu/eslint-config',
-    output: 'antfu/index.json',
-    resolveRules: fromAntfu,
-  },
+  // ── prettier / antfu ──────────────────────────────────────────────────────
+  { sourcePackage: 'eslint-config-prettier', sourceConfig: '', resolveRules: () => prettierConfig.rules },
+  { sourcePackage: '@antfu/eslint-config', sourceConfig: '', resolveRules: fromAntfu },
 ];
 
 interface GenerateResult {
@@ -447,7 +297,8 @@ interface GenerateResult {
 const results: GenerateResult[] = [];
 
 for (const config of configs) {
-  console.log(`Generating ${config.label}...`);
+  const label = oxlintConfigFor(config);
+  console.log(`Generating ${label}...`);
 
   const rules = config.resolveRules();
 
@@ -463,7 +314,7 @@ for (const config of configs) {
   // relative path to oxlint's schema would be wrong from that location.
   delete oxlintResult.$schema;
 
-  const outputPath = join(configsDir, config.output);
+  const outputPath = join(configsDir, outputFor(config));
   mkdirSync(dirname(outputPath), { recursive: true });
 
   // Write the config, then validate it by running oxlint against a dummy file.
@@ -510,7 +361,7 @@ for (const config of configs) {
   }
 
   const ruleCount = Object.keys(oxlintResult.rules ?? {}).length;
-  console.log(`  Written to configs/${config.output} (${ruleCount} oxlint rules)`);
+  console.log(`  Written to configs/${outputFor(config)} (${ruleCount} oxlint rules)`);
 
   results.push({
     config,
@@ -556,15 +407,14 @@ function skippedSection(skipped: Record<string, string[]>): string {
 const rootReadme = readFileSync(join(rootDir, 'README.md'), 'utf-8').trimEnd();
 
 const tableRows = results
-  .map(({ config, oxlintResult }) => {
-    const ruleCount = Object.keys(oxlintResult.rules ?? {}).length;
-    return `| \`${config.exportName}\` | \`${config.eslintEquivalent}\` | ${ruleCount} |`;
-  })
+  .map(({ config }) =>
+    `| \`${config.sourcePackage}\` | ${config.sourceConfig ? `\`${config.sourceConfig}\`` : ''} | \`${oxlintConfigFor(config)}\` |`,
+  )
   .join('\n');
 
 const table =
   `## Available configs\n\n` +
-  `| Package export | ESLint equivalent | Oxlint rules |\n` +
+  `| Source package | Source config | Oxlint config |\n` +
   `|---|---|---|\n` +
   tableRows;
 
@@ -584,7 +434,7 @@ function migratedSection(rules: OxlintConfig['rules'], strippedOptions: string[]
 
 const configSections = results
   .map(({ config, oxlintResult, skipped, strippedOptions, warnings }) => {
-    const parts: string[] = [`### \`${config.exportName}\``];
+    const parts: string[] = [`### \`${oxlintConfigFor(config)}\``];
 
     const migrated = migratedSection(oxlintResult.rules, strippedOptions);
     if (migrated) parts.push(migrated);
