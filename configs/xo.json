@@ -5,14 +5,8 @@
     "node",
     "typescript"
   ],
-  "categories": {
-    "correctness": "off"
-  },
   "options": {
     "typeAware": true
-  },
-  "env": {
-    "builtin": true
   },
   "rules": {
     "no-negated-condition": "error",

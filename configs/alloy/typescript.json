@@ -2,12 +2,6 @@
   "plugins": [
     "typescript"
   ],
-  "categories": {
-    "correctness": "off"
-  },
-  "env": {
-    "builtin": true
-  },
   "rules": {
     "@typescript-eslint/adjacent-overload-signatures": "error",
     "@typescript-eslint/class-literal-property-style": [

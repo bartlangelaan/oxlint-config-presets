@@ -2,12 +2,6 @@
   "plugins": [
     "typescript"
   ],
-  "categories": {
-    "correctness": "off"
-  },
-  "env": {
-    "builtin": true
-  },
   "rules": {
     "no-var": "error",
     "prefer-const": "error",

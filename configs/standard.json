@@ -5,14 +5,8 @@
     "node",
     "promise"
   ],
-  "categories": {
-    "correctness": "off"
-  },
   "options": {
     "typeAware": true
-  },
-  "env": {
-    "builtin": true
   },
   "rules": {
     "no-var": "warn",

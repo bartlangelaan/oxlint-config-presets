@@ -309,9 +309,11 @@ for (const config of configs) {
   // migrate() returns an oxlint-compatible config with supported rules only.
   const oxlintResult = await migrate({ rules }, undefined, { reporter, withNursery: true, typeAware: true });
 
-  // Remove $schema — child configs are extended from node_modules and the
-  // relative path to oxlint's schema would be wrong from that location.
+  // Remove fields that are identical in every generated config and add no value
+  // when the config is used via extends.
   delete oxlintResult.$schema;
+  delete oxlintResult.categories;
+  delete oxlintResult.env;
 
   const outputPath = join(configsDir, outputFor(config));
   mkdirSync(dirname(outputPath), { recursive: true });

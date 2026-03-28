@@ -2,11 +2,5 @@
   "plugins": [
     "unicorn"
   ],
-  "categories": {
-    "correctness": "off"
-  },
-  "env": {
-    "builtin": true
-  },
   "rules": {}
 }

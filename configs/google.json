@@ -1,11 +1,5 @@
 {
   "plugins": [],
-  "categories": {
-    "correctness": "off"
-  },
-  "env": {
-    "builtin": true
-  },
   "rules": {
     "no-irregular-whitespace": "error",
     "no-unexpected-multiline": "error",

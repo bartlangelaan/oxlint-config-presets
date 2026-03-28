@@ -2,14 +2,8 @@
   "plugins": [
     "typescript"
   ],
-  "categories": {
-    "correctness": "off"
-  },
   "options": {
     "typeAware": true
-  },
-  "env": {
-    "builtin": true
   },
   "rules": {
     "accessor-pairs": "error",

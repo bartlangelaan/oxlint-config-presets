@@ -5,14 +5,8 @@
     "react",
     "jsx-a11y"
   ],
-  "categories": {
-    "correctness": "off"
-  },
   "options": {
     "typeAware": true
-  },
-  "env": {
-    "builtin": true
   },
   "rules": {
     "array-callback-return": [

@@ -5,14 +5,8 @@
     "typescript",
     "node"
   ],
-  "categories": {
-    "correctness": "off"
-  },
   "options": {
     "typeAware": true
-  },
-  "env": {
-    "builtin": true
   },
   "rules": {
     "unicorn/prefer-array-find": "error",

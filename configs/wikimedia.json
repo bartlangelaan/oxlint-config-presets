@@ -4,14 +4,8 @@
     "typescript",
     "unicorn"
   ],
-  "categories": {
-    "correctness": "off"
-  },
   "options": {
     "typeAware": true
-  },
-  "env": {
-    "builtin": true
   },
   "rules": {
     "jsdoc/check-access": "warn",

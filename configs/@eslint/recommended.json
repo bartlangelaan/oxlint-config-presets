@@ -1,11 +1,5 @@
 {
   "plugins": [],
-  "categories": {
-    "correctness": "off"
-  },
-  "env": {
-    "builtin": true
-  },
   "rules": {
     "constructor-super": "error",
     "for-direction": "error",

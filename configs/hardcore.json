@@ -5,14 +5,8 @@
     "import",
     "unicorn"
   ],
-  "categories": {
-    "correctness": "off"
-  },
   "options": {
     "typeAware": true
-  },
-  "env": {
-    "builtin": true
   },
   "rules": {
     "no-alert": "error",
