@@ -34,6 +34,10 @@ const expectedConfigs = [
   'airbnb/hooks.json',
   'airbnb/legacy.json',
   'airbnb/whitespace.json',
+  'standard/index.json',
+  'google/index.json',
+  'eslint-js/recommended.json',
+  'eslint-js/all.json',
 ];
 
 for (const file of expectedConfigs) {

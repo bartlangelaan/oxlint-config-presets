@@ -42,6 +42,10 @@ Multiple configs can be combined. Later entries take precedence:
 | `oxlint-config-presets/airbnb/hooks` | `eslint-config-airbnb/hooks` | 2 |
 | `oxlint-config-presets/airbnb/legacy` | `eslint-config-airbnb/legacy` | 111 |
 | `oxlint-config-presets/airbnb/whitespace` | `eslint-config-airbnb/whitespace` | 205 |
+| `oxlint-config-presets/standard` | `eslint-config-standard` | 95 |
+| `oxlint-config-presets/google` | `eslint-config-google` | 21 |
+| `oxlint-config-presets/eslint-js/recommended` | `@eslint/js — recommended` | 58 |
+| `oxlint-config-presets/eslint-js/all` | `@eslint/js — all` | 166 |
 
 ### `oxlint-config-presets/airbnb`
 
@@ -118,5 +122,77 @@ Multiple configs can be combined. Later entries take precedence:
 **Available as nursery rules (experimental, opt-in)**
 
 `getter-return`, `no-unreachable`, `no-undef`, `import/named`, `import/export`, `react/require-render-return`
+
+</details>
+
+### `oxlint-config-presets/standard`
+
+<details>
+<summary>66 rules have no oxlint equivalent</summary>
+
+**Not yet implemented in oxlint**
+
+`object-shorthand`, `no-implied-eval`, `no-unreachable-loop`, `one-var`, `prefer-regex-literals`, `n/no-callback-literal`, `n/no-deprecated-api`, `n/process-exit-as-throw`
+
+**Not portable to oxlint**
+
+`array-bracket-spacing`, `arrow-spacing`, `block-spacing`, `brace-style`, `camelcase`, `comma-dangle`, `comma-spacing`, `comma-style`, `computed-property-spacing`, `dot-location`, `dot-notation`, `eol-last`, `func-call-spacing`, `generator-star-spacing`, `indent`, `key-spacing`, `keyword-spacing`, `lines-between-class-members`, `multiline-ternary`, `new-parens`, `no-dupe-args`, `no-extra-parens`, `no-floating-decimal`, `no-mixed-operators`, `no-mixed-spaces-and-tabs`, `no-multi-spaces`, `no-multiple-empty-lines`, `no-new-object`, `no-new-symbol`, `no-octal`, `no-octal-escape`, `no-tabs`, `no-trailing-spaces`, `no-undef-init`, `no-whitespace-before-property`, `object-curly-newline`, `object-curly-spacing`, `object-property-newline`, `operator-linebreak`, `padded-blocks`, `quote-props`, `quotes`, `rest-spread-spacing`, `semi`, `semi-spacing`, `space-before-blocks`, `space-before-function-paren`, `space-in-parens`, `space-infix-ops`, `space-unary-ops`, `spaced-comment`, `template-curly-spacing`, `template-tag-spacing`, `wrap-iife`, `yield-star-spacing`
+
+**Available as nursery rules (experimental, opt-in)**
+
+`no-undef`, `no-unreachable`, `import/export`
+
+</details>
+
+### `oxlint-config-presets/google`
+
+<details>
+<summary>41 rules have no oxlint equivalent</summary>
+
+**Not yet implemented in oxlint**
+
+`valid-jsdoc`, `one-var`, `require-jsdoc`
+
+**Not portable to oxlint**
+
+`no-invalid-this`, `no-multi-spaces`, `array-bracket-spacing`, `block-spacing`, `brace-style`, `camelcase`, `comma-dangle`, `comma-spacing`, `comma-style`, `computed-property-spacing`, `eol-last`, `func-call-spacing`, `indent`, `key-spacing`, `keyword-spacing`, `linebreak-style`, `max-len`, `no-mixed-spaces-and-tabs`, `no-multiple-empty-lines`, `no-new-object`, `no-tabs`, `no-trailing-spaces`, `object-curly-spacing`, `operator-linebreak`, `padded-blocks`, `quote-props`, `quotes`, `semi`, `semi-spacing`, `space-before-blocks`, `space-before-function-paren`, `spaced-comment`, `switch-colon-spacing`, `arrow-parens`, `generator-star-spacing`, `no-new-symbol`, `rest-spread-spacing`, `yield-star-spacing`
+
+</details>
+
+### `oxlint-config-presets/eslint-js/recommended`
+
+<details>
+<summary>6 rules have no oxlint equivalent</summary>
+
+**Available as nursery rules (experimental, opt-in)**
+
+`getter-return`, `no-undef`, `no-unreachable`
+
+**Not portable to oxlint**
+
+`no-dupe-args`, `no-octal`
+
+**Not yet implemented in oxlint**
+
+`no-useless-assignment`
+
+</details>
+
+### `oxlint-config-presets/eslint-js/all`
+
+<details>
+<summary>32 rules have no oxlint equivalent</summary>
+
+**Not portable to oxlint**
+
+`camelcase`, `consistent-return`, `dot-notation`, `no-dupe-args`, `no-invalid-this`, `no-octal`, `no-octal-escape`, `no-undef-init`
+
+**Not yet implemented in oxlint**
+
+`consistent-this`, `func-name-matching`, `id-denylist`, `id-match`, `logical-assignment-operators`, `no-implicit-globals`, `no-implied-eval`, `no-restricted-exports`, `no-restricted-properties`, `no-restricted-syntax`, `no-underscore-dangle`, `no-unreachable-loop`, `no-useless-assignment`, `object-shorthand`, `one-var`, `prefer-arrow-callback`, `prefer-named-capture-group`, `prefer-regex-literals`, `require-atomic-updates`, `require-unicode-regexp`, `strict`
+
+**Available as nursery rules (experimental, opt-in)**
+
+`getter-return`, `no-undef`, `no-unreachable`
 
 </details>

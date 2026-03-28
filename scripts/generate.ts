@@ -154,47 +154,91 @@ interface ConfigEntry {
   exportName: string;
   /** Equivalent ESLint config name */
   eslintEquivalent: string;
-  /** Package/path to require() as the entry point */
-  entry: string;
   /** Output path relative to configsDir */
   output: string;
+  /** Returns the flat map of ESLint rules to migrate */
+  resolveRules: () => EslintRules;
 }
 
+// Shorthand for old-style shareable configs resolved via flattenRules.
+const fromPackage = (pkg: string) => () => flattenRules(req.resolve(pkg));
+
+// @eslint/js uses flat config: configs.recommended / configs.all each have a
+// plain `rules` object we can pass directly to migrate.
+const eslintJs = req('@eslint/js') as {
+  configs: { recommended: { rules: EslintRules }; all: { rules: EslintRules } };
+};
+
 const configs: ConfigEntry[] = [
+  // ── airbnb ────────────────────────────────────────────────────────────────
   {
     label: 'airbnb',
     exportName: 'oxlint-config-presets/airbnb',
     eslintEquivalent: 'eslint-config-airbnb',
-    entry: 'eslint-config-airbnb',
     output: 'airbnb/index.json',
+    resolveRules: fromPackage('eslint-config-airbnb'),
   },
   {
     label: 'airbnb/base',
     exportName: 'oxlint-config-presets/airbnb/base',
     eslintEquivalent: 'eslint-config-airbnb/base',
-    entry: 'eslint-config-airbnb/base',
     output: 'airbnb/base.json',
+    resolveRules: fromPackage('eslint-config-airbnb/base'),
   },
   {
     label: 'airbnb/hooks',
     exportName: 'oxlint-config-presets/airbnb/hooks',
     eslintEquivalent: 'eslint-config-airbnb/hooks',
-    entry: 'eslint-config-airbnb/hooks',
     output: 'airbnb/hooks.json',
+    resolveRules: fromPackage('eslint-config-airbnb/hooks'),
   },
   {
     label: 'airbnb/legacy',
     exportName: 'oxlint-config-presets/airbnb/legacy',
     eslintEquivalent: 'eslint-config-airbnb/legacy',
-    entry: 'eslint-config-airbnb/legacy',
     output: 'airbnb/legacy.json',
+    resolveRules: fromPackage('eslint-config-airbnb/legacy'),
   },
   {
     label: 'airbnb/whitespace',
     exportName: 'oxlint-config-presets/airbnb/whitespace',
     eslintEquivalent: 'eslint-config-airbnb/whitespace',
-    entry: 'eslint-config-airbnb/whitespace',
     output: 'airbnb/whitespace.json',
+    resolveRules: fromPackage('eslint-config-airbnb/whitespace'),
+  },
+
+  // ── standard ──────────────────────────────────────────────────────────────
+  {
+    label: 'standard',
+    exportName: 'oxlint-config-presets/standard',
+    eslintEquivalent: 'eslint-config-standard',
+    output: 'standard/index.json',
+    resolveRules: fromPackage('eslint-config-standard'),
+  },
+
+  // ── google ────────────────────────────────────────────────────────────────
+  {
+    label: 'google',
+    exportName: 'oxlint-config-presets/google',
+    eslintEquivalent: 'eslint-config-google',
+    output: 'google/index.json',
+    resolveRules: fromPackage('eslint-config-google'),
+  },
+
+  // ── @eslint/js ────────────────────────────────────────────────────────────
+  {
+    label: 'eslint-js/recommended',
+    exportName: 'oxlint-config-presets/eslint-js/recommended',
+    eslintEquivalent: '@eslint/js — recommended',
+    output: 'eslint-js/recommended.json',
+    resolveRules: () => eslintJs.configs.recommended.rules,
+  },
+  {
+    label: 'eslint-js/all',
+    exportName: 'oxlint-config-presets/eslint-js/all',
+    eslintEquivalent: '@eslint/js — all',
+    output: 'eslint-js/all.json',
+    resolveRules: () => eslintJs.configs.all.rules,
   },
 ];
 
@@ -210,8 +254,7 @@ const results: GenerateResult[] = [];
 for (const config of configs) {
   console.log(`Generating ${config.label}...`);
 
-  const entryPath = req.resolve(config.entry);
-  const rules = flattenRules(entryPath);
+  const rules = config.resolveRules();
 
   console.log(`  Resolved ${Object.keys(rules).length} rules, migrating...`);
 

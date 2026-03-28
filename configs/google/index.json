@@ -1,0 +1,45 @@
+{
+  "plugins": [],
+  "categories": {
+    "correctness": "off"
+  },
+  "env": {
+    "builtin": true
+  },
+  "rules": {
+    "no-irregular-whitespace": "error",
+    "no-unexpected-multiline": "error",
+    "curly": [
+      "error",
+      "multi-line"
+    ],
+    "guard-for-in": "error",
+    "no-caller": "error",
+    "no-extend-native": "error",
+    "no-extra-bind": "error",
+    "no-multi-str": "error",
+    "no-new-wrappers": "error",
+    "no-throw-literal": "error",
+    "no-with": "error",
+    "prefer-promise-reject-errors": "error",
+    "no-unused-vars": [
+      "error",
+      {
+        "args": "none"
+      }
+    ],
+    "new-cap": "error",
+    "no-array-constructor": "error",
+    "constructor-super": "error",
+    "no-this-before-super": "error",
+    "no-var": "error",
+    "prefer-const": [
+      "error",
+      {
+        "destructuring": "all"
+      }
+    ],
+    "prefer-rest-params": "error",
+    "prefer-spread": "error"
+  }
+}
