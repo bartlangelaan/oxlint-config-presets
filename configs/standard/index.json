@@ -1,11 +1,15 @@
 {
   "plugins": [
+    "typescript",
     "import",
     "node",
     "promise"
   ],
   "categories": {
     "correctness": "off"
+  },
+  "options": {
+    "typeAware": true
   },
   "env": {
     "builtin": true
@@ -32,6 +36,12 @@
       "multi-line"
     ],
     "default-case-last": "error",
+    "@typescript-eslint/dot-notation": [
+      "error",
+      {
+        "allowKeywords": true
+      }
+    ],
     "eqeqeq": [
       "error",
       "always",

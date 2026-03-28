@@ -1,11 +1,15 @@
 {
   "plugins": [
+    "typescript",
     "import",
     "react",
     "jsx-a11y"
   ],
   "categories": {
     "correctness": "off"
+  },
+  "options": {
+    "typeAware": true
   },
   "env": {
     "builtin": true
@@ -41,6 +45,7 @@
         ]
       }
     ],
+    "@typescript-eslint/consistent-return": "error",
     "curly": [
       "error",
       "multi-line"
@@ -53,6 +58,12 @@
     ],
     "default-case-last": "error",
     "default-param-last": "error",
+    "@typescript-eslint/dot-notation": [
+      "error",
+      {
+        "allowKeywords": true
+      }
+    ],
     "eqeqeq": [
       "error",
       "always",

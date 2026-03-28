@@ -1,11 +1,15 @@
 {
   "plugins": [
+    "typescript",
     "import",
     "react",
     "jsx-a11y"
   ],
   "categories": {
     "correctness": "off"
+  },
+  "options": {
+    "typeAware": true
   },
   "env": {
     "builtin": true
@@ -46,6 +50,9 @@
         "enforceForClassFields": true
       }
     ],
+    "@typescript-eslint/consistent-return": [
+      "warn"
+    ],
     "curly": [
       "warn",
       "multi-line"
@@ -61,6 +68,13 @@
     ],
     "default-param-last": [
       "warn"
+    ],
+    "@typescript-eslint/dot-notation": [
+      "warn",
+      {
+        "allowKeywords": true,
+        "allowPattern": ""
+      }
     ],
     "eqeqeq": [
       "warn",

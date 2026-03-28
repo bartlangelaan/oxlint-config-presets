@@ -1,7 +1,12 @@
 {
-  "plugins": [],
+  "plugins": [
+    "typescript"
+  ],
   "categories": {
     "correctness": "off"
+  },
+  "options": {
+    "typeAware": true
   },
   "env": {
     "builtin": true
@@ -14,11 +19,13 @@
     "capitalized-comments": "error",
     "class-methods-use-this": "error",
     "complexity": "error",
+    "@typescript-eslint/consistent-return": "error",
     "constructor-super": "error",
     "curly": "error",
     "default-case": "error",
     "default-case-last": "error",
     "default-param-last": "error",
+    "@typescript-eslint/dot-notation": "error",
     "eqeqeq": "error",
     "for-direction": "error",
     "func-names": "error",
