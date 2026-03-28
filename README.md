@@ -2,18 +2,6 @@
 
 Oxlint configurations ported from popular ESLint styleguides. Extend them in your `.oxlintrc.json` the same way you would extend the original ESLint configs.
 
-## Available configs
-
-| Package export | ESLint equivalent |
-|---|---|
-| `oxlint-config/airbnb` | `eslint-config-airbnb` |
-| `oxlint-config/airbnb/base` | `eslint-config-airbnb/base` |
-| `oxlint-config/airbnb/hooks` | `eslint-config-airbnb/hooks` |
-| `oxlint-config/airbnb/legacy` | `eslint-config-airbnb/legacy` |
-| `oxlint-config/airbnb/whitespace` | `eslint-config-airbnb/whitespace` |
-
-## Usage
-
 Install the package:
 
 ```sh

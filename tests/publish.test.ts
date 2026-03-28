@@ -47,6 +47,10 @@ test('scripts/ is not published', () => {
   assert.deepEqual(leaked, [], `scripts/ should not be published`);
 });
 
+test('README.md is included', () => {
+  assert.ok(publishedFiles.includes('README.md'));
+});
+
 test('pnpm-lock.yaml is not published', () => {
   assert.ok(!publishedFiles.includes('pnpm-lock.yaml'));
 });
