@@ -5,9 +5,9 @@ Oxlint configurations ported from popular ESLint styleguides. Extend them in you
 Install the package:
 
 ```sh
-npm install --save-dev oxlint-config
+npm install --save-dev oxlint-config-presets
 # or
-pnpm add -D oxlint-config
+pnpm add -D oxlint-config-presets
 ```
 
 Then extend the config you want in your `.oxlintrc.json`:
@@ -15,7 +15,7 @@ Then extend the config you want in your `.oxlintrc.json`:
 ```json
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "extends": ["./node_modules/oxlint-config/airbnb/hooks"]
+  "extends": ["./node_modules/oxlint-config-presets/airbnb/hooks"]
 }
 ```
 
@@ -25,25 +25,25 @@ Multiple configs can be combined. Later entries take precedence:
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "extends": [
-    "./node_modules/oxlint-config/airbnb/base",
-    "./node_modules/oxlint-config/airbnb/hooks"
+    "./node_modules/oxlint-config-presets/airbnb/base",
+    "./node_modules/oxlint-config-presets/airbnb/hooks"
   ]
 }
 ```
 
-> **Note:** oxlint's `extends` field takes file paths relative to the config file, not package names. Use `./node_modules/oxlint-config/<config>` to reference configs from this package.
+> **Note:** oxlint's `extends` field takes file paths relative to the config file, not package names. Use `./node_modules/oxlint-config-presets/<config>` to reference configs from this package.
 
 ## Available configs
 
 | Package export | ESLint equivalent | Oxlint rules |
 |---|---|---|
-| `oxlint-config/airbnb` | `eslint-config-airbnb` | 205 |
-| `oxlint-config/airbnb/base` | `eslint-config-airbnb/base` | 144 |
-| `oxlint-config/airbnb/hooks` | `eslint-config-airbnb/hooks` | 2 |
-| `oxlint-config/airbnb/legacy` | `eslint-config-airbnb/legacy` | 111 |
-| `oxlint-config/airbnb/whitespace` | `eslint-config-airbnb/whitespace` | 205 |
+| `oxlint-config-presets/airbnb` | `eslint-config-airbnb` | 205 |
+| `oxlint-config-presets/airbnb/base` | `eslint-config-airbnb/base` | 144 |
+| `oxlint-config-presets/airbnb/hooks` | `eslint-config-airbnb/hooks` | 2 |
+| `oxlint-config-presets/airbnb/legacy` | `eslint-config-airbnb/legacy` | 111 |
+| `oxlint-config-presets/airbnb/whitespace` | `eslint-config-airbnb/whitespace` | 205 |
 
-### `oxlint-config/airbnb`
+### `oxlint-config-presets/airbnb`
 
 <details>
 <summary>141 rules have no oxlint equivalent</summary>
@@ -62,7 +62,7 @@ Multiple configs can be combined. Later entries take precedence:
 
 </details>
 
-### `oxlint-config/airbnb/base`
+### `oxlint-config-presets/airbnb/base`
 
 <details>
 <summary>97 rules have no oxlint equivalent</summary>
@@ -81,9 +81,9 @@ Multiple configs can be combined. Later entries take precedence:
 
 </details>
 
-### `oxlint-config/airbnb/hooks`
+### `oxlint-config-presets/airbnb/hooks`
 
-### `oxlint-config/airbnb/legacy`
+### `oxlint-config-presets/airbnb/legacy`
 
 <details>
 <summary>77 rules have no oxlint equivalent</summary>
@@ -102,7 +102,7 @@ Multiple configs can be combined. Later entries take precedence:
 
 </details>
 
-### `oxlint-config/airbnb/whitespace`
+### `oxlint-config-presets/airbnb/whitespace`
 
 <details>
 <summary>141 rules have no oxlint equivalent</summary>

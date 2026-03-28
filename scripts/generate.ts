@@ -149,7 +149,7 @@ function createReporter() {
 interface ConfigEntry {
   /** Human-readable label used in console output */
   label: string;
-  /** Package export name, e.g. 'oxlint-config/airbnb' */
+  /** Package export name, e.g. 'oxlint-config-presets/airbnb' */
   exportName: string;
   /** Equivalent ESLint config name */
   eslintEquivalent: string;
@@ -162,35 +162,35 @@ interface ConfigEntry {
 const configs: ConfigEntry[] = [
   {
     label: 'airbnb',
-    exportName: 'oxlint-config/airbnb',
+    exportName: 'oxlint-config-presets/airbnb',
     eslintEquivalent: 'eslint-config-airbnb',
     entry: 'eslint-config-airbnb',
     output: 'airbnb/index.json',
   },
   {
     label: 'airbnb/base',
-    exportName: 'oxlint-config/airbnb/base',
+    exportName: 'oxlint-config-presets/airbnb/base',
     eslintEquivalent: 'eslint-config-airbnb/base',
     entry: 'eslint-config-airbnb/base',
     output: 'airbnb/base.json',
   },
   {
     label: 'airbnb/hooks',
-    exportName: 'oxlint-config/airbnb/hooks',
+    exportName: 'oxlint-config-presets/airbnb/hooks',
     eslintEquivalent: 'eslint-config-airbnb/hooks',
     entry: 'eslint-config-airbnb/hooks',
     output: 'airbnb/hooks.json',
   },
   {
     label: 'airbnb/legacy',
-    exportName: 'oxlint-config/airbnb/legacy',
+    exportName: 'oxlint-config-presets/airbnb/legacy',
     eslintEquivalent: 'eslint-config-airbnb/legacy',
     entry: 'eslint-config-airbnb/legacy',
     output: 'airbnb/legacy.json',
   },
   {
     label: 'airbnb/whitespace',
-    exportName: 'oxlint-config/airbnb/whitespace',
+    exportName: 'oxlint-config-presets/airbnb/whitespace',
     eslintEquivalent: 'eslint-config-airbnb/whitespace',
     entry: 'eslint-config-airbnb/whitespace',
     output: 'airbnb/whitespace.json',

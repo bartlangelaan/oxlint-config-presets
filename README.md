@@ -5,9 +5,9 @@ Oxlint configurations ported from popular ESLint styleguides. Extend them in you
 Install the package:
 
 ```sh
-npm install --save-dev oxlint-config
+npm install --save-dev oxlint-config-presets
 # or
-pnpm add -D oxlint-config
+pnpm add -D oxlint-config-presets
 ```
 
 Then extend the config you want in your `.oxlintrc.json`:
@@ -15,7 +15,7 @@ Then extend the config you want in your `.oxlintrc.json`:
 ```json
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "extends": ["./node_modules/oxlint-config/airbnb/hooks"]
+  "extends": ["./node_modules/oxlint-config-presets/airbnb/hooks"]
 }
 ```
 
@@ -25,11 +25,11 @@ Multiple configs can be combined. Later entries take precedence:
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "extends": [
-    "./node_modules/oxlint-config/airbnb/base",
-    "./node_modules/oxlint-config/airbnb/hooks"
+    "./node_modules/oxlint-config-presets/airbnb/base",
+    "./node_modules/oxlint-config-presets/airbnb/hooks"
   ]
 }
 ```
 
-> **Note:** oxlint's `extends` field takes file paths relative to the config file, not package names. Use `./node_modules/oxlint-config/<config>` to reference configs from this package.
+> **Note:** oxlint's `extends` field takes file paths relative to the config file, not package names. Use `./node_modules/oxlint-config-presets/<config>` to reference configs from this package.
 

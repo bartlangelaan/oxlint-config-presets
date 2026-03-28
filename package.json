@@ -1,5 +1,5 @@
 {
-  "name": "oxlint-config",
+  "name": "oxlint-config-presets",
   "version": "0.1.0",
   "description": "Oxlint configurations ported from popular ESLint styleguides",
   "license": "MIT",
