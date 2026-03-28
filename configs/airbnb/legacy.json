@@ -152,6 +152,12 @@
     "vars-on-top": "error",
     "yoda": "error",
     "for-direction": "error",
+    "getter-return": [
+      "error",
+      {
+        "allowImplicit": true
+      }
+    ],
     "no-async-promise-executor": "error",
     "no-await-in-loop": "error",
     "no-compare-neg-zero": "error",
@@ -185,6 +191,7 @@
     "no-sparse-arrays": "error",
     "no-template-curly-in-string": "error",
     "no-unexpected-multiline": "error",
+    "no-unreachable": "error",
     "no-unsafe-finally": "error",
     "no-unsafe-negation": "error",
     "no-unsafe-optional-chaining": [
@@ -312,6 +319,7 @@
     ],
     "no-shadow": "error",
     "no-shadow-restricted-names": "error",
+    "no-undef": "error",
     "no-unused-vars": [
       "error",
       {

@@ -37,12 +37,12 @@ Multiple configs can be combined. Later entries take precedence:
 
 | Package export | ESLint equivalent | Oxlint rules |
 |---|---|---|
-| `oxlint-config-presets/airbnb` | `eslint-config-airbnb` | 205 |
-| `oxlint-config-presets/airbnb/base` | `eslint-config-airbnb/base` | 144 |
+| `oxlint-config-presets/airbnb` | `eslint-config-airbnb` | 211 |
+| `oxlint-config-presets/airbnb/base` | `eslint-config-airbnb/base` | 149 |
 | `oxlint-config-presets/airbnb/hooks` | `eslint-config-airbnb/hooks` | 2 |
-| `oxlint-config-presets/airbnb/legacy` | `eslint-config-airbnb/legacy` | 111 |
-| `oxlint-config-presets/airbnb/whitespace` | `eslint-config-airbnb/whitespace` | 205 |
-| `oxlint-config-presets/standard` | `eslint-config-standard` | 95 |
+| `oxlint-config-presets/airbnb/legacy` | `eslint-config-airbnb/legacy` | 114 |
+| `oxlint-config-presets/airbnb/whitespace` | `eslint-config-airbnb/whitespace` | 211 |
+| `oxlint-config-presets/standard` | `eslint-config-standard` | 98 |
 | `oxlint-config-presets/google` | `eslint-config-google` | 21 |
 | `oxlint-config-presets/typescript-eslint/recommended` | `@typescript-eslint/eslint-plugin — recommended` | 24 |
 | `oxlint-config-presets/typescript-eslint/recommended-type-checked` | `@typescript-eslint/eslint-plugin — recommended-type-checked` | 24 |
@@ -51,13 +51,13 @@ Multiple configs can be combined. Later entries take precedence:
 | `oxlint-config-presets/typescript-eslint/stylistic` | `@typescript-eslint/eslint-plugin — stylistic` | 17 |
 | `oxlint-config-presets/typescript-eslint/stylistic-type-checked` | `@typescript-eslint/eslint-plugin — stylistic-type-checked` | 17 |
 | `oxlint-config-presets/typescript-eslint/all` | `@typescript-eslint/eslint-plugin — all` | 65 |
-| `oxlint-config-presets/eslint-js/recommended` | `@eslint/js — recommended` | 58 |
-| `oxlint-config-presets/eslint-js/all` | `@eslint/js — all` | 166 |
+| `oxlint-config-presets/eslint-js/recommended` | `@eslint/js — recommended` | 61 |
+| `oxlint-config-presets/eslint-js/all` | `@eslint/js — all` | 169 |
 
 ### `oxlint-config-presets/airbnb`
 
 <details>
-<summary>141 rules have no oxlint equivalent</summary>
+<summary>135 rules have no oxlint equivalent</summary>
 
 **Not portable to oxlint**
 
@@ -67,16 +67,12 @@ Multiple configs can be combined. Later entries take precedence:
 
 `no-implied-eval`, `no-restricted-properties`, `prefer-regex-literals`, `no-unreachable-loop`, `no-restricted-syntax`, `no-underscore-dangle`, `one-var`, `no-restricted-exports`, `object-shorthand`, `prefer-arrow-callback`, `import/no-extraneous-dependencies`, `import/newline-after-import`, `import/no-useless-path-segments`, `import/no-import-module-exports`, `import/no-relative-packages`, `strict`, `react/jsx-no-bind`, `react/no-deprecated`, `react/no-did-update-set-state`, `react/prefer-stateless-function`, `react/prop-types`, `react/require-default-props`, `react/no-typos`, `react/destructuring-assignment`, `react/function-component-definition`, `react/no-unstable-nested-components`, `react/no-arrow-function-lifecycle`, `react/no-invalid-html-attribute`, `jsx-a11y/control-has-associated-label`, `jsx-a11y/interactive-supports-focus`, `jsx-a11y/no-interactive-element-to-noninteractive-role`, `jsx-a11y/no-noninteractive-element-interactions`, `jsx-a11y/no-noninteractive-element-to-interactive-role`
 
-**Available as nursery rules (experimental, opt-in)**
-
-`getter-return`, `no-unreachable`, `no-undef`, `import/named`, `import/export`, `react/require-render-return`
-
 </details>
 
 ### `oxlint-config-presets/airbnb/base`
 
 <details>
-<summary>97 rules have no oxlint equivalent</summary>
+<summary>92 rules have no oxlint equivalent</summary>
 
 **Not portable to oxlint**
 
@@ -86,10 +82,6 @@ Multiple configs can be combined. Later entries take precedence:
 
 `no-implied-eval`, `no-restricted-properties`, `prefer-regex-literals`, `no-unreachable-loop`, `no-restricted-syntax`, `no-underscore-dangle`, `one-var`, `no-restricted-exports`, `object-shorthand`, `prefer-arrow-callback`, `import/no-extraneous-dependencies`, `import/newline-after-import`, `import/no-useless-path-segments`, `import/no-import-module-exports`, `import/no-relative-packages`, `strict`
 
-**Available as nursery rules (experimental, opt-in)**
-
-`getter-return`, `no-unreachable`, `no-undef`, `import/named`, `import/export`
-
 </details>
 
 ### `oxlint-config-presets/airbnb/hooks`
@@ -97,7 +89,7 @@ Multiple configs can be combined. Later entries take precedence:
 ### `oxlint-config-presets/airbnb/legacy`
 
 <details>
-<summary>77 rules have no oxlint equivalent</summary>
+<summary>74 rules have no oxlint equivalent</summary>
 
 **Not portable to oxlint**
 
@@ -107,16 +99,12 @@ Multiple configs can be combined. Later entries take precedence:
 
 `no-implied-eval`, `no-restricted-properties`, `prefer-regex-literals`, `no-unreachable-loop`, `no-restricted-syntax`, `no-underscore-dangle`, `one-var`, `strict`
 
-**Available as nursery rules (experimental, opt-in)**
-
-`getter-return`, `no-unreachable`, `no-undef`
-
 </details>
 
 ### `oxlint-config-presets/airbnb/whitespace`
 
 <details>
-<summary>141 rules have no oxlint equivalent</summary>
+<summary>135 rules have no oxlint equivalent</summary>
 
 **Not portable to oxlint**
 
@@ -126,16 +114,12 @@ Multiple configs can be combined. Later entries take precedence:
 
 `no-implied-eval`, `no-restricted-properties`, `prefer-regex-literals`, `no-unreachable-loop`, `no-restricted-syntax`, `no-underscore-dangle`, `one-var`, `no-restricted-exports`, `object-shorthand`, `prefer-arrow-callback`, `import/no-extraneous-dependencies`, `import/newline-after-import`, `import/no-useless-path-segments`, `import/no-import-module-exports`, `import/no-relative-packages`, `strict`, `react/jsx-no-bind`, `react/no-deprecated`, `react/no-did-update-set-state`, `react/prefer-stateless-function`, `react/prop-types`, `react/require-default-props`, `react/no-typos`, `react/destructuring-assignment`, `react/function-component-definition`, `react/no-unstable-nested-components`, `react/no-arrow-function-lifecycle`, `react/no-invalid-html-attribute`, `jsx-a11y/control-has-associated-label`, `jsx-a11y/interactive-supports-focus`, `jsx-a11y/no-interactive-element-to-noninteractive-role`, `jsx-a11y/no-noninteractive-element-interactions`, `jsx-a11y/no-noninteractive-element-to-interactive-role`
 
-**Available as nursery rules (experimental, opt-in)**
-
-`getter-return`, `no-unreachable`, `no-undef`, `import/named`, `import/export`, `react/require-render-return`
-
 </details>
 
 ### `oxlint-config-presets/standard`
 
 <details>
-<summary>66 rules have no oxlint equivalent</summary>
+<summary>63 rules have no oxlint equivalent</summary>
 
 **Not yet implemented in oxlint**
 
@@ -144,10 +128,6 @@ Multiple configs can be combined. Later entries take precedence:
 **Not portable to oxlint**
 
 `array-bracket-spacing`, `arrow-spacing`, `block-spacing`, `brace-style`, `camelcase`, `comma-dangle`, `comma-spacing`, `comma-style`, `computed-property-spacing`, `dot-location`, `dot-notation`, `eol-last`, `func-call-spacing`, `generator-star-spacing`, `indent`, `key-spacing`, `keyword-spacing`, `lines-between-class-members`, `multiline-ternary`, `new-parens`, `no-dupe-args`, `no-extra-parens`, `no-floating-decimal`, `no-mixed-operators`, `no-mixed-spaces-and-tabs`, `no-multi-spaces`, `no-multiple-empty-lines`, `no-new-object`, `no-new-symbol`, `no-octal`, `no-octal-escape`, `no-tabs`, `no-trailing-spaces`, `no-undef-init`, `no-whitespace-before-property`, `object-curly-newline`, `object-curly-spacing`, `object-property-newline`, `operator-linebreak`, `padded-blocks`, `quote-props`, `quotes`, `rest-spread-spacing`, `semi`, `semi-spacing`, `space-before-blocks`, `space-before-function-paren`, `space-in-parens`, `space-infix-ops`, `space-unary-ops`, `spaced-comment`, `template-curly-spacing`, `template-tag-spacing`, `wrap-iife`, `yield-star-spacing`
-
-**Available as nursery rules (experimental, opt-in)**
-
-`no-undef`, `no-unreachable`, `import/export`
 
 </details>
 
@@ -168,23 +148,10 @@ Multiple configs can be combined. Later entries take precedence:
 
 ### `oxlint-config-presets/typescript-eslint/recommended`
 
-<details>
-<summary>3 rules have no oxlint equivalent</summary>
-
-**Available as nursery rules (experimental, opt-in)**
-
-`getter-return`, `no-undef`, `no-unreachable`
-
-</details>
-
 ### `oxlint-config-presets/typescript-eslint/recommended-type-checked`
 
 <details>
-<summary>26 rules have no oxlint equivalent</summary>
-
-**Available as nursery rules (experimental, opt-in)**
-
-`getter-return`, `no-undef`, `no-unreachable`
+<summary>23 rules have no oxlint equivalent</summary>
 
 **Require type-aware linting**
 
@@ -194,64 +161,34 @@ Multiple configs can be combined. Later entries take precedence:
 
 ### `oxlint-config-presets/typescript-eslint/strict`
 
-<details>
-<summary>3 rules have no oxlint equivalent</summary>
-
-**Available as nursery rules (experimental, opt-in)**
-
-`getter-return`, `no-undef`, `no-unreachable`
-
-</details>
-
 ### `oxlint-config-presets/typescript-eslint/strict-type-checked`
 
 <details>
-<summary>43 rules have no oxlint equivalent</summary>
-
-**Available as nursery rules (experimental, opt-in)**
-
-`getter-return`, `no-undef`, `no-unreachable`, `@typescript-eslint/no-unnecessary-condition`, `@typescript-eslint/no-unnecessary-type-conversion`, `@typescript-eslint/no-unnecessary-type-parameters`, `@typescript-eslint/no-useless-default-assignment`
+<summary>40 rules have no oxlint equivalent</summary>
 
 **Require type-aware linting**
 
-`@typescript-eslint/await-thenable`, `@typescript-eslint/no-array-delete`, `@typescript-eslint/no-base-to-string`, `@typescript-eslint/no-confusing-void-expression`, `@typescript-eslint/no-deprecated`, `@typescript-eslint/no-duplicate-type-constituents`, `@typescript-eslint/no-floating-promises`, `@typescript-eslint/no-for-in-array`, `@typescript-eslint/no-implied-eval`, `@typescript-eslint/no-meaningless-void-operator`, `@typescript-eslint/no-misused-promises`, `@typescript-eslint/no-misused-spread`, `@typescript-eslint/no-mixed-enums`, `@typescript-eslint/no-redundant-type-constituents`, `@typescript-eslint/no-unnecessary-boolean-literal-compare`, `@typescript-eslint/no-unnecessary-template-expression`, `@typescript-eslint/no-unnecessary-type-arguments`, `@typescript-eslint/no-unnecessary-type-assertion`, `@typescript-eslint/no-unsafe-argument`, `@typescript-eslint/no-unsafe-assignment`, `@typescript-eslint/no-unsafe-call`, `@typescript-eslint/no-unsafe-enum-comparison`, `@typescript-eslint/no-unsafe-member-access`, `@typescript-eslint/no-unsafe-return`, `@typescript-eslint/no-unsafe-unary-minus`, `@typescript-eslint/only-throw-error`, `@typescript-eslint/prefer-promise-reject-errors`, `@typescript-eslint/prefer-reduce-type-parameter`, `@typescript-eslint/prefer-return-this-type`, `@typescript-eslint/related-getter-setter-pairs`, `@typescript-eslint/require-await`, `@typescript-eslint/restrict-plus-operands`, `@typescript-eslint/restrict-template-expressions`, `@typescript-eslint/return-await`, `@typescript-eslint/unbound-method`, `@typescript-eslint/use-unknown-in-catch-callback-variable`
+`@typescript-eslint/await-thenable`, `@typescript-eslint/no-array-delete`, `@typescript-eslint/no-base-to-string`, `@typescript-eslint/no-confusing-void-expression`, `@typescript-eslint/no-deprecated`, `@typescript-eslint/no-duplicate-type-constituents`, `@typescript-eslint/no-floating-promises`, `@typescript-eslint/no-for-in-array`, `@typescript-eslint/no-implied-eval`, `@typescript-eslint/no-meaningless-void-operator`, `@typescript-eslint/no-misused-promises`, `@typescript-eslint/no-misused-spread`, `@typescript-eslint/no-mixed-enums`, `@typescript-eslint/no-redundant-type-constituents`, `@typescript-eslint/no-unnecessary-boolean-literal-compare`, `@typescript-eslint/no-unnecessary-condition`, `@typescript-eslint/no-unnecessary-template-expression`, `@typescript-eslint/no-unnecessary-type-arguments`, `@typescript-eslint/no-unnecessary-type-assertion`, `@typescript-eslint/no-unnecessary-type-conversion`, `@typescript-eslint/no-unnecessary-type-parameters`, `@typescript-eslint/no-unsafe-argument`, `@typescript-eslint/no-unsafe-assignment`, `@typescript-eslint/no-unsafe-call`, `@typescript-eslint/no-unsafe-enum-comparison`, `@typescript-eslint/no-unsafe-member-access`, `@typescript-eslint/no-unsafe-return`, `@typescript-eslint/no-unsafe-unary-minus`, `@typescript-eslint/no-useless-default-assignment`, `@typescript-eslint/only-throw-error`, `@typescript-eslint/prefer-promise-reject-errors`, `@typescript-eslint/prefer-reduce-type-parameter`, `@typescript-eslint/prefer-return-this-type`, `@typescript-eslint/related-getter-setter-pairs`, `@typescript-eslint/require-await`, `@typescript-eslint/restrict-plus-operands`, `@typescript-eslint/restrict-template-expressions`, `@typescript-eslint/return-await`, `@typescript-eslint/unbound-method`, `@typescript-eslint/use-unknown-in-catch-callback-variable`
 
 </details>
 
 ### `oxlint-config-presets/typescript-eslint/stylistic`
 
-<details>
-<summary>3 rules have no oxlint equivalent</summary>
-
-**Available as nursery rules (experimental, opt-in)**
-
-`getter-return`, `no-undef`, `no-unreachable`
-
-</details>
-
 ### `oxlint-config-presets/typescript-eslint/stylistic-type-checked`
 
 <details>
-<summary>11 rules have no oxlint equivalent</summary>
-
-**Available as nursery rules (experimental, opt-in)**
-
-`getter-return`, `no-undef`, `no-unreachable`, `@typescript-eslint/dot-notation`, `@typescript-eslint/prefer-find`, `@typescript-eslint/prefer-optional-chain`, `@typescript-eslint/prefer-regexp-exec`, `@typescript-eslint/prefer-string-starts-ends-with`
+<summary>8 rules have no oxlint equivalent</summary>
 
 **Require type-aware linting**
 
-`@typescript-eslint/non-nullable-type-assertion-style`, `@typescript-eslint/prefer-includes`, `@typescript-eslint/prefer-nullish-coalescing`
+`@typescript-eslint/dot-notation`, `@typescript-eslint/non-nullable-type-assertion-style`, `@typescript-eslint/prefer-find`, `@typescript-eslint/prefer-includes`, `@typescript-eslint/prefer-nullish-coalescing`, `@typescript-eslint/prefer-optional-chain`, `@typescript-eslint/prefer-regexp-exec`, `@typescript-eslint/prefer-string-starts-ends-with`
 
 </details>
 
 ### `oxlint-config-presets/typescript-eslint/all`
 
 <details>
-<summary>69 rules have no oxlint equivalent</summary>
-
-**Available as nursery rules (experimental, opt-in)**
-
-`getter-return`, `no-undef`, `no-unreachable`, `@typescript-eslint/consistent-return`, `@typescript-eslint/consistent-type-exports`, `@typescript-eslint/dot-notation`, `@typescript-eslint/no-unnecessary-condition`, `@typescript-eslint/no-unnecessary-qualifier`, `@typescript-eslint/no-unnecessary-type-conversion`, `@typescript-eslint/no-unnecessary-type-parameters`, `@typescript-eslint/no-useless-default-assignment`, `@typescript-eslint/prefer-find`, `@typescript-eslint/prefer-optional-chain`, `@typescript-eslint/prefer-readonly`, `@typescript-eslint/prefer-readonly-parameter-types`, `@typescript-eslint/prefer-regexp-exec`, `@typescript-eslint/prefer-string-starts-ends-with`, `@typescript-eslint/strict-void-return`
+<summary>66 rules have no oxlint equivalent</summary>
 
 **Not yet implemented in oxlint**
 
@@ -263,18 +200,14 @@ Multiple configs can be combined. Later entries take precedence:
 
 **Require type-aware linting**
 
-`@typescript-eslint/await-thenable`, `@typescript-eslint/no-array-delete`, `@typescript-eslint/no-base-to-string`, `@typescript-eslint/no-confusing-void-expression`, `@typescript-eslint/no-deprecated`, `@typescript-eslint/no-duplicate-type-constituents`, `@typescript-eslint/no-floating-promises`, `@typescript-eslint/no-for-in-array`, `@typescript-eslint/no-implied-eval`, `@typescript-eslint/no-meaningless-void-operator`, `@typescript-eslint/no-misused-promises`, `@typescript-eslint/no-misused-spread`, `@typescript-eslint/no-mixed-enums`, `@typescript-eslint/no-redundant-type-constituents`, `@typescript-eslint/no-unnecessary-boolean-literal-compare`, `@typescript-eslint/no-unnecessary-template-expression`, `@typescript-eslint/no-unnecessary-type-arguments`, `@typescript-eslint/no-unnecessary-type-assertion`, `@typescript-eslint/no-unsafe-argument`, `@typescript-eslint/no-unsafe-assignment`, `@typescript-eslint/no-unsafe-call`, `@typescript-eslint/no-unsafe-enum-comparison`, `@typescript-eslint/no-unsafe-member-access`, `@typescript-eslint/no-unsafe-return`, `@typescript-eslint/no-unsafe-type-assertion`, `@typescript-eslint/no-unsafe-unary-minus`, `@typescript-eslint/non-nullable-type-assertion-style`, `@typescript-eslint/only-throw-error`, `@typescript-eslint/prefer-includes`, `@typescript-eslint/prefer-nullish-coalescing`, `@typescript-eslint/prefer-promise-reject-errors`, `@typescript-eslint/prefer-reduce-type-parameter`, `@typescript-eslint/prefer-return-this-type`, `@typescript-eslint/promise-function-async`, `@typescript-eslint/related-getter-setter-pairs`, `@typescript-eslint/require-array-sort-compare`, `@typescript-eslint/require-await`, `@typescript-eslint/restrict-plus-operands`, `@typescript-eslint/restrict-template-expressions`, `@typescript-eslint/return-await`, `@typescript-eslint/strict-boolean-expressions`, `@typescript-eslint/switch-exhaustiveness-check`, `@typescript-eslint/unbound-method`, `@typescript-eslint/use-unknown-in-catch-callback-variable`
+`@typescript-eslint/await-thenable`, `@typescript-eslint/consistent-return`, `@typescript-eslint/consistent-type-exports`, `@typescript-eslint/dot-notation`, `@typescript-eslint/no-array-delete`, `@typescript-eslint/no-base-to-string`, `@typescript-eslint/no-confusing-void-expression`, `@typescript-eslint/no-deprecated`, `@typescript-eslint/no-duplicate-type-constituents`, `@typescript-eslint/no-floating-promises`, `@typescript-eslint/no-for-in-array`, `@typescript-eslint/no-implied-eval`, `@typescript-eslint/no-meaningless-void-operator`, `@typescript-eslint/no-misused-promises`, `@typescript-eslint/no-misused-spread`, `@typescript-eslint/no-mixed-enums`, `@typescript-eslint/no-redundant-type-constituents`, `@typescript-eslint/no-unnecessary-boolean-literal-compare`, `@typescript-eslint/no-unnecessary-condition`, `@typescript-eslint/no-unnecessary-qualifier`, `@typescript-eslint/no-unnecessary-template-expression`, `@typescript-eslint/no-unnecessary-type-arguments`, `@typescript-eslint/no-unnecessary-type-assertion`, `@typescript-eslint/no-unnecessary-type-conversion`, `@typescript-eslint/no-unnecessary-type-parameters`, `@typescript-eslint/no-unsafe-argument`, `@typescript-eslint/no-unsafe-assignment`, `@typescript-eslint/no-unsafe-call`, `@typescript-eslint/no-unsafe-enum-comparison`, `@typescript-eslint/no-unsafe-member-access`, `@typescript-eslint/no-unsafe-return`, `@typescript-eslint/no-unsafe-type-assertion`, `@typescript-eslint/no-unsafe-unary-minus`, `@typescript-eslint/no-useless-default-assignment`, `@typescript-eslint/non-nullable-type-assertion-style`, `@typescript-eslint/only-throw-error`, `@typescript-eslint/prefer-find`, `@typescript-eslint/prefer-includes`, `@typescript-eslint/prefer-nullish-coalescing`, `@typescript-eslint/prefer-optional-chain`, `@typescript-eslint/prefer-promise-reject-errors`, `@typescript-eslint/prefer-readonly`, `@typescript-eslint/prefer-readonly-parameter-types`, `@typescript-eslint/prefer-reduce-type-parameter`, `@typescript-eslint/prefer-regexp-exec`, `@typescript-eslint/prefer-return-this-type`, `@typescript-eslint/prefer-string-starts-ends-with`, `@typescript-eslint/promise-function-async`, `@typescript-eslint/related-getter-setter-pairs`, `@typescript-eslint/require-array-sort-compare`, `@typescript-eslint/require-await`, `@typescript-eslint/restrict-plus-operands`, `@typescript-eslint/restrict-template-expressions`, `@typescript-eslint/return-await`, `@typescript-eslint/strict-boolean-expressions`, `@typescript-eslint/strict-void-return`, `@typescript-eslint/switch-exhaustiveness-check`, `@typescript-eslint/unbound-method`, `@typescript-eslint/use-unknown-in-catch-callback-variable`
 
 </details>
 
 ### `oxlint-config-presets/eslint-js/recommended`
 
 <details>
-<summary>6 rules have no oxlint equivalent</summary>
-
-**Available as nursery rules (experimental, opt-in)**
-
-`getter-return`, `no-undef`, `no-unreachable`
+<summary>3 rules have no oxlint equivalent</summary>
 
 **Not portable to oxlint**
 
@@ -289,7 +222,7 @@ Multiple configs can be combined. Later entries take precedence:
 ### `oxlint-config-presets/eslint-js/all`
 
 <details>
-<summary>32 rules have no oxlint equivalent</summary>
+<summary>29 rules have no oxlint equivalent</summary>
 
 **Not portable to oxlint**
 
@@ -298,9 +231,5 @@ Multiple configs can be combined. Later entries take precedence:
 **Not yet implemented in oxlint**
 
 `consistent-this`, `func-name-matching`, `id-denylist`, `id-match`, `logical-assignment-operators`, `no-implicit-globals`, `no-implied-eval`, `no-restricted-exports`, `no-restricted-properties`, `no-restricted-syntax`, `no-underscore-dangle`, `no-unreachable-loop`, `no-useless-assignment`, `object-shorthand`, `one-var`, `prefer-arrow-callback`, `prefer-named-capture-group`, `prefer-regex-literals`, `require-atomic-updates`, `require-unicode-regexp`, `strict`
-
-**Available as nursery rules (experimental, opt-in)**
-
-`getter-return`, `no-undef`, `no-unreachable`
 
 </details>

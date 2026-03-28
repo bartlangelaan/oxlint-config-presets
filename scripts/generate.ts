@@ -327,7 +327,7 @@ for (const config of configs) {
 
   // Pass the flattened rules as a single ESLint flat config object.
   // migrate() returns an oxlint-compatible config with supported rules only.
-  const oxlintResult = await migrate({ rules }, undefined, { reporter });
+  const oxlintResult = await migrate({ rules }, undefined, { reporter, withNursery: true });
 
   // Remove $schema — child configs are extended from node_modules and the
   // relative path to oxlint's schema would be wrong from that location.

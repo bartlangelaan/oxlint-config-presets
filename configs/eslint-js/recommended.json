@@ -9,6 +9,7 @@
   "rules": {
     "constructor-super": "error",
     "for-direction": "error",
+    "getter-return": "error",
     "no-async-promise-executor": "error",
     "no-case-declarations": "error",
     "no-class-assign": "error",
@@ -50,7 +51,9 @@
     "no-sparse-arrays": "error",
     "no-this-before-super": "error",
     "no-unassigned-vars": "error",
+    "no-undef": "error",
     "no-unexpected-multiline": "error",
+    "no-unreachable": "error",
     "no-unsafe-finally": "error",
     "no-unsafe-negation": "error",
     "no-unsafe-optional-chaining": "error",

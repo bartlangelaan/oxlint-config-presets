@@ -173,6 +173,12 @@
     "vars-on-top": "error",
     "yoda": "error",
     "for-direction": "error",
+    "getter-return": [
+      "error",
+      {
+        "allowImplicit": true
+      }
+    ],
     "no-async-promise-executor": "error",
     "no-await-in-loop": "error",
     "no-compare-neg-zero": "error",
@@ -206,6 +212,7 @@
     "no-sparse-arrays": "error",
     "no-template-curly-in-string": "error",
     "no-unexpected-multiline": "error",
+    "no-unreachable": "error",
     "no-unsafe-finally": "error",
     "no-unsafe-negation": "error",
     "no-unsafe-optional-chaining": [
@@ -334,6 +341,7 @@
     ],
     "no-shadow": "error",
     "no-shadow-restricted-names": "error",
+    "no-undef": "error",
     "no-unused-vars": [
       "error",
       {
@@ -402,6 +410,8 @@
     "prefer-template": "error",
     "require-yield": "error",
     "symbol-description": "error",
+    "import/named": "error",
+    "import/export": "error",
     "import/no-named-as-default": "error",
     "import/no-named-as-default-member": "error",
     "import/no-mutable-exports": "error",
@@ -450,6 +460,7 @@
       "always"
     ],
     "react/react-in-jsx-scope": "error",
+    "react/require-render-return": "error",
     "react/self-closing-comp": "error",
     "react/jsx-no-target-blank": [
       "error",

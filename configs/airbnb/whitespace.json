@@ -255,6 +255,12 @@
     "for-direction": [
       "warn"
     ],
+    "getter-return": [
+      "warn",
+      {
+        "allowImplicit": true
+      }
+    ],
     "no-async-promise-executor": [
       "warn"
     ],
@@ -336,6 +342,9 @@
       "warn"
     ],
     "no-unexpected-multiline": [
+      "warn"
+    ],
+    "no-unreachable": [
       "warn"
     ],
     "no-unsafe-finally": [
@@ -499,6 +508,9 @@
     "no-shadow-restricted-names": [
       "warn"
     ],
+    "no-undef": [
+      "warn"
+    ],
     "no-unused-vars": [
       "warn",
       {
@@ -595,6 +607,12 @@
     "symbol-description": [
       "warn"
     ],
+    "import/named": [
+      "warn"
+    ],
+    "import/export": [
+      "warn"
+    ],
     "import/no-named-as-default": [
       "warn"
     ],
@@ -677,6 +695,9 @@
       "always"
     ],
     "react/react-in-jsx-scope": [
+      "warn"
+    ],
+    "react/require-render-return": [
       "warn"
     ],
     "react/self-closing-comp": [
