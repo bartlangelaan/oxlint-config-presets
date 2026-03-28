@@ -37,35 +37,35 @@ Multiple configs can be combined. Later entries take precedence:
 
 | Source package | Source config | Oxlint config |
 |---|---|---|
-| `eslint-config-airbnb` |  | `oxlint-config-presets/airbnb/index.json` |
+| `eslint-config-airbnb` |  | `oxlint-config-presets/airbnb.json` |
 | `eslint-config-airbnb` | `base` | `oxlint-config-presets/airbnb/base.json` |
 | `eslint-config-airbnb` | `hooks` | `oxlint-config-presets/airbnb/hooks.json` |
 | `eslint-config-airbnb` | `legacy` | `oxlint-config-presets/airbnb/legacy.json` |
 | `eslint-config-airbnb` | `whitespace` | `oxlint-config-presets/airbnb/whitespace.json` |
-| `eslint-config-standard` |  | `oxlint-config-presets/standard/index.json` |
-| `eslint-config-google` |  | `oxlint-config-presets/google/index.json` |
-| `@typescript-eslint/eslint-plugin` | `recommended` | `oxlint-config-presets/typescript-eslint/recommended.json` |
-| `@typescript-eslint/eslint-plugin` | `recommended-type-checked` | `oxlint-config-presets/typescript-eslint/recommended-type-checked.json` |
-| `@typescript-eslint/eslint-plugin` | `strict` | `oxlint-config-presets/typescript-eslint/strict.json` |
-| `@typescript-eslint/eslint-plugin` | `strict-type-checked` | `oxlint-config-presets/typescript-eslint/strict-type-checked.json` |
-| `@typescript-eslint/eslint-plugin` | `stylistic` | `oxlint-config-presets/typescript-eslint/stylistic.json` |
-| `@typescript-eslint/eslint-plugin` | `stylistic-type-checked` | `oxlint-config-presets/typescript-eslint/stylistic-type-checked.json` |
-| `@typescript-eslint/eslint-plugin` | `all` | `oxlint-config-presets/typescript-eslint/all.json` |
-| `@eslint/js` | `recommended` | `oxlint-config-presets/eslint-js/recommended.json` |
-| `@eslint/js` | `all` | `oxlint-config-presets/eslint-js/all.json` |
-| `eslint-config-xo` |  | `oxlint-config-presets/xo/index.json` |
-| `eslint-config-problems` |  | `oxlint-config-presets/problems/index.json` |
-| `eslint-config-hardcore` |  | `oxlint-config-presets/hardcore/index.json` |
-| `eslint-config-wikimedia` |  | `oxlint-config-presets/wikimedia/index.json` |
-| `eslint-config-eslint` |  | `oxlint-config-presets/eslint-team/index.json` |
-| `eslint-config-eslint` | `base` | `oxlint-config-presets/eslint-team/base.json` |
-| `eslint-config-alloy` |  | `oxlint-config-presets/alloy/index.json` |
+| `eslint-config-standard` |  | `oxlint-config-presets/standard.json` |
+| `eslint-config-google` |  | `oxlint-config-presets/google.json` |
+| `@typescript-eslint/eslint-plugin` | `recommended` | `oxlint-config-presets/@typescript-eslint/recommended.json` |
+| `@typescript-eslint/eslint-plugin` | `recommended-type-checked` | `oxlint-config-presets/@typescript-eslint/recommended-type-checked.json` |
+| `@typescript-eslint/eslint-plugin` | `strict` | `oxlint-config-presets/@typescript-eslint/strict.json` |
+| `@typescript-eslint/eslint-plugin` | `strict-type-checked` | `oxlint-config-presets/@typescript-eslint/strict-type-checked.json` |
+| `@typescript-eslint/eslint-plugin` | `stylistic` | `oxlint-config-presets/@typescript-eslint/stylistic.json` |
+| `@typescript-eslint/eslint-plugin` | `stylistic-type-checked` | `oxlint-config-presets/@typescript-eslint/stylistic-type-checked.json` |
+| `@typescript-eslint/eslint-plugin` | `all` | `oxlint-config-presets/@typescript-eslint/all.json` |
+| `@eslint/js` | `recommended` | `oxlint-config-presets/@eslint/recommended.json` |
+| `@eslint/js` | `all` | `oxlint-config-presets/@eslint/all.json` |
+| `eslint-config-xo` |  | `oxlint-config-presets/xo.json` |
+| `eslint-config-problems` |  | `oxlint-config-presets/problems.json` |
+| `eslint-config-hardcore` |  | `oxlint-config-presets/hardcore.json` |
+| `eslint-config-wikimedia` |  | `oxlint-config-presets/wikimedia.json` |
+| `eslint-config-eslint` |  | `oxlint-config-presets/eslint.json` |
+| `eslint-config-eslint` | `base` | `oxlint-config-presets/eslint/base.json` |
+| `eslint-config-alloy` |  | `oxlint-config-presets/alloy.json` |
 | `eslint-config-alloy` | `react` | `oxlint-config-presets/alloy/react.json` |
 | `eslint-config-alloy` | `typescript` | `oxlint-config-presets/alloy/typescript.json` |
-| `eslint-config-prettier` |  | `oxlint-config-presets/prettier/index.json` |
-| `@antfu/eslint-config` |  | `oxlint-config-presets/antfu/index.json` |
+| `eslint-config-prettier` |  | `oxlint-config-presets/prettier.json` |
+| `@antfu/eslint-config` |  | `oxlint-config-presets/@antfu.json` |
 
-### `oxlint-config-presets/airbnb/index.json`
+### `oxlint-config-presets/airbnb.json`
 
 <details>
 <summary>210 rules successfully migrated</summary>
@@ -189,7 +189,7 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-### `oxlint-config-presets/standard/index.json`
+### `oxlint-config-presets/standard.json`
 
 <details>
 <summary>99 rules successfully migrated</summary>
@@ -211,7 +211,7 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-### `oxlint-config-presets/google/index.json`
+### `oxlint-config-presets/google.json`
 
 <details>
 <summary>21 rules successfully migrated</summary>
@@ -233,7 +233,7 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-### `oxlint-config-presets/typescript-eslint/recommended.json`
+### `oxlint-config-presets/@typescript-eslint/recommended.json`
 
 <details>
 <summary>24 rules successfully migrated</summary>
@@ -242,7 +242,7 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-### `oxlint-config-presets/typescript-eslint/recommended-type-checked.json`
+### `oxlint-config-presets/@typescript-eslint/recommended-type-checked.json`
 
 <details>
 <summary>47 rules successfully migrated</summary>
@@ -251,7 +251,7 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-### `oxlint-config-presets/typescript-eslint/strict.json`
+### `oxlint-config-presets/@typescript-eslint/strict.json`
 
 <details>
 <summary>32 rules successfully migrated</summary>
@@ -260,7 +260,7 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-### `oxlint-config-presets/typescript-eslint/strict-type-checked.json`
+### `oxlint-config-presets/@typescript-eslint/strict-type-checked.json`
 
 <details>
 <summary>72 rules successfully migrated</summary>
@@ -269,7 +269,7 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-### `oxlint-config-presets/typescript-eslint/stylistic.json`
+### `oxlint-config-presets/@typescript-eslint/stylistic.json`
 
 <details>
 <summary>17 rules successfully migrated</summary>
@@ -278,7 +278,7 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-### `oxlint-config-presets/typescript-eslint/stylistic-type-checked.json`
+### `oxlint-config-presets/@typescript-eslint/stylistic-type-checked.json`
 
 <details>
 <summary>25 rules successfully migrated</summary>
@@ -287,7 +287,7 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-### `oxlint-config-presets/typescript-eslint/all.json`
+### `oxlint-config-presets/@typescript-eslint/all.json`
 
 <details>
 <summary>124 rules successfully migrated</summary>
@@ -309,7 +309,7 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-### `oxlint-config-presets/eslint-js/recommended.json`
+### `oxlint-config-presets/@eslint/recommended.json`
 
 <details>
 <summary>61 rules successfully migrated</summary>
@@ -331,7 +331,7 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-### `oxlint-config-presets/eslint-js/all.json`
+### `oxlint-config-presets/@eslint/all.json`
 
 <details>
 <summary>171 rules successfully migrated</summary>
@@ -353,7 +353,7 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-### `oxlint-config-presets/xo/index.json`
+### `oxlint-config-presets/xo.json`
 
 <details>
 <summary>353 rules successfully migrated</summary>
@@ -379,7 +379,7 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-### `oxlint-config-presets/problems/index.json`
+### `oxlint-config-presets/problems.json`
 
 <details>
 <summary>105 rules successfully migrated</summary>
@@ -401,7 +401,7 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-### `oxlint-config-presets/hardcore/index.json`
+### `oxlint-config-presets/hardcore.json`
 
 <details>
 <summary>284 rules successfully migrated</summary>
@@ -436,7 +436,7 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-### `oxlint-config-presets/wikimedia/index.json`
+### `oxlint-config-presets/wikimedia.json`
 
 <details>
 <summary>57 rules successfully migrated</summary>
@@ -471,7 +471,7 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-### `oxlint-config-presets/eslint-team/index.json`
+### `oxlint-config-presets/eslint.json`
 
 <details>
 <summary>160 rules successfully migrated</summary>
@@ -497,7 +497,7 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-### `oxlint-config-presets/eslint-team/base.json`
+### `oxlint-config-presets/eslint/base.json`
 
 <details>
 <summary>156 rules successfully migrated</summary>
@@ -523,7 +523,7 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-### `oxlint-config-presets/alloy/index.json`
+### `oxlint-config-presets/alloy.json`
 
 <details>
 <summary>98 rules successfully migrated</summary>
@@ -598,9 +598,9 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-### `oxlint-config-presets/prettier/index.json`
+### `oxlint-config-presets/prettier.json`
 
-### `oxlint-config-presets/antfu/index.json`
+### `oxlint-config-presets/@antfu.json`
 
 <details>
 <summary>97 rules successfully migrated</summary>

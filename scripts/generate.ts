@@ -157,26 +157,25 @@ interface ConfigEntry {
 }
 
 /**
- * Maps a source package name to the directory name used under configs/.
- * Strips eslint-config-/eslint-plugin- prefixes and normalises scoped packages.
- * eslint-config-eslint → eslint-team (special-cased to avoid clashing with the tool name).
+ * Maps a source package name to the directory/file prefix used under configs/.
+ * Scoped packages use just the scope (e.g. @typescript-eslint/eslint-plugin → @typescript-eslint).
+ * Unscoped packages strip the eslint-config-/eslint-plugin- prefix.
  */
 function pkgToDirName(pkg: string): string {
   if (pkg.startsWith('@')) {
-    const withoutAt = pkg.slice(1);
-    const slash = withoutAt.indexOf('/');
-    const scope = withoutAt.slice(0, slash);
-    const name = withoutAt.slice(slash + 1);
-    const cleanName = name.replace(/^eslint-(config|plugin)-?/, '');
-    return cleanName ? `${scope}-${cleanName}` : scope;
+    return `@${pkg.slice(1, pkg.indexOf('/'))}`;
   }
-  const clean = pkg.replace(/^eslint-(config|plugin)-/, '');
-  return clean === 'eslint' ? 'eslint-team' : clean;
+  return pkg.replace(/^eslint-(config|plugin)-/, '');
 }
 
-/** Output path relative to configsDir, e.g. 'airbnb/base.json' */
-const outputFor = (cfg: ConfigEntry) =>
-  `${pkgToDirName(cfg.sourcePackage)}/${cfg.sourceConfig || 'index'}.json`;
+/** Output path relative to configsDir.
+ * No sourceConfig → <dir>.json  (e.g. airbnb.json)
+ * With sourceConfig → <dir>/<config>.json  (e.g. airbnb/base.json)
+ */
+const outputFor = (cfg: ConfigEntry) => {
+  const dir = pkgToDirName(cfg.sourcePackage);
+  return cfg.sourceConfig ? `${dir}/${cfg.sourceConfig}.json` : `${dir}.json`;
+};
 
 /** Full import path as used in an oxlintrc extends array */
 const oxlintConfigFor = (cfg: ConfigEntry) =>

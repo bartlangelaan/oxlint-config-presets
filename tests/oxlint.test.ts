@@ -10,7 +10,9 @@ const rootDir = join(dirname(fileURLToPath(import.meta.url)), '..');
 const oxlintBin = join(rootDir, 'node_modules/.bin/oxlint');
 const fixture = join(rootDir, 'tests/fixtures/sample.js');
 
-const configFiles = globSync('configs/*/*.json', { cwd: rootDir });
+const configFiles = globSync('configs/**/*.json', { cwd: rootDir }).filter(
+  (f) => f !== 'configs/package.json',
+);
 
 assert.ok(configFiles.length > 0, 'No config files found under configs/');
 
