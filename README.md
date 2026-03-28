@@ -1,4 +1,4 @@
-# oxlint-config
+# oxlint-config-presets
 
 Oxlint configurations ported from popular ESLint styleguides. Extend them in your `.oxlintrc.json` the same way you would extend the original ESLint configs.
 
