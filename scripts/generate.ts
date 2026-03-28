@@ -183,6 +183,20 @@ const fromTsEslint = (name: string) => () => {
   return rules;
 };
 
+// eslint-config-xo uses flat config (ESM function returning an array of config objects).
+// We merge all rules from the returned entries to get the full effective rule set.
+const xoModule = await import('eslint-config-xo');
+const xoFn = xoModule.default as () => Array<{ rules?: EslintRules }>;
+const fromXo = () => {
+  const entries = xoFn();
+  const rules: EslintRules = {};
+  for (const entry of entries) Object.assign(rules, entry.rules ?? {});
+  return rules;
+};
+
+// eslint-config-problems exposes a plain flat config object with a `rules` property.
+const problemsConfig = req('eslint-config-problems') as { rules: EslintRules };
+
 const configs: ConfigEntry[] = [
   // ── airbnb ────────────────────────────────────────────────────────────────
   {
@@ -304,6 +318,42 @@ const configs: ConfigEntry[] = [
     eslintEquivalent: '@eslint/js — all',
     output: 'eslint-js/all.json',
     resolveRules: () => eslintJs.configs.all.rules,
+  },
+
+  // ── xo ───────────────────────────────────────────────────────────────────
+  {
+    label: 'xo',
+    exportName: 'oxlint-config-presets/xo',
+    eslintEquivalent: 'eslint-config-xo',
+    output: 'xo/index.json',
+    resolveRules: fromXo,
+  },
+
+  // ── problems ──────────────────────────────────────────────────────────────
+  {
+    label: 'problems',
+    exportName: 'oxlint-config-presets/problems',
+    eslintEquivalent: 'eslint-config-problems',
+    output: 'problems/index.json',
+    resolveRules: () => problemsConfig.rules,
+  },
+
+  // ── hardcore ──────────────────────────────────────────────────────────────
+  {
+    label: 'hardcore',
+    exportName: 'oxlint-config-presets/hardcore',
+    eslintEquivalent: 'eslint-config-hardcore',
+    output: 'hardcore/index.json',
+    resolveRules: fromPackage('eslint-config-hardcore'),
+  },
+
+  // ── wikimedia ─────────────────────────────────────────────────────────────
+  {
+    label: 'wikimedia',
+    exportName: 'oxlint-config-presets/wikimedia',
+    eslintEquivalent: 'eslint-config-wikimedia',
+    output: 'wikimedia/index.json',
+    resolveRules: fromPackage('eslint-config-wikimedia'),
   },
 ];
 
