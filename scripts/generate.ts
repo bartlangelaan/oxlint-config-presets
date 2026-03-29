@@ -14,7 +14,7 @@
  */
 
 import { spawnSync } from 'node:child_process';
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { dirname, resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -201,10 +201,16 @@ function createReporter() {
 interface ConfigEntry {
   /** npm package name of the source ESLint config, e.g. 'eslint-config-airbnb' */
   sourcePackage: string;
+  /** Optional package name used only for version reporting in README. */
+  sourceVersionPackage?: string;
   /** config variant within the package, e.g. 'base'; empty string for the main export */
   sourceConfig: string;
   /** Returns an ESLint flat config (or array) to migrate */
   resolveConfig: () => MigrateConfig | MigrateConfig[];
+}
+
+interface ConfigEntryWithVersion extends ConfigEntry {
+  sourcePackageVersion: string;
 }
 
 /**
@@ -230,6 +236,70 @@ const outputFor = (cfg: ConfigEntry) => {
 
 /** Full import path as used in an oxlintrc extends array */
 const oxlintConfigFor = (cfg: ConfigEntry) => `oxlint-config-presets/${outputFor(cfg)}`;
+
+const packageVersionCache = new Map<string, string>();
+const lockfilePath = join(rootDir, 'pnpm-lock.yaml');
+const lockfileContent = existsSync(lockfilePath) ? readFileSync(lockfilePath, 'utf-8') : '';
+
+function escapeForRegex(input: string): string {
+  return input.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function getVersionFromPnpmLock(pkg: string): string | null {
+  if (!lockfileContent) return null;
+  const escapedPkg = escapeForRegex(pkg);
+  const directEntryPattern = new RegExp(`^\\s{2}'?${escapedPkg}@([^:(\\s']+)'?:$`, 'm');
+  const directMatch = lockfileContent.match(directEntryPattern);
+  if (directMatch) return directMatch[1];
+
+  const peerEntryPattern = new RegExp(`^\\s{2}'?${escapedPkg}@([^:(\\s']+)\\(`, 'm');
+  const peerMatch = lockfileContent.match(peerEntryPattern);
+  if (peerMatch) return peerMatch[1];
+  return null;
+}
+
+function getInstalledPackageVersion(pkg: string): string {
+  const cached = packageVersionCache.get(pkg);
+  if (cached) return cached;
+
+  const readVersion = (packageJsonPath: string): string | null => {
+    try {
+      const pkgJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8')) as { version?: unknown };
+      return typeof pkgJson.version === 'string' ? pkgJson.version : null;
+    } catch {
+      return null;
+    }
+  };
+
+  const version = (() => {
+    try {
+      const pkgJsonPath = req.resolve(`${pkg}/package.json`);
+      return readVersion(pkgJsonPath) ?? 'unknown';
+    } catch {
+      try {
+        const entryPath = req.resolve(pkg);
+        let currentDir = dirname(entryPath);
+        const rootDirPath = resolve(currentDir, '/');
+
+        while (currentDir !== rootDirPath) {
+          const packageJsonPath = join(currentDir, 'package.json');
+          if (existsSync(packageJsonPath)) {
+            return readVersion(packageJsonPath) ?? 'unknown';
+          }
+          currentDir = dirname(currentDir);
+        }
+      } catch {
+        // Ignore and fall back to unknown.
+      }
+      const versionFromLockfile = getVersionFromPnpmLock(pkg);
+      if (versionFromLockfile) return versionFromLockfile;
+      return 'unknown';
+    }
+  })();
+
+  packageVersionCache.set(pkg, version);
+  return version;
+}
 
 // Shorthand for old-style shareable configs resolved via flattenRules.
 const fromPackage = (pkg: string) => () => {
@@ -509,11 +579,13 @@ const configs: ConfigEntry[] = [
   // ── next / react-perf ─────────────────────────────────────────────────────
   {
     sourcePackage: 'eslint-config-next',
+    sourceVersionPackage: '@next/eslint-plugin-next',
     sourceConfig: 'recommended',
     resolveConfig: fromPluginPackage('@next/eslint-plugin-next', 'recommended'),
   },
   {
     sourcePackage: 'eslint-config-next',
+    sourceVersionPackage: '@next/eslint-plugin-next',
     sourceConfig: 'core-web-vitals',
     resolveConfig: fromPluginPackage('@next/eslint-plugin-next', 'core-web-vitals'),
   },
@@ -641,7 +713,7 @@ const configs: ConfigEntry[] = [
 ];
 
 interface GenerateResult {
-  config: ConfigEntry;
+  config: ConfigEntryWithVersion;
   oxlintResult: OxlintConfig;
   skipped: SkippedRulesByCategory;
   strippedOptions: string[];
@@ -743,7 +815,12 @@ for (const config of configs) {
   console.log(`  Written to configs/${outputFor(config)} (${ruleCount} oxlint rules)`);
 
   results.push({
-    config,
+    config: {
+      ...config,
+      sourcePackageVersion: getInstalledPackageVersion(
+        config.sourceVersionPackage ?? config.sourcePackage,
+      ),
+    },
     oxlintResult,
     skipped: reporter.getSkippedRulesByCategory(),
     strippedOptions,
@@ -784,6 +861,7 @@ function skippedSection(skipped: SkippedRulesByCategory): string {
 }
 
 const rootReadme = readFileSync(readmePath, 'utf-8').trimEnd();
+const oxlintMigrateVersion = getInstalledPackageVersion('@oxlint/migrate');
 
 const tableRows = results
   .map(
@@ -796,7 +874,9 @@ const table =
   `## Available configs\n\n` +
   `| Source package | Source config | Oxlint config |\n` +
   `|---|---|---|\n` +
-  tableRows;
+  tableRows +
+  `\n\n` +
+  `Generated with \`@oxlint/migrate@${oxlintMigrateVersion}\`.`;
 
 function migratedSection(rules: OxlintConfig['rules'], strippedOptions: string[]): string {
   const names = Object.keys(rules ?? {}).filter((name) => !strippedOptions.includes(name));
@@ -848,7 +928,8 @@ const configSections = results
   .map(({ config, oxlintResult, skipped, strippedOptions, warnings }) => {
     const extendsExample =
       `\`\`\`json\n` + `"./node_modules/oxlint-config-presets/${outputFor(config)}"\n` + `\`\`\``;
-    const parts: string[] = [`### \`${outputFor(config)}\``, extendsExample];
+    const sourceVersionInfo = `Extracted from \`${config.sourcePackage}@${config.sourcePackageVersion}\`.`;
+    const parts: string[] = [`### \`${outputFor(config)}\``, extendsExample, sourceVersionInfo];
 
     const migrated = migratedSection(oxlintResult.rules, strippedOptions);
     if (migrated) parts.push(migrated);

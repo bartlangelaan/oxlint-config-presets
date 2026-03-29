@@ -102,11 +102,15 @@ Multiple configs can be combined. Later entries take precedence:
 | `eslint-plugin-vue`                | `vue2-strongly-recommended`     | `vue/vue2-strongly-recommended.json`               |
 | `eslint-plugin-vue`                | `vue2-recommended`              | `vue/vue2-recommended.json`                        |
 
+Generated with `@oxlint/migrate@1.57.0`.
+
 ### `airbnb.json`
 
 ```json
 "./node_modules/oxlint-config-presets/airbnb.json"
 ```
+
+Extracted from `eslint-config-airbnb@19.0.4`.
 
 <details>
 <summary>210 rules successfully migrated</summary>
@@ -151,6 +155,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/airbnb/base.json"
 ```
 
+Extracted from `eslint-config-airbnb@19.0.4`.
+
 <details>
 <summary>150 rules successfully migrated</summary>
 
@@ -191,6 +197,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/airbnb/hooks.json"
 ```
 
+Extracted from `eslint-config-airbnb@19.0.4`.
+
 <details>
 <summary>2 rules successfully migrated</summary>
 
@@ -203,6 +211,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/airbnb/legacy.json"
 ```
+
+Extracted from `eslint-config-airbnb@19.0.4`.
 
 <details>
 <summary>116 rules successfully migrated</summary>
@@ -229,6 +239,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/airbnb/whitespace.json"
 ```
+
+Extracted from `eslint-config-airbnb@19.0.4`.
 
 <details>
 <summary>210 rules successfully migrated</summary>
@@ -273,6 +285,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/standard.json"
 ```
 
+Extracted from `eslint-config-standard@17.1.0`.
+
 <details>
 <summary>99 rules successfully migrated</summary>
 
@@ -298,6 +312,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/google.json"
 ```
+
+Extracted from `eslint-config-google@0.14.0`.
 
 <details>
 <summary>21 rules successfully migrated</summary>
@@ -325,6 +341,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/@typescript-eslint/recommended.json"
 ```
 
+Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
+
 <details>
 <summary>20 rules successfully migrated</summary>
 
@@ -337,6 +355,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/@typescript-eslint/recommended-type-checked.json"
 ```
+
+Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
 
 <details>
 <summary>43 rules successfully migrated</summary>
@@ -351,6 +371,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/@typescript-eslint/strict.json"
 ```
 
+Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
+
 <details>
 <summary>28 rules successfully migrated</summary>
 
@@ -363,6 +385,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/@typescript-eslint/strict-type-checked.json"
 ```
+
+Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
 
 <details>
 <summary>68 rules successfully migrated</summary>
@@ -377,6 +401,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/@typescript-eslint/stylistic.json"
 ```
 
+Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
+
 <details>
 <summary>13 rules successfully migrated</summary>
 
@@ -390,6 +416,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/@typescript-eslint/stylistic-type-checked.json"
 ```
 
+Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
+
 <details>
 <summary>21 rules successfully migrated</summary>
 
@@ -402,6 +430,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/@typescript-eslint/all.json"
 ```
+
+Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
 
 <details>
 <summary>120 rules successfully migrated</summary>
@@ -429,6 +459,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/@eslint/recommended.json"
 ```
 
+Extracted from `@eslint/js@10.0.1`.
+
 <details>
 <summary>61 rules successfully migrated</summary>
 
@@ -455,6 +487,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/@eslint/all.json"
 ```
 
+Extracted from `@eslint/js@10.0.1`.
+
 <details>
 <summary>171 rules successfully migrated</summary>
 
@@ -480,6 +514,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/xo.json"
 ```
+
+Extracted from `eslint-config-xo@0.51.0`.
 
 <details>
 <summary>182 rules have no oxlint equivalent</summary>
@@ -511,6 +547,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/problems.json"
 ```
 
+Extracted from `eslint-config-problems@9.0.0`.
+
 <details>
 <summary>105 rules successfully migrated</summary>
 
@@ -536,6 +574,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/hardcore.json"
 ```
+
+Extracted from `eslint-config-hardcore@49.0.0`.
 
 <details>
 <summary>284 rules successfully migrated</summary>
@@ -582,6 +622,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/wikimedia.json"
 ```
 
+Extracted from `eslint-config-wikimedia@0.32.3`.
+
 <details>
 <summary>110 rules successfully migrated</summary>
 
@@ -624,6 +666,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/eslint.json"
 ```
 
+Extracted from `eslint-config-eslint@14.0.0`.
+
 <details>
 <summary>156 rules successfully migrated</summary>
 
@@ -654,6 +698,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/eslint/base.json"
 ```
 
+Extracted from `eslint-config-eslint@14.0.0`.
+
 <details>
 <summary>156 rules successfully migrated</summary>
 
@@ -683,6 +729,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/alloy.json"
 ```
+
+Extracted from `eslint-config-alloy@5.1.2`.
 
 <details>
 <summary>98 rules successfully migrated</summary>
@@ -721,6 +769,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/alloy/react.json"
 ```
 
+Extracted from `eslint-config-alloy@5.1.2`.
+
 <details>
 <summary>29 rules successfully migrated</summary>
 
@@ -746,6 +796,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/alloy/typescript.json"
 ```
+
+Extracted from `eslint-config-alloy@5.1.2`.
 
 <details>
 <summary>25 rules successfully migrated</summary>
@@ -773,11 +825,15 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/prettier.json"
 ```
 
+Extracted from `eslint-config-prettier@10.1.8`.
+
 ### `@antfu.json`
 
 ```json
 "./node_modules/oxlint-config-presets/@antfu.json"
 ```
+
+Extracted from `@antfu/eslint-config@7.7.3`.
 
 <details>
 <summary>109 rules successfully migrated</summary>
@@ -822,6 +878,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/import/recommended.json"
 ```
 
+Extracted from `eslint-plugin-import@2.32.0`.
+
 <details>
 <summary>7 rules successfully migrated</summary>
 
@@ -843,6 +901,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/import/errors.json"
 ```
+
+Extracted from `eslint-plugin-import@2.32.0`.
 
 <details>
 <summary>4 rules successfully migrated</summary>
@@ -866,6 +926,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/import/warnings.json"
 ```
 
+Extracted from `eslint-plugin-import@2.32.0`.
+
 <details>
 <summary>3 rules successfully migrated</summary>
 
@@ -879,17 +941,23 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/import/react.json"
 ```
 
+Extracted from `eslint-plugin-import@2.32.0`.
+
 ### `import/typescript.json`
 
 ```json
 "./node_modules/oxlint-config-presets/import/typescript.json"
 ```
 
+Extracted from `eslint-plugin-import@2.32.0`.
+
 ### `import-x/recommended.json`
 
 ```json
 "./node_modules/oxlint-config-presets/import-x/recommended.json"
 ```
+
+Extracted from `eslint-plugin-import-x@4.16.2`.
 
 <details>
 <summary>7 rules successfully migrated</summary>
@@ -913,6 +981,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/import-x/errors.json"
 ```
 
+Extracted from `eslint-plugin-import-x@4.16.2`.
+
 <details>
 <summary>4 rules successfully migrated</summary>
 
@@ -934,6 +1004,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/import-x/warnings.json"
 ```
+
+Extracted from `eslint-plugin-import-x@4.16.2`.
 
 <details>
 <summary>3 rules successfully migrated</summary>
@@ -957,17 +1029,23 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/import-x/react.json"
 ```
 
+Extracted from `eslint-plugin-import-x@4.16.2`.
+
 ### `import-x/typescript.json`
 
 ```json
 "./node_modules/oxlint-config-presets/import-x/typescript.json"
 ```
 
+Extracted from `eslint-plugin-import-x@4.16.2`.
+
 ### `next/recommended.json`
 
 ```json
 "./node_modules/oxlint-config-presets/next/recommended.json"
 ```
+
+Extracted from `eslint-config-next@15.5.14`.
 
 <details>
 <summary>21 rules successfully migrated</summary>
@@ -982,6 +1060,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/next/core-web-vitals.json"
 ```
 
+Extracted from `eslint-config-next@15.5.14`.
+
 <details>
 <summary>21 rules successfully migrated</summary>
 
@@ -994,6 +1074,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/react-perf/recommended.json"
 ```
+
+Extracted from `eslint-plugin-react-perf@3.3.3`.
 
 <details>
 <summary>3 rules successfully migrated</summary>
@@ -1008,6 +1090,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/react-perf/all.json"
 ```
 
+Extracted from `eslint-plugin-react-perf@3.3.3`.
+
 <details>
 <summary>4 rules successfully migrated</summary>
 
@@ -1020,6 +1104,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/jsdoc/recommended.json"
 ```
+
+Extracted from `eslint-plugin-jsdoc@62.8.1`.
 
 <details>
 <summary>18 rules successfully migrated</summary>
@@ -1043,6 +1129,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/jsdoc/recommended-typescript.json"
 ```
 
+Extracted from `eslint-plugin-jsdoc@62.8.1`.
+
 <details>
 <summary>15 rules successfully migrated</summary>
 
@@ -1064,6 +1152,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/jsdoc/recommended-typescript-flavor.json"
 ```
+
+Extracted from `eslint-plugin-jsdoc@62.8.1`.
 
 <details>
 <summary>18 rules successfully migrated</summary>
@@ -1087,6 +1177,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/jsdoc/recommended-tsdoc.json"
 ```
 
+Extracted from `eslint-plugin-jsdoc@62.8.1`.
+
 <details>
 <summary>15 rules successfully migrated</summary>
 
@@ -1108,6 +1200,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/jsx-a11y/recommended.json"
 ```
+
+Extracted from `eslint-plugin-jsx-a11y@6.10.2`.
 
 <details>
 <summary>27 rules successfully migrated</summary>
@@ -1131,6 +1225,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/jsx-a11y/strict.json"
 ```
 
+Extracted from `eslint-plugin-jsx-a11y@6.10.2`.
+
 <details>
 <summary>27 rules successfully migrated</summary>
 
@@ -1152,6 +1248,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/n/recommended.json"
 ```
+
+Extracted from `eslint-plugin-n@17.24.0`.
 
 <details>
 <summary>1 rules successfully migrated</summary>
@@ -1175,6 +1273,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/n/recommended-module.json"
 ```
 
+Extracted from `eslint-plugin-n@17.24.0`.
+
 <details>
 <summary>1 rules successfully migrated</summary>
 
@@ -1196,6 +1296,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/n/recommended-script.json"
 ```
+
+Extracted from `eslint-plugin-n@17.24.0`.
 
 <details>
 <summary>1 rules successfully migrated</summary>
@@ -1219,6 +1321,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/promise/recommended.json"
 ```
 
+Extracted from `eslint-plugin-promise@7.2.1`.
+
 <details>
 <summary>10 rules successfully migrated</summary>
 
@@ -1231,6 +1335,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/jest/recommended.json"
 ```
+
+Extracted from `eslint-plugin-jest@28.14.0`.
 
 <details>
 <summary>18 rules successfully migrated</summary>
@@ -1254,6 +1360,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/jest/style.json"
 ```
 
+Extracted from `eslint-plugin-jest@28.14.0`.
+
 <details>
 <summary>4 rules successfully migrated</summary>
 
@@ -1266,6 +1374,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/jest/all.json"
 ```
+
+Extracted from `eslint-plugin-jest@28.14.0`.
 
 <details>
 <summary>50 rules successfully migrated</summary>
@@ -1293,6 +1403,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/@vitest/recommended.json"
 ```
 
+Extracted from `@vitest/eslint-plugin@1.6.13`.
+
 <details>
 <summary>14 rules successfully migrated</summary>
 
@@ -1314,6 +1426,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/@vitest/all.json"
 ```
+
+Extracted from `@vitest/eslint-plugin@1.6.13`.
 
 <details>
 <summary>54 rules successfully migrated</summary>
@@ -1341,6 +1455,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/vue/essential.json"
 ```
 
+Extracted from `eslint-plugin-vue@10.8.0`.
+
 <details>
 <summary>7 rules successfully migrated</summary>
 
@@ -1367,6 +1483,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/vue/strongly-recommended.json"
 ```
 
+Extracted from `eslint-plugin-vue@10.8.0`.
+
 <details>
 <summary>25 rules have no oxlint equivalent</summary>
 
@@ -1385,6 +1503,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/vue/recommended.json"
 ```
+
+Extracted from `eslint-plugin-vue@10.8.0`.
 
 <details>
 <summary>2 rules successfully migrated</summary>
@@ -1412,6 +1532,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/vue/vue2-essential.json"
 ```
 
+Extracted from `eslint-plugin-vue@10.8.0`.
+
 <details>
 <summary>4 rules successfully migrated</summary>
 
@@ -1438,6 +1560,8 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/vue/vue2-strongly-recommended.json"
 ```
 
+Extracted from `eslint-plugin-vue@10.8.0`.
+
 <details>
 <summary>23 rules have no oxlint equivalent</summary>
 
@@ -1456,6 +1580,8 @@ These rules are enabled but their configuration options were dropped because oxl
 ```json
 "./node_modules/oxlint-config-presets/vue/vue2-recommended.json"
 ```
+
+Extracted from `eslint-plugin-vue@10.8.0`.
 
 <details>
 <summary>2 rules successfully migrated</summary>
