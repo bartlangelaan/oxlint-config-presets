@@ -54,11 +54,11 @@ jobs:
           tar -xzf "$local_tgz" -C "$local_dir/extracted"
 
           if diff -qr "$remote_dir/extracted/package" "$local_dir/extracted/package" >/tmp/package-diff.txt; then
-            echo "No differences with npm latest package."
+            echo "No differences with npm package at current version."
             echo "should_publish=false" >> "$GITHUB_OUTPUT"
             echo "should_bump=false" >> "$GITHUB_OUTPUT"
           else
-            echo "Differences detected with npm latest package."
+            echo "Differences detected with npm package at current version."
             cat /tmp/package-diff.txt
             echo "should_publish=true" >> "$GITHUB_OUTPUT"
             echo "should_bump=true" >> "$GITHUB_OUTPUT"
