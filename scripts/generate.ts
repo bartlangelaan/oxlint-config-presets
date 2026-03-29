@@ -18,7 +18,6 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { dirname, resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { FlatCompat } from '@eslint/eslintrc';
 import migrate, { type default as Migrate } from '@oxlint/migrate';
 
 type OxlintConfig = Awaited<ReturnType<typeof Migrate>>;
@@ -50,6 +49,20 @@ const generatedEndMarker = '<!-- GENERATED CONFIGS END -->';
 // Use createRequire so we can require() CJS ESLint configs from ESM context
 const req = createRequire(join(rootDir, 'package.json'));
 
+interface FlatCompatOptions {
+  baseDirectory?: string;
+  resolvePluginsRelativeTo?: string;
+  recommendedConfig?: unknown;
+  allConfig?: unknown;
+}
+
+interface FlatCompatLike {
+  config(config: unknown): unknown[];
+}
+
+type FlatCompatCtor = new (options?: FlatCompatOptions) => FlatCompatLike;
+const { FlatCompat } = req('@eslint/eslintrc') as { FlatCompat: FlatCompatCtor };
+
 interface OldStyleEslintConfig {
   extends?: string | string[];
   plugins?: string[];
@@ -64,9 +77,9 @@ const eslintJs = req('@eslint/js') as {
   configs: { recommended: { rules: ResolvedRules }; all: { rules: ResolvedRules } };
 };
 
-const compatByBaseDir = new Map<string, FlatCompat>();
+const compatByBaseDir = new Map<string, FlatCompatLike>();
 
-function getFlatCompat(baseDirectory: string): FlatCompat {
+function getFlatCompat(baseDirectory: string): FlatCompatLike {
   const cached = compatByBaseDir.get(baseDirectory);
   if (cached) return cached;
 
@@ -636,16 +649,11 @@ interface GenerateResult {
 }
 
 function sanitizeOxlintConfig(config: OxlintConfig): void {
-  if (Array.isArray(config.ignorePatterns)) {
-    config.ignorePatterns = config.ignorePatterns.filter(
-      (pattern): pattern is string => typeof pattern === 'string',
-    );
-    if (config.ignorePatterns.length === 0) delete config.ignorePatterns;
-  }
-
   if (Array.isArray(config.overrides)) {
     config.overrides = config.overrides
       .map((override) => {
+        delete override.globals;
+
         if (Array.isArray(override.files)) {
           override.files = override.files.filter(
             (pattern): pattern is string => typeof pattern === 'string',
@@ -681,6 +689,8 @@ for (const config of configs) {
   delete oxlintResult.$schema;
   delete oxlintResult.categories;
   delete oxlintResult.env;
+  delete oxlintResult.globals;
+  delete oxlintResult.ignorePatterns;
   sanitizeOxlintConfig(oxlintResult);
 
   const outputPath = join(configsDir, outputFor(config));
