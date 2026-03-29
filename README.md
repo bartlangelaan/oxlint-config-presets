@@ -127,13 +127,13 @@ These rules are enabled but their configuration options were dropped because oxl
 <details>
 <summary>133 rules have no oxlint equivalent</summary>
 
-**Not portable to oxlint**
-
-`dot-location`, `no-floating-decimal`, `no-multi-spaces`, `no-octal`, `no-octal-escape`, `no-return-await`, `wrap-iife`, `no-dupe-args`, `no-extra-semi`, `global-require`, `no-buffer-constructor`, `no-new-require`, `no-path-concat`, `array-bracket-spacing`, `block-spacing`, `brace-style`, `camelcase`, `comma-dangle`, `comma-spacing`, `comma-style`, `computed-property-spacing`, `eol-last`, `function-call-argument-newline`, `func-call-spacing`, `function-paren-newline`, `implicit-arrow-linebreak`, `indent`, `jsx-quotes`, `key-spacing`, `keyword-spacing`, `linebreak-style`, `lines-between-class-members`, `lines-around-directive`, `max-len`, `new-parens`, `newline-per-chained-call`, `no-mixed-operators`, `no-mixed-spaces-and-tabs`, `no-multiple-empty-lines`, `no-new-object`, `no-spaced-func`, `no-tabs`, `no-trailing-spaces`, `no-whitespace-before-property`, `nonblock-statement-body-position`, `object-curly-spacing`, `object-curly-newline`, `object-property-newline`, `one-var-declaration-per-line`, `operator-linebreak`, `padded-blocks`, `quote-props`, `quotes`, `semi`, `semi-spacing`, `semi-style`, `space-before-blocks`, `space-before-function-paren`, `space-in-parens`, `space-infix-ops`, `space-unary-ops`, `spaced-comment`, `switch-colon-spacing`, `template-tag-spacing`, `no-undef-init`, `arrow-parens`, `arrow-spacing`, `generator-star-spacing`, `no-confusing-arrow`, `no-new-symbol`, `rest-spread-spacing`, `template-curly-spacing`, `yield-star-spacing`, `import/no-unresolved`, `import/order`, `react/forbid-prop-types`, `react/jsx-closing-bracket-location`, `react/jsx-closing-tag-location`, `react/jsx-curly-spacing`, `react/jsx-indent-props`, `react/jsx-max-props-per-line`, `react/jsx-uses-react`, `react/jsx-uses-vars`, `react/sort-comp`, `react/jsx-wrap-multilines`, `react/jsx-first-prop-new-line`, `react/jsx-equals-spacing`, `react/jsx-indent`, `react/no-unused-prop-types`, `react/jsx-tag-spacing`, `react/forbid-foreign-prop-types`, `react/default-props-match-prop-types`, `react/no-unused-state`, `react/jsx-one-expression-per-line`, `react/no-access-state-in-setstate`, `react/jsx-props-no-multi-spaces`, `react/jsx-curly-newline`, `react/static-property-placement`, `react/prefer-exact-props`, `react/no-unused-class-component-methods`
-
 **Not yet implemented in oxlint**
 
 `no-implied-eval`, `no-restricted-properties`, `prefer-regex-literals`, `no-unreachable-loop`, `no-restricted-syntax`, `no-underscore-dangle`, `one-var`, `no-restricted-exports`, `object-shorthand`, `prefer-arrow-callback`, `import/no-extraneous-dependencies`, `import/newline-after-import`, `import/no-useless-path-segments`, `import/no-import-module-exports`, `import/no-relative-packages`, `strict`, `react/jsx-no-bind`, `react/no-deprecated`, `react/no-did-update-set-state`, `react/prefer-stateless-function`, `react/prop-types`, `react/require-default-props`, `react/no-typos`, `react/destructuring-assignment`, `react/function-component-definition`, `react/no-unstable-nested-components`, `react/no-arrow-function-lifecycle`, `react/no-invalid-html-attribute`, `jsx-a11y/control-has-associated-label`, `jsx-a11y/interactive-supports-focus`, `jsx-a11y/no-interactive-element-to-noninteractive-role`, `jsx-a11y/no-noninteractive-element-interactions`, `jsx-a11y/no-noninteractive-element-to-interactive-role`
+
+**Not portable to oxlint**
+
+`dot-location`, `no-floating-decimal`, `no-multi-spaces`, `no-octal`, `no-octal-escape`, `no-return-await`, `wrap-iife`, `no-dupe-args`, `no-extra-semi`, `global-require`, `no-buffer-constructor`, `no-new-require`, `no-path-concat`, `array-bracket-spacing`, `block-spacing`, `brace-style`, `camelcase`, `comma-dangle`, `comma-spacing`, `comma-style`, `computed-property-spacing`, `eol-last`, `function-call-argument-newline`, `func-call-spacing`, `function-paren-newline`, `implicit-arrow-linebreak`, `indent`, `jsx-quotes`, `key-spacing`, `keyword-spacing`, `linebreak-style`, `lines-between-class-members`, `lines-around-directive`, `max-len`, `new-parens`, `newline-per-chained-call`, `no-mixed-operators`, `no-mixed-spaces-and-tabs`, `no-multiple-empty-lines`, `no-new-object`, `no-spaced-func`, `no-tabs`, `no-trailing-spaces`, `no-whitespace-before-property`, `nonblock-statement-body-position`, `object-curly-spacing`, `object-curly-newline`, `object-property-newline`, `one-var-declaration-per-line`, `operator-linebreak`, `padded-blocks`, `quote-props`, `quotes`, `semi`, `semi-spacing`, `semi-style`, `space-before-blocks`, `space-before-function-paren`, `space-in-parens`, `space-infix-ops`, `space-unary-ops`, `spaced-comment`, `switch-colon-spacing`, `template-tag-spacing`, `no-undef-init`, `arrow-parens`, `arrow-spacing`, `generator-star-spacing`, `no-confusing-arrow`, `no-new-symbol`, `rest-spread-spacing`, `template-curly-spacing`, `yield-star-spacing`, `import/no-unresolved`, `import/order`, `react/forbid-prop-types`, `react/jsx-closing-bracket-location`, `react/jsx-closing-tag-location`, `react/jsx-curly-spacing`, `react/jsx-indent-props`, `react/jsx-max-props-per-line`, `react/jsx-uses-react`, `react/jsx-uses-vars`, `react/sort-comp`, `react/jsx-wrap-multilines`, `react/jsx-first-prop-new-line`, `react/jsx-equals-spacing`, `react/jsx-indent`, `react/no-unused-prop-types`, `react/jsx-tag-spacing`, `react/forbid-foreign-prop-types`, `react/default-props-match-prop-types`, `react/no-unused-state`, `react/jsx-one-expression-per-line`, `react/no-access-state-in-setstate`, `react/jsx-props-no-multi-spaces`, `react/jsx-curly-newline`, `react/static-property-placement`, `react/prefer-exact-props`, `react/no-unused-class-component-methods`
 
 </details>
 
@@ -162,13 +162,13 @@ These rules are enabled but their configuration options were dropped because oxl
 <details>
 <summary>90 rules have no oxlint equivalent</summary>
 
-**Not portable to oxlint**
-
-`dot-location`, `no-floating-decimal`, `no-multi-spaces`, `no-octal`, `no-octal-escape`, `no-return-await`, `wrap-iife`, `no-dupe-args`, `no-extra-semi`, `global-require`, `no-buffer-constructor`, `no-new-require`, `no-path-concat`, `array-bracket-spacing`, `block-spacing`, `brace-style`, `camelcase`, `comma-dangle`, `comma-spacing`, `comma-style`, `computed-property-spacing`, `eol-last`, `function-call-argument-newline`, `func-call-spacing`, `function-paren-newline`, `implicit-arrow-linebreak`, `indent`, `key-spacing`, `keyword-spacing`, `linebreak-style`, `lines-between-class-members`, `lines-around-directive`, `max-len`, `new-parens`, `newline-per-chained-call`, `no-mixed-operators`, `no-mixed-spaces-and-tabs`, `no-multiple-empty-lines`, `no-new-object`, `no-spaced-func`, `no-tabs`, `no-trailing-spaces`, `no-whitespace-before-property`, `nonblock-statement-body-position`, `object-curly-spacing`, `object-curly-newline`, `object-property-newline`, `one-var-declaration-per-line`, `operator-linebreak`, `padded-blocks`, `quote-props`, `quotes`, `semi`, `semi-spacing`, `semi-style`, `space-before-blocks`, `space-before-function-paren`, `space-in-parens`, `space-infix-ops`, `space-unary-ops`, `spaced-comment`, `switch-colon-spacing`, `template-tag-spacing`, `no-undef-init`, `arrow-parens`, `arrow-spacing`, `generator-star-spacing`, `no-confusing-arrow`, `no-new-symbol`, `rest-spread-spacing`, `template-curly-spacing`, `yield-star-spacing`, `import/no-unresolved`, `import/order`
-
 **Not yet implemented in oxlint**
 
 `no-implied-eval`, `no-restricted-properties`, `prefer-regex-literals`, `no-unreachable-loop`, `no-restricted-syntax`, `no-underscore-dangle`, `one-var`, `no-restricted-exports`, `object-shorthand`, `prefer-arrow-callback`, `import/no-extraneous-dependencies`, `import/newline-after-import`, `import/no-useless-path-segments`, `import/no-import-module-exports`, `import/no-relative-packages`, `strict`
+
+**Not portable to oxlint**
+
+`dot-location`, `no-floating-decimal`, `no-multi-spaces`, `no-octal`, `no-octal-escape`, `no-return-await`, `wrap-iife`, `no-dupe-args`, `no-extra-semi`, `global-require`, `no-buffer-constructor`, `no-new-require`, `no-path-concat`, `array-bracket-spacing`, `block-spacing`, `brace-style`, `camelcase`, `comma-dangle`, `comma-spacing`, `comma-style`, `computed-property-spacing`, `eol-last`, `function-call-argument-newline`, `func-call-spacing`, `function-paren-newline`, `implicit-arrow-linebreak`, `indent`, `key-spacing`, `keyword-spacing`, `linebreak-style`, `lines-between-class-members`, `lines-around-directive`, `max-len`, `new-parens`, `newline-per-chained-call`, `no-mixed-operators`, `no-mixed-spaces-and-tabs`, `no-multiple-empty-lines`, `no-new-object`, `no-spaced-func`, `no-tabs`, `no-trailing-spaces`, `no-whitespace-before-property`, `nonblock-statement-body-position`, `object-curly-spacing`, `object-curly-newline`, `object-property-newline`, `one-var-declaration-per-line`, `operator-linebreak`, `padded-blocks`, `quote-props`, `quotes`, `semi`, `semi-spacing`, `semi-style`, `space-before-blocks`, `space-before-function-paren`, `space-in-parens`, `space-infix-ops`, `space-unary-ops`, `spaced-comment`, `switch-colon-spacing`, `template-tag-spacing`, `no-undef-init`, `arrow-parens`, `arrow-spacing`, `generator-star-spacing`, `no-confusing-arrow`, `no-new-symbol`, `rest-spread-spacing`, `template-curly-spacing`, `yield-star-spacing`, `import/no-unresolved`, `import/order`
 
 </details>
 
@@ -201,13 +201,13 @@ These rules are enabled but their configuration options were dropped because oxl
 <details>
 <summary>72 rules have no oxlint equivalent</summary>
 
-**Not portable to oxlint**
-
-`dot-location`, `no-floating-decimal`, `no-multi-spaces`, `no-octal`, `no-octal-escape`, `no-return-await`, `wrap-iife`, `no-dupe-args`, `no-extra-semi`, `global-require`, `no-buffer-constructor`, `no-new-require`, `no-path-concat`, `array-bracket-spacing`, `block-spacing`, `brace-style`, `camelcase`, `comma-dangle`, `comma-spacing`, `comma-style`, `computed-property-spacing`, `eol-last`, `function-call-argument-newline`, `func-call-spacing`, `function-paren-newline`, `implicit-arrow-linebreak`, `indent`, `key-spacing`, `keyword-spacing`, `linebreak-style`, `lines-between-class-members`, `lines-around-directive`, `max-len`, `new-parens`, `newline-per-chained-call`, `no-mixed-operators`, `no-mixed-spaces-and-tabs`, `no-multiple-empty-lines`, `no-new-object`, `no-spaced-func`, `no-tabs`, `no-trailing-spaces`, `no-whitespace-before-property`, `nonblock-statement-body-position`, `object-curly-spacing`, `object-curly-newline`, `object-property-newline`, `one-var-declaration-per-line`, `operator-linebreak`, `padded-blocks`, `quote-props`, `quotes`, `semi`, `semi-spacing`, `semi-style`, `space-before-blocks`, `space-before-function-paren`, `space-in-parens`, `space-infix-ops`, `space-unary-ops`, `spaced-comment`, `switch-colon-spacing`, `template-tag-spacing`, `no-undef-init`
-
 **Not yet implemented in oxlint**
 
 `no-implied-eval`, `no-restricted-properties`, `prefer-regex-literals`, `no-unreachable-loop`, `no-restricted-syntax`, `no-underscore-dangle`, `one-var`, `strict`
+
+**Not portable to oxlint**
+
+`dot-location`, `no-floating-decimal`, `no-multi-spaces`, `no-octal`, `no-octal-escape`, `no-return-await`, `wrap-iife`, `no-dupe-args`, `no-extra-semi`, `global-require`, `no-buffer-constructor`, `no-new-require`, `no-path-concat`, `array-bracket-spacing`, `block-spacing`, `brace-style`, `camelcase`, `comma-dangle`, `comma-spacing`, `comma-style`, `computed-property-spacing`, `eol-last`, `function-call-argument-newline`, `func-call-spacing`, `function-paren-newline`, `implicit-arrow-linebreak`, `indent`, `key-spacing`, `keyword-spacing`, `linebreak-style`, `lines-between-class-members`, `lines-around-directive`, `max-len`, `new-parens`, `newline-per-chained-call`, `no-mixed-operators`, `no-mixed-spaces-and-tabs`, `no-multiple-empty-lines`, `no-new-object`, `no-spaced-func`, `no-tabs`, `no-trailing-spaces`, `no-whitespace-before-property`, `nonblock-statement-body-position`, `object-curly-spacing`, `object-curly-newline`, `object-property-newline`, `one-var-declaration-per-line`, `operator-linebreak`, `padded-blocks`, `quote-props`, `quotes`, `semi`, `semi-spacing`, `semi-style`, `space-before-blocks`, `space-before-function-paren`, `space-in-parens`, `space-infix-ops`, `space-unary-ops`, `spaced-comment`, `switch-colon-spacing`, `template-tag-spacing`, `no-undef-init`
 
 </details>
 
@@ -236,13 +236,13 @@ These rules are enabled but their configuration options were dropped because oxl
 <details>
 <summary>133 rules have no oxlint equivalent</summary>
 
-**Not portable to oxlint**
-
-`dot-location`, `no-floating-decimal`, `no-multi-spaces`, `no-octal`, `no-octal-escape`, `no-return-await`, `wrap-iife`, `no-dupe-args`, `no-extra-semi`, `global-require`, `no-buffer-constructor`, `no-new-require`, `no-path-concat`, `array-bracket-spacing`, `block-spacing`, `brace-style`, `camelcase`, `comma-dangle`, `comma-spacing`, `comma-style`, `computed-property-spacing`, `eol-last`, `function-call-argument-newline`, `func-call-spacing`, `function-paren-newline`, `implicit-arrow-linebreak`, `indent`, `jsx-quotes`, `key-spacing`, `keyword-spacing`, `linebreak-style`, `lines-between-class-members`, `lines-around-directive`, `max-len`, `new-parens`, `newline-per-chained-call`, `no-mixed-operators`, `no-mixed-spaces-and-tabs`, `no-multiple-empty-lines`, `no-new-object`, `no-spaced-func`, `no-tabs`, `no-trailing-spaces`, `no-whitespace-before-property`, `nonblock-statement-body-position`, `object-curly-spacing`, `object-curly-newline`, `object-property-newline`, `one-var-declaration-per-line`, `operator-linebreak`, `padded-blocks`, `quote-props`, `quotes`, `semi`, `semi-spacing`, `semi-style`, `space-before-blocks`, `space-before-function-paren`, `space-in-parens`, `space-infix-ops`, `space-unary-ops`, `spaced-comment`, `switch-colon-spacing`, `template-tag-spacing`, `no-undef-init`, `arrow-parens`, `arrow-spacing`, `generator-star-spacing`, `no-confusing-arrow`, `no-new-symbol`, `rest-spread-spacing`, `template-curly-spacing`, `yield-star-spacing`, `import/no-unresolved`, `import/order`, `react/forbid-prop-types`, `react/jsx-closing-bracket-location`, `react/jsx-closing-tag-location`, `react/jsx-curly-spacing`, `react/jsx-indent-props`, `react/jsx-max-props-per-line`, `react/jsx-uses-react`, `react/jsx-uses-vars`, `react/sort-comp`, `react/jsx-wrap-multilines`, `react/jsx-first-prop-new-line`, `react/jsx-equals-spacing`, `react/jsx-indent`, `react/no-unused-prop-types`, `react/jsx-tag-spacing`, `react/forbid-foreign-prop-types`, `react/default-props-match-prop-types`, `react/no-unused-state`, `react/jsx-one-expression-per-line`, `react/no-access-state-in-setstate`, `react/jsx-props-no-multi-spaces`, `react/jsx-curly-newline`, `react/static-property-placement`, `react/prefer-exact-props`, `react/no-unused-class-component-methods`
-
 **Not yet implemented in oxlint**
 
 `no-implied-eval`, `no-restricted-properties`, `prefer-regex-literals`, `no-unreachable-loop`, `no-restricted-syntax`, `no-underscore-dangle`, `one-var`, `no-restricted-exports`, `object-shorthand`, `prefer-arrow-callback`, `import/no-extraneous-dependencies`, `import/newline-after-import`, `import/no-useless-path-segments`, `import/no-import-module-exports`, `import/no-relative-packages`, `strict`, `react/jsx-no-bind`, `react/no-deprecated`, `react/no-did-update-set-state`, `react/prefer-stateless-function`, `react/prop-types`, `react/require-default-props`, `react/no-typos`, `react/destructuring-assignment`, `react/function-component-definition`, `react/no-unstable-nested-components`, `react/no-arrow-function-lifecycle`, `react/no-invalid-html-attribute`, `jsx-a11y/control-has-associated-label`, `jsx-a11y/interactive-supports-focus`, `jsx-a11y/no-interactive-element-to-noninteractive-role`, `jsx-a11y/no-noninteractive-element-interactions`, `jsx-a11y/no-noninteractive-element-to-interactive-role`
+
+**Not portable to oxlint**
+
+`dot-location`, `no-floating-decimal`, `no-multi-spaces`, `no-octal`, `no-octal-escape`, `no-return-await`, `wrap-iife`, `no-dupe-args`, `no-extra-semi`, `global-require`, `no-buffer-constructor`, `no-new-require`, `no-path-concat`, `array-bracket-spacing`, `block-spacing`, `brace-style`, `camelcase`, `comma-dangle`, `comma-spacing`, `comma-style`, `computed-property-spacing`, `eol-last`, `function-call-argument-newline`, `func-call-spacing`, `function-paren-newline`, `implicit-arrow-linebreak`, `indent`, `jsx-quotes`, `key-spacing`, `keyword-spacing`, `linebreak-style`, `lines-between-class-members`, `lines-around-directive`, `max-len`, `new-parens`, `newline-per-chained-call`, `no-mixed-operators`, `no-mixed-spaces-and-tabs`, `no-multiple-empty-lines`, `no-new-object`, `no-spaced-func`, `no-tabs`, `no-trailing-spaces`, `no-whitespace-before-property`, `nonblock-statement-body-position`, `object-curly-spacing`, `object-curly-newline`, `object-property-newline`, `one-var-declaration-per-line`, `operator-linebreak`, `padded-blocks`, `quote-props`, `quotes`, `semi`, `semi-spacing`, `semi-style`, `space-before-blocks`, `space-before-function-paren`, `space-in-parens`, `space-infix-ops`, `space-unary-ops`, `spaced-comment`, `switch-colon-spacing`, `template-tag-spacing`, `no-undef-init`, `arrow-parens`, `arrow-spacing`, `generator-star-spacing`, `no-confusing-arrow`, `no-new-symbol`, `rest-spread-spacing`, `template-curly-spacing`, `yield-star-spacing`, `import/no-unresolved`, `import/order`, `react/forbid-prop-types`, `react/jsx-closing-bracket-location`, `react/jsx-closing-tag-location`, `react/jsx-curly-spacing`, `react/jsx-indent-props`, `react/jsx-max-props-per-line`, `react/jsx-uses-react`, `react/jsx-uses-vars`, `react/sort-comp`, `react/jsx-wrap-multilines`, `react/jsx-first-prop-new-line`, `react/jsx-equals-spacing`, `react/jsx-indent`, `react/no-unused-prop-types`, `react/jsx-tag-spacing`, `react/forbid-foreign-prop-types`, `react/default-props-match-prop-types`, `react/no-unused-state`, `react/jsx-one-expression-per-line`, `react/no-access-state-in-setstate`, `react/jsx-props-no-multi-spaces`, `react/jsx-curly-newline`, `react/static-property-placement`, `react/prefer-exact-props`, `react/no-unused-class-component-methods`
 
 </details>
 
@@ -418,13 +418,13 @@ These rules are enabled but their configuration options were dropped because oxl
 <details>
 <summary>3 rules have no oxlint equivalent</summary>
 
-**Not portable to oxlint**
-
-`no-dupe-args`, `no-octal`
-
 **Not yet implemented in oxlint**
 
 `no-useless-assignment`
+
+**Not portable to oxlint**
+
+`no-dupe-args`, `no-octal`
 
 </details>
 
@@ -444,13 +444,13 @@ These rules are enabled but their configuration options were dropped because oxl
 <details>
 <summary>27 rules have no oxlint equivalent</summary>
 
-**Not portable to oxlint**
-
-`camelcase`, `no-dupe-args`, `no-invalid-this`, `no-octal`, `no-octal-escape`, `no-undef-init`
-
 **Not yet implemented in oxlint**
 
 `consistent-this`, `func-name-matching`, `id-denylist`, `id-match`, `logical-assignment-operators`, `no-implicit-globals`, `no-implied-eval`, `no-restricted-exports`, `no-restricted-properties`, `no-restricted-syntax`, `no-underscore-dangle`, `no-unreachable-loop`, `no-useless-assignment`, `object-shorthand`, `one-var`, `prefer-arrow-callback`, `prefer-named-capture-group`, `prefer-regex-literals`, `require-atomic-updates`, `require-unicode-regexp`, `strict`
+
+**Not portable to oxlint**
+
+`camelcase`, `no-dupe-args`, `no-invalid-this`, `no-octal`, `no-octal-escape`, `no-undef-init`
 
 </details>
 
@@ -470,10 +470,6 @@ These rules are enabled but their configuration options were dropped because oxl
 <details>
 <summary>154 rules have no oxlint equivalent</summary>
 
-**Require JS plugin support**
-
-`ava/assertion-arguments`, `ava/hooks-order`, `ava/no-async-fn-without-await`, `ava/no-commented-tests`, `ava/no-conditional-assertion`, `ava/no-duplicate-hooks`, `ava/no-identical-title`, `ava/no-ignored-test-files`, `ava/no-import-test-files`, `ava/no-incorrect-deep-equal`, `ava/no-inline-assertions`, `ava/no-invalid-modifier-chain`, `ava/no-negated-assertion`, `ava/no-nested-assertions`, `ava/no-nested-tests`, `ava/no-only-test`, `ava/no-skip-assert`, `ava/no-skip-test`, `ava/no-todo-implementation`, `ava/no-todo-test`, `ava/no-useless-t-pass`, `ava/prefer-async-await`, `ava/prefer-t-regex`, `ava/prefer-t-throws`, `ava/require-assertion`, `ava/test-title`, `ava/use-t`, `ava/use-t-throws-async-well`, `ava/use-t-well`, `ava/use-test`, `ava/use-true-false`, `ava/no-ava-in-dependencies`, `no-use-extend-native/no-use-extend-native`, `@eslint-community/eslint-comments/disable-enable-pair`, `@eslint-community/eslint-comments/no-aggregating-enable`, `@eslint-community/eslint-comments/no-duplicate-disable`, `@eslint-community/eslint-comments/no-unused-disable`, `@eslint-community/eslint-comments/no-unused-enable`, `@stylistic/comma-dangle`, `@stylistic/no-extra-semi`, `@stylistic/curly-newline`, `@stylistic/dot-location`, `@stylistic/no-floating-decimal`, `@stylistic/no-multi-spaces`, `@stylistic/wrap-iife`, `@stylistic/array-bracket-newline`, `@stylistic/array-bracket-spacing`, `@stylistic/array-element-newline`, `@stylistic/brace-style`, `@stylistic/comma-spacing`, `@stylistic/comma-style`, `@stylistic/computed-property-spacing`, `@stylistic/eol-last`, `@stylistic/function-call-spacing`, `@stylistic/function-paren-newline`, `@stylistic/function-call-argument-newline`, `@stylistic/indent`, `@stylistic/jsx-quotes`, `@stylistic/key-spacing`, `@stylistic/keyword-spacing`, `@stylistic/linebreak-style`, `@stylistic/lines-between-class-members`, `@stylistic/max-len`, `@stylistic/max-statements-per-line`, `@stylistic/multiline-ternary`, `@stylistic/new-parens`, `@stylistic/no-mixed-operators`, `@stylistic/no-mixed-spaces-and-tabs`, `@stylistic/no-multiple-empty-lines`, `@stylistic/no-whitespace-before-property`, `@stylistic/no-trailing-spaces`, `@stylistic/object-curly-spacing`, `@stylistic/object-curly-newline`, `@stylistic/one-var-declaration-per-line`, `@stylistic/operator-linebreak`, `@stylistic/padded-blocks`, `@stylistic/padding-line-between-statements`, `@stylistic/quote-props`, `@stylistic/quotes`, `@stylistic/semi-spacing`, `@stylistic/semi-style`, `@stylistic/semi`, `@stylistic/space-before-blocks`, `@stylistic/space-before-function-paren`, `@stylistic/space-in-parens`, `@stylistic/space-infix-ops`, `@stylistic/space-unary-ops`, `@stylistic/spaced-comment`, `@stylistic/switch-colon-spacing`, `@stylistic/template-tag-spacing`, `@stylistic/arrow-parens`, `@stylistic/arrow-spacing`, `@stylistic/block-spacing`, `@stylistic/generator-star-spacing`, `@stylistic/rest-spread-spacing`, `@stylistic/template-curly-spacing`, `@stylistic/yield-star-spacing`, `@stylistic/indent-binary-ops`, `json/no-duplicate-keys`, `json/no-empty-keys`, `json/no-unsafe-values`, `json/no-unnormalized-keys`, `@stylistic/member-delimiter-style`, `@stylistic/type-annotation-spacing`, `@stylistic/type-generic-spacing`, `@stylistic/type-named-tuple-spacing`
-
 **Not yet implemented in oxlint**
 
 `unicorn/better-regex`, `unicorn/expiring-todo-comments`, `unicorn/isolated-functions`, `unicorn/no-unnecessary-polyfills`, `unicorn/prefer-export-from`, `unicorn/prefer-single-call`, `unicorn/prefer-switch`, `unicorn/prevent-abbreviations`, `unicorn/template-indent`, `import-x/no-useless-path-segments`, `import-x/newline-after-import`, `import-x/no-extraneous-dependencies`, `n/no-extraneous-import`, `n/no-unpublished-bin`, `n/no-mixed-requires`, `n/process-exit-as-throw`, `n/no-deprecated-api`, `n/prefer-global/buffer`, `n/prefer-global/console`, `n/prefer-global/process`, `n/prefer-global/text-decoder`, `n/prefer-global/text-encoder`, `n/prefer-global/url-search-params`, `n/prefer-global/url`, `n/prefer-promises/dns`, `n/prefer-promises/fs`, `no-unreachable-loop`, `no-implicit-globals`, `no-implied-eval`, `prefer-regex-literals`, `require-unicode-regexp`, `func-name-matching`, `logical-assignment-operators`, `one-var`, `object-shorthand`, `prefer-arrow-callback`, `@typescript-eslint/member-ordering`, `@typescript-eslint/naming-convention`, `@typescript-eslint/no-unused-private-class-members`
@@ -481,6 +477,10 @@ These rules are enabled but their configuration options were dropped because oxl
 **Not portable to oxlint**
 
 `unicorn/no-for-loop`, `unicorn/no-named-default`, `import-x/order`, `no-dupe-args`, `no-octal-escape`, `no-octal`, `no-return-await`, `no-undef-init`, `no-buffer-constructor`
+
+**Require JS plugin support**
+
+`ava/assertion-arguments`, `ava/hooks-order`, `ava/no-async-fn-without-await`, `ava/no-commented-tests`, `ava/no-conditional-assertion`, `ava/no-duplicate-hooks`, `ava/no-identical-title`, `ava/no-ignored-test-files`, `ava/no-import-test-files`, `ava/no-incorrect-deep-equal`, `ava/no-inline-assertions`, `ava/no-invalid-modifier-chain`, `ava/no-negated-assertion`, `ava/no-nested-assertions`, `ava/no-nested-tests`, `ava/no-only-test`, `ava/no-skip-assert`, `ava/no-skip-test`, `ava/no-todo-implementation`, `ava/no-todo-test`, `ava/no-useless-t-pass`, `ava/prefer-async-await`, `ava/prefer-t-regex`, `ava/prefer-t-throws`, `ava/require-assertion`, `ava/test-title`, `ava/use-t`, `ava/use-t-throws-async-well`, `ava/use-t-well`, `ava/use-test`, `ava/use-true-false`, `ava/no-ava-in-dependencies`, `no-use-extend-native/no-use-extend-native`, `@eslint-community/eslint-comments/disable-enable-pair`, `@eslint-community/eslint-comments/no-aggregating-enable`, `@eslint-community/eslint-comments/no-duplicate-disable`, `@eslint-community/eslint-comments/no-unused-disable`, `@eslint-community/eslint-comments/no-unused-enable`, `@stylistic/comma-dangle`, `@stylistic/no-extra-semi`, `@stylistic/curly-newline`, `@stylistic/dot-location`, `@stylistic/no-floating-decimal`, `@stylistic/no-multi-spaces`, `@stylistic/wrap-iife`, `@stylistic/array-bracket-newline`, `@stylistic/array-bracket-spacing`, `@stylistic/array-element-newline`, `@stylistic/brace-style`, `@stylistic/comma-spacing`, `@stylistic/comma-style`, `@stylistic/computed-property-spacing`, `@stylistic/eol-last`, `@stylistic/function-call-spacing`, `@stylistic/function-paren-newline`, `@stylistic/function-call-argument-newline`, `@stylistic/indent`, `@stylistic/jsx-quotes`, `@stylistic/key-spacing`, `@stylistic/keyword-spacing`, `@stylistic/linebreak-style`, `@stylistic/lines-between-class-members`, `@stylistic/max-len`, `@stylistic/max-statements-per-line`, `@stylistic/multiline-ternary`, `@stylistic/new-parens`, `@stylistic/no-mixed-operators`, `@stylistic/no-mixed-spaces-and-tabs`, `@stylistic/no-multiple-empty-lines`, `@stylistic/no-whitespace-before-property`, `@stylistic/no-trailing-spaces`, `@stylistic/object-curly-spacing`, `@stylistic/object-curly-newline`, `@stylistic/one-var-declaration-per-line`, `@stylistic/operator-linebreak`, `@stylistic/padded-blocks`, `@stylistic/padding-line-between-statements`, `@stylistic/quote-props`, `@stylistic/quotes`, `@stylistic/semi-spacing`, `@stylistic/semi-style`, `@stylistic/semi`, `@stylistic/space-before-blocks`, `@stylistic/space-before-function-paren`, `@stylistic/space-in-parens`, `@stylistic/space-infix-ops`, `@stylistic/space-unary-ops`, `@stylistic/spaced-comment`, `@stylistic/switch-colon-spacing`, `@stylistic/template-tag-spacing`, `@stylistic/arrow-parens`, `@stylistic/arrow-spacing`, `@stylistic/block-spacing`, `@stylistic/generator-star-spacing`, `@stylistic/rest-spread-spacing`, `@stylistic/template-curly-spacing`, `@stylistic/yield-star-spacing`, `@stylistic/indent-binary-ops`, `json/no-duplicate-keys`, `json/no-empty-keys`, `json/no-unsafe-values`, `json/no-unnormalized-keys`, `@stylistic/member-delimiter-style`, `@stylistic/type-annotation-spacing`, `@stylistic/type-generic-spacing`, `@stylistic/type-named-tuple-spacing`
 
 </details>
 
@@ -500,13 +500,13 @@ These rules are enabled but their configuration options were dropped because oxl
 <details>
 <summary>12 rules have no oxlint equivalent</summary>
 
-**Not portable to oxlint**
-
-`no-dupe-args`, `no-octal`, `no-octal-escape`, `no-undef-init`
-
 **Not yet implemented in oxlint**
 
 `no-unreachable-loop`, `no-useless-assignment`, `require-atomic-updates`, `no-implied-eval`, `object-shorthand`, `prefer-arrow-callback`, `prefer-regex-literals`, `strict`
+
+**Not portable to oxlint**
+
+`no-dupe-args`, `no-octal`, `no-octal-escape`, `no-undef-init`
 
 </details>
 
@@ -535,13 +535,13 @@ These rules are enabled but their configuration options were dropped because oxl
 <details>
 <summary>294 rules have no oxlint equivalent</summary>
 
-**Not portable to oxlint**
-
-`no-dupe-args`, `no-invalid-this`, `no-octal`, `no-octal-escape`, `no-undef-init`, `camelcase`, `no-buffer-constructor`, `multiline-comment-style`, `import/no-deprecated`, `import/no-unresolved`, `import/enforce-node-protocol-usage`, `unicorn/no-for-loop`, `unicorn/no-array-push-push`
-
 **Not yet implemented in oxlint**
 
 `no-implied-eval`, `consistent-this`, `object-shorthand`, `strict`, `require-atomic-updates`, `prefer-named-capture-group`, `no-unreachable-loop`, `one-var`, `no-underscore-dangle`, `func-name-matching`, `no-implicit-globals`, `prefer-regex-literals`, `logical-assignment-operators`, `import/no-relative-packages`, `import/no-import-module-exports`, `import/no-useless-path-segments`, `import/no-unused-modules`, `import/no-extraneous-dependencies`, `import/newline-after-import`, `unicorn/no-unused-properties`, `unicorn/consistent-destructuring`, `unicorn/prefer-switch`, `unicorn/no-unnecessary-polyfills`, `unicorn/import-index`, `unicorn/prevent-abbreviations`, `unicorn/prefer-export-from`
+
+**Not portable to oxlint**
+
+`no-dupe-args`, `no-invalid-this`, `no-octal`, `no-octal-escape`, `no-undef-init`, `camelcase`, `no-buffer-constructor`, `multiline-comment-style`, `import/no-deprecated`, `import/no-unresolved`, `import/enforce-node-protocol-usage`, `unicorn/no-for-loop`, `unicorn/no-array-push-push`
 
 **Require JS plugin support**
 
@@ -574,10 +574,6 @@ These rules are enabled but their configuration options were dropped because oxl
 <details>
 <summary>73 rules have no oxlint equivalent</summary>
 
-**Require JS plugin support**
-
-`security/detect-buffer-noassert`, `security/detect-child-process`, `security/detect-disable-mustache-escape`, `security/detect-eval-with-expression`, `security/detect-new-buffer`, `security/detect-no-csrf-before-method-override`, `security/detect-non-literal-fs-filename`, `security/detect-non-literal-regexp`, `security/detect-non-literal-require`, `security/detect-possible-timing-attacks`, `security/detect-pseudoRandomBytes`, `security/detect-unsafe-regex`, `security/detect-bidi-characters`
-
 **Not yet implemented in oxlint**
 
 `jsdoc/check-alignment`, `jsdoc/check-param-names`, `jsdoc/check-types`, `jsdoc/multiline-blocks`, `jsdoc/no-blank-block-descriptions`, `jsdoc/no-blank-blocks`, `jsdoc/no-multi-asterisks`, `jsdoc/no-undefined-types`, `jsdoc/require-asterisk-prefix`, `jsdoc/require-returns-check`, `jsdoc/require-throws-type`, `jsdoc/require-yields-check`, `jsdoc/tag-lines`, `jsdoc/valid-types`, `no-implicit-globals`, `no-underscore-dangle`, `no-unreachable-loop`, `prefer-regex-literals`
@@ -585,6 +581,10 @@ These rules are enabled but their configuration options were dropped because oxl
 **Not portable to oxlint**
 
 `array-bracket-spacing`, `block-spacing`, `brace-style`, `camelcase`, `comma-dangle`, `comma-spacing`, `comma-style`, `computed-property-spacing`, `dot-location`, `eol-last`, `func-call-spacing`, `indent`, `key-spacing`, `keyword-spacing`, `linebreak-style`, `max-len`, `max-statements-per-line`, `new-parens`, `no-floating-decimal`, `no-multi-spaces`, `no-multiple-empty-lines`, `no-new-object`, `no-octal-escape`, `no-tabs`, `no-trailing-spaces`, `no-undef-init`, `no-whitespace-before-property`, `object-curly-spacing`, `operator-linebreak`, `quote-props`, `quotes`, `semi`, `semi-spacing`, `semi-style`, `space-before-blocks`, `space-before-function-paren`, `space-in-parens`, `space-infix-ops`, `space-unary-ops`, `spaced-comment`, `switch-colon-spacing`, `wrap-iife`
+
+**Require JS plugin support**
+
+`security/detect-buffer-noassert`, `security/detect-child-process`, `security/detect-disable-mustache-escape`, `security/detect-eval-with-expression`, `security/detect-new-buffer`, `security/detect-no-csrf-before-method-override`, `security/detect-non-literal-fs-filename`, `security/detect-non-literal-regexp`, `security/detect-non-literal-require`, `security/detect-possible-timing-attacks`, `security/detect-pseudoRandomBytes`, `security/detect-unsafe-regex`, `security/detect-bidi-characters`
 
 </details>
 
@@ -1334,13 +1334,13 @@ These rules are enabled but their configuration options were dropped because oxl
 <details>
 <summary>25 rules have no oxlint equivalent</summary>
 
-**Not portable to oxlint**
-
-`vue/attribute-hyphenation`, `vue/first-attribute-linebreak`, `vue/html-closing-bracket-newline`, `vue/html-closing-bracket-spacing`, `vue/html-end-tags`, `vue/html-indent`, `vue/html-quotes`, `vue/html-self-closing`, `vue/max-attributes-per-line`, `vue/multiline-html-element-content-newline`, `vue/mustache-interpolation-spacing`, `vue/no-multi-spaces`, `vue/no-spaces-around-equal-signs-in-attribute`, `vue/no-template-shadow`, `vue/require-explicit-emits`, `vue/singleline-html-element-content-newline`, `vue/v-bind-style`, `vue/v-on-event-hyphenation`, `vue/v-on-style`, `vue/v-slot-style`
-
 **Not yet implemented in oxlint**
 
 `vue/component-definition-name-casing`, `vue/one-component-per-file`, `vue/prop-name-casing`, `vue/require-default-prop`, `vue/require-prop-types`
+
+**Not portable to oxlint**
+
+`vue/attribute-hyphenation`, `vue/first-attribute-linebreak`, `vue/html-closing-bracket-newline`, `vue/html-closing-bracket-spacing`, `vue/html-end-tags`, `vue/html-indent`, `vue/html-quotes`, `vue/html-self-closing`, `vue/max-attributes-per-line`, `vue/multiline-html-element-content-newline`, `vue/mustache-interpolation-spacing`, `vue/no-multi-spaces`, `vue/no-spaces-around-equal-signs-in-attribute`, `vue/no-template-shadow`, `vue/require-explicit-emits`, `vue/singleline-html-element-content-newline`, `vue/v-bind-style`, `vue/v-on-event-hyphenation`, `vue/v-on-style`, `vue/v-slot-style`
 
 </details>
 
@@ -1360,13 +1360,13 @@ These rules are enabled but their configuration options were dropped because oxl
 <details>
 <summary>6 rules have no oxlint equivalent</summary>
 
-**Not portable to oxlint**
-
-`vue/attributes-order`, `vue/block-order`, `vue/no-lone-template`, `vue/no-v-html`, `vue/this-in-template`
-
 **Not yet implemented in oxlint**
 
 `vue/order-in-components`
+
+**Not portable to oxlint**
+
+`vue/attributes-order`, `vue/block-order`, `vue/no-lone-template`, `vue/no-v-html`, `vue/this-in-template`
 
 </details>
 
@@ -1405,13 +1405,13 @@ These rules are enabled but their configuration options were dropped because oxl
 <details>
 <summary>23 rules have no oxlint equivalent</summary>
 
-**Not portable to oxlint**
-
-`vue/attribute-hyphenation`, `vue/first-attribute-linebreak`, `vue/html-closing-bracket-newline`, `vue/html-closing-bracket-spacing`, `vue/html-end-tags`, `vue/html-indent`, `vue/html-quotes`, `vue/html-self-closing`, `vue/max-attributes-per-line`, `vue/multiline-html-element-content-newline`, `vue/mustache-interpolation-spacing`, `vue/no-multi-spaces`, `vue/no-spaces-around-equal-signs-in-attribute`, `vue/no-template-shadow`, `vue/singleline-html-element-content-newline`, `vue/v-bind-style`, `vue/v-on-style`, `vue/v-slot-style`
-
 **Not yet implemented in oxlint**
 
 `vue/component-definition-name-casing`, `vue/one-component-per-file`, `vue/prop-name-casing`, `vue/require-default-prop`, `vue/require-prop-types`
+
+**Not portable to oxlint**
+
+`vue/attribute-hyphenation`, `vue/first-attribute-linebreak`, `vue/html-closing-bracket-newline`, `vue/html-closing-bracket-spacing`, `vue/html-end-tags`, `vue/html-indent`, `vue/html-quotes`, `vue/html-self-closing`, `vue/max-attributes-per-line`, `vue/multiline-html-element-content-newline`, `vue/mustache-interpolation-spacing`, `vue/no-multi-spaces`, `vue/no-spaces-around-equal-signs-in-attribute`, `vue/no-template-shadow`, `vue/singleline-html-element-content-newline`, `vue/v-bind-style`, `vue/v-on-style`, `vue/v-slot-style`
 
 </details>
 
@@ -1431,13 +1431,13 @@ These rules are enabled but their configuration options were dropped because oxl
 <details>
 <summary>6 rules have no oxlint equivalent</summary>
 
-**Not portable to oxlint**
-
-`vue/attributes-order`, `vue/block-order`, `vue/no-lone-template`, `vue/no-v-html`, `vue/this-in-template`
-
 **Not yet implemented in oxlint**
 
 `vue/order-in-components`
+
+**Not portable to oxlint**
+
+`vue/attributes-order`, `vue/block-order`, `vue/no-lone-template`, `vue/no-v-html`, `vue/this-in-template`
 
 </details>
 

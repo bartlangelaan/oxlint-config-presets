@@ -22,6 +22,23 @@ import migrate, { type default as Migrate } from '@oxlint/migrate';
 
 type OxlintConfig = Awaited<ReturnType<typeof Migrate>>;
 
+type MigrateInput = Parameters<typeof migrate>[0];
+type ExtractConfig<T> =
+  T extends Promise<infer P> ? ExtractConfig<P> : T extends Array<infer C> ? ExtractConfig<C> : T;
+type ExtractRules<T> = T extends { rules?: infer R }
+  ? R
+  : T extends Promise<infer P>
+    ? ExtractRules<P>
+    : T extends Array<infer C>
+      ? ExtractRules<C>
+      : never;
+type MigrateConfig = ExtractConfig<MigrateInput>;
+type MigrateRules = NonNullable<ExtractRules<MigrateInput>>;
+type ResolvedRules = MigrateRules;
+type MigrateReporter = NonNullable<NonNullable<Parameters<typeof migrate>[2]>['reporter']>;
+type RuleSkippedCategory = Parameters<MigrateReporter['markSkipped']>[1];
+type SkippedRulesByCategory = ReturnType<MigrateReporter['getSkippedRulesByCategory']>;
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = resolve(__dirname, '..');
 const configsDir = join(rootDir, 'configs');
@@ -32,33 +49,21 @@ const generatedEndMarker = '<!-- GENERATED CONFIGS END -->';
 // Use createRequire so we can require() CJS ESLint configs from ESM context
 const req = createRequire(join(rootDir, 'package.json'));
 
-type EslintRuleValue = string | number | [string | number, ...unknown[]];
-type EslintRules = Record<string, EslintRuleValue>;
-
 interface OldStyleEslintConfig {
   extends?: string | string[];
   plugins?: string[];
-  rules?: EslintRules;
+  rules?: ResolvedRules;
   env?: Record<string, boolean>;
   settings?: Record<string, unknown>;
   parserOptions?: Record<string, unknown>;
   overrides?: OldStyleEslintConfig[];
 }
 
-type RuleSkippedCategory =
-  | 'nursery'
-  | 'type-aware'
-  | 'not-implemented'
-  | 'unsupported'
-  | 'js-plugins';
-
-type SkippedCategoryGroup = Record<RuleSkippedCategory, string[]>;
-
 function mergeRulesFromConfigObject(
   config: OldStyleEslintConfig,
   visitedPluginRefs = new Set<string>(),
-): EslintRules {
-  const rules: EslintRules = {};
+): ResolvedRules {
+  const rules: ResolvedRules = {};
 
   if (config.extends) {
     const exts = Array.isArray(config.extends) ? config.extends : [config.extends];
@@ -80,12 +85,12 @@ function mergeRulesFromConfigObject(
  * Recursively resolve an old-style ESLint config to a flat rules map.
  * Extends are resolved depth-first; later entries and the config's own rules win.
  */
-function flattenRules(configPath: string, visited = new Set<string>()): EslintRules {
+function flattenRules(configPath: string, visited = new Set<string>()): ResolvedRules {
   if (visited.has(configPath)) return {};
   visited.add(configPath);
 
   const config = req(configPath) as OldStyleEslintConfig;
-  const rules: EslintRules = {};
+  const rules: ResolvedRules = {};
 
   if (config.extends) {
     const exts = Array.isArray(config.extends) ? config.extends : [config.extends];
@@ -119,7 +124,7 @@ function flattenRules(configPath: string, visited = new Set<string>()): EslintRu
  * Resolve a `plugin:name/config` extends entry to a flat rules map.
  * Handles old-style plugin configs which may themselves have extends.
  */
-function resolvePluginConfig(pluginRef: string, visited = new Set<string>()): EslintRules {
+function resolvePluginConfig(pluginRef: string, visited = new Set<string>()): ResolvedRules {
   // pluginRef format: "plugin:<pluginName>/<configName>"
   const withoutPrefix = pluginRef.slice('plugin:'.length);
   const slashIdx = withoutPrefix.lastIndexOf('/');
@@ -142,7 +147,7 @@ function resolvePluginConfig(pluginRef: string, visited = new Set<string>()): Es
     const pluginConfig = plugin.configs?.[configName];
     if (!pluginConfig) return {};
 
-    const rules: EslintRules = {};
+    const rules: ResolvedRules = {};
 
     if (pluginConfig.extends) {
       const exts = Array.isArray(pluginConfig.extends)
@@ -168,19 +173,25 @@ function resolvePluginConfig(pluginRef: string, visited = new Set<string>()): Es
 
 function createReporter() {
   const warnings: string[] = [];
-  const skipped: Partial<SkippedCategoryGroup> = {};
+  const skipped: SkippedRulesByCategory = {
+    nursery: [],
+    'type-aware': [],
+    'not-implemented': [],
+    unsupported: [],
+    'js-plugins': [],
+  };
   return {
     addWarning: (message: string) => {
       warnings.push(message);
     },
     getWarnings: () => warnings,
     markSkipped: (rule: string, category: RuleSkippedCategory) => {
-      (skipped[category] ??= []).push(rule);
+      skipped[category].push(rule);
     },
     removeSkipped: (rule: string, category: RuleSkippedCategory) => {
-      skipped[category] = (skipped[category] ?? []).filter((r) => r !== rule);
+      skipped[category] = skipped[category].filter((r) => r !== rule);
     },
-    getSkippedRulesByCategory: () => skipped as Record<string, string[]>,
+    getSkippedRulesByCategory: () => skipped,
   };
 }
 
@@ -190,7 +201,7 @@ interface ConfigEntry {
   /** config variant within the package, e.g. 'base'; empty string for the main export */
   sourceConfig: string;
   /** Returns the flat map of ESLint rules to migrate */
-  resolveRules: () => EslintRules;
+  resolveRules: () => ResolvedRules;
 }
 
 /**
@@ -223,19 +234,19 @@ const fromPackage = (pkg: string) => () => flattenRules(req.resolve(pkg));
 // @eslint/js uses flat config: configs.recommended / configs.all each have a
 // plain `rules` object we can pass directly to migrate.
 const eslintJs = req('@eslint/js') as {
-  configs: { recommended: { rules: EslintRules }; all: { rules: EslintRules } };
+  configs: { recommended: { rules: ResolvedRules }; all: { rules: ResolvedRules } };
 };
 
 // @typescript-eslint uses flat config arrays. Merge all rules from each array
 // entry to get the full effective rule set for a given config.
 const tsEslint = req('@typescript-eslint/eslint-plugin') as {
-  configs: Record<string, Array<{ rules?: EslintRules }> | { rules?: EslintRules }>;
+  configs: Record<string, Array<{ rules?: ResolvedRules }> | { rules?: ResolvedRules }>;
 };
 
 const fromTsEslint = (name: string) => () => {
   const cfg = tsEslint.configs[name];
   const entries = Array.isArray(cfg) ? cfg : [cfg];
-  const rules: EslintRules = {};
+  const rules: ResolvedRules = {};
   for (const entry of entries) Object.assign(rules, entry.rules ?? {});
   return rules;
 };
@@ -243,13 +254,13 @@ const fromTsEslint = (name: string) => () => {
 // Plugin packages can expose old-style object configs and/or flat config entries.
 const fromPluginPackage = (pkg: string, name: string) => () => {
   const mod = req(pkg) as {
-    configs?: Record<string, OldStyleEslintConfig | Array<{ rules?: EslintRules }>>;
+    configs?: Record<string, OldStyleEslintConfig | Array<{ rules?: ResolvedRules }>>;
   };
   const cfg = mod.configs?.[name];
   if (!cfg) return {};
 
   const entries = Array.isArray(cfg) ? cfg : [cfg];
-  const rules: EslintRules = {};
+  const rules: ResolvedRules = {};
 
   for (const entry of entries) {
     const oldStyleEntry = entry as OldStyleEslintConfig;
@@ -266,35 +277,35 @@ const fromPluginPackage = (pkg: string, name: string) => () => {
 // eslint-config-xo uses flat config (ESM function returning an array of config objects).
 // We merge all rules from the returned entries to get the full effective rule set.
 const xoModule = await import('eslint-config-xo');
-const xoFn = xoModule.default as () => Array<{ rules?: EslintRules }>;
+const xoFn = xoModule.default as () => Array<{ rules?: ResolvedRules }>;
 const fromXo = () => {
   const entries = xoFn();
-  const rules: EslintRules = {};
+  const rules: ResolvedRules = {};
   for (const entry of entries) Object.assign(rules, entry.rules ?? {});
   return rules;
 };
 
 // eslint-config-problems exposes a plain flat config object with a `rules` property.
-const problemsConfig = req('eslint-config-problems') as { rules: EslintRules };
+const problemsConfig = req('eslint-config-problems') as { rules: ResolvedRules };
 
 // eslint-config-eslint (ESLint team's own config) uses flat config arrays loadable via require.
-type FlatConfigArray = Array<{ rules?: EslintRules }>;
+type FlatConfigArray = Array<{ rules?: ResolvedRules }>;
 const fromFlatArray = (pkg: string) => () => {
-  const entries = req(pkg) as FlatConfigArray | { rules?: EslintRules };
+  const entries = req(pkg) as FlatConfigArray | { rules?: ResolvedRules };
   const arr = Array.isArray(entries) ? entries : [entries];
-  const rules: EslintRules = {};
+  const rules: ResolvedRules = {};
   for (const entry of arr) Object.assign(rules, entry.rules ?? {});
   return rules;
 };
 
 // eslint-config-prettier disables all formatting rules that conflict with Prettier.
-const prettierConfig = req('eslint-config-prettier') as { rules: EslintRules };
+const prettierConfig = req('eslint-config-prettier') as { rules: ResolvedRules };
 
 // @antfu/eslint-config is an async ESM factory function returning a flat config array.
 const antfuModule = await import('@antfu/eslint-config');
 const antfuEntries = await (antfuModule.default as () => Promise<FlatConfigArray>)();
 const fromAntfu = () => {
-  const rules: EslintRules = {};
+  const rules: ResolvedRules = {};
   for (const entry of antfuEntries) Object.assign(rules, entry.rules ?? {});
   return rules;
 };
@@ -632,7 +643,7 @@ const configs: ConfigEntry[] = [
 interface GenerateResult {
   config: ConfigEntry;
   oxlintResult: OxlintConfig;
-  skipped: Record<string, string[]>;
+  skipped: SkippedRulesByCategory;
   strippedOptions: string[];
   warnings: string[];
 }
@@ -651,15 +662,15 @@ for (const config of configs) {
 
   // Pass the flattened rules as a single ESLint flat config object.
   // migrate() returns an oxlint-compatible config with supported rules only.
-  const oxlintResult = await migrate(
-    { rules } as unknown as Parameters<typeof migrate>[0],
-    undefined,
-    {
-      reporter: reporter as unknown as NonNullable<Parameters<typeof migrate>[2]>['reporter'],
-      withNursery: true,
-      typeAware: true,
-    },
-  );
+  const eslintConfig: MigrateConfig = {
+    rules,
+  };
+
+  const oxlintResult = await migrate(eslintConfig, undefined, {
+    reporter,
+    withNursery: true,
+    typeAware: true,
+  });
 
   // Remove fields that are identical in every generated config and add no value
   // when the config is used via extends.
@@ -735,7 +746,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   'js-plugins': 'Require JS plugin support',
 };
 
-function skippedSection(skipped: Record<string, string[]>): string {
+function skippedSection(skipped: SkippedRulesByCategory): string {
   const categories = Object.entries(skipped).filter(([, rules]) => rules.length > 0);
   if (categories.length === 0) return '';
 
