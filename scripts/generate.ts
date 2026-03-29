@@ -22,6 +22,10 @@ import migrate, { type default as Migrate } from '@oxlint/migrate';
 
 type OxlintConfig = Awaited<ReturnType<typeof Migrate>>;
 
+type MigrateInput = Parameters<typeof migrate>[0];
+type MigrateConfig = Awaited<MigrateInput> extends Array<infer C> ? C : Awaited<MigrateInput>;
+type MigrateRules = MigrateConfig extends { rules?: infer R } ? R : never;
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = resolve(__dirname, '..');
 const configsDir = join(rootDir, 'configs');
@@ -418,15 +422,15 @@ for (const config of configs) {
 
   // Pass the flattened rules as a single ESLint flat config object.
   // migrate() returns an oxlint-compatible config with supported rules only.
-  const oxlintResult = await migrate(
-    { rules } as unknown as Parameters<typeof migrate>[0],
-    undefined,
-    {
-      reporter,
-      withNursery: true,
-      typeAware: true,
-    },
-  );
+  const eslintConfig: MigrateConfig = {
+    rules: rules as MigrateRules,
+  };
+
+  const oxlintResult = await migrate(eslintConfig, undefined, {
+    reporter,
+    withNursery: true,
+    typeAware: true,
+  });
 
   // Remove fields that are identical in every generated config and add no value
   // when the config is used via extends.
