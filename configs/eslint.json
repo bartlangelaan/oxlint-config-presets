@@ -1,10 +1,5 @@
 {
-  "plugins": [
-    "unicorn",
-    "jsdoc",
-    "typescript",
-    "node"
-  ],
+  "plugins": ["unicorn", "jsdoc", "typescript", "node"],
   "options": {
     "typeAware": true
   },
@@ -116,16 +111,10 @@
     "use-isnan": "error",
     "valid-typeof": "error",
     "array-callback-return": "error",
-    "arrow-body-style": [
-      "error",
-      "as-needed"
-    ],
+    "arrow-body-style": ["error", "as-needed"],
     "class-methods-use-this": "error",
     "@typescript-eslint/consistent-return": "error",
-    "curly": [
-      "error",
-      "all"
-    ],
+    "curly": ["error", "all"],
     "default-case": "error",
     "default-case-last": "error",
     "default-param-last": "error",
@@ -136,10 +125,7 @@
       }
     ],
     "eqeqeq": "error",
-    "func-style": [
-      "error",
-      "declaration"
-    ],
+    "func-style": ["error", "declaration"],
     "grouped-accessor-pairs": "error",
     "guard-for-in": "error",
     "new-cap": "error",
@@ -209,10 +195,7 @@
       }
     ],
     "node/no-exports-assign": "error",
-    "node/handle-callback-err": [
-      "error",
-      "err"
-    ],
+    "node/handle-callback-err": ["error", "err"],
     "node/no-new-require": "error",
     "node/no-path-concat": "error"
   }

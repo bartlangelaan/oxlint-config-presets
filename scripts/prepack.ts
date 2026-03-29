@@ -24,9 +24,7 @@ interface PackageJson {
   [key: string]: unknown;
 }
 
-const root = JSON.parse(
-  readFileSync(join(rootDir, 'package.json'), 'utf-8'),
-) as PackageJson;
+const root = JSON.parse(readFileSync(join(rootDir, 'package.json'), 'utf-8')) as PackageJson;
 
 const publishPkg: Partial<PackageJson> = {
   name: root.name,
@@ -35,9 +33,6 @@ const publishPkg: Partial<PackageJson> = {
   license: root.license,
 };
 
-writeFileSync(
-  join(rootDir, 'configs', 'package.json'),
-  JSON.stringify(publishPkg, null, 2) + '\n',
-);
+writeFileSync(join(rootDir, 'configs', 'package.json'), JSON.stringify(publishPkg, null, 2) + '\n');
 
 console.log('Written configs/package.json');

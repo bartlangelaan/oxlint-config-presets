@@ -1,7 +1,5 @@
 {
-  "plugins": [
-    "typescript"
-  ],
+  "plugins": ["typescript"],
   "options": {
     "typeAware": true
   },
@@ -96,10 +94,7 @@
     ],
     "accessor-pairs": "error",
     "@typescript-eslint/dot-notation": "error",
-    "eqeqeq": [
-      "error",
-      "smart"
-    ],
+    "eqeqeq": ["error", "smart"],
     "no-array-constructor": "error",
     "no-caller": "error",
     "no-else-return": "error",

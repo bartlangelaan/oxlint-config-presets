@@ -3,10 +3,7 @@
   "rules": {
     "no-irregular-whitespace": "error",
     "no-unexpected-multiline": "error",
-    "curly": [
-      "error",
-      "multi-line"
-    ],
+    "curly": ["error", "multi-line"],
     "guard-for-in": "error",
     "no-caller": "error",
     "no-extend-native": "error",

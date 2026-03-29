@@ -1,24 +1,21 @@
-import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
+import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 
 const rootDir = join(dirname(fileURLToPath(import.meta.url)), '..');
 
-const result = spawnSync(
-  'pnpm',
-  ['publish', '--dry-run', '--no-git-checks'],
-  { cwd: rootDir, encoding: 'utf-8' },
-);
+const result = spawnSync('pnpm', ['publish', '--dry-run', '--no-git-checks'], {
+  cwd: rootDir,
+  encoding: 'utf-8',
+});
 
 // Combine stdout + stderr; pnpm routes npm notice lines through stderr
 const output = result.stdout + result.stderr;
 
 // Lines look like: "npm notice 1.23kB airbnb/index.json"
-const publishedFiles = [...output.matchAll(/npm notice\s+\S+\s+(.+)/g)].map(
-  (m) => m[1].trim(),
-);
+const publishedFiles = [...output.matchAll(/npm notice\s+\S+\s+(.+)/g)].map((m) => m[1].trim());
 
 test('dry-run succeeds', () => {
   assert.equal(result.status, 0, `pnpm publish exited ${result.status}:\n${output}`);

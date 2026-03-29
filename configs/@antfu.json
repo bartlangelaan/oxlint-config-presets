@@ -1,11 +1,5 @@
 {
-  "plugins": [
-    "typescript",
-    "node",
-    "jsdoc",
-    "import",
-    "unicorn"
-  ],
+  "plugins": ["typescript", "node", "jsdoc", "import", "unicorn"],
   "options": {
     "typeAware": true
   },
@@ -26,10 +20,7 @@
         "allowKeywords": true
       }
     ],
-    "eqeqeq": [
-      "error",
-      "smart"
-    ],
+    "eqeqeq": ["error", "smart"],
     "new-cap": [
       "error",
       {
@@ -42,10 +33,7 @@
     "no-caller": "error",
     "no-case-declarations": "error",
     "no-compare-neg-zero": "error",
-    "no-cond-assign": [
-      "error",
-      "always"
-    ],
+    "no-cond-assign": ["error", "always"],
     "no-control-regex": "error",
     "no-debugger": "error",
     "no-delete-var": "error",
@@ -133,14 +121,8 @@
       }
     ],
     "vars-on-top": "error",
-    "yoda": [
-      "error",
-      "never"
-    ],
-    "node/handle-callback-err": [
-      "error",
-      "^(err|error)$"
-    ],
+    "yoda": ["error", "never"],
+    "node/handle-callback-err": ["error", "^(err|error)$"],
     "node/no-exports-assign": "error",
     "node/no-new-require": "error",
     "node/no-path-concat": "error",

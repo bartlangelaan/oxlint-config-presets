@@ -1,9 +1,5 @@
 {
-  "plugins": [
-    "jsdoc",
-    "typescript",
-    "unicorn"
-  ],
+  "plugins": ["jsdoc", "typescript", "unicorn"],
   "options": {
     "typeAware": true
   },
@@ -13,11 +9,7 @@
     "jsdoc/check-tag-names": [
       "warn",
       {
-        "definedTags": [
-          "ignore",
-          "internal",
-          "stable"
-        ]
+        "definedTags": ["ignore", "internal", "stable"]
       }
     ],
     "jsdoc/implements-on-classes": "warn",
@@ -30,13 +22,8 @@
     "jsdoc/require-yields": "warn",
     "array-callback-return": "error",
     "block-scoped-var": "error",
-    "curly": [
-      "error",
-      "all"
-    ],
-    "@typescript-eslint/dot-notation": [
-      "error"
-    ],
+    "curly": ["error", "all"],
+    "@typescript-eslint/dot-notation": ["error"],
     "eqeqeq": "error",
     "new-cap": [
       "error",
@@ -109,13 +96,8 @@
     "no-void": "error",
     "no-with": "error",
     "prefer-numeric-literals": "error",
-    "unicode-bom": [
-      "error"
-    ],
-    "yoda": [
-      "error",
-      "never"
-    ],
+    "unicode-bom": ["error"],
+    "yoda": ["error", "never"],
     "unicorn/prefer-date-now": "error",
     "unicorn/prefer-string-slice": "error",
     "unicorn/throw-new-error": "error"

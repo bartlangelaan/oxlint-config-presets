@@ -1,8 +1,5 @@
 {
-  "plugins": [
-    "typescript",
-    "import"
-  ],
+  "plugins": ["typescript", "import"],
   "options": {
     "typeAware": true
   },
@@ -21,10 +18,7 @@
       }
     ],
     "@typescript-eslint/consistent-return": "error",
-    "curly": [
-      "error",
-      "multi-line"
-    ],
+    "curly": ["error", "multi-line"],
     "default-case": [
       "error",
       {
@@ -48,10 +42,7 @@
     ],
     "grouped-accessor-pairs": "error",
     "guard-for-in": "error",
-    "max-classes-per-file": [
-      "error",
-      1
-    ],
+    "max-classes-per-file": ["error", 1],
     "no-alert": "warn",
     "no-caller": "error",
     "no-case-declarations": "error",
@@ -65,11 +56,7 @@
     "no-empty-function": [
       "error",
       {
-        "allow": [
-          "arrowFunctions",
-          "functions",
-          "methods"
-        ]
+        "allow": ["arrowFunctions", "functions", "methods"]
       }
     ],
     "no-empty-pattern": "error",
@@ -120,10 +107,7 @@
     ],
     "no-proto": "error",
     "no-redeclare": "error",
-    "no-return-assign": [
-      "error",
-      "always"
-    ],
+    "no-return-assign": ["error", "always"],
     "no-script-url": "error",
     "no-self-assign": [
       "error",
@@ -168,10 +152,7 @@
     "no-async-promise-executor": "error",
     "no-await-in-loop": "error",
     "no-compare-neg-zero": "error",
-    "no-cond-assign": [
-      "error",
-      "always"
-    ],
+    "no-cond-assign": ["error", "always"],
     "no-console": "warn",
     "no-constant-condition": "warn",
     "no-control-regex": "error",
@@ -222,20 +203,14 @@
         "newIsCap": true,
         "newIsCapExceptions": [],
         "capIsNew": false,
-        "capIsNewExceptions": [
-          "Immutable.Map",
-          "Immutable.Set",
-          "Immutable.List"
-        ]
+        "capIsNewExceptions": ["Immutable.Map", "Immutable.Set", "Immutable.List"]
       }
     ],
     "no-array-constructor": "error",
     "no-bitwise": "error",
     "no-continue": "error",
     "no-lonely-if": "error",
-    "no-multi-assign": [
-      "error"
-    ],
+    "no-multi-assign": ["error"],
     "no-nested-ternary": "error",
     "no-plusplus": "error",
     "no-unneeded-ternary": [
@@ -244,16 +219,10 @@
         "defaultAssignment": false
       }
     ],
-    "operator-assignment": [
-      "error",
-      "always"
-    ],
+    "operator-assignment": ["error", "always"],
     "prefer-exponentiation-operator": "error",
     "prefer-object-spread": "error",
-    "unicode-bom": [
-      "error",
-      "never"
-    ],
+    "unicode-bom": ["error", "never"],
     "no-delete-var": "error",
     "no-label-var": "error",
     "no-restricted-globals": [

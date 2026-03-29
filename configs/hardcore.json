@@ -1,10 +1,5 @@
 {
-  "plugins": [
-    "typescript",
-    "promise",
-    "import",
-    "unicorn"
-  ],
+  "plugins": ["typescript", "promise", "import", "unicorn"],
   "options": {
     "typeAware": true
   },
@@ -142,10 +137,7 @@
     "no-magic-numbers": [
       "error",
       {
-        "ignore": [
-          0,
-          1
-        ],
+        "ignore": [0, 1],
         "enforceConst": true,
         "ignoreDefaultValues": true,
         "ignoreClassFieldInitialValues": true
@@ -157,24 +149,15 @@
         "max": 10
       }
     ],
-    "func-names": [
-      "error",
-      "as-needed"
-    ],
-    "func-style": [
-      "error",
-      "declaration"
-    ],
+    "func-names": ["error", "as-needed"],
+    "func-style": ["error", "declaration"],
     "no-else-return": [
       "error",
       {
         "allowElseIf": false
       }
     ],
-    "no-cond-assign": [
-      "error",
-      "always"
-    ],
+    "no-cond-assign": ["error", "always"],
     "no-irregular-whitespace": "error",
     "valid-typeof": [
       "error",
@@ -182,10 +165,7 @@
         "requireStringLiterals": true
       }
     ],
-    "no-return-assign": [
-      "error",
-      "always"
-    ],
+    "no-return-assign": ["error", "always"],
     "no-self-assign": [
       "error",
       {
@@ -196,14 +176,7 @@
       "error",
       {
         "builtinGlobals": true,
-        "allow": [
-          "defaultStatus",
-          "event",
-          "find",
-          "length",
-          "name",
-          "status"
-        ]
+        "allow": ["defaultStatus", "event", "find", "length", "name", "status"]
       }
     ],
     "no-undef": [
@@ -248,10 +221,7 @@
         "enforceForOrderingRelations": true
       }
     ],
-    "grouped-accessor-pairs": [
-      "error",
-      "getBeforeSet"
-    ],
+    "grouped-accessor-pairs": ["error", "getBeforeSet"],
     "array-callback-return": [
       "error",
       {
@@ -537,10 +507,7 @@
     "unicorn/prefer-object-from-entries": [
       "error",
       {
-        "functions": [
-          "fromPairs",
-          "R.fromPairs"
-        ]
+        "functions": ["fromPairs", "R.fromPairs"]
       }
     ],
     "curly": "error",

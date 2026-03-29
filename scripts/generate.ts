@@ -13,8 +13,8 @@
  * Run with: pnpm generate
  */
 
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { dirname, resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -46,10 +46,7 @@ interface OldStyleEslintConfig {
  * Recursively resolve an old-style ESLint config to a flat rules map.
  * Extends are resolved depth-first; later entries and the config's own rules win.
  */
-function flattenRules(
-  configPath: string,
-  visited = new Set<string>(),
-): EslintRules {
+function flattenRules(configPath: string, visited = new Set<string>()): EslintRules {
   if (visited.has(configPath)) return {};
   visited.add(configPath);
 
@@ -88,10 +85,7 @@ function flattenRules(
  * Resolve a `plugin:name/config` extends entry to a flat rules map.
  * Handles old-style plugin configs which may themselves have extends.
  */
-function resolvePluginConfig(
-  pluginRef: string,
-  visited = new Set<string>(),
-): EslintRules {
+function resolvePluginConfig(pluginRef: string, visited = new Set<string>()): EslintRules {
   // pluginRef format: "plugin:<pluginName>/<configName>"
   const withoutPrefix = pluginRef.slice('plugin:'.length);
   const slashIdx = withoutPrefix.indexOf('/');
@@ -178,8 +172,7 @@ const outputFor = (cfg: ConfigEntry) => {
 };
 
 /** Full import path as used in an oxlintrc extends array */
-const oxlintConfigFor = (cfg: ConfigEntry) =>
-  `oxlint-config-presets/${outputFor(cfg)}`;
+const oxlintConfigFor = (cfg: ConfigEntry) => `oxlint-config-presets/${outputFor(cfg)}`;
 
 // Shorthand for old-style shareable configs resolved via flattenRules.
 const fromPackage = (pkg: string) => () => flattenRules(req.resolve(pkg));
@@ -242,46 +235,146 @@ const fromAntfu = () => {
 
 const configs: ConfigEntry[] = [
   // ── airbnb ────────────────────────────────────────────────────────────────
-  { sourcePackage: 'eslint-config-airbnb', sourceConfig: '', resolveRules: fromPackage('eslint-config-airbnb') },
-  { sourcePackage: 'eslint-config-airbnb', sourceConfig: 'base', resolveRules: fromPackage('eslint-config-airbnb/base') },
-  { sourcePackage: 'eslint-config-airbnb', sourceConfig: 'hooks', resolveRules: fromPackage('eslint-config-airbnb/hooks') },
-  { sourcePackage: 'eslint-config-airbnb', sourceConfig: 'legacy', resolveRules: fromPackage('eslint-config-airbnb/legacy') },
-  { sourcePackage: 'eslint-config-airbnb', sourceConfig: 'whitespace', resolveRules: fromPackage('eslint-config-airbnb/whitespace') },
+  {
+    sourcePackage: 'eslint-config-airbnb',
+    sourceConfig: '',
+    resolveRules: fromPackage('eslint-config-airbnb'),
+  },
+  {
+    sourcePackage: 'eslint-config-airbnb',
+    sourceConfig: 'base',
+    resolveRules: fromPackage('eslint-config-airbnb/base'),
+  },
+  {
+    sourcePackage: 'eslint-config-airbnb',
+    sourceConfig: 'hooks',
+    resolveRules: fromPackage('eslint-config-airbnb/hooks'),
+  },
+  {
+    sourcePackage: 'eslint-config-airbnb',
+    sourceConfig: 'legacy',
+    resolveRules: fromPackage('eslint-config-airbnb/legacy'),
+  },
+  {
+    sourcePackage: 'eslint-config-airbnb',
+    sourceConfig: 'whitespace',
+    resolveRules: fromPackage('eslint-config-airbnb/whitespace'),
+  },
 
   // ── standard / google ─────────────────────────────────────────────────────
-  { sourcePackage: 'eslint-config-standard', sourceConfig: '', resolveRules: fromPackage('eslint-config-standard') },
-  { sourcePackage: 'eslint-config-google', sourceConfig: '', resolveRules: fromPackage('eslint-config-google') },
+  {
+    sourcePackage: 'eslint-config-standard',
+    sourceConfig: '',
+    resolveRules: fromPackage('eslint-config-standard'),
+  },
+  {
+    sourcePackage: 'eslint-config-google',
+    sourceConfig: '',
+    resolveRules: fromPackage('eslint-config-google'),
+  },
 
   // ── @typescript-eslint ────────────────────────────────────────────────────
-  { sourcePackage: '@typescript-eslint/eslint-plugin', sourceConfig: 'recommended', resolveRules: fromTsEslint('flat/recommended') },
-  { sourcePackage: '@typescript-eslint/eslint-plugin', sourceConfig: 'recommended-type-checked', resolveRules: fromTsEslint('flat/recommended-type-checked') },
-  { sourcePackage: '@typescript-eslint/eslint-plugin', sourceConfig: 'strict', resolveRules: fromTsEslint('flat/strict') },
-  { sourcePackage: '@typescript-eslint/eslint-plugin', sourceConfig: 'strict-type-checked', resolveRules: fromTsEslint('flat/strict-type-checked') },
-  { sourcePackage: '@typescript-eslint/eslint-plugin', sourceConfig: 'stylistic', resolveRules: fromTsEslint('flat/stylistic') },
-  { sourcePackage: '@typescript-eslint/eslint-plugin', sourceConfig: 'stylistic-type-checked', resolveRules: fromTsEslint('flat/stylistic-type-checked') },
-  { sourcePackage: '@typescript-eslint/eslint-plugin', sourceConfig: 'all', resolveRules: fromTsEslint('flat/all') },
+  {
+    sourcePackage: '@typescript-eslint/eslint-plugin',
+    sourceConfig: 'recommended',
+    resolveRules: fromTsEslint('flat/recommended'),
+  },
+  {
+    sourcePackage: '@typescript-eslint/eslint-plugin',
+    sourceConfig: 'recommended-type-checked',
+    resolveRules: fromTsEslint('flat/recommended-type-checked'),
+  },
+  {
+    sourcePackage: '@typescript-eslint/eslint-plugin',
+    sourceConfig: 'strict',
+    resolveRules: fromTsEslint('flat/strict'),
+  },
+  {
+    sourcePackage: '@typescript-eslint/eslint-plugin',
+    sourceConfig: 'strict-type-checked',
+    resolveRules: fromTsEslint('flat/strict-type-checked'),
+  },
+  {
+    sourcePackage: '@typescript-eslint/eslint-plugin',
+    sourceConfig: 'stylistic',
+    resolveRules: fromTsEslint('flat/stylistic'),
+  },
+  {
+    sourcePackage: '@typescript-eslint/eslint-plugin',
+    sourceConfig: 'stylistic-type-checked',
+    resolveRules: fromTsEslint('flat/stylistic-type-checked'),
+  },
+  {
+    sourcePackage: '@typescript-eslint/eslint-plugin',
+    sourceConfig: 'all',
+    resolveRules: fromTsEslint('flat/all'),
+  },
 
   // ── @eslint/js ────────────────────────────────────────────────────────────
-  { sourcePackage: '@eslint/js', sourceConfig: 'recommended', resolveRules: () => eslintJs.configs.recommended.rules },
-  { sourcePackage: '@eslint/js', sourceConfig: 'all', resolveRules: () => eslintJs.configs.all.rules },
+  {
+    sourcePackage: '@eslint/js',
+    sourceConfig: 'recommended',
+    resolveRules: () => eslintJs.configs.recommended.rules,
+  },
+  {
+    sourcePackage: '@eslint/js',
+    sourceConfig: 'all',
+    resolveRules: () => eslintJs.configs.all.rules,
+  },
 
   // ── xo / problems / hardcore / wikimedia ──────────────────────────────────
   { sourcePackage: 'eslint-config-xo', sourceConfig: '', resolveRules: fromXo },
-  { sourcePackage: 'eslint-config-problems', sourceConfig: '', resolveRules: () => problemsConfig.rules },
-  { sourcePackage: 'eslint-config-hardcore', sourceConfig: '', resolveRules: fromPackage('eslint-config-hardcore') },
-  { sourcePackage: 'eslint-config-wikimedia', sourceConfig: '', resolveRules: fromPackage('eslint-config-wikimedia') },
+  {
+    sourcePackage: 'eslint-config-problems',
+    sourceConfig: '',
+    resolveRules: () => problemsConfig.rules,
+  },
+  {
+    sourcePackage: 'eslint-config-hardcore',
+    sourceConfig: '',
+    resolveRules: fromPackage('eslint-config-hardcore'),
+  },
+  {
+    sourcePackage: 'eslint-config-wikimedia',
+    sourceConfig: '',
+    resolveRules: fromPackage('eslint-config-wikimedia'),
+  },
 
   // ── eslint-team ───────────────────────────────────────────────────────────
-  { sourcePackage: 'eslint-config-eslint', sourceConfig: '', resolveRules: fromFlatArray('eslint-config-eslint') },
-  { sourcePackage: 'eslint-config-eslint', sourceConfig: 'base', resolveRules: fromFlatArray('eslint-config-eslint/base') },
+  {
+    sourcePackage: 'eslint-config-eslint',
+    sourceConfig: '',
+    resolveRules: fromFlatArray('eslint-config-eslint'),
+  },
+  {
+    sourcePackage: 'eslint-config-eslint',
+    sourceConfig: 'base',
+    resolveRules: fromFlatArray('eslint-config-eslint/base'),
+  },
 
   // ── alloy ─────────────────────────────────────────────────────────────────
-  { sourcePackage: 'eslint-config-alloy', sourceConfig: '', resolveRules: fromPackage('eslint-config-alloy') },
-  { sourcePackage: 'eslint-config-alloy', sourceConfig: 'react', resolveRules: fromPackage('eslint-config-alloy/react') },
-  { sourcePackage: 'eslint-config-alloy', sourceConfig: 'typescript', resolveRules: fromPackage('eslint-config-alloy/typescript') },
+  {
+    sourcePackage: 'eslint-config-alloy',
+    sourceConfig: '',
+    resolveRules: fromPackage('eslint-config-alloy'),
+  },
+  {
+    sourcePackage: 'eslint-config-alloy',
+    sourceConfig: 'react',
+    resolveRules: fromPackage('eslint-config-alloy/react'),
+  },
+  {
+    sourcePackage: 'eslint-config-alloy',
+    sourceConfig: 'typescript',
+    resolveRules: fromPackage('eslint-config-alloy/typescript'),
+  },
 
   // ── prettier / antfu ──────────────────────────────────────────────────────
-  { sourcePackage: 'eslint-config-prettier', sourceConfig: '', resolveRules: () => prettierConfig.rules },
+  {
+    sourcePackage: 'eslint-config-prettier',
+    sourceConfig: '',
+    resolveRules: () => prettierConfig.rules,
+  },
   { sourcePackage: '@antfu/eslint-config', sourceConfig: '', resolveRules: fromAntfu },
 ];
 
@@ -307,7 +400,11 @@ for (const config of configs) {
 
   // Pass the flattened rules as a single ESLint flat config object.
   // migrate() returns an oxlint-compatible config with supported rules only.
-  const oxlintResult = await migrate({ rules }, undefined, { reporter, withNursery: true, typeAware: true });
+  const oxlintResult = await migrate({ rules }, undefined, {
+    reporter,
+    withNursery: true,
+    typeAware: true,
+  });
 
   // Remove fields that are identical in every generated config and add no value
   // when the config is used via extends.
@@ -341,9 +438,9 @@ for (const config of configs) {
     // Extract rule names reported as having invalid configuration.
     // oxlint normalises plugin separators to underscores in output (jsx_a11y)
     // but the config uses hyphens (jsx-a11y), so normalise back.
-    const badRules = [
-      ...output.matchAll(/Invalid configuration for rule `([^`]+)`/g),
-    ].map((m) => m[1].replace(/_/g, '-'));
+    const badRules = [...output.matchAll(/Invalid configuration for rule `([^`]+)`/g)].map((m) =>
+      m[1].replace(/_/g, '-'),
+    );
 
     if (badRules.length === 0 || attempt > 10) {
       console.warn(`  [warn] Could not auto-fix config parse errors:\n${output}`);
@@ -408,8 +505,9 @@ function skippedSection(skipped: Record<string, string[]>): string {
 const rootReadme = readFileSync(join(rootDir, 'README.md'), 'utf-8').trimEnd();
 
 const tableRows = results
-  .map(({ config }) =>
-    `| \`${config.sourcePackage}\` | ${config.sourceConfig ? `\`${config.sourceConfig}\`` : ''} | \`${outputFor(config)}\` |`,
+  .map(
+    ({ config }) =>
+      `| \`${config.sourcePackage}\` | ${config.sourceConfig ? `\`${config.sourceConfig}\`` : ''} | \`${outputFor(config)}\` |`,
   )
   .join('\n');
 
@@ -436,10 +534,7 @@ function migratedSection(rules: OxlintConfig['rules'], strippedOptions: string[]
 const configSections = results
   .map(({ config, oxlintResult, skipped, strippedOptions, warnings }) => {
     const extendsExample = `"./node_modules/oxlint-config-presets/${outputFor(config)}"`;
-    const parts: string[] = [
-      `### \`${outputFor(config)}\``,
-      extendsExample,
-    ];
+    const parts: string[] = [`### \`${outputFor(config)}\``, extendsExample];
 
     const migrated = migratedSection(oxlintResult.rules, strippedOptions);
     if (migrated) parts.push(migrated);
@@ -448,10 +543,10 @@ const configSections = results
       const ruleList = strippedOptions.map((r) => `\`${r}\``).join(', ');
       parts.push(
         `<details>\n` +
-        `<summary>${strippedOptions.length} rules migrated without options (incompatible schema)</summary>\n\n` +
-        `These rules are enabled but their configuration options were dropped because oxlint's schema does not accept them. Only the severity level was kept.\n\n` +
-        `${ruleList}\n\n` +
-        `</details>`,
+          `<summary>${strippedOptions.length} rules migrated without options (incompatible schema)</summary>\n\n` +
+          `These rules are enabled but their configuration options were dropped because oxlint's schema does not accept them. Only the severity level was kept.\n\n` +
+          `${ruleList}\n\n` +
+          `</details>`,
       );
     }
 
@@ -467,13 +562,7 @@ const configSections = results
   })
   .join('\n\n');
 
-const configsReadme =
-  rootReadme +
-  '\n\n' +
-  table +
-  '\n\n' +
-  configSections +
-  '\n';
+const configsReadme = rootReadme + '\n\n' + table + '\n\n' + configSections + '\n';
 
 writeFileSync(join(configsDir, 'README.md'), configsReadme);
 console.log('\nWritten configs/README.md');

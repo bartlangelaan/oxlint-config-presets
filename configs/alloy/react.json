@@ -1,17 +1,9 @@
 {
-  "plugins": [
-    "react"
-  ],
+  "plugins": ["react"],
   "rules": {
     "react/iframe-missing-sandbox": "error",
-    "react/jsx-curly-brace-presence": [
-      "error",
-      "never"
-    ],
-    "react/jsx-fragments": [
-      "error",
-      "syntax"
-    ],
+    "react/jsx-curly-brace-presence": ["error", "never"],
+    "react/jsx-fragments": ["error", "syntax"],
     "react/jsx-key": [
       "error",
       {
@@ -43,10 +35,7 @@
         "checkAliases": true
       }
     ],
-    "react/prefer-es6-class": [
-      "error",
-      "always"
-    ],
+    "react/prefer-es6-class": ["error", "always"],
     "react/require-render-return": "error",
     "react/self-closing-comp": "error",
     "react/style-prop-object": "error",

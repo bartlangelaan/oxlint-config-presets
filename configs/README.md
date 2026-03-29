@@ -35,35 +35,35 @@ Multiple configs can be combined. Later entries take precedence:
 
 ## Available configs
 
-| Source package | Source config | Oxlint config |
-|---|---|---|
-| `eslint-config-airbnb` |  | `airbnb.json` |
-| `eslint-config-airbnb` | `base` | `airbnb/base.json` |
-| `eslint-config-airbnb` | `hooks` | `airbnb/hooks.json` |
-| `eslint-config-airbnb` | `legacy` | `airbnb/legacy.json` |
-| `eslint-config-airbnb` | `whitespace` | `airbnb/whitespace.json` |
-| `eslint-config-standard` |  | `standard.json` |
-| `eslint-config-google` |  | `google.json` |
-| `@typescript-eslint/eslint-plugin` | `recommended` | `@typescript-eslint/recommended.json` |
+| Source package                     | Source config              | Oxlint config                                      |
+| ---------------------------------- | -------------------------- | -------------------------------------------------- |
+| `eslint-config-airbnb`             |                            | `airbnb.json`                                      |
+| `eslint-config-airbnb`             | `base`                     | `airbnb/base.json`                                 |
+| `eslint-config-airbnb`             | `hooks`                    | `airbnb/hooks.json`                                |
+| `eslint-config-airbnb`             | `legacy`                   | `airbnb/legacy.json`                               |
+| `eslint-config-airbnb`             | `whitespace`               | `airbnb/whitespace.json`                           |
+| `eslint-config-standard`           |                            | `standard.json`                                    |
+| `eslint-config-google`             |                            | `google.json`                                      |
+| `@typescript-eslint/eslint-plugin` | `recommended`              | `@typescript-eslint/recommended.json`              |
 | `@typescript-eslint/eslint-plugin` | `recommended-type-checked` | `@typescript-eslint/recommended-type-checked.json` |
-| `@typescript-eslint/eslint-plugin` | `strict` | `@typescript-eslint/strict.json` |
-| `@typescript-eslint/eslint-plugin` | `strict-type-checked` | `@typescript-eslint/strict-type-checked.json` |
-| `@typescript-eslint/eslint-plugin` | `stylistic` | `@typescript-eslint/stylistic.json` |
-| `@typescript-eslint/eslint-plugin` | `stylistic-type-checked` | `@typescript-eslint/stylistic-type-checked.json` |
-| `@typescript-eslint/eslint-plugin` | `all` | `@typescript-eslint/all.json` |
-| `@eslint/js` | `recommended` | `@eslint/recommended.json` |
-| `@eslint/js` | `all` | `@eslint/all.json` |
-| `eslint-config-xo` |  | `xo.json` |
-| `eslint-config-problems` |  | `problems.json` |
-| `eslint-config-hardcore` |  | `hardcore.json` |
-| `eslint-config-wikimedia` |  | `wikimedia.json` |
-| `eslint-config-eslint` |  | `eslint.json` |
-| `eslint-config-eslint` | `base` | `eslint/base.json` |
-| `eslint-config-alloy` |  | `alloy.json` |
-| `eslint-config-alloy` | `react` | `alloy/react.json` |
-| `eslint-config-alloy` | `typescript` | `alloy/typescript.json` |
-| `eslint-config-prettier` |  | `prettier.json` |
-| `@antfu/eslint-config` |  | `@antfu.json` |
+| `@typescript-eslint/eslint-plugin` | `strict`                   | `@typescript-eslint/strict.json`                   |
+| `@typescript-eslint/eslint-plugin` | `strict-type-checked`      | `@typescript-eslint/strict-type-checked.json`      |
+| `@typescript-eslint/eslint-plugin` | `stylistic`                | `@typescript-eslint/stylistic.json`                |
+| `@typescript-eslint/eslint-plugin` | `stylistic-type-checked`   | `@typescript-eslint/stylistic-type-checked.json`   |
+| `@typescript-eslint/eslint-plugin` | `all`                      | `@typescript-eslint/all.json`                      |
+| `@eslint/js`                       | `recommended`              | `@eslint/recommended.json`                         |
+| `@eslint/js`                       | `all`                      | `@eslint/all.json`                                 |
+| `eslint-config-xo`                 |                            | `xo.json`                                          |
+| `eslint-config-problems`           |                            | `problems.json`                                    |
+| `eslint-config-hardcore`           |                            | `hardcore.json`                                    |
+| `eslint-config-wikimedia`          |                            | `wikimedia.json`                                   |
+| `eslint-config-eslint`             |                            | `eslint.json`                                      |
+| `eslint-config-eslint`             | `base`                     | `eslint/base.json`                                 |
+| `eslint-config-alloy`              |                            | `alloy.json`                                       |
+| `eslint-config-alloy`              | `react`                    | `alloy/react.json`                                 |
+| `eslint-config-alloy`              | `typescript`               | `alloy/typescript.json`                            |
+| `eslint-config-prettier`           |                            | `prettier.json`                                    |
+| `@antfu/eslint-config`             |                            | `@antfu.json`                                      |
 
 ### `airbnb.json`
 

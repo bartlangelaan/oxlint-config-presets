@@ -1,7 +1,5 @@
 {
-  "plugins": [
-    "typescript"
-  ],
+  "plugins": ["typescript"],
   "rules": {
     "no-var": "error",
     "prefer-const": "error",

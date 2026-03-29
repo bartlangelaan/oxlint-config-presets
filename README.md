@@ -32,4 +32,3 @@ Multiple configs can be combined. Later entries take precedence:
 ```
 
 > **Note:** oxlint's `extends` field requires a `.json` file path relative to your config file. Use `./node_modules/oxlint-config-presets/<config>.json` to reference configs from this package.
-

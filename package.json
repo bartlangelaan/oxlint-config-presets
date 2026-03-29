@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "description": "Oxlint configurations ported from popular ESLint styleguides",
   "license": "MIT",
-  "packageManager": "pnpm@10.29.3",
   "type": "module",
   "publishConfig": {
     "directory": "configs"
   },
   "scripts": {
+    "fmt": "oxfmt",
     "generate": "tsx scripts/generate.ts",
     "prepack": "tsx scripts/prepack.ts",
     "test": "node --import tsx/esm --test tests/*.test.ts"
@@ -38,9 +38,11 @@
     "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^4.6.2",
+    "oxfmt": "^0.42.0",
     "oxlint": "1.57.0",
     "oxlint-tsgolint": "^0.18.1",
     "tsx": "^4.19.3",
     "typescript": "^6.0.2"
-  }
+  },
+  "packageManager": "pnpm@10.29.3"
 }

@@ -1,6 +1,4 @@
 {
-  "plugins": [
-    "unicorn"
-  ],
+  "plugins": ["unicorn"],
   "rules": {}
 }

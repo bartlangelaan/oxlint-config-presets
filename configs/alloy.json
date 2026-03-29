@@ -1,7 +1,5 @@
 {
-  "plugins": [
-    "typescript"
-  ],
+  "plugins": ["typescript"],
   "rules": {
     "accessor-pairs": [
       "error",
@@ -19,26 +17,14 @@
     ],
     "constructor-super": "error",
     "default-case-last": "error",
-    "eqeqeq": [
-      "error",
-      "always"
-    ],
+    "eqeqeq": ["error", "always"],
     "for-direction": "error",
     "getter-return": "error",
     "grouped-accessor-pairs": "error",
     "guard-for-in": "error",
-    "max-depth": [
-      "error",
-      5
-    ],
-    "max-nested-callbacks": [
-      "error",
-      3
-    ],
-    "max-params": [
-      "error",
-      3
-    ],
+    "max-depth": ["error", 5],
+    "max-nested-callbacks": ["error", 3],
+    "max-params": ["error", 3],
     "new-cap": [
       "error",
       {
@@ -53,10 +39,7 @@
     "no-case-declarations": "error",
     "no-class-assign": "error",
     "no-compare-neg-zero": "error",
-    "no-cond-assign": [
-      "error",
-      "except-parens"
-    ],
+    "no-cond-assign": ["error", "except-parens"],
     "no-const-assign": "error",
     "no-constant-binary-expression": "error",
     "no-constant-condition": [
@@ -91,16 +74,11 @@
     "no-implicit-coercion": [
       "error",
       {
-        "allow": [
-          "!!"
-        ]
+        "allow": ["!!"]
       }
     ],
     "no-import-assign": "error",
-    "no-inner-declarations": [
-      "error",
-      "both"
-    ],
+    "no-inner-declarations": ["error", "both"],
     "no-invalid-regexp": "error",
     "no-irregular-whitespace": "error",
     "no-iterator": "error",
@@ -118,10 +96,7 @@
     "no-promise-executor-return": "error",
     "no-proto": "error",
     "no-regex-spaces": "error",
-    "no-return-assign": [
-      "error",
-      "always"
-    ],
+    "no-return-assign": ["error", "always"],
     "no-self-assign": "error",
     "no-self-compare": "error",
     "no-sequences": "error",

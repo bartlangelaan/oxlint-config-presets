@@ -1,10 +1,5 @@
 {
-  "plugins": [
-    "typescript",
-    "import",
-    "node",
-    "promise"
-  ],
+  "plugins": ["typescript", "import", "node", "promise"],
   "options": {
     "typeAware": true
   },
@@ -25,10 +20,7 @@
       }
     ],
     "constructor-super": "error",
-    "curly": [
-      "error",
-      "multi-line"
-    ],
+    "curly": ["error", "multi-line"],
     "default-case-last": "error",
     "@typescript-eslint/dot-notation": [
       "error",
@@ -117,10 +109,7 @@
       }
     ],
     "no-regex-spaces": "error",
-    "no-return-assign": [
-      "error",
-      "except-parens"
-    ],
+    "no-return-assign": ["error", "except-parens"],
     "no-self-assign": [
       "error",
       {
@@ -187,10 +176,7 @@
     ],
     "prefer-promise-reject-errors": "error",
     "symbol-description": "error",
-    "unicode-bom": [
-      "error",
-      "never"
-    ],
+    "unicode-bom": ["error", "never"],
     "use-isnan": [
       "error",
       {
@@ -204,10 +190,7 @@
         "requireStringLiterals": true
       }
     ],
-    "yoda": [
-      "error",
-      "never"
-    ],
+    "yoda": ["error", "never"],
     "import/export": "error",
     "import/first": "error",
     "import/no-absolute-path": [
@@ -222,10 +205,7 @@
     "import/no-named-default": "error",
     "import/no-webpack-loader-syntax": "error",
     "promise/param-names": "error",
-    "node/handle-callback-err": [
-      "error",
-      "^(err|error)$"
-    ],
+    "node/handle-callback-err": ["error", "^(err|error)$"],
     "node/no-exports-assign": "error",
     "node/no-new-require": "error",
     "node/no-path-concat": "error"
