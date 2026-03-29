@@ -1,7 +1,6 @@
 # oxlint-config-presets
 
 [![npm version](https://img.shields.io/npm/v/oxlint-config-presets?logo=npm)](https://www.npmjs.com/package/oxlint-config-presets)
-[![npm downloads](https://img.shields.io/npm/dm/oxlint-config-presets?logo=npm)](https://www.npmjs.com/package/oxlint-config-presets)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://www.npmjs.com/package/oxlint-config-presets)
 [![Oxlint](https://img.shields.io/badge/linted%20with-oxlint-6d28d9)](https://oxc.rs/docs/guide/usage/linter.html)
 
@@ -45,12 +44,6 @@ You can also compose multiple presets. Later entries override earlier ones:
 > [!NOTE]
 > Oxlint currently expects `extends` values to be **JSON file paths** relative to your config file.
 > For presets in this package, use `./node_modules/oxlint-config-presets/<config>.json`.
-
-## What this package provides
-
-- A large set of commonly-used ESLint ecosystem presets converted for Oxlint.
-- Generated JSON configs that are easy to inspect and extend.
-- Detailed migration notes for each preset (migrated rules, dropped options, and unsupported rules).
 
 <!-- GENERATED CONFIGS START -->
 
