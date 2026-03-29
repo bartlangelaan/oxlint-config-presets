@@ -7,19 +7,35 @@ import { fileURLToPath } from 'node:url';
 
 const rootDir = join(dirname(fileURLToPath(import.meta.url)), '..');
 
-const result = spawnSync('pnpm', ['publish', '--dry-run', '--no-git-checks'], {
+const result = spawnSync('pnpm', ['pack', '--dry-run', '--json'], {
   cwd: rootDir,
   encoding: 'utf-8',
 });
 
-// Combine stdout + stderr; pnpm routes npm notice lines through stderr
 const output = result.stdout + result.stderr;
 
-// Lines look like: "npm notice 1.23kB airbnb/index.json"
-const publishedFiles = [...output.matchAll(/npm notice\s+\S+\s+(.+)/g)].map((m) => m[1].trim());
+interface PackOutput {
+  files: Array<{ path: string }>;
+}
+
+function parsePackOutput(raw: string): PackOutput {
+  const jsonStart = raw.lastIndexOf('\n{');
+  const json = (jsonStart >= 0 ? raw.slice(jsonStart + 1) : raw).trim();
+
+  try {
+    return JSON.parse(json) as PackOutput;
+  } catch (error) {
+    throw new Error(
+      `Unable to parse pnpm pack --json output:\n${raw}\n\nParse error: ${String(error)}`,
+    );
+  }
+}
+
+const packOutput = parsePackOutput(output);
+const publishedFiles = packOutput.files.map((file) => file.path);
 
 test('dry-run succeeds', () => {
-  assert.equal(result.status, 0, `pnpm publish exited ${result.status}:\n${output}`);
+  assert.equal(result.status, 0, `pnpm pack --dry-run exited ${result.status}:\n${output}`);
 });
 
 test('package.json is included', () => {
