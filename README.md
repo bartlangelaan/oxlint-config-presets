@@ -137,9 +137,13 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-> Settings not migrated (not supported by oxlint):
+> `import/resolver`
+> `import/extensions`
+> `import/core-modules`
+> `import/ignore`
 > react.version "detect" is not supported. Specify an explicit version (e.g., "18.2.0") in your oxlint config.
-> Settings not migrated (not supported by oxlint):
+> `react.pragma`
+> `propWrapperFunctions`
 
 ### `airbnb/base.json`
 
@@ -176,7 +180,10 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-> Settings not migrated (not supported by oxlint):
+> `import/resolver`
+> `import/extensions`
+> `import/core-modules`
+> `import/ignore`
 
 ### `airbnb/hooks.json`
 
@@ -252,9 +259,13 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-> Settings not migrated (not supported by oxlint):
+> `import/resolver`
+> `import/extensions`
+> `import/core-modules`
+> `import/ignore`
 > react.version "detect" is not supported. Specify an explicit version (e.g., "18.2.0") in your oxlint config.
-> Settings not migrated (not supported by oxlint):
+> `react.pragma`
+> `propWrapperFunctions`
 
 ### `standard.json`
 
@@ -488,6 +499,11 @@ These rules are enabled but their configuration options were dropped because oxl
 </details>
 
 > Settings found under a 'files' pattern — oxlint does not support settings in overrides and they will be skipped:
+> `import-x/extensions`
+> `import-x/core-modules`
+> `import-x/parsers`
+> `import-x/external-module-folders`
+> `import-x/resolver`
 
 ### `problems.json`
 
@@ -554,12 +570,10 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-> Settings not migrated (not supported by oxlint):
+> `perfectionist`
+> `import/docstyle`
 > special parser detected: @html-eslint/parser
 > special parser detected: yaml-eslint-parser
-> special parser detected: yaml-eslint-parser
-> special parser detected: yaml-eslint-parser
-> special parser detected: toml-eslint-parser
 > special parser detected: toml-eslint-parser
 
 ### `wikimedia.json`
@@ -601,8 +615,7 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-> Settings not migrated (not supported by oxlint):
-> special parser detected: yaml-eslint-parser
+> `es-x`
 > special parser detected: yaml-eslint-parser
 
 ### `eslint.json`
@@ -799,8 +812,6 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-> special parser detected: yaml-eslint-parser
-> special parser detected: yaml-eslint-parser
 > special parser detected: yaml-eslint-parser
 > special parser detected: toml-eslint-parser
 > ignore list inside overrides is not supported

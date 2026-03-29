@@ -802,6 +802,38 @@ function migratedSection(rules: OxlintConfig['rules'], strippedOptions: string[]
   );
 }
 
+function formatNotableWarnings(warnings: string[]): string {
+  const dedupedLines = new Set<string>();
+
+  for (const warning of warnings) {
+    if (warning.includes('import-sorting')) continue;
+
+    const lines = warning
+      .split('\n')
+      .map((line) => line.trim())
+      .filter((line) => line.length > 0);
+    if (lines.length === 0) continue;
+
+    const firstLine = lines[0];
+
+    // Skip empty category headings like "Settings not migrated..." when no
+    // concrete detail follows.
+    if (lines.length === 1 && firstLine === 'Settings not migrated (not supported by oxlint):') {
+      continue;
+    }
+
+    const detailLines =
+      firstLine === 'Settings not migrated (not supported by oxlint):' ? lines.slice(1) : lines;
+
+    for (const line of detailLines) {
+      dedupedLines.add(line);
+    }
+  }
+
+  if (dedupedLines.size === 0) return '';
+  return [...dedupedLines].map((line) => `> ${line}`).join('\n');
+}
+
 const configSections = results
   .map(({ config, oxlintResult, skipped, strippedOptions, warnings }) => {
     const extendsExample =
@@ -825,9 +857,9 @@ const configSections = results
     const section = skippedSection(skipped);
     if (section) parts.push(section);
 
-    const notable = warnings.filter((w) => !w.includes('import-sorting'));
-    if (notable.length > 0) {
-      parts.push(notable.map((w) => `> ${w.split('\n')[0]}`).join('\n'));
+    const notableWarnings = formatNotableWarnings(warnings);
+    if (notableWarnings) {
+      parts.push(notableWarnings);
     }
 
     return parts.join('\n\n');
