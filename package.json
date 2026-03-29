@@ -8,8 +8,10 @@
     "directory": "configs"
   },
   "scripts": {
+    "before-commit": "pnpm generate && pnpm test && pnpm oxlint",
     "fmt": "oxfmt",
     "generate": "node --import tsx/esm scripts/generate.ts && oxfmt",
+    "oxlint": "oxlint",
     "prepack": "node --import tsx/esm scripts/prepack.ts",
     "test": "node --import tsx/esm --test tests/*.test.ts"
   },
