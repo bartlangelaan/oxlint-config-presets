@@ -6,9 +6,9 @@
  * 2. Passes the flat rule set through @oxlint/migrate to produce an oxlint-compatible config
  * 3. Writes the result as a JSON file under the appropriate output directory
  *
- * After all configs are generated, writes configs/README.md by copying the
- * root README and appending an available-configs table plus per-config
- * collapsible sections listing the rules that have no oxlint equivalent.
+ * After all configs are generated, rewrites the generated section in the root
+ * README and appends an available-configs table plus per-config collapsible
+ * sections listing the rules that have no oxlint equivalent.
  *
  * Run with: pnpm generate
  */
@@ -25,6 +25,9 @@ type OxlintConfig = Awaited<ReturnType<typeof Migrate>>;
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = resolve(__dirname, '..');
 const configsDir = join(rootDir, 'configs');
+const readmePath = join(rootDir, 'README.md');
+const generatedStartMarker = '<!-- GENERATED CONFIGS START -->';
+const generatedEndMarker = '<!-- GENERATED CONFIGS END -->';
 
 // Use createRequire so we can require() CJS ESLint configs from ESM context
 const req = createRequire(join(rootDir, 'package.json'));
@@ -470,7 +473,7 @@ for (const config of configs) {
   });
 }
 
-// ---- Build configs/README.md ------------------------------------------------
+// ---- Build README.md --------------------------------------------------------
 
 const CATEGORY_LABELS: Record<string, string> = {
   'not-implemented': 'Not yet implemented in oxlint',
@@ -502,7 +505,7 @@ function skippedSection(skipped: Record<string, string[]>): string {
   );
 }
 
-const rootReadme = readFileSync(join(rootDir, 'README.md'), 'utf-8').trimEnd();
+const rootReadme = readFileSync(readmePath, 'utf-8').trimEnd();
 
 const tableRows = results
   .map(
@@ -562,9 +565,20 @@ const configSections = results
   })
   .join('\n\n');
 
-const configsReadme = rootReadme + '\n\n' + table + '\n\n' + configSections + '\n';
+const generatedSection = table + '\n\n' + configSections;
+const generatedBlock = `${generatedStartMarker}\n\n${generatedSection}\n\n${generatedEndMarker}`;
 
-writeFileSync(join(configsDir, 'README.md'), configsReadme);
-console.log('\nWritten configs/README.md');
+if (!rootReadme.includes(generatedStartMarker) || !rootReadme.includes(generatedEndMarker)) {
+  throw new Error('README.md is missing generated section markers');
+}
+
+const updatedReadme =
+  rootReadme.replace(
+    new RegExp(`${generatedStartMarker}[\\s\\S]*${generatedEndMarker}`),
+    generatedBlock,
+  ) + '\n';
+
+writeFileSync(readmePath, updatedReadme);
+console.log('\nWritten README.md');
 
 console.log('\nDone.');

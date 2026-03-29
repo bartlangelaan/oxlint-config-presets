@@ -9,7 +9,7 @@
  * Invoked automatically by pnpm via the "prepack" lifecycle hook.
  */
 
-import { readFileSync, writeFileSync } from 'node:fs';
+import { copyFileSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -34,5 +34,7 @@ const publishPkg: Partial<PackageJson> = {
 };
 
 writeFileSync(join(rootDir, 'configs', 'package.json'), JSON.stringify(publishPkg, null, 2) + '\n');
+copyFileSync(join(rootDir, 'README.md'), join(rootDir, 'configs', 'README.md'));
 
 console.log('Written configs/package.json');
+console.log('Copied README.md to configs/README.md');

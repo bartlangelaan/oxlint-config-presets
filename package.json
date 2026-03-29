@@ -9,8 +9,8 @@
   },
   "scripts": {
     "fmt": "oxfmt",
-    "generate": "tsx scripts/generate.ts",
-    "prepack": "tsx scripts/prepack.ts",
+    "generate": "node --import tsx/esm scripts/generate.ts && oxfmt",
+    "prepack": "node --import tsx/esm scripts/prepack.ts",
     "test": "node --import tsx/esm --test tests/*.test.ts"
   },
   "devDependencies": {
