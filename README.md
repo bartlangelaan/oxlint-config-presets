@@ -1,37 +1,49 @@
 # oxlint-config-presets
 
-Oxlint configurations ported from popular ESLint styleguides. Extend them in your `.oxlintrc.json` the same way you would extend the original ESLint configs.
+[![npm version](https://img.shields.io/npm/v/oxlint-config-presets?logo=npm)](https://www.npmjs.com/package/oxlint-config-presets)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://www.npmjs.com/package/oxlint-config-presets)
+[![Oxlint](https://img.shields.io/badge/linted%20with-oxlint-6d28d9)](https://oxc.rs/docs/guide/usage/linter.html)
 
-Install the package:
+Ready-to-use **Oxlint preset configs** ported from popular ESLint style guides.
+Use these presets in your `.oxlintrc.json` using `extends`, just like ESLint shareable configs.
+
+## Install
 
 ```sh
 npm install --save-dev oxlint-config-presets
 # or
 pnpm add -D oxlint-config-presets
+# or
+yarn add -D oxlint-config-presets
 ```
 
-Then extend the config you want in your `.oxlintrc.json`:
+## Quick start
+
+Pick a preset and extend it in your `.oxlintrc.json`:
 
 ```json
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "extends": ["./node_modules/oxlint-config-presets/airbnb/hooks.json"]
+  "extends": ["./node_modules/oxlint-config-presets/airbnb.json"]
 }
 ```
 
-Multiple configs can be combined. Later entries take precedence:
+You can also compose multiple presets. Later entries override earlier ones:
 
 ```json
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "extends": [
-    "./node_modules/oxlint-config-presets/airbnb/base.json",
-    "./node_modules/oxlint-config-presets/airbnb/hooks.json"
+    "./node_modules/oxlint-config-presets/airbnb.json",
+    "./node_modules/oxlint-config-presets/airbnb/hooks.json",
+    "./node_modules/oxlint-config-presets/@typescript-eslint/strict-type-checked.json"
   ]
 }
 ```
 
-> **Note:** oxlint's `extends` field requires a `.json` file path relative to your config file. Use `./node_modules/oxlint-config-presets/<config>.json` to reference configs from this package.
+> [!NOTE]
+> Oxlint currently expects `extends` values to be **JSON file paths** relative to your config file.
+> For presets in this package, use `./node_modules/oxlint-config-presets/<config>.json`.
 
 <!-- GENERATED CONFIGS START -->
 
