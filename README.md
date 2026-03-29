@@ -25,7 +25,7 @@ Pick a preset and extend it in your `.oxlintrc.json`:
 ```json
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "extends": ["./node_modules/oxlint-config-presets/airbnb/hooks.json"]
+  "extends": ["./node_modules/oxlint-config-presets/airbnb.json"]
 }
 ```
 
@@ -35,9 +35,9 @@ You can also compose multiple presets. Later entries override earlier ones:
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "extends": [
-    "./node_modules/oxlint-config-presets/airbnb/base.json",
+    "./node_modules/oxlint-config-presets/airbnb.json",
     "./node_modules/oxlint-config-presets/airbnb/hooks.json",
-    "./node_modules/oxlint-config-presets/prettier.json"
+    "./node_modules/oxlint-config-presets/@typescript-eslint/strict-type-checked.json"
   ]
 }
 ```
