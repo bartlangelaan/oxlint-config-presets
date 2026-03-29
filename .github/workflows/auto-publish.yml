@@ -34,13 +34,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Check if publish package differs from npm latest
-        id: diff
+      - name: Decide publish/bump strategy
+        id: plan
         shell: bash
         run: |
           set -euo pipefail
 
           PACKAGE_NAME=$(node -p "require('./package.json').name")
+          LOCAL_VERSION=$(node -p "require('./package.json').version")
 
           pnpm prepack
 
@@ -48,12 +49,24 @@ jobs:
           local_dir=$(mktemp -d)
 
           if (cd "$remote_dir" && npm pack "${PACKAGE_NAME}@latest" --silent >/dev/null 2>&1); then
+            REMOTE_VERSION=$(npm view "${PACKAGE_NAME}@latest" version)
+            echo "Local version: $LOCAL_VERSION"
+            echo "Remote version: $REMOTE_VERSION"
+
+            if [ "$LOCAL_VERSION" != "$REMOTE_VERSION" ]; then
+              echo "Version already differs; publish without bump."
+              echo "should_publish=true" >> "$GITHUB_OUTPUT"
+              echo "should_bump=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+
             remote_tgz=$(find "$remote_dir" -maxdepth 1 -name '*.tgz' -print -quit)
             mkdir -p "$remote_dir/extracted"
             tar -xzf "$remote_tgz" -C "$remote_dir/extracted"
           else
             echo "Package not found on npm yet; publishing required."
-            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "should_publish=true" >> "$GITHUB_OUTPUT"
+            echo "should_bump=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
@@ -64,35 +77,37 @@ jobs:
 
           if diff -qr "$remote_dir/extracted/package" "$local_dir/extracted/package" >/tmp/package-diff.txt; then
             echo "No differences with npm latest package."
-            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "should_publish=false" >> "$GITHUB_OUTPUT"
+            echo "should_bump=false" >> "$GITHUB_OUTPUT"
           else
             echo "Differences detected with npm latest package."
             cat /tmp/package-diff.txt
-            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "should_publish=true" >> "$GITHUB_OUTPUT"
+            echo "should_bump=true" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Bump patch version
-        if: steps.diff.outputs.changed == 'true'
+        if: steps.plan.outputs.should_bump == 'true'
         run: npm version patch --no-git-tag-version
 
       - name: Run checks before commit
-        if: steps.diff.outputs.changed == 'true'
+        if: steps.plan.outputs.should_bump == 'true'
         run: pnpm before-commit
 
       - name: Commit version bump
-        if: steps.diff.outputs.changed == 'true'
+        if: steps.plan.outputs.should_bump == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package.json pnpm-lock.yaml
+          git add -A
           git commit -m "chore: release $(node -p \"require('./package.json').version\")"
 
       - name: Publish to npm
-        if: steps.diff.outputs.changed == 'true'
+        if: steps.plan.outputs.should_publish == 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm publish --no-git-checks
 
       - name: Push version bump commit
-        if: steps.diff.outputs.changed == 'true'
+        if: steps.plan.outputs.should_bump == 'true'
         run: git push
