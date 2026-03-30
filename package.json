@@ -1,6 +1,6 @@
 {
   "name": "oxlint-config-presets",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Oxlint configurations ported from popular ESLint styleguides",
   "keywords": [
     "config",
