@@ -4,6 +4,7 @@
     "typeAware": true
   },
   "rules": {
+    "accessor-pairs": "off",
     "array-callback-return": [
       "error",
       {
@@ -11,6 +12,7 @@
       }
     ],
     "block-scoped-var": "error",
+    "complexity": ["off", 20],
     "class-methods-use-this": [
       "error",
       {
@@ -47,6 +49,7 @@
     "no-caller": "error",
     "no-case-declarations": "error",
     "no-constructor-return": "error",
+    "no-div-regex": "off",
     "no-else-return": [
       "error",
       {
@@ -60,6 +63,7 @@
       }
     ],
     "no-empty-pattern": "error",
+    "no-eq-null": "off",
     "no-eval": "error",
     "no-extend-native": "error",
     "no-extra-bind": "error",
@@ -69,6 +73,15 @@
       "error",
       {
         "exceptions": []
+      }
+    ],
+    "no-implicit-coercion": [
+      "off",
+      {
+        "boolean": false,
+        "number": true,
+        "string": true,
+        "allow": []
       }
     ],
     "no-iterator": "error",
@@ -81,6 +94,15 @@
     ],
     "no-lone-blocks": "error",
     "no-loop-func": "error",
+    "no-magic-numbers": [
+      "off",
+      {
+        "ignore": [],
+        "ignoreArrayIndexes": true,
+        "enforceConst": true,
+        "detectObjects": false
+      }
+    ],
     "no-multi-str": "error",
     "no-new": "error",
     "no-new-func": "error",
@@ -118,6 +140,7 @@
     "no-self-compare": "error",
     "no-sequences": "error",
     "no-throw-literal": "error",
+    "no-unmodified-loop-condition": "off",
     "no-unused-expressions": [
       "error",
       {
@@ -127,11 +150,19 @@
       }
     ],
     "no-unused-labels": "error",
+    "no-useless-call": "off",
     "no-useless-catch": "error",
     "no-useless-concat": "error",
     "no-useless-escape": "error",
     "no-useless-return": "error",
     "no-void": "error",
+    "no-warning-comments": [
+      "off",
+      {
+        "terms": ["todo", "fixme", "xxx"],
+        "location": "start"
+      }
+    ],
     "no-with": "error",
     "prefer-promise-reject-errors": [
       "error",
@@ -140,6 +171,7 @@
       }
     ],
     "radix": "error",
+    "require-await": "off",
     "vars-on-top": "error",
     "yoda": "error",
     "for-direction": "error",
@@ -188,6 +220,7 @@
         "disallowArithmeticOperators": true
       }
     ],
+    "no-unused-private-class-members": "off",
     "no-useless-backreference": "error",
     "use-isnan": "error",
     "valid-typeof": [
@@ -196,7 +229,46 @@
         "requireStringLiterals": true
       }
     ],
+    "capitalized-comments": [
+      "off",
+      "never",
+      {
+        "line": {
+          "ignorePattern": ".*",
+          "ignoreInlineComments": true,
+          "ignoreConsecutiveComments": true
+        },
+        "block": {
+          "ignorePattern": ".*",
+          "ignoreInlineComments": true,
+          "ignoreConsecutiveComments": true
+        }
+      }
+    ],
     "func-names": "warn",
+    "func-style": ["off", "expression"],
+    "id-length": "off",
+    "max-depth": ["off", 4],
+    "max-lines": [
+      "off",
+      {
+        "max": 300,
+        "skipBlankLines": true,
+        "skipComments": true
+      }
+    ],
+    "max-lines-per-function": [
+      "off",
+      {
+        "max": 50,
+        "skipBlankLines": true,
+        "skipComments": true,
+        "IIFEs": true
+      }
+    ],
+    "max-nested-callbacks": "off",
+    "max-params": ["off", 3],
+    "max-statements": ["off", 10],
     "new-cap": [
       "error",
       {
@@ -209,10 +281,13 @@
     "no-array-constructor": "error",
     "no-bitwise": "error",
     "no-continue": "error",
+    "no-inline-comments": "off",
     "no-lonely-if": "error",
     "no-multi-assign": ["error"],
+    "no-negated-condition": "off",
     "no-nested-ternary": "error",
     "no-plusplus": "error",
+    "no-ternary": "off",
     "no-unneeded-ternary": [
       "error",
       {
@@ -221,7 +296,18 @@
     ],
     "operator-assignment": ["error", "always"],
     "prefer-exponentiation-operator": "error",
+    "prefer-object-spread": "off",
+    "sort-keys": [
+      "off",
+      "asc",
+      {
+        "caseSensitive": false,
+        "natural": true
+      }
+    ],
+    "sort-vars": "off",
     "unicode-bom": ["error", "never"],
+    "init-declarations": "off",
     "no-delete-var": "error",
     "no-label-var": "error",
     "no-restricted-globals": [
@@ -296,6 +382,7 @@
     "no-shadow": "error",
     "no-shadow-restricted-names": "error",
     "no-undef": "error",
+    "no-undefined": "off",
     "no-unused-vars": [
       "error",
       {
@@ -311,6 +398,8 @@
         "classes": true,
         "variables": true
       }
-    ]
+    ],
+    "prefer-numeric-literals": "off",
+    "no-var": "off"
   }
 }

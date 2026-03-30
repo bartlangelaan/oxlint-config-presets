@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@oxlint/migrate':
+    hash: 26bf16f0bd7d4d337429bdd8d9e70de145b5025a35a23da4aaaa95a0bdffadcf
+    path: patches/@oxlint__migrate.patch
+
 importers:
 
   .:
@@ -16,7 +21,7 @@ importers:
         version: 10.0.1(eslint@8.57.1)
       '@oxlint/migrate':
         specifier: ^1.57.0
-        version: 1.57.0(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)
+        version: 1.57.0(patch_hash=26bf16f0bd7d4d337429bdd8d9e70de145b5025a35a23da4aaaa95a0bdffadcf)(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)
       '@types/node':
         specifier: ^25.5.0
         version: 25.5.0
@@ -7399,7 +7404,7 @@ snapshots:
   '@oxlint/binding-win32-x64-msvc@1.57.0':
     optional: true
 
-  '@oxlint/migrate@1.57.0(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)':
+  '@oxlint/migrate@1.57.0(patch_hash=26bf16f0bd7d4d337429bdd8d9e70de145b5025a35a23da4aaaa95a0bdffadcf)(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1)':
     dependencies:
       commander: 14.0.3
       globals: 17.4.0

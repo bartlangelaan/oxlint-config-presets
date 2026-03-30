@@ -1,4 +1,6 @@
 {
   "plugins": ["import"],
-  "rules": {}
+  "rules": {
+    "import-x/named": "off"
+  }
 }

@@ -1,30 +1,45 @@
 {
   "plugins": ["react"],
   "rules": {
+    "react/button-has-type": "off",
+    "react/display-name": "off",
+    "react/forbid-dom-props": "off",
+    "react/forbid-elements": "off",
     "react/iframe-missing-sandbox": "error",
+    "react/jsx-boolean-value": "off",
     "react/jsx-curly-brace-presence": ["error", "never"],
+    "react/jsx-filename-extension": "off",
     "react/jsx-fragments": ["error", "syntax"],
+    "react/jsx-handler-names": "off",
     "react/jsx-key": [
       "error",
       {
         "checkFragmentShorthand": true
       }
     ],
+    "react/jsx-max-depth": "off",
     "react/jsx-no-comment-textnodes": "error",
     "react/jsx-no-constructed-context-values": "error",
     "react/jsx-no-duplicate-props": "error",
     "react/jsx-no-script-url": "error",
+    "react/jsx-no-target-blank": "off",
     "react/jsx-no-undef": "error",
     "react/jsx-no-useless-fragment": "error",
     "react/jsx-pascal-case": "error",
+    "react/jsx-props-no-spreading": "off",
+    "react/no-array-index-key": "off",
     "react/no-children-prop": "error",
+    "react/no-danger": "off",
     "react/no-danger-with-children": "error",
+    "react/no-did-mount-set-state": "off",
     "react/no-direct-mutation-state": "error",
     "react/no-find-dom-node": "error",
     "react/no-is-mounted": "error",
+    "react/no-multi-comp": "off",
     "react/no-namespace": "error",
     "react/no-redundant-should-component-update": "error",
     "react/no-render-return-value": "error",
+    "react/no-set-state": "off",
     "react/no-string-refs": "error",
     "react/no-this-in-sfc": "error",
     "react/no-unescaped-entities": "error",
@@ -35,9 +50,12 @@
         "checkAliases": true
       }
     ],
+    "react/no-will-update-set-state": "off",
     "react/prefer-es6-class": ["error", "always"],
+    "react/react-in-jsx-scope": "off",
     "react/require-render-return": "error",
     "react/self-closing-comp": "error",
+    "react/state-in-constructor": "off",
     "react/style-prop-object": "error",
     "react/void-dom-elements-no-children": "error"
   }

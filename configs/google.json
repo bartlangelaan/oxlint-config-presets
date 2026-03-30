@@ -1,6 +1,7 @@
 {
   "plugins": [],
   "rules": {
+    "no-cond-assign": "off",
     "no-irregular-whitespace": "error",
     "no-unexpected-multiline": "error",
     "curly": ["error", "multi-line"],

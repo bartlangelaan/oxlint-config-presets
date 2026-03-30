@@ -1,4 +1,10 @@
 {
   "plugins": ["unicorn"],
-  "rules": {}
+  "rules": {
+    "curly": "off",
+    "no-unexpected-multiline": "off",
+    "unicorn/empty-brace-spaces": "off",
+    "unicorn/no-nested-ternary": "off",
+    "unicorn/number-literal-case": "off"
+  }
 }
