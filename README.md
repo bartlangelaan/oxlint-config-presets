@@ -49,70 +49,84 @@ You can also compose multiple presets. Later entries override earlier ones:
 
 ## Available configs
 
-| Source package                     | Source config                   | Oxlint config                                      |
-| ---------------------------------- | ------------------------------- | -------------------------------------------------- |
-| `eslint-config-airbnb`             |                                 | `airbnb.json`                                      |
-| `eslint-config-airbnb`             | `base`                          | `airbnb/base.json`                                 |
-| `eslint-config-airbnb`             | `hooks`                         | `airbnb/hooks.json`                                |
-| `eslint-config-airbnb`             | `legacy`                        | `airbnb/legacy.json`                               |
-| `eslint-config-airbnb`             | `whitespace`                    | `airbnb/whitespace.json`                           |
-| `eslint-config-standard`           |                                 | `standard.json`                                    |
-| `eslint-config-google`             |                                 | `google.json`                                      |
-| `@typescript-eslint/eslint-plugin` | `recommended`                   | `@typescript-eslint/recommended.json`              |
-| `@typescript-eslint/eslint-plugin` | `recommended-type-checked`      | `@typescript-eslint/recommended-type-checked.json` |
-| `@typescript-eslint/eslint-plugin` | `strict`                        | `@typescript-eslint/strict.json`                   |
-| `@typescript-eslint/eslint-plugin` | `strict-type-checked`           | `@typescript-eslint/strict-type-checked.json`      |
-| `@typescript-eslint/eslint-plugin` | `stylistic`                     | `@typescript-eslint/stylistic.json`                |
-| `@typescript-eslint/eslint-plugin` | `stylistic-type-checked`        | `@typescript-eslint/stylistic-type-checked.json`   |
-| `@typescript-eslint/eslint-plugin` | `all`                           | `@typescript-eslint/all.json`                      |
-| `@eslint/js`                       | `recommended`                   | `@eslint/recommended.json`                         |
-| `@eslint/js`                       | `all`                           | `@eslint/all.json`                                 |
-| `eslint-config-xo`                 |                                 | `xo.json`                                          |
-| `eslint-config-problems`           |                                 | `problems.json`                                    |
-| `eslint-config-hardcore`           |                                 | `hardcore.json`                                    |
-| `eslint-config-wikimedia`          |                                 | `wikimedia.json`                                   |
-| `eslint-config-eslint`             |                                 | `eslint.json`                                      |
-| `eslint-config-eslint`             | `base`                          | `eslint/base.json`                                 |
-| `eslint-config-alloy`              |                                 | `alloy.json`                                       |
-| `eslint-config-alloy`              | `react`                         | `alloy/react.json`                                 |
-| `eslint-config-alloy`              | `typescript`                    | `alloy/typescript.json`                            |
-| `eslint-config-prettier`           |                                 | `prettier.json`                                    |
-| `@antfu/eslint-config`             |                                 | `@antfu.json`                                      |
-| `eslint-plugin-import`             | `recommended`                   | `import/recommended.json`                          |
-| `eslint-plugin-import`             | `errors`                        | `import/errors.json`                               |
-| `eslint-plugin-import`             | `warnings`                      | `import/warnings.json`                             |
-| `eslint-plugin-import`             | `react`                         | `import/react.json`                                |
-| `eslint-plugin-import`             | `typescript`                    | `import/typescript.json`                           |
-| `eslint-plugin-import-x`           | `recommended`                   | `import-x/recommended.json`                        |
-| `eslint-plugin-import-x`           | `errors`                        | `import-x/errors.json`                             |
-| `eslint-plugin-import-x`           | `warnings`                      | `import-x/warnings.json`                           |
-| `eslint-plugin-import-x`           | `react`                         | `import-x/react.json`                              |
-| `eslint-plugin-import-x`           | `typescript`                    | `import-x/typescript.json`                         |
-| `eslint-config-next`               | `recommended`                   | `next/recommended.json`                            |
-| `eslint-config-next`               | `core-web-vitals`               | `next/core-web-vitals.json`                        |
-| `eslint-plugin-react-perf`         | `recommended`                   | `react-perf/recommended.json`                      |
-| `eslint-plugin-react-perf`         | `all`                           | `react-perf/all.json`                              |
-| `eslint-plugin-jsdoc`              | `recommended`                   | `jsdoc/recommended.json`                           |
-| `eslint-plugin-jsdoc`              | `recommended-typescript`        | `jsdoc/recommended-typescript.json`                |
-| `eslint-plugin-jsdoc`              | `recommended-typescript-flavor` | `jsdoc/recommended-typescript-flavor.json`         |
-| `eslint-plugin-jsdoc`              | `recommended-tsdoc`             | `jsdoc/recommended-tsdoc.json`                     |
-| `eslint-plugin-jsx-a11y`           | `recommended`                   | `jsx-a11y/recommended.json`                        |
-| `eslint-plugin-jsx-a11y`           | `strict`                        | `jsx-a11y/strict.json`                             |
-| `eslint-plugin-n`                  | `recommended`                   | `n/recommended.json`                               |
-| `eslint-plugin-n`                  | `recommended-module`            | `n/recommended-module.json`                        |
-| `eslint-plugin-n`                  | `recommended-script`            | `n/recommended-script.json`                        |
-| `eslint-plugin-promise`            | `recommended`                   | `promise/recommended.json`                         |
-| `eslint-plugin-jest`               | `recommended`                   | `jest/recommended.json`                            |
-| `eslint-plugin-jest`               | `style`                         | `jest/style.json`                                  |
-| `eslint-plugin-jest`               | `all`                           | `jest/all.json`                                    |
-| `@vitest/eslint-plugin`            | `recommended`                   | `@vitest/recommended.json`                         |
-| `@vitest/eslint-plugin`            | `all`                           | `@vitest/all.json`                                 |
-| `eslint-plugin-vue`                | `essential`                     | `vue/essential.json`                               |
-| `eslint-plugin-vue`                | `strongly-recommended`          | `vue/strongly-recommended.json`                    |
-| `eslint-plugin-vue`                | `recommended`                   | `vue/recommended.json`                             |
-| `eslint-plugin-vue`                | `vue2-essential`                | `vue/vue2-essential.json`                          |
-| `eslint-plugin-vue`                | `vue2-strongly-recommended`     | `vue/vue2-strongly-recommended.json`               |
-| `eslint-plugin-vue`                | `vue2-recommended`              | `vue/vue2-recommended.json`                        |
+- **eslint-config-airbnb**
+  - _(default)_ `airbnb.json`
+  - base `airbnb/base.json`
+  - hooks `airbnb/hooks.json`
+  - legacy `airbnb/legacy.json`
+  - whitespace `airbnb/whitespace.json`
+- **eslint-config-standard** `standard.json`
+- **eslint-config-google** `google.json`
+- **@typescript-eslint/eslint-plugin**
+  - recommended `@typescript-eslint/recommended.json`
+  - recommended-type-checked `@typescript-eslint/recommended-type-checked.json`
+  - strict `@typescript-eslint/strict.json`
+  - strict-type-checked `@typescript-eslint/strict-type-checked.json`
+  - stylistic `@typescript-eslint/stylistic.json`
+  - stylistic-type-checked `@typescript-eslint/stylistic-type-checked.json`
+  - all `@typescript-eslint/all.json`
+- **@eslint/js**
+  - recommended `@eslint/recommended.json`
+  - all `@eslint/all.json`
+- **eslint-config-xo** `xo.json`
+- **eslint-config-problems** `problems.json`
+- **eslint-config-hardcore** `hardcore.json`
+- **eslint-config-wikimedia** `wikimedia.json`
+- **eslint-config-eslint**
+  - _(default)_ `eslint.json`
+  - base `eslint/base.json`
+- **eslint-config-alloy**
+  - _(default)_ `alloy.json`
+  - react `alloy/react.json`
+  - typescript `alloy/typescript.json`
+- **eslint-config-prettier** `prettier.json`
+- **@antfu/eslint-config** `@antfu.json`
+- **eslint-plugin-import**
+  - recommended `import/recommended.json`
+  - errors `import/errors.json`
+  - warnings `import/warnings.json`
+  - react `import/react.json`
+  - typescript `import/typescript.json`
+- **eslint-plugin-import-x**
+  - recommended `import-x/recommended.json`
+  - errors `import-x/errors.json`
+  - warnings `import-x/warnings.json`
+  - react `import-x/react.json`
+  - typescript `import-x/typescript.json`
+- **eslint-config-next**
+  - recommended `next/recommended.json`
+  - core-web-vitals `next/core-web-vitals.json`
+- **eslint-plugin-react-perf**
+  - recommended `react-perf/recommended.json`
+  - all `react-perf/all.json`
+- **eslint-plugin-jsdoc**
+  - recommended `jsdoc/recommended.json`
+  - recommended-typescript `jsdoc/recommended-typescript.json`
+  - recommended-typescript-flavor `jsdoc/recommended-typescript-flavor.json`
+  - recommended-tsdoc `jsdoc/recommended-tsdoc.json`
+- **eslint-plugin-jsx-a11y**
+  - recommended `jsx-a11y/recommended.json`
+  - strict `jsx-a11y/strict.json`
+- **eslint-plugin-n**
+  - recommended `n/recommended.json`
+  - recommended-module `n/recommended-module.json`
+  - recommended-script `n/recommended-script.json`
+- **eslint-plugin-promise**
+  - recommended `promise/recommended.json`
+- **eslint-plugin-jest**
+  - recommended `jest/recommended.json`
+  - style `jest/style.json`
+  - all `jest/all.json`
+- **@vitest/eslint-plugin**
+  - recommended `@vitest/recommended.json`
+  - all `@vitest/all.json`
+- **eslint-plugin-vue**
+  - essential `vue/essential.json`
+  - strongly-recommended `vue/strongly-recommended.json`
+  - recommended `vue/recommended.json`
+  - vue2-essential `vue/vue2-essential.json`
+  - vue2-strongly-recommended `vue/vue2-strongly-recommended.json`
+  - vue2-recommended `vue/vue2-recommended.json`
 
 Generated with `@oxlint/migrate@1.57.0`.
 

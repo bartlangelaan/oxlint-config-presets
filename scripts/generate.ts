@@ -863,18 +863,37 @@ function skippedSection(skipped: SkippedRulesByCategory): string {
 const rootReadme = readFileSync(readmePath, 'utf-8').trimEnd();
 const oxlintMigrateVersion = getInstalledPackageVersion('@oxlint/migrate');
 
-const tableRows = results
-  .map(
-    ({ config }) =>
-      `| \`${config.sourcePackage}\` | ${config.sourceConfig ? `\`${config.sourceConfig}\`` : ''} | \`${outputFor(config)}\` |`,
-  )
+const groupedConfigs = new Map<string, { sourceConfig?: string; output: string }[]>();
+
+for (const { config } of results) {
+  const entries = groupedConfigs.get(config.sourcePackage) ?? [];
+  entries.push({
+    sourceConfig: config.sourceConfig,
+    output: outputFor(config),
+  });
+  groupedConfigs.set(config.sourcePackage, entries);
+}
+
+const availableConfigsList = [...groupedConfigs.entries()]
+  .map(([sourcePackage, entries]) => {
+    if (entries.length === 1 && !entries[0].sourceConfig) {
+      return `- **${sourcePackage}** \`${entries[0].output}\``;
+    }
+
+    const variants = entries
+      .map(({ sourceConfig, output }) => {
+        const label = sourceConfig ? sourceConfig : '*(default)*';
+        return `  - ${label} \`${output}\``;
+      })
+      .join('\n');
+
+    return `- **${sourcePackage}**\n${variants}`;
+  })
   .join('\n');
 
 const table =
   `## Available configs\n\n` +
-  `| Source package | Source config | Oxlint config |\n` +
-  `|---|---|---|\n` +
-  tableRows +
+  availableConfigsList +
   `\n\n` +
   `Generated with \`@oxlint/migrate@${oxlintMigrateVersion}\`.`;
 
