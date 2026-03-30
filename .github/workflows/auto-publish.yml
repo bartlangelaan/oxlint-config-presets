@@ -76,8 +76,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          VERSION=$(node -p "require('./package.json').version")
           git add -A
-          git commit -m "Release $(node -p \"require('./package.json').version\")"
+          git commit -m "Release $VERSION"
 
       - name: Publish to npm
         if: steps.plan.outputs.should_publish == 'true'
