@@ -49,14 +49,6 @@ You can also compose multiple presets. Later entries override earlier ones:
 
 ## Available configs
 
-- **eslint-config-airbnb**
-  - _(default)_ `airbnb.json`
-  - base `airbnb/base.json`
-  - hooks `airbnb/hooks.json`
-  - legacy `airbnb/legacy.json`
-  - whitespace `airbnb/whitespace.json`
-- **eslint-config-standard** `standard.json`
-- **eslint-config-google** `google.json`
 - **@typescript-eslint/eslint-plugin**
   - recommended `@typescript-eslint/recommended.json`
   - recommended-type-checked `@typescript-eslint/recommended-type-checked.json`
@@ -65,6 +57,14 @@ You can also compose multiple presets. Later entries override earlier ones:
   - stylistic `@typescript-eslint/stylistic.json`
   - stylistic-type-checked `@typescript-eslint/stylistic-type-checked.json`
   - all `@typescript-eslint/all.json`
+- **eslint-config-standard** `standard.json`
+- **eslint-config-google** `google.json`
+- **eslint-config-airbnb**
+  - _(default)_ `airbnb.json`
+  - base `airbnb/base.json`
+  - hooks `airbnb/hooks.json`
+  - legacy `airbnb/legacy.json`
+  - whitespace `airbnb/whitespace.json`
 - **@eslint/js**
   - recommended `@eslint/recommended.json`
   - all `@eslint/all.json`
@@ -129,6 +129,180 @@ You can also compose multiple presets. Later entries override earlier ones:
   - vue2-recommended `vue/vue2-recommended.json`
 
 Generated with `@oxlint/migrate@1.57.0`.
+
+### `@typescript-eslint/recommended.json`
+
+```json
+"./node_modules/oxlint-config-presets/@typescript-eslint/recommended.json"
+```
+
+Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
+
+<details>
+<summary>20 rules successfully migrated</summary>
+
+`@typescript-eslint/ban-ts-comment`, `no-array-constructor`, `@typescript-eslint/no-duplicate-enum-values`, `@typescript-eslint/no-empty-object-type`, `@typescript-eslint/no-explicit-any`, `@typescript-eslint/no-extra-non-null-assertion`, `@typescript-eslint/no-misused-new`, `@typescript-eslint/no-namespace`, `@typescript-eslint/no-non-null-asserted-optional-chain`, `@typescript-eslint/no-require-imports`, `@typescript-eslint/no-this-alias`, `@typescript-eslint/no-unnecessary-type-constraint`, `@typescript-eslint/no-unsafe-declaration-merging`, `@typescript-eslint/no-unsafe-function-type`, `no-unused-expressions`, `no-unused-vars`, `@typescript-eslint/no-wrapper-object-types`, `@typescript-eslint/prefer-as-const`, `@typescript-eslint/prefer-namespace-keyword`, `@typescript-eslint/triple-slash-reference`
+
+</details>
+
+### `@typescript-eslint/recommended-type-checked.json`
+
+```json
+"./node_modules/oxlint-config-presets/@typescript-eslint/recommended-type-checked.json"
+```
+
+Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
+
+<details>
+<summary>43 rules successfully migrated</summary>
+
+`@typescript-eslint/await-thenable`, `@typescript-eslint/ban-ts-comment`, `no-array-constructor`, `@typescript-eslint/no-array-delete`, `@typescript-eslint/no-base-to-string`, `@typescript-eslint/no-duplicate-enum-values`, `@typescript-eslint/no-duplicate-type-constituents`, `@typescript-eslint/no-empty-object-type`, `@typescript-eslint/no-explicit-any`, `@typescript-eslint/no-extra-non-null-assertion`, `@typescript-eslint/no-floating-promises`, `@typescript-eslint/no-for-in-array`, `@typescript-eslint/no-implied-eval`, `@typescript-eslint/no-misused-new`, `@typescript-eslint/no-misused-promises`, `@typescript-eslint/no-namespace`, `@typescript-eslint/no-non-null-asserted-optional-chain`, `@typescript-eslint/no-redundant-type-constituents`, `@typescript-eslint/no-require-imports`, `@typescript-eslint/no-this-alias`, `@typescript-eslint/no-unnecessary-type-assertion`, `@typescript-eslint/no-unnecessary-type-constraint`, `@typescript-eslint/no-unsafe-argument`, `@typescript-eslint/no-unsafe-assignment`, `@typescript-eslint/no-unsafe-call`, `@typescript-eslint/no-unsafe-declaration-merging`, `@typescript-eslint/no-unsafe-enum-comparison`, `@typescript-eslint/no-unsafe-function-type`, `@typescript-eslint/no-unsafe-member-access`, `@typescript-eslint/no-unsafe-return`, `@typescript-eslint/no-unsafe-unary-minus`, `no-unused-expressions`, `no-unused-vars`, `@typescript-eslint/no-wrapper-object-types`, `@typescript-eslint/only-throw-error`, `@typescript-eslint/prefer-as-const`, `@typescript-eslint/prefer-namespace-keyword`, `@typescript-eslint/prefer-promise-reject-errors`, `@typescript-eslint/require-await`, `@typescript-eslint/restrict-plus-operands`, `@typescript-eslint/restrict-template-expressions`, `@typescript-eslint/triple-slash-reference`, `@typescript-eslint/unbound-method`
+
+</details>
+
+### `@typescript-eslint/strict.json`
+
+```json
+"./node_modules/oxlint-config-presets/@typescript-eslint/strict.json"
+```
+
+Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
+
+<details>
+<summary>28 rules successfully migrated</summary>
+
+`@typescript-eslint/ban-ts-comment`, `no-array-constructor`, `@typescript-eslint/no-duplicate-enum-values`, `@typescript-eslint/no-dynamic-delete`, `@typescript-eslint/no-empty-object-type`, `@typescript-eslint/no-explicit-any`, `@typescript-eslint/no-extra-non-null-assertion`, `@typescript-eslint/no-extraneous-class`, `@typescript-eslint/no-invalid-void-type`, `@typescript-eslint/no-misused-new`, `@typescript-eslint/no-namespace`, `@typescript-eslint/no-non-null-asserted-nullish-coalescing`, `@typescript-eslint/no-non-null-asserted-optional-chain`, `@typescript-eslint/no-non-null-assertion`, `@typescript-eslint/no-require-imports`, `@typescript-eslint/no-this-alias`, `@typescript-eslint/no-unnecessary-type-constraint`, `@typescript-eslint/no-unsafe-declaration-merging`, `@typescript-eslint/no-unsafe-function-type`, `no-unused-expressions`, `no-unused-vars`, `no-useless-constructor`, `@typescript-eslint/no-wrapper-object-types`, `@typescript-eslint/prefer-as-const`, `@typescript-eslint/prefer-literal-enum-member`, `@typescript-eslint/prefer-namespace-keyword`, `@typescript-eslint/triple-slash-reference`, `@typescript-eslint/unified-signatures`
+
+</details>
+
+### `@typescript-eslint/strict-type-checked.json`
+
+```json
+"./node_modules/oxlint-config-presets/@typescript-eslint/strict-type-checked.json"
+```
+
+Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
+
+<details>
+<summary>68 rules successfully migrated</summary>
+
+`@typescript-eslint/await-thenable`, `@typescript-eslint/ban-ts-comment`, `no-array-constructor`, `@typescript-eslint/no-array-delete`, `@typescript-eslint/no-base-to-string`, `@typescript-eslint/no-confusing-void-expression`, `@typescript-eslint/no-deprecated`, `@typescript-eslint/no-duplicate-enum-values`, `@typescript-eslint/no-duplicate-type-constituents`, `@typescript-eslint/no-dynamic-delete`, `@typescript-eslint/no-empty-object-type`, `@typescript-eslint/no-explicit-any`, `@typescript-eslint/no-extra-non-null-assertion`, `@typescript-eslint/no-extraneous-class`, `@typescript-eslint/no-floating-promises`, `@typescript-eslint/no-for-in-array`, `@typescript-eslint/no-implied-eval`, `@typescript-eslint/no-invalid-void-type`, `@typescript-eslint/no-meaningless-void-operator`, `@typescript-eslint/no-misused-new`, `@typescript-eslint/no-misused-promises`, `@typescript-eslint/no-misused-spread`, `@typescript-eslint/no-mixed-enums`, `@typescript-eslint/no-namespace`, `@typescript-eslint/no-non-null-asserted-nullish-coalescing`, `@typescript-eslint/no-non-null-asserted-optional-chain`, `@typescript-eslint/no-non-null-assertion`, `@typescript-eslint/no-redundant-type-constituents`, `@typescript-eslint/no-require-imports`, `@typescript-eslint/no-this-alias`, `@typescript-eslint/no-unnecessary-boolean-literal-compare`, `@typescript-eslint/no-unnecessary-condition`, `@typescript-eslint/no-unnecessary-template-expression`, `@typescript-eslint/no-unnecessary-type-arguments`, `@typescript-eslint/no-unnecessary-type-assertion`, `@typescript-eslint/no-unnecessary-type-constraint`, `@typescript-eslint/no-unnecessary-type-conversion`, `@typescript-eslint/no-unnecessary-type-parameters`, `@typescript-eslint/no-unsafe-argument`, `@typescript-eslint/no-unsafe-assignment`, `@typescript-eslint/no-unsafe-call`, `@typescript-eslint/no-unsafe-declaration-merging`, `@typescript-eslint/no-unsafe-enum-comparison`, `@typescript-eslint/no-unsafe-function-type`, `@typescript-eslint/no-unsafe-member-access`, `@typescript-eslint/no-unsafe-return`, `@typescript-eslint/no-unsafe-unary-minus`, `no-unused-expressions`, `no-unused-vars`, `no-useless-constructor`, `@typescript-eslint/no-useless-default-assignment`, `@typescript-eslint/no-wrapper-object-types`, `@typescript-eslint/only-throw-error`, `@typescript-eslint/prefer-as-const`, `@typescript-eslint/prefer-literal-enum-member`, `@typescript-eslint/prefer-namespace-keyword`, `@typescript-eslint/prefer-promise-reject-errors`, `@typescript-eslint/prefer-reduce-type-parameter`, `@typescript-eslint/prefer-return-this-type`, `@typescript-eslint/related-getter-setter-pairs`, `@typescript-eslint/require-await`, `@typescript-eslint/restrict-plus-operands`, `@typescript-eslint/restrict-template-expressions`, `@typescript-eslint/return-await`, `@typescript-eslint/triple-slash-reference`, `@typescript-eslint/unbound-method`, `@typescript-eslint/unified-signatures`, `@typescript-eslint/use-unknown-in-catch-callback-variable`
+
+</details>
+
+### `@typescript-eslint/stylistic.json`
+
+```json
+"./node_modules/oxlint-config-presets/@typescript-eslint/stylistic.json"
+```
+
+Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
+
+<details>
+<summary>13 rules successfully migrated</summary>
+
+`@typescript-eslint/adjacent-overload-signatures`, `@typescript-eslint/array-type`, `@typescript-eslint/ban-tslint-comment`, `@typescript-eslint/class-literal-property-style`, `@typescript-eslint/consistent-generic-constructors`, `@typescript-eslint/consistent-indexed-object-style`, `@typescript-eslint/consistent-type-assertions`, `@typescript-eslint/consistent-type-definitions`, `@typescript-eslint/no-confusing-non-null-assertion`, `no-empty-function`, `@typescript-eslint/no-inferrable-types`, `@typescript-eslint/prefer-for-of`, `@typescript-eslint/prefer-function-type`
+
+</details>
+
+### `@typescript-eslint/stylistic-type-checked.json`
+
+```json
+"./node_modules/oxlint-config-presets/@typescript-eslint/stylistic-type-checked.json"
+```
+
+Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
+
+<details>
+<summary>21 rules successfully migrated</summary>
+
+`@typescript-eslint/adjacent-overload-signatures`, `@typescript-eslint/array-type`, `@typescript-eslint/ban-tslint-comment`, `@typescript-eslint/class-literal-property-style`, `@typescript-eslint/consistent-generic-constructors`, `@typescript-eslint/consistent-indexed-object-style`, `@typescript-eslint/consistent-type-assertions`, `@typescript-eslint/consistent-type-definitions`, `@typescript-eslint/dot-notation`, `@typescript-eslint/no-confusing-non-null-assertion`, `no-empty-function`, `@typescript-eslint/no-inferrable-types`, `@typescript-eslint/non-nullable-type-assertion-style`, `@typescript-eslint/prefer-find`, `@typescript-eslint/prefer-for-of`, `@typescript-eslint/prefer-function-type`, `@typescript-eslint/prefer-includes`, `@typescript-eslint/prefer-nullish-coalescing`, `@typescript-eslint/prefer-optional-chain`, `@typescript-eslint/prefer-regexp-exec`, `@typescript-eslint/prefer-string-starts-ends-with`
+
+</details>
+
+### `@typescript-eslint/all.json`
+
+```json
+"./node_modules/oxlint-config-presets/@typescript-eslint/all.json"
+```
+
+Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
+
+<details>
+<summary>120 rules successfully migrated</summary>
+
+`@typescript-eslint/adjacent-overload-signatures`, `@typescript-eslint/array-type`, `@typescript-eslint/await-thenable`, `@typescript-eslint/ban-ts-comment`, `@typescript-eslint/ban-tslint-comment`, `@typescript-eslint/class-literal-property-style`, `class-methods-use-this`, `@typescript-eslint/consistent-generic-constructors`, `@typescript-eslint/consistent-indexed-object-style`, `@typescript-eslint/consistent-return`, `@typescript-eslint/consistent-type-assertions`, `@typescript-eslint/consistent-type-definitions`, `@typescript-eslint/consistent-type-exports`, `@typescript-eslint/consistent-type-imports`, `default-param-last`, `@typescript-eslint/dot-notation`, `@typescript-eslint/explicit-function-return-type`, `@typescript-eslint/explicit-module-boundary-types`, `init-declarations`, `max-params`, `no-array-constructor`, `@typescript-eslint/no-array-delete`, `@typescript-eslint/no-base-to-string`, `@typescript-eslint/no-confusing-non-null-assertion`, `@typescript-eslint/no-confusing-void-expression`, `@typescript-eslint/no-deprecated`, `no-dupe-class-members`, `@typescript-eslint/no-duplicate-enum-values`, `@typescript-eslint/no-duplicate-type-constituents`, `@typescript-eslint/no-dynamic-delete`, `no-empty-function`, `@typescript-eslint/no-empty-object-type`, `@typescript-eslint/no-explicit-any`, `@typescript-eslint/no-extra-non-null-assertion`, `@typescript-eslint/no-extraneous-class`, `@typescript-eslint/no-floating-promises`, `@typescript-eslint/no-for-in-array`, `@typescript-eslint/no-implied-eval`, `@typescript-eslint/no-import-type-side-effects`, `@typescript-eslint/no-inferrable-types`, `@typescript-eslint/no-invalid-void-type`, `no-loop-func`, `no-magic-numbers`, `@typescript-eslint/no-meaningless-void-operator`, `@typescript-eslint/no-misused-new`, `@typescript-eslint/no-misused-promises`, `@typescript-eslint/no-misused-spread`, `@typescript-eslint/no-mixed-enums`, `@typescript-eslint/no-namespace`, `@typescript-eslint/no-non-null-asserted-nullish-coalescing`, `@typescript-eslint/no-non-null-asserted-optional-chain`, `@typescript-eslint/no-non-null-assertion`, `no-redeclare`, `@typescript-eslint/no-redundant-type-constituents`, `@typescript-eslint/no-require-imports`, `no-restricted-imports`, `@typescript-eslint/no-restricted-types`, `no-shadow`, `@typescript-eslint/no-this-alias`, `@typescript-eslint/no-unnecessary-boolean-literal-compare`, `@typescript-eslint/no-unnecessary-condition`, `@typescript-eslint/no-unnecessary-parameter-property-assignment`, `@typescript-eslint/no-unnecessary-qualifier`, `@typescript-eslint/no-unnecessary-template-expression`, `@typescript-eslint/no-unnecessary-type-arguments`, `@typescript-eslint/no-unnecessary-type-assertion`, `@typescript-eslint/no-unnecessary-type-constraint`, `@typescript-eslint/no-unnecessary-type-conversion`, `@typescript-eslint/no-unnecessary-type-parameters`, `@typescript-eslint/no-unsafe-argument`, `@typescript-eslint/no-unsafe-assignment`, `@typescript-eslint/no-unsafe-call`, `@typescript-eslint/no-unsafe-declaration-merging`, `@typescript-eslint/no-unsafe-enum-comparison`, `@typescript-eslint/no-unsafe-function-type`, `@typescript-eslint/no-unsafe-member-access`, `@typescript-eslint/no-unsafe-return`, `@typescript-eslint/no-unsafe-type-assertion`, `@typescript-eslint/no-unsafe-unary-minus`, `no-unused-expressions`, `no-unused-vars`, `no-use-before-define`, `no-useless-constructor`, `@typescript-eslint/no-useless-default-assignment`, `@typescript-eslint/no-useless-empty-export`, `@typescript-eslint/no-wrapper-object-types`, `@typescript-eslint/non-nullable-type-assertion-style`, `@typescript-eslint/only-throw-error`, `@typescript-eslint/parameter-properties`, `@typescript-eslint/prefer-as-const`, `@typescript-eslint/prefer-enum-initializers`, `@typescript-eslint/prefer-find`, `@typescript-eslint/prefer-for-of`, `@typescript-eslint/prefer-function-type`, `@typescript-eslint/prefer-includes`, `@typescript-eslint/prefer-literal-enum-member`, `@typescript-eslint/prefer-namespace-keyword`, `@typescript-eslint/prefer-nullish-coalescing`, `@typescript-eslint/prefer-optional-chain`, `@typescript-eslint/prefer-promise-reject-errors`, `@typescript-eslint/prefer-readonly`, `@typescript-eslint/prefer-readonly-parameter-types`, `@typescript-eslint/prefer-reduce-type-parameter`, `@typescript-eslint/prefer-regexp-exec`, `@typescript-eslint/prefer-return-this-type`, `@typescript-eslint/prefer-string-starts-ends-with`, `@typescript-eslint/promise-function-async`, `@typescript-eslint/related-getter-setter-pairs`, `@typescript-eslint/require-array-sort-compare`, `@typescript-eslint/require-await`, `@typescript-eslint/restrict-plus-operands`, `@typescript-eslint/restrict-template-expressions`, `@typescript-eslint/return-await`, `@typescript-eslint/strict-boolean-expressions`, `@typescript-eslint/strict-void-return`, `@typescript-eslint/switch-exhaustiveness-check`, `@typescript-eslint/triple-slash-reference`, `@typescript-eslint/unbound-method`, `@typescript-eslint/unified-signatures`, `@typescript-eslint/use-unknown-in-catch-callback-variable`
+
+</details>
+
+<details>
+<summary>7 rules have no oxlint equivalent</summary>
+
+**Not yet implemented in oxlint**
+
+`@typescript-eslint/explicit-member-accessibility`, `@typescript-eslint/member-ordering`, `@typescript-eslint/method-signature-style`, `@typescript-eslint/naming-convention`, `@typescript-eslint/no-unused-private-class-members`, `@typescript-eslint/prefer-destructuring`
+
+**Not portable to oxlint**
+
+`@typescript-eslint/no-invalid-this`
+
+</details>
+
+### `standard.json`
+
+```json
+"./node_modules/oxlint-config-presets/standard.json"
+```
+
+Extracted from `eslint-config-standard@17.1.0`.
+
+<details>
+<summary>99 rules successfully migrated</summary>
+
+`no-var`, `accessor-pairs`, `array-callback-return`, `constructor-super`, `curly`, `default-case-last`, `@typescript-eslint/dot-notation`, `eqeqeq`, `new-cap`, `no-array-constructor`, `no-async-promise-executor`, `no-caller`, `no-case-declarations`, `no-class-assign`, `no-compare-neg-zero`, `no-cond-assign`, `no-const-assign`, `no-constant-condition`, `no-control-regex`, `no-debugger`, `no-delete-var`, `no-dupe-class-members`, `no-dupe-keys`, `no-duplicate-case`, `no-useless-backreference`, `no-empty`, `no-empty-character-class`, `no-empty-pattern`, `no-eval`, `no-ex-assign`, `no-extend-native`, `no-extra-bind`, `no-extra-boolean-cast`, `no-fallthrough`, `no-func-assign`, `no-global-assign`, `no-import-assign`, `no-invalid-regexp`, `no-irregular-whitespace`, `no-iterator`, `no-labels`, `no-lone-blocks`, `no-loss-of-precision`, `no-misleading-character-class`, `no-prototype-builtins`, `no-useless-catch`, `no-multi-str`, `no-new`, `no-new-func`, `no-new-wrappers`, `no-obj-calls`, `no-proto`, `no-redeclare`, `no-regex-spaces`, `no-return-assign`, `no-self-assign`, `no-self-compare`, `no-sequences`, `no-shadow-restricted-names`, `no-sparse-arrays`, `no-template-curly-in-string`, `no-this-before-super`, `no-throw-literal`, `no-undef`, `no-unexpected-multiline`, `no-unmodified-loop-condition`, `no-unneeded-ternary`, `no-unreachable`, `no-unsafe-finally`, `no-unsafe-negation`, `no-unused-expressions`, `no-unused-vars`, `no-use-before-define`, `no-useless-call`, `no-useless-computed-key`, `no-useless-constructor`, `no-useless-escape`, `no-useless-rename`, `no-useless-return`, `no-void`, `no-with`, `prefer-const`, `prefer-promise-reject-errors`, `symbol-description`, `unicode-bom`, `use-isnan`, `valid-typeof`, `yoda`, `import/export`, `import/first`, `import/no-absolute-path`, `import/no-duplicates`, `import/no-named-default`, `import/no-webpack-loader-syntax`, `promise/param-names`, `node/handle-callback-err`, `node/no-exports-assign`, `node/no-new-require`, `node/no-path-concat`
+
+</details>
+
+<details>
+<summary>62 rules have no oxlint equivalent</summary>
+
+**Not yet implemented in oxlint**
+
+`object-shorthand`, `no-implied-eval`, `no-unreachable-loop`, `one-var`, `prefer-regex-literals`, `n/no-callback-literal`, `n/no-deprecated-api`, `n/process-exit-as-throw`
+
+**Not portable to oxlint**
+
+`array-bracket-spacing`, `arrow-spacing`, `block-spacing`, `brace-style`, `camelcase`, `comma-dangle`, `comma-spacing`, `comma-style`, `computed-property-spacing`, `dot-location`, `eol-last`, `func-call-spacing`, `generator-star-spacing`, `indent`, `key-spacing`, `keyword-spacing`, `lines-between-class-members`, `multiline-ternary`, `new-parens`, `no-dupe-args`, `no-extra-parens`, `no-floating-decimal`, `no-mixed-operators`, `no-mixed-spaces-and-tabs`, `no-multi-spaces`, `no-multiple-empty-lines`, `no-new-object`, `no-new-symbol`, `no-octal`, `no-octal-escape`, `no-tabs`, `no-trailing-spaces`, `no-undef-init`, `no-whitespace-before-property`, `object-curly-newline`, `object-curly-spacing`, `object-property-newline`, `operator-linebreak`, `padded-blocks`, `quote-props`, `quotes`, `rest-spread-spacing`, `semi`, `semi-spacing`, `space-before-blocks`, `space-before-function-paren`, `space-in-parens`, `space-infix-ops`, `space-unary-ops`, `spaced-comment`, `template-curly-spacing`, `template-tag-spacing`, `wrap-iife`, `yield-star-spacing`
+
+</details>
+
+### `google.json`
+
+```json
+"./node_modules/oxlint-config-presets/google.json"
+```
+
+Extracted from `eslint-config-google@0.14.0`.
+
+<details>
+<summary>21 rules successfully migrated</summary>
+
+`no-irregular-whitespace`, `no-unexpected-multiline`, `curly`, `guard-for-in`, `no-caller`, `no-extend-native`, `no-extra-bind`, `no-multi-str`, `no-new-wrappers`, `no-throw-literal`, `no-with`, `prefer-promise-reject-errors`, `no-unused-vars`, `new-cap`, `no-array-constructor`, `constructor-super`, `no-this-before-super`, `no-var`, `prefer-const`, `prefer-rest-params`, `prefer-spread`
+
+</details>
+
+<details>
+<summary>41 rules have no oxlint equivalent</summary>
+
+**Not yet implemented in oxlint**
+
+`valid-jsdoc`, `one-var`, `require-jsdoc`
+
+**Not portable to oxlint**
+
+`no-invalid-this`, `no-multi-spaces`, `array-bracket-spacing`, `block-spacing`, `brace-style`, `camelcase`, `comma-dangle`, `comma-spacing`, `comma-style`, `computed-property-spacing`, `eol-last`, `func-call-spacing`, `indent`, `key-spacing`, `keyword-spacing`, `linebreak-style`, `max-len`, `no-mixed-spaces-and-tabs`, `no-multiple-empty-lines`, `no-new-object`, `no-tabs`, `no-trailing-spaces`, `object-curly-spacing`, `operator-linebreak`, `padded-blocks`, `quote-props`, `quotes`, `semi`, `semi-spacing`, `space-before-blocks`, `space-before-function-paren`, `spaced-comment`, `switch-colon-spacing`, `arrow-parens`, `generator-star-spacing`, `no-new-symbol`, `rest-spread-spacing`, `yield-star-spacing`
+
+</details>
 
 ### `airbnb.json`
 
@@ -304,180 +478,6 @@ These rules are enabled but their configuration options were dropped because oxl
 > react.version "detect" is not supported. Specify an explicit version (e.g., "18.2.0") in your oxlint config.
 > `react.pragma`
 > `propWrapperFunctions`
-
-### `standard.json`
-
-```json
-"./node_modules/oxlint-config-presets/standard.json"
-```
-
-Extracted from `eslint-config-standard@17.1.0`.
-
-<details>
-<summary>99 rules successfully migrated</summary>
-
-`no-var`, `accessor-pairs`, `array-callback-return`, `constructor-super`, `curly`, `default-case-last`, `@typescript-eslint/dot-notation`, `eqeqeq`, `new-cap`, `no-array-constructor`, `no-async-promise-executor`, `no-caller`, `no-case-declarations`, `no-class-assign`, `no-compare-neg-zero`, `no-cond-assign`, `no-const-assign`, `no-constant-condition`, `no-control-regex`, `no-debugger`, `no-delete-var`, `no-dupe-class-members`, `no-dupe-keys`, `no-duplicate-case`, `no-useless-backreference`, `no-empty`, `no-empty-character-class`, `no-empty-pattern`, `no-eval`, `no-ex-assign`, `no-extend-native`, `no-extra-bind`, `no-extra-boolean-cast`, `no-fallthrough`, `no-func-assign`, `no-global-assign`, `no-import-assign`, `no-invalid-regexp`, `no-irregular-whitespace`, `no-iterator`, `no-labels`, `no-lone-blocks`, `no-loss-of-precision`, `no-misleading-character-class`, `no-prototype-builtins`, `no-useless-catch`, `no-multi-str`, `no-new`, `no-new-func`, `no-new-wrappers`, `no-obj-calls`, `no-proto`, `no-redeclare`, `no-regex-spaces`, `no-return-assign`, `no-self-assign`, `no-self-compare`, `no-sequences`, `no-shadow-restricted-names`, `no-sparse-arrays`, `no-template-curly-in-string`, `no-this-before-super`, `no-throw-literal`, `no-undef`, `no-unexpected-multiline`, `no-unmodified-loop-condition`, `no-unneeded-ternary`, `no-unreachable`, `no-unsafe-finally`, `no-unsafe-negation`, `no-unused-expressions`, `no-unused-vars`, `no-use-before-define`, `no-useless-call`, `no-useless-computed-key`, `no-useless-constructor`, `no-useless-escape`, `no-useless-rename`, `no-useless-return`, `no-void`, `no-with`, `prefer-const`, `prefer-promise-reject-errors`, `symbol-description`, `unicode-bom`, `use-isnan`, `valid-typeof`, `yoda`, `import/export`, `import/first`, `import/no-absolute-path`, `import/no-duplicates`, `import/no-named-default`, `import/no-webpack-loader-syntax`, `promise/param-names`, `node/handle-callback-err`, `node/no-exports-assign`, `node/no-new-require`, `node/no-path-concat`
-
-</details>
-
-<details>
-<summary>62 rules have no oxlint equivalent</summary>
-
-**Not yet implemented in oxlint**
-
-`object-shorthand`, `no-implied-eval`, `no-unreachable-loop`, `one-var`, `prefer-regex-literals`, `n/no-callback-literal`, `n/no-deprecated-api`, `n/process-exit-as-throw`
-
-**Not portable to oxlint**
-
-`array-bracket-spacing`, `arrow-spacing`, `block-spacing`, `brace-style`, `camelcase`, `comma-dangle`, `comma-spacing`, `comma-style`, `computed-property-spacing`, `dot-location`, `eol-last`, `func-call-spacing`, `generator-star-spacing`, `indent`, `key-spacing`, `keyword-spacing`, `lines-between-class-members`, `multiline-ternary`, `new-parens`, `no-dupe-args`, `no-extra-parens`, `no-floating-decimal`, `no-mixed-operators`, `no-mixed-spaces-and-tabs`, `no-multi-spaces`, `no-multiple-empty-lines`, `no-new-object`, `no-new-symbol`, `no-octal`, `no-octal-escape`, `no-tabs`, `no-trailing-spaces`, `no-undef-init`, `no-whitespace-before-property`, `object-curly-newline`, `object-curly-spacing`, `object-property-newline`, `operator-linebreak`, `padded-blocks`, `quote-props`, `quotes`, `rest-spread-spacing`, `semi`, `semi-spacing`, `space-before-blocks`, `space-before-function-paren`, `space-in-parens`, `space-infix-ops`, `space-unary-ops`, `spaced-comment`, `template-curly-spacing`, `template-tag-spacing`, `wrap-iife`, `yield-star-spacing`
-
-</details>
-
-### `google.json`
-
-```json
-"./node_modules/oxlint-config-presets/google.json"
-```
-
-Extracted from `eslint-config-google@0.14.0`.
-
-<details>
-<summary>21 rules successfully migrated</summary>
-
-`no-irregular-whitespace`, `no-unexpected-multiline`, `curly`, `guard-for-in`, `no-caller`, `no-extend-native`, `no-extra-bind`, `no-multi-str`, `no-new-wrappers`, `no-throw-literal`, `no-with`, `prefer-promise-reject-errors`, `no-unused-vars`, `new-cap`, `no-array-constructor`, `constructor-super`, `no-this-before-super`, `no-var`, `prefer-const`, `prefer-rest-params`, `prefer-spread`
-
-</details>
-
-<details>
-<summary>41 rules have no oxlint equivalent</summary>
-
-**Not yet implemented in oxlint**
-
-`valid-jsdoc`, `one-var`, `require-jsdoc`
-
-**Not portable to oxlint**
-
-`no-invalid-this`, `no-multi-spaces`, `array-bracket-spacing`, `block-spacing`, `brace-style`, `camelcase`, `comma-dangle`, `comma-spacing`, `comma-style`, `computed-property-spacing`, `eol-last`, `func-call-spacing`, `indent`, `key-spacing`, `keyword-spacing`, `linebreak-style`, `max-len`, `no-mixed-spaces-and-tabs`, `no-multiple-empty-lines`, `no-new-object`, `no-tabs`, `no-trailing-spaces`, `object-curly-spacing`, `operator-linebreak`, `padded-blocks`, `quote-props`, `quotes`, `semi`, `semi-spacing`, `space-before-blocks`, `space-before-function-paren`, `spaced-comment`, `switch-colon-spacing`, `arrow-parens`, `generator-star-spacing`, `no-new-symbol`, `rest-spread-spacing`, `yield-star-spacing`
-
-</details>
-
-### `@typescript-eslint/recommended.json`
-
-```json
-"./node_modules/oxlint-config-presets/@typescript-eslint/recommended.json"
-```
-
-Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
-
-<details>
-<summary>20 rules successfully migrated</summary>
-
-`@typescript-eslint/ban-ts-comment`, `no-array-constructor`, `@typescript-eslint/no-duplicate-enum-values`, `@typescript-eslint/no-empty-object-type`, `@typescript-eslint/no-explicit-any`, `@typescript-eslint/no-extra-non-null-assertion`, `@typescript-eslint/no-misused-new`, `@typescript-eslint/no-namespace`, `@typescript-eslint/no-non-null-asserted-optional-chain`, `@typescript-eslint/no-require-imports`, `@typescript-eslint/no-this-alias`, `@typescript-eslint/no-unnecessary-type-constraint`, `@typescript-eslint/no-unsafe-declaration-merging`, `@typescript-eslint/no-unsafe-function-type`, `no-unused-expressions`, `no-unused-vars`, `@typescript-eslint/no-wrapper-object-types`, `@typescript-eslint/prefer-as-const`, `@typescript-eslint/prefer-namespace-keyword`, `@typescript-eslint/triple-slash-reference`
-
-</details>
-
-### `@typescript-eslint/recommended-type-checked.json`
-
-```json
-"./node_modules/oxlint-config-presets/@typescript-eslint/recommended-type-checked.json"
-```
-
-Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
-
-<details>
-<summary>43 rules successfully migrated</summary>
-
-`@typescript-eslint/await-thenable`, `@typescript-eslint/ban-ts-comment`, `no-array-constructor`, `@typescript-eslint/no-array-delete`, `@typescript-eslint/no-base-to-string`, `@typescript-eslint/no-duplicate-enum-values`, `@typescript-eslint/no-duplicate-type-constituents`, `@typescript-eslint/no-empty-object-type`, `@typescript-eslint/no-explicit-any`, `@typescript-eslint/no-extra-non-null-assertion`, `@typescript-eslint/no-floating-promises`, `@typescript-eslint/no-for-in-array`, `@typescript-eslint/no-implied-eval`, `@typescript-eslint/no-misused-new`, `@typescript-eslint/no-misused-promises`, `@typescript-eslint/no-namespace`, `@typescript-eslint/no-non-null-asserted-optional-chain`, `@typescript-eslint/no-redundant-type-constituents`, `@typescript-eslint/no-require-imports`, `@typescript-eslint/no-this-alias`, `@typescript-eslint/no-unnecessary-type-assertion`, `@typescript-eslint/no-unnecessary-type-constraint`, `@typescript-eslint/no-unsafe-argument`, `@typescript-eslint/no-unsafe-assignment`, `@typescript-eslint/no-unsafe-call`, `@typescript-eslint/no-unsafe-declaration-merging`, `@typescript-eslint/no-unsafe-enum-comparison`, `@typescript-eslint/no-unsafe-function-type`, `@typescript-eslint/no-unsafe-member-access`, `@typescript-eslint/no-unsafe-return`, `@typescript-eslint/no-unsafe-unary-minus`, `no-unused-expressions`, `no-unused-vars`, `@typescript-eslint/no-wrapper-object-types`, `@typescript-eslint/only-throw-error`, `@typescript-eslint/prefer-as-const`, `@typescript-eslint/prefer-namespace-keyword`, `@typescript-eslint/prefer-promise-reject-errors`, `@typescript-eslint/require-await`, `@typescript-eslint/restrict-plus-operands`, `@typescript-eslint/restrict-template-expressions`, `@typescript-eslint/triple-slash-reference`, `@typescript-eslint/unbound-method`
-
-</details>
-
-### `@typescript-eslint/strict.json`
-
-```json
-"./node_modules/oxlint-config-presets/@typescript-eslint/strict.json"
-```
-
-Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
-
-<details>
-<summary>28 rules successfully migrated</summary>
-
-`@typescript-eslint/ban-ts-comment`, `no-array-constructor`, `@typescript-eslint/no-duplicate-enum-values`, `@typescript-eslint/no-dynamic-delete`, `@typescript-eslint/no-empty-object-type`, `@typescript-eslint/no-explicit-any`, `@typescript-eslint/no-extra-non-null-assertion`, `@typescript-eslint/no-extraneous-class`, `@typescript-eslint/no-invalid-void-type`, `@typescript-eslint/no-misused-new`, `@typescript-eslint/no-namespace`, `@typescript-eslint/no-non-null-asserted-nullish-coalescing`, `@typescript-eslint/no-non-null-asserted-optional-chain`, `@typescript-eslint/no-non-null-assertion`, `@typescript-eslint/no-require-imports`, `@typescript-eslint/no-this-alias`, `@typescript-eslint/no-unnecessary-type-constraint`, `@typescript-eslint/no-unsafe-declaration-merging`, `@typescript-eslint/no-unsafe-function-type`, `no-unused-expressions`, `no-unused-vars`, `no-useless-constructor`, `@typescript-eslint/no-wrapper-object-types`, `@typescript-eslint/prefer-as-const`, `@typescript-eslint/prefer-literal-enum-member`, `@typescript-eslint/prefer-namespace-keyword`, `@typescript-eslint/triple-slash-reference`, `@typescript-eslint/unified-signatures`
-
-</details>
-
-### `@typescript-eslint/strict-type-checked.json`
-
-```json
-"./node_modules/oxlint-config-presets/@typescript-eslint/strict-type-checked.json"
-```
-
-Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
-
-<details>
-<summary>68 rules successfully migrated</summary>
-
-`@typescript-eslint/await-thenable`, `@typescript-eslint/ban-ts-comment`, `no-array-constructor`, `@typescript-eslint/no-array-delete`, `@typescript-eslint/no-base-to-string`, `@typescript-eslint/no-confusing-void-expression`, `@typescript-eslint/no-deprecated`, `@typescript-eslint/no-duplicate-enum-values`, `@typescript-eslint/no-duplicate-type-constituents`, `@typescript-eslint/no-dynamic-delete`, `@typescript-eslint/no-empty-object-type`, `@typescript-eslint/no-explicit-any`, `@typescript-eslint/no-extra-non-null-assertion`, `@typescript-eslint/no-extraneous-class`, `@typescript-eslint/no-floating-promises`, `@typescript-eslint/no-for-in-array`, `@typescript-eslint/no-implied-eval`, `@typescript-eslint/no-invalid-void-type`, `@typescript-eslint/no-meaningless-void-operator`, `@typescript-eslint/no-misused-new`, `@typescript-eslint/no-misused-promises`, `@typescript-eslint/no-misused-spread`, `@typescript-eslint/no-mixed-enums`, `@typescript-eslint/no-namespace`, `@typescript-eslint/no-non-null-asserted-nullish-coalescing`, `@typescript-eslint/no-non-null-asserted-optional-chain`, `@typescript-eslint/no-non-null-assertion`, `@typescript-eslint/no-redundant-type-constituents`, `@typescript-eslint/no-require-imports`, `@typescript-eslint/no-this-alias`, `@typescript-eslint/no-unnecessary-boolean-literal-compare`, `@typescript-eslint/no-unnecessary-condition`, `@typescript-eslint/no-unnecessary-template-expression`, `@typescript-eslint/no-unnecessary-type-arguments`, `@typescript-eslint/no-unnecessary-type-assertion`, `@typescript-eslint/no-unnecessary-type-constraint`, `@typescript-eslint/no-unnecessary-type-conversion`, `@typescript-eslint/no-unnecessary-type-parameters`, `@typescript-eslint/no-unsafe-argument`, `@typescript-eslint/no-unsafe-assignment`, `@typescript-eslint/no-unsafe-call`, `@typescript-eslint/no-unsafe-declaration-merging`, `@typescript-eslint/no-unsafe-enum-comparison`, `@typescript-eslint/no-unsafe-function-type`, `@typescript-eslint/no-unsafe-member-access`, `@typescript-eslint/no-unsafe-return`, `@typescript-eslint/no-unsafe-unary-minus`, `no-unused-expressions`, `no-unused-vars`, `no-useless-constructor`, `@typescript-eslint/no-useless-default-assignment`, `@typescript-eslint/no-wrapper-object-types`, `@typescript-eslint/only-throw-error`, `@typescript-eslint/prefer-as-const`, `@typescript-eslint/prefer-literal-enum-member`, `@typescript-eslint/prefer-namespace-keyword`, `@typescript-eslint/prefer-promise-reject-errors`, `@typescript-eslint/prefer-reduce-type-parameter`, `@typescript-eslint/prefer-return-this-type`, `@typescript-eslint/related-getter-setter-pairs`, `@typescript-eslint/require-await`, `@typescript-eslint/restrict-plus-operands`, `@typescript-eslint/restrict-template-expressions`, `@typescript-eslint/return-await`, `@typescript-eslint/triple-slash-reference`, `@typescript-eslint/unbound-method`, `@typescript-eslint/unified-signatures`, `@typescript-eslint/use-unknown-in-catch-callback-variable`
-
-</details>
-
-### `@typescript-eslint/stylistic.json`
-
-```json
-"./node_modules/oxlint-config-presets/@typescript-eslint/stylistic.json"
-```
-
-Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
-
-<details>
-<summary>13 rules successfully migrated</summary>
-
-`@typescript-eslint/adjacent-overload-signatures`, `@typescript-eslint/array-type`, `@typescript-eslint/ban-tslint-comment`, `@typescript-eslint/class-literal-property-style`, `@typescript-eslint/consistent-generic-constructors`, `@typescript-eslint/consistent-indexed-object-style`, `@typescript-eslint/consistent-type-assertions`, `@typescript-eslint/consistent-type-definitions`, `@typescript-eslint/no-confusing-non-null-assertion`, `no-empty-function`, `@typescript-eslint/no-inferrable-types`, `@typescript-eslint/prefer-for-of`, `@typescript-eslint/prefer-function-type`
-
-</details>
-
-### `@typescript-eslint/stylistic-type-checked.json`
-
-```json
-"./node_modules/oxlint-config-presets/@typescript-eslint/stylistic-type-checked.json"
-```
-
-Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
-
-<details>
-<summary>21 rules successfully migrated</summary>
-
-`@typescript-eslint/adjacent-overload-signatures`, `@typescript-eslint/array-type`, `@typescript-eslint/ban-tslint-comment`, `@typescript-eslint/class-literal-property-style`, `@typescript-eslint/consistent-generic-constructors`, `@typescript-eslint/consistent-indexed-object-style`, `@typescript-eslint/consistent-type-assertions`, `@typescript-eslint/consistent-type-definitions`, `@typescript-eslint/dot-notation`, `@typescript-eslint/no-confusing-non-null-assertion`, `no-empty-function`, `@typescript-eslint/no-inferrable-types`, `@typescript-eslint/non-nullable-type-assertion-style`, `@typescript-eslint/prefer-find`, `@typescript-eslint/prefer-for-of`, `@typescript-eslint/prefer-function-type`, `@typescript-eslint/prefer-includes`, `@typescript-eslint/prefer-nullish-coalescing`, `@typescript-eslint/prefer-optional-chain`, `@typescript-eslint/prefer-regexp-exec`, `@typescript-eslint/prefer-string-starts-ends-with`
-
-</details>
-
-### `@typescript-eslint/all.json`
-
-```json
-"./node_modules/oxlint-config-presets/@typescript-eslint/all.json"
-```
-
-Extracted from `@typescript-eslint/eslint-plugin@8.57.2`.
-
-<details>
-<summary>120 rules successfully migrated</summary>
-
-`@typescript-eslint/adjacent-overload-signatures`, `@typescript-eslint/array-type`, `@typescript-eslint/await-thenable`, `@typescript-eslint/ban-ts-comment`, `@typescript-eslint/ban-tslint-comment`, `@typescript-eslint/class-literal-property-style`, `class-methods-use-this`, `@typescript-eslint/consistent-generic-constructors`, `@typescript-eslint/consistent-indexed-object-style`, `@typescript-eslint/consistent-return`, `@typescript-eslint/consistent-type-assertions`, `@typescript-eslint/consistent-type-definitions`, `@typescript-eslint/consistent-type-exports`, `@typescript-eslint/consistent-type-imports`, `default-param-last`, `@typescript-eslint/dot-notation`, `@typescript-eslint/explicit-function-return-type`, `@typescript-eslint/explicit-module-boundary-types`, `init-declarations`, `max-params`, `no-array-constructor`, `@typescript-eslint/no-array-delete`, `@typescript-eslint/no-base-to-string`, `@typescript-eslint/no-confusing-non-null-assertion`, `@typescript-eslint/no-confusing-void-expression`, `@typescript-eslint/no-deprecated`, `no-dupe-class-members`, `@typescript-eslint/no-duplicate-enum-values`, `@typescript-eslint/no-duplicate-type-constituents`, `@typescript-eslint/no-dynamic-delete`, `no-empty-function`, `@typescript-eslint/no-empty-object-type`, `@typescript-eslint/no-explicit-any`, `@typescript-eslint/no-extra-non-null-assertion`, `@typescript-eslint/no-extraneous-class`, `@typescript-eslint/no-floating-promises`, `@typescript-eslint/no-for-in-array`, `@typescript-eslint/no-implied-eval`, `@typescript-eslint/no-import-type-side-effects`, `@typescript-eslint/no-inferrable-types`, `@typescript-eslint/no-invalid-void-type`, `no-loop-func`, `no-magic-numbers`, `@typescript-eslint/no-meaningless-void-operator`, `@typescript-eslint/no-misused-new`, `@typescript-eslint/no-misused-promises`, `@typescript-eslint/no-misused-spread`, `@typescript-eslint/no-mixed-enums`, `@typescript-eslint/no-namespace`, `@typescript-eslint/no-non-null-asserted-nullish-coalescing`, `@typescript-eslint/no-non-null-asserted-optional-chain`, `@typescript-eslint/no-non-null-assertion`, `no-redeclare`, `@typescript-eslint/no-redundant-type-constituents`, `@typescript-eslint/no-require-imports`, `no-restricted-imports`, `@typescript-eslint/no-restricted-types`, `no-shadow`, `@typescript-eslint/no-this-alias`, `@typescript-eslint/no-unnecessary-boolean-literal-compare`, `@typescript-eslint/no-unnecessary-condition`, `@typescript-eslint/no-unnecessary-parameter-property-assignment`, `@typescript-eslint/no-unnecessary-qualifier`, `@typescript-eslint/no-unnecessary-template-expression`, `@typescript-eslint/no-unnecessary-type-arguments`, `@typescript-eslint/no-unnecessary-type-assertion`, `@typescript-eslint/no-unnecessary-type-constraint`, `@typescript-eslint/no-unnecessary-type-conversion`, `@typescript-eslint/no-unnecessary-type-parameters`, `@typescript-eslint/no-unsafe-argument`, `@typescript-eslint/no-unsafe-assignment`, `@typescript-eslint/no-unsafe-call`, `@typescript-eslint/no-unsafe-declaration-merging`, `@typescript-eslint/no-unsafe-enum-comparison`, `@typescript-eslint/no-unsafe-function-type`, `@typescript-eslint/no-unsafe-member-access`, `@typescript-eslint/no-unsafe-return`, `@typescript-eslint/no-unsafe-type-assertion`, `@typescript-eslint/no-unsafe-unary-minus`, `no-unused-expressions`, `no-unused-vars`, `no-use-before-define`, `no-useless-constructor`, `@typescript-eslint/no-useless-default-assignment`, `@typescript-eslint/no-useless-empty-export`, `@typescript-eslint/no-wrapper-object-types`, `@typescript-eslint/non-nullable-type-assertion-style`, `@typescript-eslint/only-throw-error`, `@typescript-eslint/parameter-properties`, `@typescript-eslint/prefer-as-const`, `@typescript-eslint/prefer-enum-initializers`, `@typescript-eslint/prefer-find`, `@typescript-eslint/prefer-for-of`, `@typescript-eslint/prefer-function-type`, `@typescript-eslint/prefer-includes`, `@typescript-eslint/prefer-literal-enum-member`, `@typescript-eslint/prefer-namespace-keyword`, `@typescript-eslint/prefer-nullish-coalescing`, `@typescript-eslint/prefer-optional-chain`, `@typescript-eslint/prefer-promise-reject-errors`, `@typescript-eslint/prefer-readonly`, `@typescript-eslint/prefer-readonly-parameter-types`, `@typescript-eslint/prefer-reduce-type-parameter`, `@typescript-eslint/prefer-regexp-exec`, `@typescript-eslint/prefer-return-this-type`, `@typescript-eslint/prefer-string-starts-ends-with`, `@typescript-eslint/promise-function-async`, `@typescript-eslint/related-getter-setter-pairs`, `@typescript-eslint/require-array-sort-compare`, `@typescript-eslint/require-await`, `@typescript-eslint/restrict-plus-operands`, `@typescript-eslint/restrict-template-expressions`, `@typescript-eslint/return-await`, `@typescript-eslint/strict-boolean-expressions`, `@typescript-eslint/strict-void-return`, `@typescript-eslint/switch-exhaustiveness-check`, `@typescript-eslint/triple-slash-reference`, `@typescript-eslint/unbound-method`, `@typescript-eslint/unified-signatures`, `@typescript-eslint/use-unknown-in-catch-callback-variable`
-
-</details>
-
-<details>
-<summary>7 rules have no oxlint equivalent</summary>
-
-**Not yet implemented in oxlint**
-
-`@typescript-eslint/explicit-member-accessibility`, `@typescript-eslint/member-ordering`, `@typescript-eslint/method-signature-style`, `@typescript-eslint/naming-convention`, `@typescript-eslint/no-unused-private-class-members`, `@typescript-eslint/prefer-destructuring`
-
-**Not portable to oxlint**
-
-`@typescript-eslint/no-invalid-this`
-
-</details>
 
 ### `@eslint/recommended.json`
 

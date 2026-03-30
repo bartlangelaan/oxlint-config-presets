@@ -381,45 +381,6 @@ const antfuEntries = await (antfuModule.default as () => Promise<FlatConfigArray
 const fromAntfu = () => antfuEntries as MigrateConfig[];
 
 const configs: ConfigEntry[] = [
-  // ── airbnb ────────────────────────────────────────────────────────────────
-  {
-    sourcePackage: 'eslint-config-airbnb',
-    sourceConfig: '',
-    resolveConfig: fromPackage('eslint-config-airbnb'),
-  },
-  {
-    sourcePackage: 'eslint-config-airbnb',
-    sourceConfig: 'base',
-    resolveConfig: fromPackage('eslint-config-airbnb/base'),
-  },
-  {
-    sourcePackage: 'eslint-config-airbnb',
-    sourceConfig: 'hooks',
-    resolveConfig: fromPackage('eslint-config-airbnb/hooks'),
-  },
-  {
-    sourcePackage: 'eslint-config-airbnb',
-    sourceConfig: 'legacy',
-    resolveConfig: fromPackage('eslint-config-airbnb/legacy'),
-  },
-  {
-    sourcePackage: 'eslint-config-airbnb',
-    sourceConfig: 'whitespace',
-    resolveConfig: fromPackage('eslint-config-airbnb/whitespace'),
-  },
-
-  // ── standard / google ─────────────────────────────────────────────────────
-  {
-    sourcePackage: 'eslint-config-standard',
-    sourceConfig: '',
-    resolveConfig: fromPackage('eslint-config-standard'),
-  },
-  {
-    sourcePackage: 'eslint-config-google',
-    sourceConfig: '',
-    resolveConfig: fromPackage('eslint-config-google'),
-  },
-
   // ── @typescript-eslint ────────────────────────────────────────────────────
   {
     sourcePackage: '@typescript-eslint/eslint-plugin',
@@ -455,6 +416,45 @@ const configs: ConfigEntry[] = [
     sourcePackage: '@typescript-eslint/eslint-plugin',
     sourceConfig: 'all',
     resolveConfig: fromTsEslint('flat/all'),
+  },
+
+  // ── standard / google ─────────────────────────────────────────────────────
+  {
+    sourcePackage: 'eslint-config-standard',
+    sourceConfig: '',
+    resolveConfig: fromPackage('eslint-config-standard'),
+  },
+  {
+    sourcePackage: 'eslint-config-google',
+    sourceConfig: '',
+    resolveConfig: fromPackage('eslint-config-google'),
+  },
+
+  // ── airbnb ────────────────────────────────────────────────────────────────
+  {
+    sourcePackage: 'eslint-config-airbnb',
+    sourceConfig: '',
+    resolveConfig: fromPackage('eslint-config-airbnb'),
+  },
+  {
+    sourcePackage: 'eslint-config-airbnb',
+    sourceConfig: 'base',
+    resolveConfig: fromPackage('eslint-config-airbnb/base'),
+  },
+  {
+    sourcePackage: 'eslint-config-airbnb',
+    sourceConfig: 'hooks',
+    resolveConfig: fromPackage('eslint-config-airbnb/hooks'),
+  },
+  {
+    sourcePackage: 'eslint-config-airbnb',
+    sourceConfig: 'legacy',
+    resolveConfig: fromPackage('eslint-config-airbnb/legacy'),
+  },
+  {
+    sourcePackage: 'eslint-config-airbnb',
+    sourceConfig: 'whitespace',
+    resolveConfig: fromPackage('eslint-config-airbnb/whitespace'),
   },
 
   // ── @eslint/js ────────────────────────────────────────────────────────────
