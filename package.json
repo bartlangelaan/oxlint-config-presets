@@ -9,14 +9,14 @@
     "oxlint",
     "styleguide"
   ],
-  "homepage": "https://github.com/bartlangelaan/oxlint-config-presets#readme",
+  "homepage": "https://github.com/popup-plus/oxlint-config-presets#readme",
   "bugs": {
-    "url": "https://github.com/bartlangelaan/oxlint-config-presets/issues"
+    "url": "https://github.com/popup-plus/oxlint-config-presets/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bartlangelaan/oxlint-config-presets.git"
+    "url": "git+https://github.com/popup-plus/oxlint-config-presets.git"
   },
   "type": "module",
   "publishConfig": {
