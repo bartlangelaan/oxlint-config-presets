@@ -84,15 +84,15 @@ You can also compose multiple presets. Later entries override earlier ones:
 - **eslint-plugin-import**
   - recommended `import/recommended.json`
   - errors `import/errors.json`
-  - warnings `import/warnings.json`
-  - react `import/react.json`
+  - stage-0 `import/stage-0.json`
   - typescript `import/typescript.json`
+  - warnings `import/warnings.json`
 - **eslint-plugin-import-x**
   - recommended `import-x/recommended.json`
   - errors `import-x/errors.json`
-  - warnings `import-x/warnings.json`
-  - react `import-x/react.json`
+  - stage-0 `import-x/stage-0.json`
   - typescript `import-x/typescript.json`
+  - warnings `import-x/warnings.json`
 - **eslint-config-next**
   - recommended `next/recommended.json`
   - core-web-vitals `next/core-web-vitals.json`
@@ -101,9 +101,16 @@ You can also compose multiple presets. Later entries override earlier ones:
   - all `react-perf/all.json`
 - **eslint-plugin-jsdoc**
   - recommended `jsdoc/recommended.json`
-  - recommended-typescript `jsdoc/recommended-typescript.json`
-  - recommended-typescript-flavor `jsdoc/recommended-typescript-flavor.json`
+  - recommended-error `jsdoc/recommended-error.json`
   - recommended-tsdoc `jsdoc/recommended-tsdoc.json`
+  - recommended-tsdoc-error `jsdoc/recommended-tsdoc-error.json`
+  - recommended-typescript `jsdoc/recommended-typescript.json`
+  - recommended-typescript-error `jsdoc/recommended-typescript-error.json`
+  - recommended-typescript-flavor `jsdoc/recommended-typescript-flavor.json`
+  - recommended-typescript-flavor-error `jsdoc/recommended-typescript-flavor-error.json`
+  - default-expressions `jsdoc/default-expressions.json`
+  - examples `jsdoc/examples.json`
+  - examples-and-default-expressions `jsdoc/examples-and-default-expressions.json`
 - **eslint-plugin-jsx-a11y**
   - recommended `jsx-a11y/recommended.json`
   - strict `jsx-a11y/strict.json`
@@ -115,18 +122,22 @@ You can also compose multiple presets. Later entries override earlier ones:
   - recommended `promise/recommended.json`
 - **eslint-plugin-jest**
   - recommended `jest/recommended.json`
-  - style `jest/style.json`
   - all `jest/all.json`
+  - style `jest/style.json`
 - **@vitest/eslint-plugin**
   - recommended `@vitest/recommended.json`
   - all `@vitest/all.json`
 - **eslint-plugin-vue**
+  - recommended `vue/recommended.json`
+  - recommended-error `vue/recommended-error.json`
   - essential `vue/essential.json`
   - strongly-recommended `vue/strongly-recommended.json`
-  - recommended `vue/recommended.json`
+  - strongly-recommended-error `vue/strongly-recommended-error.json`
   - vue2-essential `vue/vue2-essential.json`
-  - vue2-strongly-recommended `vue/vue2-strongly-recommended.json`
   - vue2-recommended `vue/vue2-recommended.json`
+  - vue2-recommended-error `vue/vue2-recommended-error.json`
+  - vue2-strongly-recommended `vue/vue2-strongly-recommended.json`
+  - vue2-strongly-recommended-error `vue/vue2-strongly-recommended-error.json`
 
 Generated with `@oxlint/migrate@1.58.0`.
 
@@ -953,28 +964,22 @@ Extracted from `eslint-plugin-import@2.32.0`.
 
 </details>
 
-### `import/warnings.json`
+### `import/stage-0.json`
 
 ```json
-"./node_modules/oxlint-config-presets/import/warnings.json"
+"./node_modules/oxlint-config-presets/import/stage-0.json"
 ```
 
 Extracted from `eslint-plugin-import@2.32.0`.
 
 <details>
-<summary>3 rules successfully migrated</summary>
+<summary>1 rules have no oxlint equivalent</summary>
 
-`import/no-named-as-default`, `import/no-named-as-default-member`, `import/no-duplicates`
+**Not portable to oxlint**
+
+`import/no-deprecated`
 
 </details>
-
-### `import/react.json`
-
-```json
-"./node_modules/oxlint-config-presets/import/react.json"
-```
-
-Extracted from `eslint-plugin-import@2.32.0`.
 
 ### `import/typescript.json`
 
@@ -988,6 +993,21 @@ Extracted from `eslint-plugin-import@2.32.0`.
 <summary>1 rules successfully migrated</summary>
 
 `import/named`
+
+</details>
+
+### `import/warnings.json`
+
+```json
+"./node_modules/oxlint-config-presets/import/warnings.json"
+```
+
+Extracted from `eslint-plugin-import@2.32.0`.
+
+<details>
+<summary>3 rules successfully migrated</summary>
+
+`import/no-named-as-default`, `import/no-named-as-default-member`, `import/no-duplicates`
 
 </details>
 
@@ -1039,6 +1059,38 @@ Extracted from `eslint-plugin-import-x@4.16.2`.
 
 </details>
 
+### `import-x/stage-0.json`
+
+```json
+"./node_modules/oxlint-config-presets/import-x/stage-0.json"
+```
+
+Extracted from `eslint-plugin-import-x@4.16.2`.
+
+<details>
+<summary>1 rules have no oxlint equivalent</summary>
+
+**Not portable to oxlint**
+
+`import-x/no-deprecated`
+
+</details>
+
+### `import-x/typescript.json`
+
+```json
+"./node_modules/oxlint-config-presets/import-x/typescript.json"
+```
+
+Extracted from `eslint-plugin-import-x@4.16.2`.
+
+<details>
+<summary>1 rules successfully migrated</summary>
+
+`import/named`
+
+</details>
+
 ### `import-x/warnings.json`
 
 ```json
@@ -1060,29 +1112,6 @@ Extracted from `eslint-plugin-import-x@4.16.2`.
 **Not yet implemented in oxlint**
 
 `import-x/no-rename-default`
-
-</details>
-
-### `import-x/react.json`
-
-```json
-"./node_modules/oxlint-config-presets/import-x/react.json"
-```
-
-Extracted from `eslint-plugin-import-x@4.16.2`.
-
-### `import-x/typescript.json`
-
-```json
-"./node_modules/oxlint-config-presets/import-x/typescript.json"
-```
-
-Extracted from `eslint-plugin-import-x@4.16.2`.
-
-<details>
-<summary>1 rules successfully migrated</summary>
-
-`import/named`
 
 </details>
 
@@ -1196,10 +1225,106 @@ Extracted from `eslint-plugin-jsdoc@62.8.1`.
 
 </details>
 
+### `jsdoc/recommended-error.json`
+
+```json
+"./node_modules/oxlint-config-presets/jsdoc/recommended-error.json"
+```
+
+Extracted from `eslint-plugin-jsdoc@62.8.1`.
+
+<details>
+<summary>18 rules successfully migrated</summary>
+
+`jsdoc/check-access`, `jsdoc/check-property-names`, `jsdoc/check-tag-names`, `jsdoc/empty-tags`, `jsdoc/implements-on-classes`, `jsdoc/no-defaults`, `jsdoc/require-param`, `jsdoc/require-param-description`, `jsdoc/require-param-name`, `jsdoc/require-param-type`, `jsdoc/require-property`, `jsdoc/require-property-description`, `jsdoc/require-property-name`, `jsdoc/require-property-type`, `jsdoc/require-returns`, `jsdoc/require-returns-description`, `jsdoc/require-returns-type`, `jsdoc/require-yields`
+
+</details>
+
+<details>
+<summary>19 rules have no oxlint equivalent</summary>
+
+**Not yet implemented in oxlint**
+
+`jsdoc/check-alignment`, `jsdoc/check-param-names`, `jsdoc/check-types`, `jsdoc/check-values`, `jsdoc/escape-inline-tags`, `jsdoc/multiline-blocks`, `jsdoc/no-multi-asterisks`, `jsdoc/no-undefined-types`, `jsdoc/reject-any-type`, `jsdoc/reject-function-type`, `jsdoc/require-jsdoc`, `jsdoc/require-next-type`, `jsdoc/require-returns-check`, `jsdoc/require-throws-type`, `jsdoc/require-yields-check`, `jsdoc/require-yields-type`, `jsdoc/tag-lines`, `jsdoc/ts-no-empty-object-type`, `jsdoc/valid-types`
+
+</details>
+
+### `jsdoc/recommended-tsdoc.json`
+
+```json
+"./node_modules/oxlint-config-presets/jsdoc/recommended-tsdoc.json"
+```
+
+Extracted from `eslint-plugin-jsdoc@62.8.1`.
+
+<details>
+<summary>18 rules successfully migrated</summary>
+
+`jsdoc/check-access`, `jsdoc/check-property-names`, `jsdoc/check-tag-names`, `jsdoc/empty-tags`, `jsdoc/implements-on-classes`, `jsdoc/no-defaults`, `jsdoc/require-param`, `jsdoc/require-param-description`, `jsdoc/require-param-name`, `jsdoc/require-param-type`, `jsdoc/require-property`, `jsdoc/require-property-description`, `jsdoc/require-property-name`, `jsdoc/require-property-type`, `jsdoc/require-returns`, `jsdoc/require-returns-description`, `jsdoc/require-returns-type`, `jsdoc/require-yields`
+
+</details>
+
+<details>
+<summary>16 rules have no oxlint equivalent</summary>
+
+**Not yet implemented in oxlint**
+
+`jsdoc/check-alignment`, `jsdoc/check-param-names`, `jsdoc/check-types`, `jsdoc/check-values`, `jsdoc/escape-inline-tags`, `jsdoc/multiline-blocks`, `jsdoc/no-multi-asterisks`, `jsdoc/no-types`, `jsdoc/reject-any-type`, `jsdoc/reject-function-type`, `jsdoc/require-jsdoc`, `jsdoc/require-returns-check`, `jsdoc/require-yields-check`, `jsdoc/tag-lines`, `jsdoc/ts-no-empty-object-type`, `jsdoc/valid-types`
+
+</details>
+
+### `jsdoc/recommended-tsdoc-error.json`
+
+```json
+"./node_modules/oxlint-config-presets/jsdoc/recommended-tsdoc-error.json"
+```
+
+Extracted from `eslint-plugin-jsdoc@62.8.1`.
+
+<details>
+<summary>18 rules successfully migrated</summary>
+
+`jsdoc/check-access`, `jsdoc/check-property-names`, `jsdoc/check-tag-names`, `jsdoc/empty-tags`, `jsdoc/implements-on-classes`, `jsdoc/no-defaults`, `jsdoc/require-param`, `jsdoc/require-param-description`, `jsdoc/require-param-name`, `jsdoc/require-param-type`, `jsdoc/require-property`, `jsdoc/require-property-description`, `jsdoc/require-property-name`, `jsdoc/require-property-type`, `jsdoc/require-returns`, `jsdoc/require-returns-description`, `jsdoc/require-returns-type`, `jsdoc/require-yields`
+
+</details>
+
+<details>
+<summary>16 rules have no oxlint equivalent</summary>
+
+**Not yet implemented in oxlint**
+
+`jsdoc/check-alignment`, `jsdoc/check-param-names`, `jsdoc/check-types`, `jsdoc/check-values`, `jsdoc/escape-inline-tags`, `jsdoc/multiline-blocks`, `jsdoc/no-multi-asterisks`, `jsdoc/no-types`, `jsdoc/reject-any-type`, `jsdoc/reject-function-type`, `jsdoc/require-jsdoc`, `jsdoc/require-returns-check`, `jsdoc/require-yields-check`, `jsdoc/tag-lines`, `jsdoc/ts-no-empty-object-type`, `jsdoc/valid-types`
+
+</details>
+
 ### `jsdoc/recommended-typescript.json`
 
 ```json
 "./node_modules/oxlint-config-presets/jsdoc/recommended-typescript.json"
+```
+
+Extracted from `eslint-plugin-jsdoc@62.8.1`.
+
+<details>
+<summary>18 rules successfully migrated</summary>
+
+`jsdoc/check-access`, `jsdoc/check-property-names`, `jsdoc/check-tag-names`, `jsdoc/empty-tags`, `jsdoc/implements-on-classes`, `jsdoc/no-defaults`, `jsdoc/require-param`, `jsdoc/require-param-description`, `jsdoc/require-param-name`, `jsdoc/require-param-type`, `jsdoc/require-property`, `jsdoc/require-property-description`, `jsdoc/require-property-name`, `jsdoc/require-property-type`, `jsdoc/require-returns`, `jsdoc/require-returns-description`, `jsdoc/require-returns-type`, `jsdoc/require-yields`
+
+</details>
+
+<details>
+<summary>19 rules have no oxlint equivalent</summary>
+
+**Not yet implemented in oxlint**
+
+`jsdoc/check-alignment`, `jsdoc/check-param-names`, `jsdoc/check-types`, `jsdoc/check-values`, `jsdoc/escape-inline-tags`, `jsdoc/multiline-blocks`, `jsdoc/no-multi-asterisks`, `jsdoc/no-types`, `jsdoc/reject-any-type`, `jsdoc/reject-function-type`, `jsdoc/require-jsdoc`, `jsdoc/require-next-type`, `jsdoc/require-returns-check`, `jsdoc/require-throws-type`, `jsdoc/require-yields-check`, `jsdoc/require-yields-type`, `jsdoc/tag-lines`, `jsdoc/ts-no-empty-object-type`, `jsdoc/valid-types`
+
+</details>
+
+### `jsdoc/recommended-typescript-error.json`
+
+```json
+"./node_modules/oxlint-config-presets/jsdoc/recommended-typescript-error.json"
 ```
 
 Extracted from `eslint-plugin-jsdoc@62.8.1`.
@@ -1244,10 +1369,10 @@ Extracted from `eslint-plugin-jsdoc@62.8.1`.
 
 </details>
 
-### `jsdoc/recommended-tsdoc.json`
+### `jsdoc/recommended-typescript-flavor-error.json`
 
 ```json
-"./node_modules/oxlint-config-presets/jsdoc/recommended-tsdoc.json"
+"./node_modules/oxlint-config-presets/jsdoc/recommended-typescript-flavor-error.json"
 ```
 
 Extracted from `eslint-plugin-jsdoc@62.8.1`.
@@ -1260,11 +1385,61 @@ Extracted from `eslint-plugin-jsdoc@62.8.1`.
 </details>
 
 <details>
-<summary>16 rules have no oxlint equivalent</summary>
+<summary>18 rules have no oxlint equivalent</summary>
 
 **Not yet implemented in oxlint**
 
-`jsdoc/check-alignment`, `jsdoc/check-param-names`, `jsdoc/check-types`, `jsdoc/check-values`, `jsdoc/escape-inline-tags`, `jsdoc/multiline-blocks`, `jsdoc/no-multi-asterisks`, `jsdoc/no-types`, `jsdoc/reject-any-type`, `jsdoc/reject-function-type`, `jsdoc/require-jsdoc`, `jsdoc/require-returns-check`, `jsdoc/require-yields-check`, `jsdoc/tag-lines`, `jsdoc/ts-no-empty-object-type`, `jsdoc/valid-types`
+`jsdoc/check-alignment`, `jsdoc/check-param-names`, `jsdoc/check-types`, `jsdoc/check-values`, `jsdoc/escape-inline-tags`, `jsdoc/multiline-blocks`, `jsdoc/no-multi-asterisks`, `jsdoc/reject-any-type`, `jsdoc/reject-function-type`, `jsdoc/require-jsdoc`, `jsdoc/require-next-type`, `jsdoc/require-returns-check`, `jsdoc/require-throws-type`, `jsdoc/require-yields-check`, `jsdoc/require-yields-type`, `jsdoc/tag-lines`, `jsdoc/ts-no-empty-object-type`, `jsdoc/valid-types`
+
+</details>
+
+### `jsdoc/default-expressions.json`
+
+```json
+"./node_modules/oxlint-config-presets/jsdoc/default-expressions.json"
+```
+
+Extracted from `eslint-plugin-jsdoc@62.8.1`.
+
+<details>
+<summary>4 rules have no oxlint equivalent</summary>
+
+**Not portable to oxlint**
+
+`quotes`, `semi`
+
+**Require JS plugin support**
+
+`@stylistic/quotes`, `@stylistic/semi`
+
+</details>
+
+### `jsdoc/examples.json`
+
+```json
+"./node_modules/oxlint-config-presets/jsdoc/examples.json"
+```
+
+Extracted from `eslint-plugin-jsdoc@62.8.1`.
+
+### `jsdoc/examples-and-default-expressions.json`
+
+```json
+"./node_modules/oxlint-config-presets/jsdoc/examples-and-default-expressions.json"
+```
+
+Extracted from `eslint-plugin-jsdoc@62.8.1`.
+
+<details>
+<summary>4 rules have no oxlint equivalent</summary>
+
+**Not portable to oxlint**
+
+`quotes`, `semi`
+
+**Require JS plugin support**
+
+`@stylistic/quotes`, `@stylistic/semi`
 
 </details>
 
@@ -1427,21 +1602,6 @@ Extracted from `eslint-plugin-jest@28.14.0`.
 
 </details>
 
-### `jest/style.json`
-
-```json
-"./node_modules/oxlint-config-presets/jest/style.json"
-```
-
-Extracted from `eslint-plugin-jest@28.14.0`.
-
-<details>
-<summary>4 rules successfully migrated</summary>
-
-`jest/no-alias-methods`, `jest/prefer-to-be`, `jest/prefer-to-contain`, `jest/prefer-to-have-length`
-
-</details>
-
 ### `jest/all.json`
 
 ```json
@@ -1467,6 +1627,21 @@ Extracted from `eslint-plugin-jest@28.14.0`.
 **Not portable to oxlint**
 
 `jest/unbound-method`
+
+</details>
+
+### `jest/style.json`
+
+```json
+"./node_modules/oxlint-config-presets/jest/style.json"
+```
+
+Extracted from `eslint-plugin-jest@28.14.0`.
+
+<details>
+<summary>4 rules successfully migrated</summary>
+
+`jest/no-alias-methods`, `jest/prefer-to-be`, `jest/prefer-to-contain`, `jest/prefer-to-have-length`
 
 </details>
 
@@ -1522,6 +1697,62 @@ Extracted from `@vitest/eslint-plugin@1.6.13`.
 
 </details>
 
+### `vue/recommended.json`
+
+```json
+"./node_modules/oxlint-config-presets/vue/recommended.json"
+```
+
+Extracted from `eslint-plugin-vue@10.8.0`.
+
+<details>
+<summary>2 rules successfully migrated</summary>
+
+`vue/no-multiple-slot-args`, `vue/no-required-prop-with-default`
+
+</details>
+
+<details>
+<summary>6 rules have no oxlint equivalent</summary>
+
+**Not yet implemented in oxlint**
+
+`vue/order-in-components`
+
+**Not portable to oxlint**
+
+`vue/attributes-order`, `vue/block-order`, `vue/no-lone-template`, `vue/no-v-html`, `vue/this-in-template`
+
+</details>
+
+### `vue/recommended-error.json`
+
+```json
+"./node_modules/oxlint-config-presets/vue/recommended-error.json"
+```
+
+Extracted from `eslint-plugin-vue@10.8.0`.
+
+<details>
+<summary>2 rules successfully migrated</summary>
+
+`vue/no-multiple-slot-args`, `vue/no-required-prop-with-default`
+
+</details>
+
+<details>
+<summary>6 rules have no oxlint equivalent</summary>
+
+**Not yet implemented in oxlint**
+
+`vue/order-in-components`
+
+**Not portable to oxlint**
+
+`vue/attributes-order`, `vue/block-order`, `vue/no-lone-template`, `vue/no-v-html`, `vue/this-in-template`
+
+</details>
+
 ### `vue/essential.json`
 
 ```json
@@ -1571,31 +1802,24 @@ Extracted from `eslint-plugin-vue@10.8.0`.
 
 </details>
 
-### `vue/recommended.json`
+### `vue/strongly-recommended-error.json`
 
 ```json
-"./node_modules/oxlint-config-presets/vue/recommended.json"
+"./node_modules/oxlint-config-presets/vue/strongly-recommended-error.json"
 ```
 
 Extracted from `eslint-plugin-vue@10.8.0`.
 
 <details>
-<summary>2 rules successfully migrated</summary>
-
-`vue/no-multiple-slot-args`, `vue/no-required-prop-with-default`
-
-</details>
-
-<details>
-<summary>6 rules have no oxlint equivalent</summary>
+<summary>25 rules have no oxlint equivalent</summary>
 
 **Not yet implemented in oxlint**
 
-`vue/order-in-components`
+`vue/component-definition-name-casing`, `vue/one-component-per-file`, `vue/prop-name-casing`, `vue/require-default-prop`, `vue/require-prop-types`
 
 **Not portable to oxlint**
 
-`vue/attributes-order`, `vue/block-order`, `vue/no-lone-template`, `vue/no-v-html`, `vue/this-in-template`
+`vue/attribute-hyphenation`, `vue/first-attribute-linebreak`, `vue/html-closing-bracket-newline`, `vue/html-closing-bracket-spacing`, `vue/html-end-tags`, `vue/html-indent`, `vue/html-quotes`, `vue/html-self-closing`, `vue/max-attributes-per-line`, `vue/multiline-html-element-content-newline`, `vue/mustache-interpolation-spacing`, `vue/no-multi-spaces`, `vue/no-spaces-around-equal-signs-in-attribute`, `vue/no-template-shadow`, `vue/require-explicit-emits`, `vue/singleline-html-element-content-newline`, `vue/v-bind-style`, `vue/v-on-event-hyphenation`, `vue/v-on-style`, `vue/v-slot-style`
 
 </details>
 
@@ -1627,27 +1851,6 @@ Extracted from `eslint-plugin-vue@10.8.0`.
 
 </details>
 
-### `vue/vue2-strongly-recommended.json`
-
-```json
-"./node_modules/oxlint-config-presets/vue/vue2-strongly-recommended.json"
-```
-
-Extracted from `eslint-plugin-vue@10.8.0`.
-
-<details>
-<summary>23 rules have no oxlint equivalent</summary>
-
-**Not yet implemented in oxlint**
-
-`vue/component-definition-name-casing`, `vue/one-component-per-file`, `vue/prop-name-casing`, `vue/require-default-prop`, `vue/require-prop-types`
-
-**Not portable to oxlint**
-
-`vue/attribute-hyphenation`, `vue/first-attribute-linebreak`, `vue/html-closing-bracket-newline`, `vue/html-closing-bracket-spacing`, `vue/html-end-tags`, `vue/html-indent`, `vue/html-quotes`, `vue/html-self-closing`, `vue/max-attributes-per-line`, `vue/multiline-html-element-content-newline`, `vue/mustache-interpolation-spacing`, `vue/no-multi-spaces`, `vue/no-spaces-around-equal-signs-in-attribute`, `vue/no-template-shadow`, `vue/singleline-html-element-content-newline`, `vue/v-bind-style`, `vue/v-on-style`, `vue/v-slot-style`
-
-</details>
-
 ### `vue/vue2-recommended.json`
 
 ```json
@@ -1673,6 +1876,76 @@ Extracted from `eslint-plugin-vue@10.8.0`.
 **Not portable to oxlint**
 
 `vue/attributes-order`, `vue/block-order`, `vue/no-lone-template`, `vue/no-v-html`, `vue/this-in-template`
+
+</details>
+
+### `vue/vue2-recommended-error.json`
+
+```json
+"./node_modules/oxlint-config-presets/vue/vue2-recommended-error.json"
+```
+
+Extracted from `eslint-plugin-vue@10.8.0`.
+
+<details>
+<summary>2 rules successfully migrated</summary>
+
+`vue/no-multiple-slot-args`, `vue/no-required-prop-with-default`
+
+</details>
+
+<details>
+<summary>6 rules have no oxlint equivalent</summary>
+
+**Not yet implemented in oxlint**
+
+`vue/order-in-components`
+
+**Not portable to oxlint**
+
+`vue/attributes-order`, `vue/block-order`, `vue/no-lone-template`, `vue/no-v-html`, `vue/this-in-template`
+
+</details>
+
+### `vue/vue2-strongly-recommended.json`
+
+```json
+"./node_modules/oxlint-config-presets/vue/vue2-strongly-recommended.json"
+```
+
+Extracted from `eslint-plugin-vue@10.8.0`.
+
+<details>
+<summary>23 rules have no oxlint equivalent</summary>
+
+**Not yet implemented in oxlint**
+
+`vue/component-definition-name-casing`, `vue/one-component-per-file`, `vue/prop-name-casing`, `vue/require-default-prop`, `vue/require-prop-types`
+
+**Not portable to oxlint**
+
+`vue/attribute-hyphenation`, `vue/first-attribute-linebreak`, `vue/html-closing-bracket-newline`, `vue/html-closing-bracket-spacing`, `vue/html-end-tags`, `vue/html-indent`, `vue/html-quotes`, `vue/html-self-closing`, `vue/max-attributes-per-line`, `vue/multiline-html-element-content-newline`, `vue/mustache-interpolation-spacing`, `vue/no-multi-spaces`, `vue/no-spaces-around-equal-signs-in-attribute`, `vue/no-template-shadow`, `vue/singleline-html-element-content-newline`, `vue/v-bind-style`, `vue/v-on-style`, `vue/v-slot-style`
+
+</details>
+
+### `vue/vue2-strongly-recommended-error.json`
+
+```json
+"./node_modules/oxlint-config-presets/vue/vue2-strongly-recommended-error.json"
+```
+
+Extracted from `eslint-plugin-vue@10.8.0`.
+
+<details>
+<summary>23 rules have no oxlint equivalent</summary>
+
+**Not yet implemented in oxlint**
+
+`vue/component-definition-name-casing`, `vue/one-component-per-file`, `vue/prop-name-casing`, `vue/require-default-prop`, `vue/require-prop-types`
+
+**Not portable to oxlint**
+
+`vue/attribute-hyphenation`, `vue/first-attribute-linebreak`, `vue/html-closing-bracket-newline`, `vue/html-closing-bracket-spacing`, `vue/html-end-tags`, `vue/html-indent`, `vue/html-quotes`, `vue/html-self-closing`, `vue/max-attributes-per-line`, `vue/multiline-html-element-content-newline`, `vue/mustache-interpolation-spacing`, `vue/no-multi-spaces`, `vue/no-spaces-around-equal-signs-in-attribute`, `vue/no-template-shadow`, `vue/singleline-html-element-content-newline`, `vue/v-bind-style`, `vue/v-on-style`, `vue/v-slot-style`
 
 </details>
 

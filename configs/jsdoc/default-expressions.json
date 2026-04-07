@@ -1,0 +1,18 @@
+{
+  "plugins": [],
+  "overrides": [
+    {
+      "files": ["**/*.jsdoc-defaults", "**/*.jsdoc-params", "**/*.jsdoc-properties"],
+      "rules": {
+        "import/unambiguous": "off",
+        "no-console": "off",
+        "no-undef": "off",
+        "no-unused-vars": "off",
+        "no-empty-function": "off",
+        "no-new": "off",
+        "no-unused-expressions": "off"
+      },
+      "plugins": ["typescript", "import"]
+    }
+  ]
+}

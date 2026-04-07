@@ -379,6 +379,39 @@ const fromPluginPackage = (pkg: string, name: string) => () => {
   return flat;
 };
 
+const listPluginPresets = (
+  pkg: string,
+  options?: {
+    exclude?: (name: string) => boolean;
+  },
+): string[] => {
+  const mod = req(pkg) as {
+    configs?: Record<string, OldStyleEslintConfig | Array<{ rules?: ResolvedRules }>>;
+  };
+  const presets = Object.keys(mod.configs ?? {})
+    .filter((name) => !(options?.exclude?.(name) ?? false))
+    .sort((a, b) => {
+      const aIsRecommended = a.startsWith('recommended');
+      const bIsRecommended = b.startsWith('recommended');
+      if (aIsRecommended !== bIsRecommended) return aIsRecommended ? -1 : 1;
+      return a.localeCompare(b);
+    });
+
+  return presets.filter((name) => countRules(fromPluginPackage(pkg, name)()) > 0);
+};
+
+const fromPluginPackagePresets = (
+  pkg: string,
+  options?: {
+    exclude?: (name: string) => boolean;
+  },
+): ConfigEntry[] =>
+  listPluginPresets(pkg, options).map((name) => ({
+    sourcePackage: pkg,
+    sourceConfig: name,
+    resolveConfig: fromPluginPackage(pkg, name),
+  }));
+
 // eslint-config-xo uses flat config (ESM function returning an array of config objects).
 // We merge all rules from the returned entries to get the full effective rule set.
 const xoModule = await import('eslint-config-xo');
@@ -550,56 +583,10 @@ const configs: ConfigEntry[] = [
   { sourcePackage: '@antfu/eslint-config', sourceConfig: '', resolveConfig: fromAntfu },
 
   // ── import / import-x ─────────────────────────────────────────────────────
-  {
-    sourcePackage: 'eslint-plugin-import',
-    sourceConfig: 'recommended',
-    resolveConfig: fromPluginPackage('eslint-plugin-import', 'recommended'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-import',
-    sourceConfig: 'errors',
-    resolveConfig: fromPluginPackage('eslint-plugin-import', 'errors'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-import',
-    sourceConfig: 'warnings',
-    resolveConfig: fromPluginPackage('eslint-plugin-import', 'warnings'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-import',
-    sourceConfig: 'react',
-    resolveConfig: fromPluginPackage('eslint-plugin-import', 'react'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-import',
-    sourceConfig: 'typescript',
-    resolveConfig: fromPluginPackage('eslint-plugin-import', 'typescript'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-import-x',
-    sourceConfig: 'recommended',
-    resolveConfig: fromPluginPackage('eslint-plugin-import-x', 'recommended'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-import-x',
-    sourceConfig: 'errors',
-    resolveConfig: fromPluginPackage('eslint-plugin-import-x', 'errors'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-import-x',
-    sourceConfig: 'warnings',
-    resolveConfig: fromPluginPackage('eslint-plugin-import-x', 'warnings'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-import-x',
-    sourceConfig: 'react',
-    resolveConfig: fromPluginPackage('eslint-plugin-import-x', 'react'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-import-x',
-    sourceConfig: 'typescript',
-    resolveConfig: fromPluginPackage('eslint-plugin-import-x', 'typescript'),
-  },
+  ...fromPluginPackagePresets('eslint-plugin-import'),
+  ...fromPluginPackagePresets('eslint-plugin-import-x', {
+    exclude: (name) => name.startsWith('flat/'),
+  }),
 
   // ── next / react-perf ─────────────────────────────────────────────────────
   {
@@ -612,127 +599,34 @@ const configs: ConfigEntry[] = [
     sourceConfig: 'core-web-vitals',
     resolveConfig: fromPackageRulesOnly('eslint-config-next/core-web-vitals'),
   },
-  {
-    sourcePackage: 'eslint-plugin-react-perf',
-    sourceConfig: 'recommended',
-    resolveConfig: fromPluginPackage('eslint-plugin-react-perf', 'recommended'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-react-perf',
-    sourceConfig: 'all',
-    resolveConfig: fromPluginPackage('eslint-plugin-react-perf', 'all'),
-  },
+  ...fromPluginPackagePresets('eslint-plugin-react-perf', {
+    exclude: (name) => name.startsWith('flat'),
+  }),
 
   // ── jsdoc / jsx-a11y ──────────────────────────────────────────────────────
-  {
-    sourcePackage: 'eslint-plugin-jsdoc',
-    sourceConfig: 'recommended',
-    resolveConfig: fromPluginPackage('eslint-plugin-jsdoc', 'recommended'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-jsdoc',
-    sourceConfig: 'recommended-typescript',
-    resolveConfig: fromPluginPackage('eslint-plugin-jsdoc', 'recommended-typescript'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-jsdoc',
-    sourceConfig: 'recommended-typescript-flavor',
-    resolveConfig: fromPluginPackage('eslint-plugin-jsdoc', 'recommended-typescript-flavor'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-jsdoc',
-    sourceConfig: 'recommended-tsdoc',
-    resolveConfig: fromPluginPackage('eslint-plugin-jsdoc', 'recommended-tsdoc'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-jsx-a11y',
-    sourceConfig: 'recommended',
-    resolveConfig: fromPluginPackage('eslint-plugin-jsx-a11y', 'recommended'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-jsx-a11y',
-    sourceConfig: 'strict',
-    resolveConfig: fromPluginPackage('eslint-plugin-jsx-a11y', 'strict'),
-  },
+  ...fromPluginPackagePresets('eslint-plugin-jsdoc', {
+    exclude: (name) => name.startsWith('flat/'),
+  }),
+  ...fromPluginPackagePresets('eslint-plugin-jsx-a11y'),
 
   // ── n / promise / jest / vitest ──────────────────────────────────────────
-  {
-    sourcePackage: 'eslint-plugin-n',
-    sourceConfig: 'recommended',
-    resolveConfig: fromPluginPackage('eslint-plugin-n', 'recommended'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-n',
-    sourceConfig: 'recommended-module',
-    resolveConfig: fromPluginPackage('eslint-plugin-n', 'recommended-module'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-n',
-    sourceConfig: 'recommended-script',
-    resolveConfig: fromPluginPackage('eslint-plugin-n', 'recommended-script'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-promise',
-    sourceConfig: 'recommended',
-    resolveConfig: fromPluginPackage('eslint-plugin-promise', 'recommended'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-jest',
-    sourceConfig: 'recommended',
-    resolveConfig: fromPluginPackage('eslint-plugin-jest', 'recommended'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-jest',
-    sourceConfig: 'style',
-    resolveConfig: fromPluginPackage('eslint-plugin-jest', 'style'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-jest',
-    sourceConfig: 'all',
-    resolveConfig: fromPluginPackage('eslint-plugin-jest', 'all'),
-  },
-  {
-    sourcePackage: '@vitest/eslint-plugin',
-    sourceConfig: 'recommended',
-    resolveConfig: fromPluginPackage('@vitest/eslint-plugin', 'recommended'),
-  },
-  {
-    sourcePackage: '@vitest/eslint-plugin',
-    sourceConfig: 'all',
-    resolveConfig: fromPluginPackage('@vitest/eslint-plugin', 'all'),
-  },
+  ...fromPluginPackagePresets('eslint-plugin-n', {
+    exclude: (name) => name.startsWith('flat/'),
+  }),
+  ...fromPluginPackagePresets('eslint-plugin-promise', {
+    exclude: (name) => name.startsWith('flat/'),
+  }),
+  ...fromPluginPackagePresets('eslint-plugin-jest', {
+    exclude: (name) => name.startsWith('flat/'),
+  }),
+  ...fromPluginPackagePresets('@vitest/eslint-plugin', {
+    exclude: (name) => name.startsWith('legacy-') || name === 'env',
+  }),
 
   // ── vue ───────────────────────────────────────────────────────────────────
-  {
-    sourcePackage: 'eslint-plugin-vue',
-    sourceConfig: 'essential',
-    resolveConfig: fromPluginPackage('eslint-plugin-vue', 'essential'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-vue',
-    sourceConfig: 'strongly-recommended',
-    resolveConfig: fromPluginPackage('eslint-plugin-vue', 'strongly-recommended'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-vue',
-    sourceConfig: 'recommended',
-    resolveConfig: fromPluginPackage('eslint-plugin-vue', 'recommended'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-vue',
-    sourceConfig: 'vue2-essential',
-    resolveConfig: fromPluginPackage('eslint-plugin-vue', 'vue2-essential'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-vue',
-    sourceConfig: 'vue2-strongly-recommended',
-    resolveConfig: fromPluginPackage('eslint-plugin-vue', 'vue2-strongly-recommended'),
-  },
-  {
-    sourcePackage: 'eslint-plugin-vue',
-    sourceConfig: 'vue2-recommended',
-    resolveConfig: fromPluginPackage('eslint-plugin-vue', 'vue2-recommended'),
-  },
+  ...fromPluginPackagePresets('eslint-plugin-vue', {
+    exclude: (name) => name.startsWith('flat/') || name === 'base' || name === 'no-layout-rules',
+  }),
 ];
 
 interface GenerateResult {
