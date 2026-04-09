@@ -63,5 +63,13 @@
     "tsx": "^4.19.3",
     "typescript": "^6.0.2"
   },
+  "peerDependencies": {
+    "oxlint": ">=0.15.0"
+  },
+  "peerDependenciesMeta": {
+    "oxlint": {
+      "optional": true
+    }
+  },
   "packageManager": "pnpm@10.29.3"
 }

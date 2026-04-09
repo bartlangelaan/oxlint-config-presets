@@ -64,3 +64,11 @@ test('README.md is included', () => {
 test('pnpm-lock.yaml is not published', () => {
   assert.ok(!publishedFiles.includes('pnpm-lock.yaml'));
 });
+
+const expectedDtsFiles = expectedConfigs.map((f) => `${f}.d.ts`);
+
+for (const file of expectedDtsFiles) {
+  test(`${file} is included`, () => {
+    assert.ok(publishedFiles.includes(file), `missing from published files: ${file}`);
+  });
+}

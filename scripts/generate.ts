@@ -910,4 +910,21 @@ const updatedReadme =
 writeFileSync(readmePath, updatedReadme);
 console.log('\nWritten README.md');
 
+// ---- Generate .d.ts files for TypeScript config file support ----------------
+
+const dtsContent = [
+  'import type { OxlintConfig } from "oxlint";',
+  'declare const config: OxlintConfig;',
+  'export default config;',
+  '',
+].join('\n');
+
+for (const { config } of results) {
+  const dtsPath = join(configsDir, `${outputFor(config)}.d.ts`);
+  mkdirSync(dirname(dtsPath), { recursive: true });
+  writeFileSync(dtsPath, dtsContent);
+}
+
+console.log(`\nWritten ${results.length} .d.ts files`);
+
 console.log('\nDone.');
