@@ -50,9 +50,9 @@ You can also compose multiple presets. Later entries override earlier ones:
 If you use a [TypeScript config file](https://oxc.rs/docs/guide/usage/linter/config) (`oxlint.config.ts`), you can import presets directly. TypeScript type definitions are included for all presets:
 
 ```typescript
-import airbnb from "oxlint-config-presets/airbnb.json" with { type: "json" };
-import tsStrict from "oxlint-config-presets/@typescript-eslint/strict-type-checked.json" with { type: "json" };
-import { defineConfig } from "oxlint";
+import airbnb from 'oxlint-config-presets/airbnb.json' with { type: 'json' };
+import tsStrict from 'oxlint-config-presets/@typescript-eslint/strict-type-checked.json' with { type: 'json' };
+import { defineConfig } from 'oxlint';
 
 export default defineConfig({
   extends: [airbnb, tsStrict],

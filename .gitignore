@@ -2,4 +2,3 @@ node_modules/
 dist/
 configs/package.json
 configs/README.md
-configs/**/*.d.ts
