@@ -20,6 +20,6 @@ jobs:
       - name: Check for uncommitted changes
         run: |
           if [ -n "$(git status --porcelain)" ]; then
-            echo "Running 'pnpm generate' produced uncommitted changes. Please run it locally and commit the result."
+            echo "Running 'pnpm generate' and 'pnpm prepack' produced uncommitted changes. Please run them locally and commit the result."
             exit 1
           fi
