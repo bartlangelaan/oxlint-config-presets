@@ -1,0 +1,24 @@
+name: Generate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm generate
+      - name: Check for uncommitted changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Running 'pnpm generate' produced uncommitted changes. Please run it locally and commit the result."
+            exit 1
+          fi
