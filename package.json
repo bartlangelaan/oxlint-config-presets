@@ -19,6 +19,12 @@
     "url": "git+https://github.com/popup-plus/oxlint-config-presets.git"
   },
   "type": "module",
+  "exports": {
+    "./*.json": {
+      "types": "./oxlint-config.d.ts",
+      "default": "./*.json"
+    }
+  },
   "publishConfig": {
     "directory": "configs"
   },
@@ -62,6 +68,14 @@
     "oxlint-tsgolint": "^0.20.0",
     "tsx": "^4.19.3",
     "typescript": "^6.0.2"
+  },
+  "peerDependencies": {
+    "oxlint": ">=0.15.0"
+  },
+  "peerDependenciesMeta": {
+    "oxlint": {
+      "optional": true
+    }
   },
   "packageManager": "pnpm@10.29.3"
 }

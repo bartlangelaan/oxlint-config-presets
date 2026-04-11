@@ -64,3 +64,10 @@ test('README.md is included', () => {
 test('pnpm-lock.yaml is not published', () => {
   assert.ok(!publishedFiles.includes('pnpm-lock.yaml'));
 });
+
+test('oxlint-config.d.ts is included', () => {
+  assert.ok(
+    publishedFiles.includes('oxlint-config.d.ts'),
+    'oxlint-config.d.ts should be published for TypeScript type support',
+  );
+});

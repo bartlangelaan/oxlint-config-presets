@@ -45,6 +45,23 @@ You can also compose multiple presets. Later entries override earlier ones:
 > Oxlint currently expects `extends` values to be **JSON file paths** relative to your config file.
 > For presets in this package, use `./node_modules/oxlint-config-presets/<config>.json`.
 
+### Usage with `oxlint.config.ts`
+
+If you use a [TypeScript config file](https://oxc.rs/docs/guide/usage/linter/config) (`oxlint.config.ts`), you can import presets directly. TypeScript type definitions are included for all presets:
+
+```typescript
+import airbnb from 'oxlint-config-presets/airbnb.json' with { type: 'json' };
+import tsStrict from 'oxlint-config-presets/@typescript-eslint/strict-type-checked.json' with { type: 'json' };
+import { defineConfig } from 'oxlint';
+
+export default defineConfig({
+  extends: [airbnb, tsStrict],
+});
+```
+
+> [!NOTE]
+> Requires Node.js v22.18+ or v24+ for `with { type: "json" }` (import attributes) support.
+
 <!-- GENERATED CONFIGS START -->
 
 ## Available configs
