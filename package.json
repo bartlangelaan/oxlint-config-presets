@@ -23,10 +23,6 @@
     "./*.json": {
       "types": "./oxlint-config.d.ts",
       "default": "./*.json"
-    },
-    "./*/*.json": {
-      "types": "./oxlint-config.d.ts",
-      "default": "./*/*.json"
     }
   },
   "publishConfig": {
