@@ -96,6 +96,10 @@ You can also compose multiple presets. Later entries override earlier ones:
 - **eslint-config-next**
   - recommended `next/recommended.json`
   - core-web-vitals `next/core-web-vitals.json`
+- **eslint-plugin-react**
+  - recommended `react/recommended.json`
+  - all `react/all.json`
+  - jsx-runtime `react/jsx-runtime.json`
 - **eslint-plugin-react-perf**
   - recommended `react-perf/recommended.json`
   - all `react-perf/all.json`
@@ -1164,6 +1168,77 @@ Extracted from `eslint-config-next@16.2.1`.
 **Not portable to oxlint**
 
 `react/jsx-uses-react`, `react/jsx-uses-vars`, `react-hooks/static-components`, `react-hooks/use-memo`, `react-hooks/component-hook-factories`, `react-hooks/preserve-manual-memoization`, `react-hooks/incompatible-library`, `react-hooks/immutability`, `react-hooks/globals`, `react-hooks/refs`, `react-hooks/set-state-in-effect`, `react-hooks/error-boundaries`, `react-hooks/purity`, `react-hooks/set-state-in-render`, `react-hooks/unsupported-syntax`, `react-hooks/config`, `react-hooks/gating`
+
+</details>
+
+### `react/recommended.json`
+
+```json
+"./node_modules/oxlint-config-presets/react/recommended.json"
+```
+
+Extracted from `eslint-plugin-react@7.37.5`.
+
+<details>
+<summary>18 rules successfully migrated</summary>
+
+`react/display-name`, `react/jsx-key`, `react/jsx-no-comment-textnodes`, `react/jsx-no-duplicate-props`, `react/jsx-no-target-blank`, `react/jsx-no-undef`, `react/no-children-prop`, `react/no-danger-with-children`, `react/no-direct-mutation-state`, `react/no-find-dom-node`, `react/no-is-mounted`, `react/no-render-return-value`, `react/no-string-refs`, `react/no-unescaped-entities`, `react/no-unknown-property`, `react/no-unsafe`, `react/react-in-jsx-scope`, `react/require-render-return`
+
+</details>
+
+<details>
+<summary>4 rules have no oxlint equivalent</summary>
+
+**Not yet implemented in oxlint**
+
+`react/no-deprecated`, `react/prop-types`
+
+**Not portable to oxlint**
+
+`react/jsx-uses-react`, `react/jsx-uses-vars`
+
+</details>
+
+### `react/all.json`
+
+```json
+"./node_modules/oxlint-config-presets/react/all.json"
+```
+
+Extracted from `eslint-plugin-react@7.37.5`.
+
+<details>
+<summary>51 rules successfully migrated</summary>
+
+`react/button-has-type`, `react/checked-requires-onchange-or-readonly`, `react/display-name`, `react/forbid-dom-props`, `react/forbid-elements`, `react/forward-ref-uses-ref`, `react/hook-use-state`, `react/iframe-missing-sandbox`, `react/jsx-boolean-value`, `react/jsx-filename-extension`, `react/jsx-handler-names`, `react/jsx-key`, `react/jsx-max-depth`, `react/jsx-no-comment-textnodes`, `react/jsx-no-constructed-context-values`, `react/jsx-no-duplicate-props`, `react/jsx-no-script-url`, `react/jsx-no-target-blank`, `react/jsx-no-useless-fragment`, `react/jsx-no-undef`, `react/jsx-curly-brace-presence`, `react/jsx-pascal-case`, `react/jsx-fragments`, `react/jsx-props-no-spreading`, `react/jsx-props-no-spread-multi`, `react/no-array-index-key`, `react/no-children-prop`, `react/no-danger`, `react/no-danger-with-children`, `react/no-did-mount-set-state`, `react/no-direct-mutation-state`, `react/no-find-dom-node`, `react/no-is-mounted`, `react/no-multi-comp`, `react/no-namespace`, `react/no-set-state`, `react/no-string-refs`, `react/no-redundant-should-component-update`, `react/no-render-return-value`, `react/no-this-in-sfc`, `react/no-unescaped-entities`, `react/no-unknown-property`, `react/no-unsafe`, `react/no-will-update-set-state`, `react/prefer-es6-class`, `react/react-in-jsx-scope`, `react/require-render-return`, `react/self-closing-comp`, `react/state-in-constructor`, `react/style-prop-object`, `react/void-dom-elements-no-children`
+
+</details>
+
+<details>
+<summary>50 rules have no oxlint equivalent</summary>
+
+**Not yet implemented in oxlint**
+
+`react/boolean-prop-naming`, `react/destructuring-assignment`, `react/forbid-component-props`, `react/function-component-definition`, `react/jsx-no-bind`, `react/jsx-no-leaked-render`, `react/jsx-no-literals`, `react/no-invalid-html-attribute`, `react/no-arrow-function-lifecycle`, `react/no-deprecated`, `react/no-did-update-set-state`, `react/no-typos`, `react/no-unstable-nested-components`, `react/no-object-type-as-default-prop`, `react/prefer-stateless-function`, `react/prop-types`, `react/require-default-props`
+
+**Not portable to oxlint**
+
+`react/default-props-match-prop-types`, `react/forbid-foreign-prop-types`, `react/forbid-prop-types`, `react/jsx-child-element-spacing`, `react/jsx-closing-bracket-location`, `react/jsx-closing-tag-location`, `react/jsx-curly-spacing`, `react/jsx-curly-newline`, `react/jsx-equals-spacing`, `react/jsx-first-prop-new-line`, `react/jsx-indent`, `react/jsx-indent-props`, `react/jsx-max-props-per-line`, `react/jsx-newline`, `react/jsx-one-expression-per-line`, `react/jsx-props-no-multi-spaces`, `react/jsx-sort-props`, `react/jsx-tag-spacing`, `react/jsx-uses-react`, `react/jsx-uses-vars`, `react/jsx-wrap-multilines`, `react/no-access-state-in-setstate`, `react/no-adjacent-inline-elements`, `react/no-unused-class-component-methods`, `react/no-unused-prop-types`, `react/no-unused-state`, `react/prefer-exact-props`, `react/prefer-read-only-props`, `react/require-optimization`, `react/sort-comp`, `react/sort-default-props`, `react/sort-prop-types`, `react/static-property-placement`
+
+</details>
+
+### `react/jsx-runtime.json`
+
+```json
+"./node_modules/oxlint-config-presets/react/jsx-runtime.json"
+```
+
+Extracted from `eslint-plugin-react@7.37.5`.
+
+<details>
+<summary>1 rules successfully migrated</summary>
+
+`react/react-in-jsx-scope`
 
 </details>
 

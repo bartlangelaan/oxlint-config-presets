@@ -588,7 +588,7 @@ const configs: ConfigEntry[] = [
     exclude: (name) => name.startsWith('flat/'),
   }),
 
-  // ── next / react-perf ─────────────────────────────────────────────────────
+  // ── next / react / react-perf ─────────────────────────────────────────────
   {
     sourcePackage: 'eslint-config-next',
     sourceConfig: 'recommended',
@@ -599,6 +599,9 @@ const configs: ConfigEntry[] = [
     sourceConfig: 'core-web-vitals',
     resolveConfig: fromPackageRulesOnly('eslint-config-next/core-web-vitals'),
   },
+  ...fromPluginPackagePresets('eslint-plugin-react', {
+    exclude: (name) => name === 'flat',
+  }),
   ...fromPluginPackagePresets('eslint-plugin-react-perf', {
     exclude: (name) => name.startsWith('flat'),
   }),
