@@ -35,6 +35,7 @@ type ExtractRules<T> = T extends { rules?: infer R }
 type MigrateConfig = ExtractConfig<MigrateInput>;
 type MigrateRules = NonNullable<ExtractRules<MigrateInput>>;
 type ResolvedRules = MigrateRules;
+type PluginPresetConfig = { rules?: ResolvedRules } | Array<{ rules?: ResolvedRules }>;
 type MigrateReporter = NonNullable<NonNullable<Parameters<typeof migrate>[2]>['reporter']>;
 type RuleSkippedCategory = Parameters<MigrateReporter['markSkipped']>[1];
 type SkippedRulesByCategory = ReturnType<MigrateReporter['getSkippedRulesByCategory']>;
@@ -412,6 +413,28 @@ const fromPluginPackagePresets = (
     resolveConfig: fromPluginPackage(pkg, name),
   }));
 
+const fromEsmPluginPackagePresets = (
+  sourcePackage: string,
+  plugin: { configs?: Record<string, PluginPresetConfig> },
+  options?: {
+    exclude?: (name: string) => boolean;
+  },
+): ConfigEntry[] =>
+  Object.entries(plugin.configs ?? {})
+    .filter(([name]) => !(options?.exclude?.(name) ?? false))
+    .sort(([a], [b]) => {
+      const aIsRecommended = a.startsWith('recommended');
+      const bIsRecommended = b.startsWith('recommended');
+      if (aIsRecommended !== bIsRecommended) return aIsRecommended ? -1 : 1;
+      return a.localeCompare(b);
+    })
+    .map(([name, cfg]) => ({
+      sourcePackage,
+      sourceConfig: name,
+      resolveConfig: () => (Array.isArray(cfg) ? cfg : [cfg]) as MigrateConfig[],
+    }))
+    .filter((cfg) => countRules(cfg.resolveConfig()) > 0);
+
 // eslint-config-xo uses flat config (ESM function returning an array of config objects).
 // We merge all rules from the returned entries to get the full effective rule set.
 const xoModule = await import('eslint-config-xo');
@@ -440,8 +463,10 @@ const fromAntfu = () => antfuEntries as MigrateConfig[];
 
 // eslint-plugin-unicorn is ESM-only, so we import it directly.
 const unicornModule = await import('eslint-plugin-unicorn');
-const unicornPlugin = unicornModule.default as {
-  configs?: Record<string, { rules?: ResolvedRules } | Array<{ rules?: ResolvedRules }>>;
+const unicornPlugin = unicornModule.default as { configs?: Record<string, PluginPresetConfig> };
+const reactRefreshModule = await import('eslint-plugin-react-refresh');
+const reactRefreshPlugin = reactRefreshModule.default as {
+  configs?: Record<string, PluginPresetConfig>;
 };
 
 const configs: ConfigEntry[] = [
@@ -594,7 +619,7 @@ const configs: ConfigEntry[] = [
     exclude: (name) => name.startsWith('flat/'),
   }),
 
-  // ── next / react / react-perf ─────────────────────────────────────────────
+  // ── next / react / react-hooks / react-refresh / react-perf ──────────────
   {
     sourcePackage: 'eslint-config-next',
     sourceConfig: 'recommended',
@@ -608,6 +633,8 @@ const configs: ConfigEntry[] = [
   ...fromPluginPackagePresets('eslint-plugin-react', {
     exclude: (name) => name === 'flat',
   }),
+  ...fromPluginPackagePresets('eslint-plugin-react-hooks'),
+  ...fromEsmPluginPackagePresets('eslint-plugin-react-refresh', reactRefreshPlugin),
   ...fromPluginPackagePresets('eslint-plugin-react-perf', {
     exclude: (name) => name.startsWith('flat'),
   }),
@@ -639,19 +666,9 @@ const configs: ConfigEntry[] = [
 
   // ── unicorn ───────────────────────────────────────────────────────────────
   // eslint-plugin-unicorn is ESM-only, so we use the pre-imported module.
-  ...Object.entries(unicornPlugin.configs ?? {})
-    .filter(([name]) => !name.startsWith('flat/'))
-    .sort(([a], [b]) => {
-      const aIsRec = a.startsWith('recommended');
-      const bIsRec = b.startsWith('recommended');
-      if (aIsRec !== bIsRec) return aIsRec ? -1 : 1;
-      return a.localeCompare(b);
-    })
-    .map(([name, cfg]) => ({
-      sourcePackage: 'eslint-plugin-unicorn',
-      sourceConfig: name,
-      resolveConfig: () => (Array.isArray(cfg) ? cfg : [cfg]) as MigrateConfig[],
-    })),
+  ...fromEsmPluginPackagePresets('eslint-plugin-unicorn', unicornPlugin, {
+    exclude: (name) => name.startsWith('flat/'),
+  }),
 ];
 
 interface GenerateResult {
@@ -840,12 +857,13 @@ const table =
 function migratedSection(rules: OxlintConfig['rules'], strippedOptions: string[]): string {
   const names = Object.keys(rules ?? {}).filter((name) => !strippedOptions.includes(name));
   if (names.length === 0) return '';
+  const ruleWord = names.length === 1 ? 'rule' : 'rules';
 
   const ruleList = names.map((r) => `\`${r}\``).join(', ');
 
   return (
     `<details>\n` +
-    `<summary>${names.length} rules successfully migrated</summary>\n\n` +
+    `<summary>${names.length} ${ruleWord} successfully migrated</summary>\n\n` +
     `${ruleList}\n\n` +
     `</details>`
   );
