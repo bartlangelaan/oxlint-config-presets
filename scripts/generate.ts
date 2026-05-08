@@ -869,8 +869,11 @@ function migratedSection(rules: OxlintConfig['rules'], strippedOptions: string[]
   );
 }
 
-function formatNotableWarnings(warnings: string[]): string {
-  const dedupedLines = new Set<string>();
+function formatWarningDetails(warnings: string[]): string {
+  const settingWarnings: string[] = [];
+  const generalWarnings: string[] = [];
+  const seenSettings = new Set<string>();
+  const seenGeneral = new Set<string>();
 
   for (const warning of warnings) {
     if (warning.includes('import-sorting')) continue;
@@ -882,23 +885,49 @@ function formatNotableWarnings(warnings: string[]): string {
     if (lines.length === 0) continue;
 
     const firstLine = lines[0];
+    const settingsHeading = 'Settings not migrated (not supported by oxlint):';
 
-    // Skip empty category headings like "Settings not migrated..." when no
-    // concrete detail follows.
-    if (lines.length === 1 && firstLine === 'Settings not migrated (not supported by oxlint):') {
+    if (firstLine === settingsHeading) {
+      for (const setting of lines.slice(1)) {
+        if (!seenSettings.has(setting)) {
+          seenSettings.add(setting);
+          settingWarnings.push(setting);
+        }
+      }
       continue;
     }
 
-    const detailLines =
-      firstLine === 'Settings not migrated (not supported by oxlint):' ? lines.slice(1) : lines;
-
-    for (const line of detailLines) {
-      dedupedLines.add(line);
+    for (const line of lines) {
+      if (!seenGeneral.has(line)) {
+        seenGeneral.add(line);
+        generalWarnings.push(line);
+      }
     }
   }
 
-  if (dedupedLines.size === 0) return '';
-  return [...dedupedLines].map((line) => `> ${line}`).join('\n');
+  const totalWarnings = generalWarnings.length + settingWarnings.length;
+  if (totalWarnings === 0) return '';
+
+  const warningWord = totalWarnings === 1 ? 'warning' : 'warnings';
+  const sections: string[] = [];
+
+  if (generalWarnings.length > 0) {
+    sections.push(generalWarnings.map((line) => `- ${line}`).join('\n'));
+  }
+
+  if (settingWarnings.length > 0) {
+    sections.push(
+      `**Settings not migrated (not supported by oxlint):**\n\n` +
+        settingWarnings.map((setting) => `- ${setting}`).join('\n'),
+    );
+  }
+
+  return (
+    `<details>\n` +
+    `<summary>${totalWarnings} migration ${warningWord}</summary>\n\n` +
+    `${sections.join('\n\n')}\n\n` +
+    `</details>`
+  );
 }
 
 const configSections = results
@@ -925,7 +954,7 @@ const configSections = results
     const section = skippedSection(skipped);
     if (section) parts.push(section);
 
-    const notableWarnings = formatNotableWarnings(warnings);
+    const notableWarnings = formatWarningDetails(warnings);
     if (notableWarnings) {
       parts.push(notableWarnings);
     }

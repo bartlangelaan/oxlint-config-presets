@@ -209,14 +209,22 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-> `import/resolver`
-> `import/extensions`
-> `import/core-modules`
-> `import/ignore`
-> react.version "detect" is not supported. Specify an explicit version (e.g., "18.2.0") in your oxlint config.
-> `react.pragma`
-> `propWrapperFunctions`
-> Added 65 globals to the root config. This may happen when your ESLint config uses a different version of the `globals` package than @oxlint/migrate. Try updating `globals` and rerun the migration to get a simpler config.
+<details>
+<summary>8 migration warnings</summary>
+
+- react.version "detect" is not supported. Specify an explicit version (e.g., "18.2.0") in your oxlint config.
+- Added 65 globals to the root config. This may happen when your ESLint config uses a different version of the `globals` package than @oxlint/migrate. Try updating `globals` and rerun the migration to get a simpler config.
+
+**Settings not migrated (not supported by oxlint):**
+
+- `import/resolver`
+- `import/extensions`
+- `import/core-modules`
+- `import/ignore`
+- `react.pragma`
+- `propWrapperFunctions`
+
+</details>
 
 ### `airbnb/base.json`
 
@@ -255,11 +263,19 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-> `import/resolver`
-> `import/extensions`
-> `import/core-modules`
-> `import/ignore`
-> Added 65 globals to the root config. This may happen when your ESLint config uses a different version of the `globals` package than @oxlint/migrate. Try updating `globals` and rerun the migration to get a simpler config.
+<details>
+<summary>5 migration warnings</summary>
+
+- Added 65 globals to the root config. This may happen when your ESLint config uses a different version of the `globals` package than @oxlint/migrate. Try updating `globals` and rerun the migration to get a simpler config.
+
+**Settings not migrated (not supported by oxlint):**
+
+- `import/resolver`
+- `import/extensions`
+- `import/core-modules`
+- `import/ignore`
+
+</details>
 
 ### `airbnb/hooks.json`
 
@@ -304,7 +320,12 @@ Extracted from `eslint-config-airbnb@19.0.4`.
 
 </details>
 
-> Added 768 globals to the root config. This may happen when your ESLint config uses a different version of the `globals` package than @oxlint/migrate. Try updating `globals` and rerun the migration to get a simpler config.
+<details>
+<summary>1 migration warning</summary>
+
+- Added 768 globals to the root config. This may happen when your ESLint config uses a different version of the `globals` package than @oxlint/migrate. Try updating `globals` and rerun the migration to get a simpler config.
+
+</details>
 
 ### `airbnb/whitespace.json`
 
@@ -343,14 +364,22 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-> `import/resolver`
-> `import/extensions`
-> `import/core-modules`
-> `import/ignore`
-> react.version "detect" is not supported. Specify an explicit version (e.g., "18.2.0") in your oxlint config.
-> `react.pragma`
-> `propWrapperFunctions`
-> Added 65 globals to the root config. This may happen when your ESLint config uses a different version of the `globals` package than @oxlint/migrate. Try updating `globals` and rerun the migration to get a simpler config.
+<details>
+<summary>8 migration warnings</summary>
+
+- react.version "detect" is not supported. Specify an explicit version (e.g., "18.2.0") in your oxlint config.
+- Added 65 globals to the root config. This may happen when your ESLint config uses a different version of the `globals` package than @oxlint/migrate. Try updating `globals` and rerun the migration to get a simpler config.
+
+**Settings not migrated (not supported by oxlint):**
+
+- `import/resolver`
+- `import/extensions`
+- `import/core-modules`
+- `import/ignore`
+- `react.pragma`
+- `propWrapperFunctions`
+
+</details>
 
 ### `standard.json`
 
@@ -380,7 +409,12 @@ Extracted from `eslint-config-standard@17.1.0`.
 
 </details>
 
-> Added 68 globals to the root config. This may happen when your ESLint config uses a different version of the `globals` package than @oxlint/migrate. Try updating `globals` and rerun the migration to get a simpler config.
+<details>
+<summary>1 migration warning</summary>
+
+- Added 68 globals to the root config. This may happen when your ESLint config uses a different version of the `globals` package than @oxlint/migrate. Try updating `globals` and rerun the migration to get a simpler config.
+
+</details>
 
 ### `google.json`
 
@@ -605,12 +639,17 @@ Extracted from `eslint-config-xo@0.51.0`.
 
 </details>
 
-> Settings found under a 'files' pattern — oxlint does not support settings in overrides and they will be skipped:
-> `import-x/extensions`
-> `import-x/core-modules`
-> `import-x/parsers`
-> `import-x/external-module-folders`
-> `import-x/resolver`
+<details>
+<summary>6 migration warnings</summary>
+
+- Settings found under a 'files' pattern — oxlint does not support settings in overrides and they will be skipped:
+- `import-x/extensions`
+- `import-x/core-modules`
+- `import-x/parsers`
+- `import-x/external-module-folders`
+- `import-x/resolver`
+
+</details>
 
 ### `problems.json`
 
@@ -681,11 +720,19 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-> `perfectionist`
-> `import/docstyle`
-> special parser detected: @html-eslint/parser
-> special parser detected: yaml-eslint-parser
-> special parser detected: toml-eslint-parser
+<details>
+<summary>5 migration warnings</summary>
+
+- special parser detected: @html-eslint/parser
+- special parser detected: yaml-eslint-parser
+- special parser detected: toml-eslint-parser
+
+**Settings not migrated (not supported by oxlint):**
+
+- `perfectionist`
+- `import/docstyle`
+
+</details>
 
 ### `wikimedia.json`
 
@@ -728,8 +775,16 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-> `es-x`
-> special parser detected: yaml-eslint-parser
+<details>
+<summary>2 migration warnings</summary>
+
+- special parser detected: yaml-eslint-parser
+
+**Settings not migrated (not supported by oxlint):**
+
+- `es-x`
+
+</details>
 
 ### `eslint.json`
 
@@ -823,8 +878,13 @@ Extracted from `eslint-config-alloy@5.1.2`.
 
 </details>
 
-> special parser detected: @babel/eslint-parser
-> Added 768 globals to the root config. This may happen when your ESLint config uses a different version of the `globals` package than @oxlint/migrate. Try updating `globals` and rerun the migration to get a simpler config.
+<details>
+<summary>2 migration warnings</summary>
+
+- special parser detected: @babel/eslint-parser
+- Added 768 globals to the root config. This may happen when your ESLint config uses a different version of the `globals` package than @oxlint/migrate. Try updating `globals` and rerun the migration to get a simpler config.
+
+</details>
 
 ### `alloy/react.json`
 
@@ -938,9 +998,14 @@ These rules are enabled but their configuration options were dropped because oxl
 
 </details>
 
-> special parser detected: yaml-eslint-parser
-> special parser detected: toml-eslint-parser
-> ignore list inside overrides is not supported
+<details>
+<summary>3 migration warnings</summary>
+
+- special parser detected: yaml-eslint-parser
+- special parser detected: toml-eslint-parser
+- ignore list inside overrides is not supported
+
+</details>
 
 ### `import/recommended.json`
 
