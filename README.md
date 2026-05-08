@@ -1016,7 +1016,7 @@ Extracted from `eslint-plugin-import@2.32.0`.
 Extracted from `eslint-plugin-import@2.32.0`.
 
 <details>
-<summary>1 rules successfully migrated</summary>
+<summary>1 rule successfully migrated</summary>
 
 `import/named`
 
@@ -1111,7 +1111,7 @@ Extracted from `eslint-plugin-import-x@4.16.2`.
 Extracted from `eslint-plugin-import-x@4.16.2`.
 
 <details>
-<summary>1 rules successfully migrated</summary>
+<summary>1 rule successfully migrated</summary>
 
 `import/named`
 
@@ -1262,7 +1262,7 @@ Extracted from `eslint-plugin-react@7.37.5`.
 Extracted from `eslint-plugin-react@7.37.5`.
 
 <details>
-<summary>1 rules successfully migrated</summary>
+<summary>1 rule successfully migrated</summary>
 
 `react/react-in-jsx-scope`
 
@@ -1292,7 +1292,7 @@ Extracted from `eslint-plugin-react-hooks@4.6.2`.
 Extracted from `eslint-plugin-react-refresh@0.5.2`.
 
 <details>
-<summary>1 rules successfully migrated</summary>
+<summary>1 rule successfully migrated</summary>
 
 `react/only-export-components`
 
@@ -1307,7 +1307,7 @@ Extracted from `eslint-plugin-react-refresh@0.5.2`.
 Extracted from `eslint-plugin-react-refresh@0.5.2`.
 
 <details>
-<summary>1 rules successfully migrated</summary>
+<summary>1 rule successfully migrated</summary>
 
 `react/only-export-components`
 
@@ -1322,7 +1322,7 @@ Extracted from `eslint-plugin-react-refresh@0.5.2`.
 Extracted from `eslint-plugin-react-refresh@0.5.2`.
 
 <details>
-<summary>1 rules successfully migrated</summary>
+<summary>1 rule successfully migrated</summary>
 
 `react/only-export-components`
 
@@ -1657,7 +1657,7 @@ Extracted from `eslint-plugin-jsx-a11y@6.10.2`.
 Extracted from `eslint-plugin-n@17.24.0`.
 
 <details>
-<summary>1 rules successfully migrated</summary>
+<summary>1 rule successfully migrated</summary>
 
 `node/no-exports-assign`
 
@@ -1681,7 +1681,7 @@ Extracted from `eslint-plugin-n@17.24.0`.
 Extracted from `eslint-plugin-n@17.24.0`.
 
 <details>
-<summary>1 rules successfully migrated</summary>
+<summary>1 rule successfully migrated</summary>
 
 `node/no-exports-assign`
 
@@ -1705,7 +1705,7 @@ Extracted from `eslint-plugin-n@17.24.0`.
 Extracted from `eslint-plugin-n@17.24.0`.
 
 <details>
-<summary>1 rules successfully migrated</summary>
+<summary>1 rule successfully migrated</summary>
 
 `node/no-exports-assign`
 

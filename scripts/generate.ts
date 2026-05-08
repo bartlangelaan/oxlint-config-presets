@@ -858,12 +858,13 @@ const table =
 function migratedSection(rules: OxlintConfig['rules'], strippedOptions: string[]): string {
   const names = Object.keys(rules ?? {}).filter((name) => !strippedOptions.includes(name));
   if (names.length === 0) return '';
+  const ruleWord = names.length === 1 ? 'rule' : 'rules';
 
   const ruleList = names.map((r) => `\`${r}\``).join(', ');
 
   return (
     `<details>\n` +
-    `<summary>${names.length} rules successfully migrated</summary>\n\n` +
+    `<summary>${names.length} ${ruleWord} successfully migrated</summary>\n\n` +
     `${ruleList}\n\n` +
     `</details>`
   );
