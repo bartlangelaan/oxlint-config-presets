@@ -122,6 +122,22 @@
     ],
     "no-proto": "error",
     "no-redeclare": "error",
+    "no-restricted-properties": [
+      "error",
+      {
+        "object": "arguments",
+        "property": "callee",
+        "message": "arguments.callee is deprecated"
+      },
+      {
+        "property": "__defineGetter__",
+        "message": "Please use Object.defineProperty instead."
+      },
+      {
+        "property": "__defineSetter__",
+        "message": "Please use Object.defineProperty instead."
+      }
+    ],
     "no-return-assign": ["error", "always"],
     "no-script-url": "error",
     "no-self-assign": [
@@ -165,6 +181,7 @@
     ],
     "radix": "error",
     "require-await": "off",
+    "require-unicode-regexp": "off",
     "vars-on-top": "error",
     "yoda": "error",
     "for-direction": "error",
@@ -238,6 +255,14 @@
         }
       }
     ],
+    "func-name-matching": [
+      "off",
+      "always",
+      {
+        "includeCommonJSModuleExports": false,
+        "considerPropertyDescriptor": true
+      }
+    ],
     "func-names": "warn",
     "func-style": ["off", "expression"],
     "id-length": "off",
@@ -281,6 +306,15 @@
     "no-nested-ternary": "error",
     "no-plusplus": "error",
     "no-ternary": "off",
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": [],
+        "allowAfterThis": false,
+        "allowAfterSuper": false,
+        "enforceInMethodNames": true
+      }
+    ],
     "no-unneeded-ternary": [
       "error",
       {

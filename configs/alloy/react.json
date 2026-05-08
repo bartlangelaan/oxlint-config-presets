@@ -3,6 +3,7 @@
   "rules": {
     "react/button-has-type": "off",
     "react/display-name": "off",
+    "react/forbid-component-props": "off",
     "react/forbid-dom-props": "off",
     "react/forbid-elements": "off",
     "react/hook-use-state": "off",
@@ -33,6 +34,7 @@
     "react/no-danger": "off",
     "react/no-danger-with-children": "error",
     "react/no-did-mount-set-state": "off",
+    "react/no-did-update-set-state": "error",
     "react/no-direct-mutation-state": "error",
     "react/no-find-dom-node": "error",
     "react/no-is-mounted": "error",

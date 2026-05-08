@@ -142,6 +142,57 @@
     ],
     "no-proto": ["warn"],
     "no-redeclare": ["warn"],
+    "no-restricted-properties": [
+      "warn",
+      {
+        "object": "arguments",
+        "property": "callee",
+        "message": "arguments.callee is deprecated"
+      },
+      {
+        "object": "global",
+        "property": "isFinite",
+        "message": "Please use Number.isFinite instead"
+      },
+      {
+        "object": "self",
+        "property": "isFinite",
+        "message": "Please use Number.isFinite instead"
+      },
+      {
+        "object": "window",
+        "property": "isFinite",
+        "message": "Please use Number.isFinite instead"
+      },
+      {
+        "object": "global",
+        "property": "isNaN",
+        "message": "Please use Number.isNaN instead"
+      },
+      {
+        "object": "self",
+        "property": "isNaN",
+        "message": "Please use Number.isNaN instead"
+      },
+      {
+        "object": "window",
+        "property": "isNaN",
+        "message": "Please use Number.isNaN instead"
+      },
+      {
+        "property": "__defineGetter__",
+        "message": "Please use Object.defineProperty instead."
+      },
+      {
+        "property": "__defineSetter__",
+        "message": "Please use Object.defineProperty instead."
+      },
+      {
+        "object": "Math",
+        "property": "pow",
+        "message": "Use the exponentiation operator (**) instead."
+      }
+    ],
     "no-return-assign": ["warn", "always"],
     "no-script-url": ["warn"],
     "no-self-assign": [
@@ -186,6 +237,7 @@
     ],
     "radix": ["warn"],
     "require-await": "off",
+    "require-unicode-regexp": "off",
     "vars-on-top": ["warn"],
     "yoda": ["warn"],
     "for-direction": ["warn"],
@@ -259,6 +311,14 @@
         }
       }
     ],
+    "func-name-matching": [
+      "off",
+      "always",
+      {
+        "includeCommonJSModuleExports": false,
+        "considerPropertyDescriptor": true
+      }
+    ],
     "func-names": "warn",
     "func-style": ["off", "expression"],
     "id-length": "off",
@@ -303,6 +363,20 @@
     "no-nested-ternary": ["warn"],
     "no-plusplus": ["warn"],
     "no-ternary": "off",
+    "no-underscore-dangle": [
+      "warn",
+      {
+        "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"],
+        "allowAfterThis": false,
+        "allowAfterSuper": false,
+        "enforceInMethodNames": true,
+        "allowAfterThisConstructor": false,
+        "allowFunctionParams": true,
+        "enforceInClassFields": false,
+        "allowInArrayDestructuring": true,
+        "allowInObjectDestructuring": true
+      }
+    ],
     "no-unneeded-ternary": [
       "warn",
       {
@@ -579,6 +653,7 @@
     ],
     "react/no-danger": "warn",
     "react/no-did-mount-set-state": "off",
+    "react/no-did-update-set-state": ["warn"],
     "react/no-will-update-set-state": ["warn"],
     "react/no-direct-mutation-state": "off",
     "react/no-is-mounted": ["warn"],
@@ -607,6 +682,12 @@
     "react/jsx-no-comment-textnodes": ["warn"],
     "react/no-render-return-value": ["warn"],
     "react/no-find-dom-node": ["warn"],
+    "react/forbid-component-props": [
+      "off",
+      {
+        "forbid": []
+      }
+    ],
     "react/forbid-elements": [
       "off",
       {
@@ -706,6 +787,7 @@
     "jsx-a11y/html-has-lang": ["warn"],
     "jsx-a11y/iframe-has-title": ["warn"],
     "jsx-a11y/img-redundant-alt": ["warn"],
+    "jsx-a11y/interactive-supports-focus": ["warn"],
     "jsx-a11y/label-has-associated-control": [
       "warn",
       {

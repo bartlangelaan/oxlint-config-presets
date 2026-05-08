@@ -28,6 +28,13 @@
     "default-param-last": "off",
     "eqeqeq": ["error", "always"],
     "for-direction": "error",
+    "func-name-matching": [
+      "error",
+      "always",
+      {
+        "includeCommonJSModuleExports": false
+      }
+    ],
     "func-names": "off",
     "func-style": "off",
     "getter-return": "error",
@@ -35,6 +42,7 @@
     "guard-for-in": "error",
     "id-length": "off",
     "init-declarations": "off",
+    "logical-assignment-operators": "off",
     "max-classes-per-file": "off",
     "max-depth": ["error", 5],
     "max-lines": "off",
@@ -149,6 +157,7 @@
     "no-restricted-exports": "off",
     "no-restricted-globals": "off",
     "no-restricted-imports": "off",
+    "no-restricted-properties": "off",
     "no-return-assign": ["error", "always"],
     "no-script-url": "off",
     "no-self-assign": "error",
@@ -164,6 +173,7 @@
     "no-throw-literal": "error",
     "no-undef": "error",
     "no-undefined": "off",
+    "no-underscore-dangle": "off",
     "no-unmodified-loop-condition": "error",
     "no-unneeded-ternary": "off",
     "no-unreachable": "error",
@@ -224,6 +234,7 @@
     "prefer-template": "off",
     "radix": "error",
     "require-await": "off",
+    "require-unicode-regexp": "off",
     "require-yield": "error",
     "sort-keys": "off",
     "sort-vars": "off",
