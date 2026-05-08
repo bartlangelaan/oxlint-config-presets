@@ -159,6 +159,10 @@ export default defineConfig({
   - vue2-recommended-error `vue/vue2-recommended-error.json`
   - vue2-strongly-recommended `vue/vue2-strongly-recommended.json`
   - vue2-strongly-recommended-error `vue/vue2-strongly-recommended-error.json`
+- **eslint-plugin-unicorn**
+  - recommended `unicorn/recommended.json`
+  - all `unicorn/all.json`
+  - unopinionated `unicorn/unopinionated.json`
 
 Generated with `@oxlint/migrate@1.63.0`.
 
@@ -2015,6 +2019,90 @@ Extracted from `eslint-plugin-vue@10.8.0`.
 **Not portable to oxlint**
 
 `vue/attribute-hyphenation`, `vue/first-attribute-linebreak`, `vue/html-closing-bracket-newline`, `vue/html-closing-bracket-spacing`, `vue/html-end-tags`, `vue/html-indent`, `vue/html-quotes`, `vue/html-self-closing`, `vue/max-attributes-per-line`, `vue/multiline-html-element-content-newline`, `vue/mustache-interpolation-spacing`, `vue/no-multi-spaces`, `vue/no-spaces-around-equal-signs-in-attribute`, `vue/no-template-shadow`, `vue/singleline-html-element-content-newline`, `vue/v-bind-style`, `vue/v-on-style`, `vue/v-slot-style`
+
+</details>
+
+### `unicorn/recommended.json`
+
+```json
+"./node_modules/oxlint-config-presets/unicorn/recommended.json"
+```
+
+Extracted from `eslint-plugin-unicorn@64.0.0`.
+
+<details>
+<summary>130 rules successfully migrated</summary>
+
+`no-negated-condition`, `no-nested-ternary`, `unicorn/catch-error-name`, `unicorn/consistent-assert`, `unicorn/consistent-date-clone`, `unicorn/consistent-empty-array-spread`, `unicorn/consistent-existence-index-check`, `unicorn/consistent-function-scoping`, `unicorn/consistent-template-literal-escape`, `unicorn/custom-error-definition`, `unicorn/empty-brace-spaces`, `unicorn/error-message`, `unicorn/escape-case`, `unicorn/explicit-length-check`, `unicorn/filename-case`, `unicorn/new-for-builtins`, `unicorn/no-abusive-eslint-disable`, `unicorn/no-accessor-recursion`, `unicorn/no-anonymous-default-export`, `unicorn/no-array-callback-reference`, `unicorn/no-array-for-each`, `unicorn/no-array-method-this-argument`, `unicorn/no-array-reduce`, `unicorn/no-array-reverse`, `unicorn/no-array-sort`, `unicorn/no-await-expression-member`, `unicorn/no-await-in-promise-methods`, `unicorn/no-console-spaces`, `unicorn/no-document-cookie`, `unicorn/no-empty-file`, `unicorn/no-hex-escape`, `unicorn/no-immediate-mutation`, `unicorn/no-instanceof-builtins`, `unicorn/no-invalid-fetch-options`, `unicorn/no-invalid-remove-event-listener`, `unicorn/no-lonely-if`, `unicorn/no-magic-array-flat-depth`, `unicorn/no-negated-condition`, `unicorn/no-negation-in-equality-check`, `unicorn/no-nested-ternary`, `unicorn/no-new-array`, `unicorn/no-new-buffer`, `unicorn/no-null`, `unicorn/no-object-as-default-parameter`, `unicorn/no-process-exit`, `unicorn/no-single-promise-in-promise-methods`, `unicorn/no-static-only-class`, `unicorn/no-thenable`, `unicorn/no-this-assignment`, `unicorn/no-typeof-undefined`, `unicorn/no-unnecessary-array-flat-depth`, `unicorn/no-unnecessary-array-splice-count`, `unicorn/no-unnecessary-await`, `unicorn/no-unnecessary-slice-end`, `unicorn/no-unreadable-array-destructuring`, `unicorn/no-unreadable-iife`, `unicorn/no-useless-collection-argument`, `unicorn/no-useless-error-capture-stack-trace`, `unicorn/no-useless-fallback-in-spread`, `unicorn/no-useless-iterator-to-array`, `unicorn/no-useless-length-check`, `unicorn/no-useless-promise-resolve-reject`, `unicorn/no-useless-spread`, `unicorn/no-useless-switch-case`, `unicorn/no-useless-undefined`, `unicorn/no-zero-fractions`, `unicorn/number-literal-case`, `unicorn/numeric-separators-style`, `unicorn/prefer-add-event-listener`, `unicorn/prefer-array-find`, `unicorn/prefer-array-flat`, `unicorn/prefer-array-flat-map`, `unicorn/prefer-array-index-of`, `unicorn/prefer-array-some`, `unicorn/prefer-at`, `unicorn/prefer-bigint-literals`, `unicorn/prefer-blob-reading-methods`, `unicorn/prefer-class-fields`, `unicorn/prefer-classlist-toggle`, `unicorn/prefer-code-point`, `unicorn/prefer-date-now`, `unicorn/prefer-default-parameters`, `unicorn/prefer-dom-node-append`, `unicorn/prefer-dom-node-dataset`, `unicorn/prefer-dom-node-remove`, `unicorn/prefer-dom-node-text-content`, `unicorn/prefer-event-target`, `unicorn/prefer-global-this`, `unicorn/prefer-import-meta-properties`, `unicorn/prefer-includes`, `unicorn/prefer-keyboard-event-key`, `unicorn/prefer-logical-operator-over-ternary`, `unicorn/prefer-math-min-max`, `unicorn/prefer-math-trunc`, `unicorn/prefer-modern-dom-apis`, `unicorn/prefer-modern-math-apis`, `unicorn/prefer-module`, `unicorn/prefer-native-coercion-functions`, `unicorn/prefer-negative-index`, `unicorn/prefer-node-protocol`, `unicorn/prefer-number-properties`, `unicorn/prefer-object-from-entries`, `unicorn/prefer-optional-catch-binding`, `unicorn/prefer-prototype-methods`, `unicorn/prefer-query-selector`, `unicorn/prefer-reflect-apply`, `unicorn/prefer-regexp-test`, `unicorn/prefer-response-static-json`, `unicorn/prefer-set-has`, `unicorn/prefer-set-size`, `unicorn/prefer-spread`, `unicorn/prefer-string-raw`, `unicorn/prefer-string-replace-all`, `unicorn/prefer-string-slice`, `unicorn/prefer-string-starts-ends-with`, `unicorn/prefer-string-trim-start-end`, `unicorn/prefer-structured-clone`, `unicorn/prefer-ternary`, `unicorn/prefer-top-level-await`, `unicorn/prefer-type-error`, `unicorn/relative-url-style`, `unicorn/require-array-join-separator`, `unicorn/require-module-attributes`, `unicorn/require-module-specifiers`, `unicorn/require-number-to-fixed-digits-argument`, `unicorn/require-post-message-target-origin`, `unicorn/switch-case-braces`, `unicorn/switch-case-break-position`, `unicorn/text-encoding-identifier-case`, `unicorn/throw-new-error`
+
+</details>
+
+<details>
+<summary>12 rules have no oxlint equivalent</summary>
+
+**Not yet implemented in oxlint**
+
+`unicorn/expiring-todo-comments`, `unicorn/import-style`, `unicorn/isolated-functions`, `unicorn/no-unnecessary-polyfills`, `unicorn/prefer-export-from`, `unicorn/prefer-simple-condition-first`, `unicorn/prefer-single-call`, `unicorn/prefer-switch`, `unicorn/prevent-abbreviations`, `unicorn/template-indent`
+
+**Not portable to oxlint**
+
+`unicorn/no-for-loop`, `unicorn/no-named-default`
+
+</details>
+
+### `unicorn/all.json`
+
+```json
+"./node_modules/oxlint-config-presets/unicorn/all.json"
+```
+
+Extracted from `eslint-plugin-unicorn@64.0.0`.
+
+<details>
+<summary>130 rules successfully migrated</summary>
+
+`no-negated-condition`, `no-nested-ternary`, `unicorn/catch-error-name`, `unicorn/consistent-assert`, `unicorn/consistent-date-clone`, `unicorn/consistent-empty-array-spread`, `unicorn/consistent-existence-index-check`, `unicorn/consistent-function-scoping`, `unicorn/consistent-template-literal-escape`, `unicorn/custom-error-definition`, `unicorn/empty-brace-spaces`, `unicorn/error-message`, `unicorn/escape-case`, `unicorn/explicit-length-check`, `unicorn/filename-case`, `unicorn/new-for-builtins`, `unicorn/no-abusive-eslint-disable`, `unicorn/no-accessor-recursion`, `unicorn/no-anonymous-default-export`, `unicorn/no-array-callback-reference`, `unicorn/no-array-for-each`, `unicorn/no-array-method-this-argument`, `unicorn/no-array-reduce`, `unicorn/no-array-reverse`, `unicorn/no-array-sort`, `unicorn/no-await-expression-member`, `unicorn/no-await-in-promise-methods`, `unicorn/no-console-spaces`, `unicorn/no-document-cookie`, `unicorn/no-empty-file`, `unicorn/no-hex-escape`, `unicorn/no-immediate-mutation`, `unicorn/no-instanceof-builtins`, `unicorn/no-invalid-fetch-options`, `unicorn/no-invalid-remove-event-listener`, `unicorn/no-lonely-if`, `unicorn/no-magic-array-flat-depth`, `unicorn/no-negated-condition`, `unicorn/no-negation-in-equality-check`, `unicorn/no-nested-ternary`, `unicorn/no-new-array`, `unicorn/no-new-buffer`, `unicorn/no-null`, `unicorn/no-object-as-default-parameter`, `unicorn/no-process-exit`, `unicorn/no-single-promise-in-promise-methods`, `unicorn/no-static-only-class`, `unicorn/no-thenable`, `unicorn/no-this-assignment`, `unicorn/no-typeof-undefined`, `unicorn/no-unnecessary-array-flat-depth`, `unicorn/no-unnecessary-array-splice-count`, `unicorn/no-unnecessary-await`, `unicorn/no-unnecessary-slice-end`, `unicorn/no-unreadable-array-destructuring`, `unicorn/no-unreadable-iife`, `unicorn/no-useless-collection-argument`, `unicorn/no-useless-error-capture-stack-trace`, `unicorn/no-useless-fallback-in-spread`, `unicorn/no-useless-iterator-to-array`, `unicorn/no-useless-length-check`, `unicorn/no-useless-promise-resolve-reject`, `unicorn/no-useless-spread`, `unicorn/no-useless-switch-case`, `unicorn/no-useless-undefined`, `unicorn/no-zero-fractions`, `unicorn/number-literal-case`, `unicorn/numeric-separators-style`, `unicorn/prefer-add-event-listener`, `unicorn/prefer-array-find`, `unicorn/prefer-array-flat`, `unicorn/prefer-array-flat-map`, `unicorn/prefer-array-index-of`, `unicorn/prefer-array-some`, `unicorn/prefer-at`, `unicorn/prefer-bigint-literals`, `unicorn/prefer-blob-reading-methods`, `unicorn/prefer-class-fields`, `unicorn/prefer-classlist-toggle`, `unicorn/prefer-code-point`, `unicorn/prefer-date-now`, `unicorn/prefer-default-parameters`, `unicorn/prefer-dom-node-append`, `unicorn/prefer-dom-node-dataset`, `unicorn/prefer-dom-node-remove`, `unicorn/prefer-dom-node-text-content`, `unicorn/prefer-event-target`, `unicorn/prefer-global-this`, `unicorn/prefer-import-meta-properties`, `unicorn/prefer-includes`, `unicorn/prefer-keyboard-event-key`, `unicorn/prefer-logical-operator-over-ternary`, `unicorn/prefer-math-min-max`, `unicorn/prefer-math-trunc`, `unicorn/prefer-modern-dom-apis`, `unicorn/prefer-modern-math-apis`, `unicorn/prefer-module`, `unicorn/prefer-native-coercion-functions`, `unicorn/prefer-negative-index`, `unicorn/prefer-node-protocol`, `unicorn/prefer-number-properties`, `unicorn/prefer-object-from-entries`, `unicorn/prefer-optional-catch-binding`, `unicorn/prefer-prototype-methods`, `unicorn/prefer-query-selector`, `unicorn/prefer-reflect-apply`, `unicorn/prefer-regexp-test`, `unicorn/prefer-response-static-json`, `unicorn/prefer-set-has`, `unicorn/prefer-set-size`, `unicorn/prefer-spread`, `unicorn/prefer-string-raw`, `unicorn/prefer-string-replace-all`, `unicorn/prefer-string-slice`, `unicorn/prefer-string-starts-ends-with`, `unicorn/prefer-string-trim-start-end`, `unicorn/prefer-structured-clone`, `unicorn/prefer-ternary`, `unicorn/prefer-top-level-await`, `unicorn/prefer-type-error`, `unicorn/relative-url-style`, `unicorn/require-array-join-separator`, `unicorn/require-module-attributes`, `unicorn/require-module-specifiers`, `unicorn/require-number-to-fixed-digits-argument`, `unicorn/require-post-message-target-origin`, `unicorn/switch-case-braces`, `unicorn/switch-case-break-position`, `unicorn/text-encoding-identifier-case`, `unicorn/throw-new-error`
+
+</details>
+
+<details>
+<summary>18 rules have no oxlint equivalent</summary>
+
+**Not yet implemented in oxlint**
+
+`unicorn/better-regex`, `unicorn/consistent-destructuring`, `unicorn/expiring-todo-comments`, `unicorn/import-style`, `unicorn/isolated-functions`, `unicorn/no-keyword-prefix`, `unicorn/no-unnecessary-polyfills`, `unicorn/no-unused-properties`, `unicorn/prefer-export-from`, `unicorn/prefer-json-parse-buffer`, `unicorn/prefer-simple-condition-first`, `unicorn/prefer-single-call`, `unicorn/prefer-switch`, `unicorn/prevent-abbreviations`, `unicorn/string-content`, `unicorn/template-indent`
+
+**Not portable to oxlint**
+
+`unicorn/no-for-loop`, `unicorn/no-named-default`
+
+</details>
+
+### `unicorn/unopinionated.json`
+
+```json
+"./node_modules/oxlint-config-presets/unicorn/unopinionated.json"
+```
+
+Extracted from `eslint-plugin-unicorn@64.0.0`.
+
+<details>
+<summary>130 rules successfully migrated</summary>
+
+`no-negated-condition`, `no-nested-ternary`, `unicorn/catch-error-name`, `unicorn/consistent-assert`, `unicorn/consistent-date-clone`, `unicorn/consistent-empty-array-spread`, `unicorn/consistent-existence-index-check`, `unicorn/consistent-function-scoping`, `unicorn/consistent-template-literal-escape`, `unicorn/custom-error-definition`, `unicorn/empty-brace-spaces`, `unicorn/error-message`, `unicorn/escape-case`, `unicorn/explicit-length-check`, `unicorn/filename-case`, `unicorn/new-for-builtins`, `unicorn/no-abusive-eslint-disable`, `unicorn/no-accessor-recursion`, `unicorn/no-anonymous-default-export`, `unicorn/no-array-callback-reference`, `unicorn/no-array-for-each`, `unicorn/no-array-method-this-argument`, `unicorn/no-array-reduce`, `unicorn/no-array-reverse`, `unicorn/no-array-sort`, `unicorn/no-await-expression-member`, `unicorn/no-await-in-promise-methods`, `unicorn/no-console-spaces`, `unicorn/no-document-cookie`, `unicorn/no-empty-file`, `unicorn/no-hex-escape`, `unicorn/no-immediate-mutation`, `unicorn/no-instanceof-builtins`, `unicorn/no-invalid-fetch-options`, `unicorn/no-invalid-remove-event-listener`, `unicorn/no-lonely-if`, `unicorn/no-magic-array-flat-depth`, `unicorn/no-negated-condition`, `unicorn/no-negation-in-equality-check`, `unicorn/no-nested-ternary`, `unicorn/no-new-array`, `unicorn/no-new-buffer`, `unicorn/no-null`, `unicorn/no-object-as-default-parameter`, `unicorn/no-process-exit`, `unicorn/no-single-promise-in-promise-methods`, `unicorn/no-static-only-class`, `unicorn/no-thenable`, `unicorn/no-this-assignment`, `unicorn/no-typeof-undefined`, `unicorn/no-unnecessary-array-flat-depth`, `unicorn/no-unnecessary-array-splice-count`, `unicorn/no-unnecessary-await`, `unicorn/no-unnecessary-slice-end`, `unicorn/no-unreadable-array-destructuring`, `unicorn/no-unreadable-iife`, `unicorn/no-useless-collection-argument`, `unicorn/no-useless-error-capture-stack-trace`, `unicorn/no-useless-fallback-in-spread`, `unicorn/no-useless-iterator-to-array`, `unicorn/no-useless-length-check`, `unicorn/no-useless-promise-resolve-reject`, `unicorn/no-useless-spread`, `unicorn/no-useless-switch-case`, `unicorn/no-useless-undefined`, `unicorn/no-zero-fractions`, `unicorn/number-literal-case`, `unicorn/numeric-separators-style`, `unicorn/prefer-add-event-listener`, `unicorn/prefer-array-find`, `unicorn/prefer-array-flat`, `unicorn/prefer-array-flat-map`, `unicorn/prefer-array-index-of`, `unicorn/prefer-array-some`, `unicorn/prefer-at`, `unicorn/prefer-bigint-literals`, `unicorn/prefer-blob-reading-methods`, `unicorn/prefer-class-fields`, `unicorn/prefer-classlist-toggle`, `unicorn/prefer-code-point`, `unicorn/prefer-date-now`, `unicorn/prefer-default-parameters`, `unicorn/prefer-dom-node-append`, `unicorn/prefer-dom-node-dataset`, `unicorn/prefer-dom-node-remove`, `unicorn/prefer-dom-node-text-content`, `unicorn/prefer-event-target`, `unicorn/prefer-global-this`, `unicorn/prefer-import-meta-properties`, `unicorn/prefer-includes`, `unicorn/prefer-keyboard-event-key`, `unicorn/prefer-logical-operator-over-ternary`, `unicorn/prefer-math-min-max`, `unicorn/prefer-math-trunc`, `unicorn/prefer-modern-dom-apis`, `unicorn/prefer-modern-math-apis`, `unicorn/prefer-module`, `unicorn/prefer-native-coercion-functions`, `unicorn/prefer-negative-index`, `unicorn/prefer-node-protocol`, `unicorn/prefer-number-properties`, `unicorn/prefer-object-from-entries`, `unicorn/prefer-optional-catch-binding`, `unicorn/prefer-prototype-methods`, `unicorn/prefer-query-selector`, `unicorn/prefer-reflect-apply`, `unicorn/prefer-regexp-test`, `unicorn/prefer-response-static-json`, `unicorn/prefer-set-has`, `unicorn/prefer-set-size`, `unicorn/prefer-spread`, `unicorn/prefer-string-raw`, `unicorn/prefer-string-replace-all`, `unicorn/prefer-string-slice`, `unicorn/prefer-string-starts-ends-with`, `unicorn/prefer-string-trim-start-end`, `unicorn/prefer-structured-clone`, `unicorn/prefer-ternary`, `unicorn/prefer-top-level-await`, `unicorn/prefer-type-error`, `unicorn/relative-url-style`, `unicorn/require-array-join-separator`, `unicorn/require-module-attributes`, `unicorn/require-module-specifiers`, `unicorn/require-number-to-fixed-digits-argument`, `unicorn/require-post-message-target-origin`, `unicorn/switch-case-braces`, `unicorn/switch-case-break-position`, `unicorn/text-encoding-identifier-case`, `unicorn/throw-new-error`
+
+</details>
+
+<details>
+<summary>7 rules have no oxlint equivalent</summary>
+
+**Not yet implemented in oxlint**
+
+`unicorn/expiring-todo-comments`, `unicorn/import-style`, `unicorn/no-unnecessary-polyfills`, `unicorn/prefer-simple-condition-first`, `unicorn/prefer-single-call`, `unicorn/prefer-switch`
+
+**Not portable to oxlint**
+
+`unicorn/no-named-default`
 
 </details>
 

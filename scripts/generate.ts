@@ -438,6 +438,12 @@ const antfuModule = await import('@antfu/eslint-config');
 const antfuEntries = await (antfuModule.default as () => Promise<FlatConfigArray>)();
 const fromAntfu = () => antfuEntries as MigrateConfig[];
 
+// eslint-plugin-unicorn is ESM-only, so we import it directly.
+const unicornModule = await import('eslint-plugin-unicorn');
+const unicornPlugin = unicornModule.default as {
+  configs?: Record<string, { rules?: ResolvedRules } | Array<{ rules?: ResolvedRules }>>;
+};
+
 const configs: ConfigEntry[] = [
   // ── airbnb ────────────────────────────────────────────────────────────────
   {
@@ -630,6 +636,22 @@ const configs: ConfigEntry[] = [
   ...fromPluginPackagePresets('eslint-plugin-vue', {
     exclude: (name) => name.startsWith('flat/') || name === 'base' || name === 'no-layout-rules',
   }),
+
+  // ── unicorn ───────────────────────────────────────────────────────────────
+  // eslint-plugin-unicorn is ESM-only, so we use the pre-imported module.
+  ...Object.entries(unicornPlugin.configs ?? {})
+    .filter(([name]) => !name.startsWith('flat/'))
+    .sort(([a], [b]) => {
+      const aIsRec = a.startsWith('recommended');
+      const bIsRec = b.startsWith('recommended');
+      if (aIsRec !== bIsRec) return aIsRec ? -1 : 1;
+      return a.localeCompare(b);
+    })
+    .map(([name, cfg]) => ({
+      sourcePackage: 'eslint-plugin-unicorn',
+      sourceConfig: name,
+      resolveConfig: () => (Array.isArray(cfg) ? cfg : [cfg]) as MigrateConfig[],
+    })),
 ];
 
 interface GenerateResult {
