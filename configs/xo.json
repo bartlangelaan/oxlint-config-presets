@@ -283,6 +283,12 @@
           }
         ],
         "radix": "error",
+        "require-unicode-regexp": [
+          "error",
+          {
+            "requireFlag": "v"
+          }
+        ],
         "yoda": "error",
         "no-delete-var": "error",
         "no-label-var": "error",
@@ -330,7 +336,20 @@
             "ignoreConsecutiveComments": true
           }
         ],
+        "func-name-matching": [
+          "error",
+          {
+            "considerPropertyDescriptor": true
+          }
+        ],
         "func-names": ["error", "never"],
+        "logical-assignment-operators": [
+          "error",
+          "always",
+          {
+            "enforceForIfStatements": true
+          }
+        ],
         "max-depth": "warn",
         "max-lines": [
           "warn",

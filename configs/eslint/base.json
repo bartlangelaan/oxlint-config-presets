@@ -189,6 +189,29 @@
     "no-object-constructor": "error",
     "no-param-reassign": "error",
     "no-proto": "error",
+    "no-restricted-properties": [
+      "error",
+      {
+        "object": "assert",
+        "property": "equal",
+        "message": "Use assert.strictEqual instead of assert.equal."
+      },
+      {
+        "object": "assert",
+        "property": "notEqual",
+        "message": "Use assert.notStrictEqual instead of assert.notEqual."
+      },
+      {
+        "object": "assert",
+        "property": "deepEqual",
+        "message": "Use assert.deepStrictEqual instead of assert.deepEqual."
+      },
+      {
+        "object": "assert",
+        "property": "notDeepEqual",
+        "message": "Use assert.notDeepStrictEqual instead of assert.notDeepEqual."
+      }
+    ],
     "no-return-assign": "error",
     "no-script-url": "error",
     "no-self-compare": "error",
@@ -196,6 +219,12 @@
     "no-shadow": "error",
     "no-throw-literal": "error",
     "no-undefined": "error",
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allowAfterThis": true
+      }
+    ],
     "no-unmodified-loop-condition": "error",
     "no-unneeded-ternary": "error",
     "no-unused-expressions": "error",
@@ -224,6 +253,7 @@
     "prefer-spread": "error",
     "prefer-template": "error",
     "radix": "error",
+    "require-unicode-regexp": "error",
     "symbol-description": "error",
     "unicode-bom": "error",
     "yoda": [

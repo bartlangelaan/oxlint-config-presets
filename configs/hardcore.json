@@ -189,10 +189,26 @@
         "typeof": true
       }
     ],
+    "no-underscore-dangle": [
+      "error",
+      {
+        "enforceInMethodNames": true,
+        "enforceInClassFields": true,
+        "allowFunctionParams": false,
+        "allowInArrayDestructuring": false,
+        "allowInObjectDestructuring": false
+      }
+    ],
     "no-unneeded-ternary": [
       "error",
       {
         "defaultAssignment": false
+      }
+    ],
+    "func-name-matching": [
+      "error",
+      {
+        "considerPropertyDescriptor": true
       }
     ],
     "use-isnan": [
@@ -261,6 +277,13 @@
       "error",
       {
         "disallowTemplateShorthand": true
+      }
+    ],
+    "logical-assignment-operators": [
+      "error",
+      "always",
+      {
+        "enforceForIfStatements": true
       }
     ],
     "prefer-destructuring": [
