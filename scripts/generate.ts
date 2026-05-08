@@ -443,6 +443,10 @@ const unicornModule = await import('eslint-plugin-unicorn');
 const unicornPlugin = unicornModule.default as {
   configs?: Record<string, { rules?: ResolvedRules } | Array<{ rules?: ResolvedRules }>>;
 };
+const reactRefreshModule = await import('eslint-plugin-react-refresh');
+const reactRefreshPlugin = reactRefreshModule.default as {
+  configs?: Record<string, { rules?: ResolvedRules } | Array<{ rules?: ResolvedRules }>>;
+};
 
 const configs: ConfigEntry[] = [
   // ── airbnb ────────────────────────────────────────────────────────────────
@@ -594,7 +598,7 @@ const configs: ConfigEntry[] = [
     exclude: (name) => name.startsWith('flat/'),
   }),
 
-  // ── next / react / react-perf ─────────────────────────────────────────────
+  // ── next / react / react-hooks / react-refresh / react-perf ──────────────
   {
     sourcePackage: 'eslint-config-next',
     sourceConfig: 'recommended',
@@ -608,6 +612,20 @@ const configs: ConfigEntry[] = [
   ...fromPluginPackagePresets('eslint-plugin-react', {
     exclude: (name) => name === 'flat',
   }),
+  ...fromPluginPackagePresets('eslint-plugin-react-hooks'),
+  ...Object.entries(reactRefreshPlugin.configs ?? {})
+    .sort(([a], [b]) => {
+      const aIsRecommended = a.startsWith('recommended');
+      const bIsRecommended = b.startsWith('recommended');
+      if (aIsRecommended !== bIsRecommended) return aIsRecommended ? -1 : 1;
+      return a.localeCompare(b);
+    })
+    .map(([name, cfg]) => ({
+      sourcePackage: 'eslint-plugin-react-refresh',
+      sourceConfig: name,
+      resolveConfig: () => (Array.isArray(cfg) ? cfg : [cfg]) as MigrateConfig[],
+    }))
+    .filter((cfg) => countRules(cfg.resolveConfig()) > 0),
   ...fromPluginPackagePresets('eslint-plugin-react-perf', {
     exclude: (name) => name.startsWith('flat'),
   }),

@@ -117,6 +117,12 @@ export default defineConfig({
   - recommended `react/recommended.json`
   - all `react/all.json`
   - jsx-runtime `react/jsx-runtime.json`
+- **eslint-plugin-react-hooks**
+  - recommended `react-hooks/recommended.json`
+- **eslint-plugin-react-refresh**
+  - recommended `react-refresh/recommended.json`
+  - next `react-refresh/next.json`
+  - vite `react-refresh/vite.json`
 - **eslint-plugin-react-perf**
   - recommended `react-perf/recommended.json`
   - all `react-perf/all.json`
@@ -1259,6 +1265,66 @@ Extracted from `eslint-plugin-react@7.37.5`.
 <summary>1 rules successfully migrated</summary>
 
 `react/react-in-jsx-scope`
+
+</details>
+
+### `react-hooks/recommended.json`
+
+```json
+"./node_modules/oxlint-config-presets/react-hooks/recommended.json"
+```
+
+Extracted from `eslint-plugin-react-hooks@4.6.2`.
+
+<details>
+<summary>2 rules successfully migrated</summary>
+
+`react/rules-of-hooks`, `react/exhaustive-deps`
+
+</details>
+
+### `react-refresh/recommended.json`
+
+```json
+"./node_modules/oxlint-config-presets/react-refresh/recommended.json"
+```
+
+Extracted from `eslint-plugin-react-refresh@0.5.2`.
+
+<details>
+<summary>1 rules successfully migrated</summary>
+
+`react/only-export-components`
+
+</details>
+
+### `react-refresh/next.json`
+
+```json
+"./node_modules/oxlint-config-presets/react-refresh/next.json"
+```
+
+Extracted from `eslint-plugin-react-refresh@0.5.2`.
+
+<details>
+<summary>1 rules successfully migrated</summary>
+
+`react/only-export-components`
+
+</details>
+
+### `react-refresh/vite.json`
+
+```json
+"./node_modules/oxlint-config-presets/react-refresh/vite.json"
+```
+
+Extracted from `eslint-plugin-react-refresh@0.5.2`.
+
+<details>
+<summary>1 rules successfully migrated</summary>
+
+`react/only-export-components`
 
 </details>
 
