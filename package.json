@@ -79,19 +79,13 @@
       "optional": true
     }
   },
+  "packageManager": "pnpm@10.29.3",
   "pnpm": {
-    "packageExtensions": {
-      "eslint-config-airbnb@*": {
-        "peerDependencies": {
-          "eslint": "^7.32.0 || ^8.2.0 || ^10.0.0"
-        }
-      },
-      "eslint-config-airbnb-base@*": {
-        "peerDependencies": {
-          "eslint": "^7.32.0 || ^8.2.0 || ^10.0.0"
-        }
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "eslint-config-airbnb>eslint": "^10.0.0",
+        "eslint-config-airbnb-base>eslint": "^10.0.0"
       }
     }
-  },
-  "packageManager": "pnpm@10.29.3"
+  }
 }

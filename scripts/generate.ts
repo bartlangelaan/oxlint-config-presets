@@ -35,6 +35,7 @@ type ExtractRules<T> = T extends { rules?: infer R }
 type MigrateConfig = ExtractConfig<MigrateInput>;
 type MigrateRules = NonNullable<ExtractRules<MigrateInput>>;
 type ResolvedRules = MigrateRules;
+type RuleConfigValue = ResolvedRules[string];
 type PluginPresetConfig = { rules?: ResolvedRules } | Array<{ rules?: ResolvedRules }>;
 type MigrateReporter = NonNullable<NonNullable<Parameters<typeof migrate>[2]>['reporter']>;
 type RuleSkippedCategory = Parameters<MigrateReporter['markSkipped']>[1];
@@ -175,6 +176,37 @@ function countRules(config: MigrateConfig | MigrateConfig[]): number {
   return entries.reduce((sum, entry) => sum + Object.keys(entry.rules ?? {}).length, 0);
 }
 
+function getRuleSeverity(ruleConfig: unknown): string | number | undefined {
+  if (Array.isArray(ruleConfig) && ruleConfig.length > 0) {
+    return getRuleSeverity(ruleConfig[0]);
+  }
+  if (
+    ruleConfig === 'off' ||
+    ruleConfig === 'warn' ||
+    ruleConfig === 'error' ||
+    typeof ruleConfig === 'number'
+  ) {
+    return ruleConfig;
+  }
+  return undefined;
+}
+
+function isErrorSeverity(ruleConfig: unknown): boolean {
+  const severity = getRuleSeverity(ruleConfig);
+  return severity === 'error' || severity === 2;
+}
+
+function toWarnRuleConfig(ruleConfig: unknown): RuleConfigValue {
+  if (Array.isArray(ruleConfig)) {
+    const ruleConfigParts = ruleConfig as unknown[];
+    return ['warn', ...ruleConfigParts.slice(1)] as RuleConfigValue;
+  }
+  if (typeof ruleConfig === 'number') {
+    return 1 as RuleConfigValue;
+  }
+  return 'warn' as RuleConfigValue;
+}
+
 function createReporter() {
   const warnings: string[] = [];
   const skipped: SkippedRulesByCategory = {
@@ -305,6 +337,36 @@ const fromPackage = (pkg: string) => () => {
   const configPath = req.resolve(pkg);
   const config = req(configPath) as OldStyleEslintConfig;
   return oldStyleToFlat(config, dirname(configPath));
+};
+
+const fromAirbnbWhitespace = () => {
+  const baseConfigPath = req.resolve('eslint-config-airbnb');
+  const baseConfig = req(baseConfigPath) as OldStyleEslintConfig;
+  const airbnbDir = dirname(req.resolve('eslint-config-airbnb/package.json'));
+  const whitespaceRules = req(join(airbnbDir, 'whitespaceRules')) as string[];
+  const whitespaceRulesSet = new Set(whitespaceRules);
+
+  const resolvedBaseEntries = oldStyleToFlat(baseConfig, dirname(baseConfigPath));
+  const resolvedBaseRules: ResolvedRules = {};
+
+  for (const entry of resolvedBaseEntries) {
+    Object.assign(resolvedBaseRules, entry.rules ?? {});
+  }
+
+  const rules: ResolvedRules = baseConfig.rules ? { ...baseConfig.rules } : {};
+  for (const [ruleName, ruleConfig] of Object.entries(resolvedBaseRules)) {
+    if (whitespaceRulesSet.has(ruleName)) continue;
+    if (!isErrorSeverity(ruleConfig)) continue;
+    rules[ruleName] = toWarnRuleConfig(ruleConfig);
+  }
+
+  return oldStyleToFlat(
+    {
+      ...baseConfig,
+      rules,
+    },
+    dirname(baseConfigPath),
+  );
 };
 
 /**
@@ -494,7 +556,7 @@ const configs: ConfigEntry[] = [
   {
     sourcePackage: 'eslint-config-airbnb',
     sourceConfig: 'whitespace',
-    resolveConfig: fromPackage('eslint-config-airbnb/whitespace'),
+    resolveConfig: fromAirbnbWhitespace,
   },
 
   // ── standard / google ─────────────────────────────────────────────────────
