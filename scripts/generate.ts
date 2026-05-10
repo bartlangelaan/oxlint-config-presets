@@ -36,6 +36,12 @@ type MigrateConfig = ExtractConfig<MigrateInput>;
 type MigrateRules = NonNullable<ExtractRules<MigrateInput>>;
 type ResolvedRules = MigrateRules;
 type PluginPresetConfig = { rules?: ResolvedRules } | Array<{ rules?: ResolvedRules }>;
+type PluginPreset = OldStyleEslintConfig | MigrateConfig | MigrateConfig[];
+type PluginPresetMap = Record<string, PluginPreset>;
+interface PluginModule {
+  configs?: PluginPresetMap;
+  default?: { configs?: PluginPresetMap };
+}
 type MigrateReporter = NonNullable<NonNullable<Parameters<typeof migrate>[2]>['reporter']>;
 type RuleSkippedCategory = Parameters<MigrateReporter['markSkipped']>[1];
 type SkippedRulesByCategory = ReturnType<MigrateReporter['getSkippedRulesByCategory']>;
@@ -140,12 +146,7 @@ function resolvePluginConfig(pluginRef: string, visited = new Set<string>()): Re
     : `eslint-plugin-${pluginName}`;
 
   try {
-    const plugin = req(pluginPackageName) as {
-      configs?: Record<string, OldStyleEslintConfig | MigrateConfig | MigrateConfig[]>;
-      default?: {
-        configs?: Record<string, OldStyleEslintConfig | MigrateConfig | MigrateConfig[]>;
-      };
-    };
+    const plugin = req(pluginPackageName) as PluginModule;
     const pluginConfig = (plugin.configs ?? plugin.default?.configs)?.[configName];
     if (!pluginConfig) return {};
 
@@ -362,13 +363,8 @@ function isOldStyleConfig(entry: unknown): entry is OldStyleEslintConfig {
   );
 }
 
-function getPluginPresetMap(
-  pkg: string,
-): Record<string, OldStyleEslintConfig | MigrateConfig | MigrateConfig[]> {
-  const mod = req(pkg) as {
-    configs?: Record<string, OldStyleEslintConfig | MigrateConfig | MigrateConfig[]>;
-    default?: { configs?: Record<string, OldStyleEslintConfig | MigrateConfig | MigrateConfig[]> };
-  };
+function getPluginPresetMap(pkg: string): PluginPresetMap {
+  const mod = req(pkg) as PluginModule;
   return mod.configs ?? mod.default?.configs ?? {};
 }
 
