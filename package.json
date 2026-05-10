@@ -37,7 +37,7 @@
     "test": "node --import tsx/esm --test tests/*.test.ts"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^7.7.3",
+    "@antfu/eslint-config": "^8.2.0",
     "@eslint/js": "^10.0.1",
     "@oxlint/migrate": "^1.63.0",
     "@types/node": "^25.5.0",
