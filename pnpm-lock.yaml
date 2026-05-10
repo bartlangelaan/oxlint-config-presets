@@ -59,8 +59,8 @@ importers:
         specifier: ^10.1.8
         version: 10.1.8(eslint@8.57.1)
       eslint-config-problems:
-        specifier: ^9.0.0
-        version: 9.0.0(eslint@8.57.1)
+        specifier: ^10.0.1
+        version: 10.0.1(eslint@8.57.1)
       eslint-config-standard:
         specifier: ^17.1.0
         version: 17.1.0(eslint-plugin-import@2.32.0)(eslint-plugin-n@17.24.0(eslint@8.57.1)(typescript@6.0.2))(eslint-plugin-promise@7.2.1(eslint@8.57.1))(eslint@8.57.1)
@@ -3976,10 +3976,10 @@ packages:
     peerDependencies:
       eslint: '>=7.0.0'
 
-  eslint-config-problems@9.0.0:
-    resolution: {integrity: sha512-Gc/MOj1qAuBe5mbsCjpkBNLpoB0U+TAmF8ZLiEBha8fLIN58DFJvaqGHXzkP8DCYwGGDI6KRKP+UzGE965a1TA==}
+  eslint-config-problems@10.0.1:
+    resolution: {integrity: sha512-BOhu3YBul4q1pz9RRqyfqwH/x6ubkl4VFiDg8R8E1Eekp0UoXj+JiWQ9E8JFx95QcuOOpG32Um9UTRSVqFlXCA==}
     peerDependencies:
-      eslint: ^9.19.0
+      eslint: ^10.0.0
 
   eslint-config-standard@17.1.0:
     resolution: {integrity: sha512-IwHwmaBNtDK4zDHQukFDW5u/aTb8+meQWZvNFWkiGmbWjD6bqyuSSBxxXKkCftCUzc1zwCH2m/baCNDLGmuO5Q==}
@@ -6244,6 +6244,11 @@ packages:
 
   semver@7.7.4:
     resolution: {integrity: sha512-vFKC2IEtQnVhpT78h1Yp8wzwrf8CM+MzKMHGJZfBtzhZNycRFnXsHk6E5TxIkkMsgNS7mdX3AGB7x2QM2di4lA==}
+    engines: {node: '>=10'}
+    hasBin: true
+
+  semver@7.8.0:
+    resolution: {integrity: sha512-AcM7dV/5ul4EekoQ29Agm5vri8JNqRyj39o0qpX6vDF2GZrtutZl5RwgD1XnZjiTAfncsJhMI48QQH3sN87YNA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -9775,7 +9780,7 @@ snapshots:
       eslint: 8.57.1
       json-stable-stringify-without-jsonify: 1.0.1
       lodash.merge: 4.6.2
-      semver: 7.7.4
+      semver: 7.8.0
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -10964,9 +10969,9 @@ snapshots:
     dependencies:
       eslint: 8.57.1
 
-  eslint-config-problems@9.0.0(eslint@8.57.1):
+  eslint-config-problems@10.0.1(eslint@8.57.1):
     dependencies:
-      '@eslint/js': 9.39.4
+      '@eslint/js': 10.0.1(eslint@8.57.1)
       eslint: 8.57.1
 
   eslint-config-standard@17.1.0(eslint-plugin-import@2.32.0)(eslint-plugin-n@17.24.0(eslint@8.57.1)(typescript@6.0.2))(eslint-plugin-promise@7.2.1(eslint@8.57.1))(eslint@8.57.1):
@@ -14419,6 +14424,8 @@ snapshots:
   semver@6.3.1: {}
 
   semver@7.7.4: {}
+
+  semver@7.8.0: {}
 
   sentence-case@3.0.4:
     dependencies:
