@@ -43,7 +43,7 @@
     "@types/node": "^25.5.0",
     "@typescript-eslint/eslint-plugin": "^8.57.2",
     "@typescript-eslint/parser": "^8.57.2",
-    "eslint": "^8.57.0",
+    "eslint": "^10.0.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-alloy": "^5.1.2",
@@ -77,6 +77,20 @@
   "peerDependenciesMeta": {
     "oxlint": {
       "optional": true
+    }
+  },
+  "pnpm": {
+    "packageExtensions": {
+      "eslint-config-airbnb@*": {
+        "peerDependencies": {
+          "eslint": "^7.32.0 || ^8.2.0 || ^10.0.0"
+        }
+      },
+      "eslint-config-airbnb-base@*": {
+        "peerDependencies": {
+          "eslint": "^7.32.0 || ^8.2.0 || ^10.0.0"
+        }
+      }
     }
   },
   "packageManager": "pnpm@10.29.3"
