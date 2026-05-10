@@ -1753,7 +1753,7 @@ Extracted from `eslint-plugin-jsx-a11y@6.10.2`.
 "./node_modules/oxlint-config-presets/n/recommended.json"
 ```
 
-Extracted from `eslint-plugin-n@17.24.0`.
+Extracted from `eslint-plugin-n@18.0.1`.
 
 <details>
 <summary>1 rule successfully migrated</summary>
@@ -1763,11 +1763,11 @@ Extracted from `eslint-plugin-n@17.24.0`.
 </details>
 
 <details>
-<summary>14 rules have no oxlint equivalent</summary>
+<summary>13 rules have no oxlint equivalent</summary>
 
 **Not yet implemented in oxlint**
 
-`n/no-deprecated-api`, `n/no-extraneous-import`, `n/no-extraneous-require`, `n/no-missing-import`, `n/no-missing-require`, `n/no-process-exit`, `n/no-unpublished-bin`, `n/no-unpublished-import`, `n/no-unpublished-require`, `n/no-unsupported-features/es-builtins`, `n/no-unsupported-features/es-syntax`, `n/no-unsupported-features/node-builtins`, `n/process-exit-as-throw`, `n/hashbang`
+`n/no-deprecated-api`, `n/no-extraneous-import`, `n/no-extraneous-require`, `n/no-missing-import`, `n/no-missing-require`, `n/no-process-exit`, `n/no-unpublished-import`, `n/no-unpublished-require`, `n/no-unsupported-features/es-builtins`, `n/no-unsupported-features/es-syntax`, `n/no-unsupported-features/node-builtins`, `n/process-exit-as-throw`, `n/hashbang`
 
 </details>
 
@@ -1777,7 +1777,7 @@ Extracted from `eslint-plugin-n@17.24.0`.
 "./node_modules/oxlint-config-presets/n/recommended-module.json"
 ```
 
-Extracted from `eslint-plugin-n@17.24.0`.
+Extracted from `eslint-plugin-n@18.0.1`.
 
 <details>
 <summary>1 rule successfully migrated</summary>
@@ -1787,11 +1787,11 @@ Extracted from `eslint-plugin-n@17.24.0`.
 </details>
 
 <details>
-<summary>14 rules have no oxlint equivalent</summary>
+<summary>13 rules have no oxlint equivalent</summary>
 
 **Not yet implemented in oxlint**
 
-`n/no-deprecated-api`, `n/no-extraneous-import`, `n/no-extraneous-require`, `n/no-missing-import`, `n/no-missing-require`, `n/no-process-exit`, `n/no-unpublished-bin`, `n/no-unpublished-import`, `n/no-unpublished-require`, `n/no-unsupported-features/es-builtins`, `n/no-unsupported-features/es-syntax`, `n/no-unsupported-features/node-builtins`, `n/process-exit-as-throw`, `n/hashbang`
+`n/no-deprecated-api`, `n/no-extraneous-import`, `n/no-extraneous-require`, `n/no-missing-import`, `n/no-missing-require`, `n/no-process-exit`, `n/no-unpublished-import`, `n/no-unpublished-require`, `n/no-unsupported-features/es-builtins`, `n/no-unsupported-features/es-syntax`, `n/no-unsupported-features/node-builtins`, `n/process-exit-as-throw`, `n/hashbang`
 
 </details>
 
@@ -1801,7 +1801,7 @@ Extracted from `eslint-plugin-n@17.24.0`.
 "./node_modules/oxlint-config-presets/n/recommended-script.json"
 ```
 
-Extracted from `eslint-plugin-n@17.24.0`.
+Extracted from `eslint-plugin-n@18.0.1`.
 
 <details>
 <summary>1 rule successfully migrated</summary>
@@ -1811,11 +1811,11 @@ Extracted from `eslint-plugin-n@17.24.0`.
 </details>
 
 <details>
-<summary>14 rules have no oxlint equivalent</summary>
+<summary>13 rules have no oxlint equivalent</summary>
 
 **Not yet implemented in oxlint**
 
-`n/no-deprecated-api`, `n/no-extraneous-import`, `n/no-extraneous-require`, `n/no-missing-import`, `n/no-missing-require`, `n/no-process-exit`, `n/no-unpublished-bin`, `n/no-unpublished-import`, `n/no-unpublished-require`, `n/no-unsupported-features/es-builtins`, `n/no-unsupported-features/es-syntax`, `n/no-unsupported-features/node-builtins`, `n/process-exit-as-throw`, `n/hashbang`
+`n/no-deprecated-api`, `n/no-extraneous-import`, `n/no-extraneous-require`, `n/no-missing-import`, `n/no-missing-require`, `n/no-process-exit`, `n/no-unpublished-import`, `n/no-unpublished-require`, `n/no-unsupported-features/es-builtins`, `n/no-unsupported-features/es-syntax`, `n/no-unsupported-features/node-builtins`, `n/process-exit-as-throw`, `n/hashbang`
 
 </details>
 
