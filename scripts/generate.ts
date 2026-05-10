@@ -310,7 +310,7 @@ const fromPackage = (pkg: string) => () => {
 
 const fromAirbnbWhitespace = () => {
   const configPath = req.resolve('eslint-config-airbnb/whitespace');
-  const tempDir = mkdtempSync(join(tmpdir(), 'oxlint-config-presets-eslint8-'));
+  const tempDir = mkdtempSync(join(tmpdir(), 'oxlint-eslint8-'));
   const hookPath = join(tempDir, 'eslint8-alias.cjs');
   try {
     writeFileSync(
@@ -326,8 +326,14 @@ Module._load = function(request, parent, isMain) {
 `,
     );
 
-    const resolverScript = `const config = require(${JSON.stringify(configPath)});
-process.stdout.write(JSON.stringify(config));
+    const resolverScript = `try {
+  const config = require(${JSON.stringify(configPath)});
+  process.stdout.write(JSON.stringify(config));
+} catch (error) {
+  const message = error instanceof Error ? error.stack || error.message : String(error);
+  process.stderr.write(message);
+  process.exit(1);
+}
 `;
     const nodeOptions = process.env.NODE_OPTIONS
       ? `${process.env.NODE_OPTIONS} --require ${hookPath}`

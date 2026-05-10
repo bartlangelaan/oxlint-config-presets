@@ -95,7 +95,7 @@ importers:
         specifier: ^64.0.0
         version: 64.0.0(eslint@10.3.0)
       eslint8:
-        specifier: npm:eslint@^8.57.1
+        specifier: npm:eslint@^8.57.0
         version: eslint@8.57.1
       next:
         specifier: 16.2.1
@@ -12371,7 +12371,7 @@ snapshots:
 
   eslint@8.57.1:
     dependencies:
-      '@eslint-community/eslint-utils': 4.9.1(eslint@10.3.0)
+      '@eslint-community/eslint-utils': 4.9.1(eslint@8.57.1)
       '@eslint-community/regexpp': 4.12.2
       '@eslint/eslintrc': 2.1.4
       '@eslint/js': 8.57.1

@@ -64,7 +64,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "eslint-plugin-unicorn": "^64.0.0",
-    "eslint8": "npm:eslint@^8.57.1",
+    "eslint8": "npm:eslint@^8.57.0",
     "next": "16.2.1",
     "oxfmt": "^0.48.0",
     "oxlint": "1.63.0",
