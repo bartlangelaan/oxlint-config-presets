@@ -37,6 +37,20 @@ type MigrateConfig = ExtractConfig<MigrateInput>;
 type MigrateRules = NonNullable<ExtractRules<MigrateInput>>;
 type ResolvedRules = MigrateRules;
 type PluginPresetConfig = { rules?: ResolvedRules } | Array<{ rules?: ResolvedRules }>;
+/** Single plugin preset entry resolved from a package `configs` export. */
+type PluginPresetEntry = OldStyleEslintConfig | MigrateConfig;
+/** Plugin preset value: either one entry or an array of entries. */
+type PluginPreset = PluginPresetEntry | PluginPresetEntry[];
+/** Mapping of preset names to preset definitions exposed by a plugin package. */
+type PluginPresetMap = Record<string, PluginPreset>;
+// Some plugin packages are loaded via CommonJS (`module.exports.configs`) while
+// ESM-oriented packages loaded through createRequire expose presets on
+// `module.exports.default.configs`.
+/** Plugin module shape supporting both CJS and ESM-default export layouts. */
+interface PluginModule {
+  configs?: PluginPresetMap;
+  default?: { configs?: PluginPresetMap };
+}
 type MigrateReporter = NonNullable<NonNullable<Parameters<typeof migrate>[2]>['reporter']>;
 type RuleSkippedCategory = Parameters<MigrateReporter['markSkipped']>[1];
 type SkippedRulesByCategory = ReturnType<MigrateReporter['getSkippedRulesByCategory']>;
@@ -141,29 +155,26 @@ function resolvePluginConfig(pluginRef: string, visited = new Set<string>()): Re
     : `eslint-plugin-${pluginName}`;
 
   try {
-    const plugin = req(pluginPackageName) as {
-      configs?: Record<string, OldStyleEslintConfig>;
-    };
-    const pluginConfig = plugin.configs?.[configName];
+    const plugin = req(pluginPackageName) as PluginModule;
+    const pluginConfig = (plugin.configs ?? plugin.default?.configs)?.[configName];
     if (!pluginConfig) return {};
 
     const rules: ResolvedRules = {};
-
-    if (pluginConfig.extends) {
-      const exts = Array.isArray(pluginConfig.extends)
-        ? pluginConfig.extends
-        : [pluginConfig.extends];
-      for (const ext of exts) {
-        if (ext.startsWith('plugin:')) {
-          if (!visited.has(ext)) {
-            visited.add(ext);
-            Object.assign(rules, resolvePluginConfig(ext, visited));
+    const entries = Array.isArray(pluginConfig) ? pluginConfig : [pluginConfig];
+    for (const entry of entries) {
+      if (isOldStyleConfig(entry) && entry.extends) {
+        const exts = Array.isArray(entry.extends) ? entry.extends : [entry.extends];
+        for (const ext of exts) {
+          if (ext.startsWith('plugin:')) {
+            if (!visited.has(ext)) {
+              visited.add(ext);
+              Object.assign(rules, resolvePluginConfig(ext, visited));
+            }
           }
         }
       }
+      Object.assign(rules, entry.rules ?? {});
     }
-
-    Object.assign(rules, pluginConfig.rules ?? {});
     return rules;
   } catch {
     console.warn(`  [warn] Could not resolve plugin config: ${pluginRef}`);
@@ -412,15 +423,17 @@ function isOldStyleConfig(entry: unknown): entry is OldStyleEslintConfig {
   );
 }
 
+function getPluginPresetMap(pkg: string): PluginPresetMap {
+  const mod = req(pkg) as PluginModule;
+  return mod.configs ?? mod.default?.configs ?? {};
+}
+
 // Plugin packages can expose old-style object configs and/or flat config entries.
 const fromPluginPackage = (pkg: string, name: string) => () => {
-  const mod = req(pkg) as {
-    configs?: Record<string, OldStyleEslintConfig | Array<{ rules?: ResolvedRules }>>;
-  };
-  const cfg = mod.configs?.[name];
+  const cfg = getPluginPresetMap(pkg)[name];
   if (!cfg) return [];
 
-  const entries = (Array.isArray(cfg) ? cfg : [cfg]) as Array<OldStyleEslintConfig | MigrateConfig>;
+  const entries = Array.isArray(cfg) ? cfg : [cfg];
   const flat: MigrateConfig[] = [];
 
   for (const entry of entries) {
@@ -440,10 +453,7 @@ const listPluginPresets = (
     exclude?: (name: string) => boolean;
   },
 ): string[] => {
-  const mod = req(pkg) as {
-    configs?: Record<string, OldStyleEslintConfig | Array<{ rules?: ResolvedRules }>>;
-  };
-  const presets = Object.keys(mod.configs ?? {})
+  const presets = Object.keys(getPluginPresetMap(pkg))
     .filter((name) => !(options?.exclude?.(name) ?? false))
     .sort((a, b) => {
       const aIsRecommended = a.startsWith('recommended');
