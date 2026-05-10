@@ -315,21 +315,19 @@ const fromAirbnbWhitespace = () => {
   try {
     writeFileSync(
       hookPath,
-      `
-    const Module = require('node:module');
-    const originalLoad = Module._load;
-    Module._load = function(request, parent, isMain) {
-      if (request === 'eslint') {
-        return originalLoad.call(this, 'eslint8', parent, isMain);
-      }
-      return originalLoad.call(this, request, parent, isMain);
-    };
+      `const Module = require('node:module');
+const originalLoad = Module._load;
+Module._load = function(request, parent, isMain) {
+  if (request === 'eslint') {
+    return originalLoad.call(this, 'eslint8', parent, isMain);
+  }
+  return originalLoad.call(this, request, parent, isMain);
+};
 `,
     );
 
-    const resolverScript = `
-    const config = require(${JSON.stringify(configPath)});
-    process.stdout.write(JSON.stringify(config));
+    const resolverScript = `const config = require(${JSON.stringify(configPath)});
+process.stdout.write(JSON.stringify(config));
   `;
     const nodeOptions = process.env.NODE_OPTIONS
       ? `${process.env.NODE_OPTIONS} --require ${hookPath}`
