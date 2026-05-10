@@ -36,12 +36,16 @@ type MigrateConfig = ExtractConfig<MigrateInput>;
 type MigrateRules = NonNullable<ExtractRules<MigrateInput>>;
 type ResolvedRules = MigrateRules;
 type PluginPresetConfig = { rules?: ResolvedRules } | Array<{ rules?: ResolvedRules }>;
+/** Single plugin preset entry resolved from a package `configs` export. */
 type PluginPresetEntry = OldStyleEslintConfig | MigrateConfig;
+/** Plugin preset value: either one entry or an array of entries. */
 type PluginPreset = PluginPresetEntry | PluginPresetEntry[];
+/** Mapping of preset names to preset definitions exposed by a plugin package. */
 type PluginPresetMap = Record<string, PluginPreset>;
 // Some plugin packages are loaded via CommonJS (`module.exports.configs`) while
 // ESM-oriented packages loaded through createRequire expose presets on
 // `module.exports.default.configs`.
+/** Plugin module shape supporting both CJS and ESM-default export layouts. */
 interface PluginModule {
   configs?: PluginPresetMap;
   default?: { configs?: PluginPresetMap };
