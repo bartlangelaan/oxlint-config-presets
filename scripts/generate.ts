@@ -141,28 +141,32 @@ function resolvePluginConfig(pluginRef: string, visited = new Set<string>()): Re
 
   try {
     const plugin = req(pluginPackageName) as {
-      configs?: Record<string, OldStyleEslintConfig>;
+      configs?: Record<string, OldStyleEslintConfig | MigrateConfig | MigrateConfig[]>;
+      default?: {
+        configs?: Record<string, OldStyleEslintConfig | MigrateConfig | MigrateConfig[]>;
+      };
     };
-    const pluginConfig = plugin.configs?.[configName];
+    const pluginConfig = (plugin.configs ?? plugin.default?.configs)?.[configName];
     if (!pluginConfig) return {};
 
     const rules: ResolvedRules = {};
-
-    if (pluginConfig.extends) {
-      const exts = Array.isArray(pluginConfig.extends)
-        ? pluginConfig.extends
-        : [pluginConfig.extends];
-      for (const ext of exts) {
-        if (ext.startsWith('plugin:')) {
-          if (!visited.has(ext)) {
-            visited.add(ext);
-            Object.assign(rules, resolvePluginConfig(ext, visited));
+    const entries = (Array.isArray(pluginConfig) ? pluginConfig : [pluginConfig]) as Array<
+      OldStyleEslintConfig | MigrateConfig
+    >;
+    for (const entry of entries) {
+      if (isOldStyleConfig(entry) && entry.extends) {
+        const exts = Array.isArray(entry.extends) ? entry.extends : [entry.extends];
+        for (const ext of exts) {
+          if (ext.startsWith('plugin:')) {
+            if (!visited.has(ext)) {
+              visited.add(ext);
+              Object.assign(rules, resolvePluginConfig(ext, visited));
+            }
           }
         }
       }
+      Object.assign(rules, entry.rules ?? {});
     }
-
-    Object.assign(rules, pluginConfig.rules ?? {});
     return rules;
   } catch {
     console.warn(`  [warn] Could not resolve plugin config: ${pluginRef}`);
@@ -358,12 +362,19 @@ function isOldStyleConfig(entry: unknown): entry is OldStyleEslintConfig {
   );
 }
 
+function getPluginPresetMap(
+  pkg: string,
+): Record<string, OldStyleEslintConfig | MigrateConfig | MigrateConfig[]> {
+  const mod = req(pkg) as {
+    configs?: Record<string, OldStyleEslintConfig | MigrateConfig | MigrateConfig[]>;
+    default?: { configs?: Record<string, OldStyleEslintConfig | MigrateConfig | MigrateConfig[]> };
+  };
+  return mod.configs ?? mod.default?.configs ?? {};
+}
+
 // Plugin packages can expose old-style object configs and/or flat config entries.
 const fromPluginPackage = (pkg: string, name: string) => () => {
-  const mod = req(pkg) as {
-    configs?: Record<string, OldStyleEslintConfig | Array<{ rules?: ResolvedRules }>>;
-  };
-  const cfg = mod.configs?.[name];
+  const cfg = getPluginPresetMap(pkg)[name];
   if (!cfg) return [];
 
   const entries = (Array.isArray(cfg) ? cfg : [cfg]) as Array<OldStyleEslintConfig | MigrateConfig>;
@@ -386,10 +397,7 @@ const listPluginPresets = (
     exclude?: (name: string) => boolean;
   },
 ): string[] => {
-  const mod = req(pkg) as {
-    configs?: Record<string, OldStyleEslintConfig | Array<{ rules?: ResolvedRules }>>;
-  };
-  const presets = Object.keys(mod.configs ?? {})
+  const presets = Object.keys(getPluginPresetMap(pkg))
     .filter((name) => !(options?.exclude?.(name) ?? false))
     .sort((a, b) => {
       const aIsRecommended = a.startsWith('recommended');
