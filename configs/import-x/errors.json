@@ -1,0 +1,9 @@
+{
+  "plugins": ["import"],
+  "rules": {
+    "import/named": "error",
+    "import/namespace": "error",
+    "import/default": "error",
+    "import/export": "error"
+  }
+}

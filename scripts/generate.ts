@@ -307,6 +307,50 @@ const fromPackage = (pkg: string) => () => {
   return oldStyleToFlat(config, dirname(configPath));
 };
 
+const fromAirbnbWhitespace = () => {
+  const configPath = req.resolve('eslint-config-airbnb/whitespace');
+  const hookPath = '/tmp/oxlint-config-presets-eslint8-alias.cjs';
+  writeFileSync(
+    hookPath,
+    `
+    const Module = require('node:module');
+    const originalLoad = Module._load;
+    Module._load = function(request, parent, isMain) {
+      if (request === 'eslint') {
+        return originalLoad.call(this, 'eslint8', parent, isMain);
+      }
+      return originalLoad.call(this, request, parent, isMain);
+    };
+`,
+  );
+
+  const resolverScript = `
+    const config = require(${JSON.stringify(configPath)});
+    process.stdout.write(JSON.stringify(config));
+  `;
+  const nodeOptions = process.env.NODE_OPTIONS
+    ? `${process.env.NODE_OPTIONS} --require ${hookPath}`
+    : `--require ${hookPath}`;
+
+  const result = spawnSync(process.execPath, ['-e', resolverScript], {
+    cwd: rootDir,
+    encoding: 'utf-8',
+    env: {
+      ...process.env,
+      NODE_OPTIONS: nodeOptions,
+    },
+  });
+
+  if (result.status !== 0) {
+    throw new Error(
+      `Failed to resolve eslint-config-airbnb/whitespace with eslint8:\n${result.stderr}`,
+    );
+  }
+
+  const config = JSON.parse(result.stdout) as OldStyleEslintConfig;
+  return oldStyleToFlat(config, dirname(configPath));
+};
+
 /**
  * Some shareable packages export old-style config objects (`extends` + `rules`)
  * while others export flat config objects or arrays of flat config entries.
@@ -494,7 +538,7 @@ const configs: ConfigEntry[] = [
   {
     sourcePackage: 'eslint-config-airbnb',
     sourceConfig: 'whitespace',
-    resolveConfig: fromPackage('eslint-config-airbnb/whitespace'),
+    resolveConfig: fromAirbnbWhitespace,
   },
 
   // ── standard / google ─────────────────────────────────────────────────────

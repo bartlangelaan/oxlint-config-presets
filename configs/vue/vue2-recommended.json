@@ -1,0 +1,7 @@
+{
+  "plugins": ["vue"],
+  "rules": {
+    "vue/no-multiple-slot-args": "warn",
+    "vue/no-required-prop-with-default": "warn"
+  }
+}

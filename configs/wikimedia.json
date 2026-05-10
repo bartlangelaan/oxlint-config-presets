@@ -1,0 +1,204 @@
+{
+  "plugins": ["jsdoc", "typescript", "unicorn"],
+  "options": {
+    "typeAware": true
+  },
+  "settings": {
+    "jsdoc": {
+      "tagNamePreference": {
+        "augments": "extends",
+        "func": "method",
+        "function": "method",
+        "linkcode": "link",
+        "linkplain": "link",
+        "returns": "return",
+        "yields": "yield",
+        "cfg": "cfg",
+        "chainable": "chainable",
+        "tag constructor": "constructor",
+        "inheritable": "inheritable",
+        "localdoc": "localdoc",
+        "singleton": "singleton",
+        "uses": "uses"
+      },
+      "preferredTypes": {
+        "$": "jQuery",
+        "array": "Array",
+        "Boolean": "boolean",
+        "date": "Date",
+        "error": "Error",
+        "function": "Function",
+        "mixed": "Mixed",
+        "Null": "null",
+        "Number": "number",
+        "object": "Object",
+        "regexp": "RegExp",
+        "set": "Set",
+        "String": "string",
+        "Undefined": "undefined"
+      },
+      "mode": "jsdoc"
+    }
+  },
+  "rules": {
+    "constructor-super": "error",
+    "for-direction": "error",
+    "getter-return": "error",
+    "no-async-promise-executor": "error",
+    "no-case-declarations": "error",
+    "no-class-assign": "error",
+    "no-compare-neg-zero": "error",
+    "no-cond-assign": "error",
+    "no-const-assign": "error",
+    "no-constant-binary-expression": "error",
+    "no-constant-condition": [
+      "error",
+      {
+        "checkLoops": false
+      }
+    ],
+    "no-control-regex": "error",
+    "no-debugger": "error",
+    "no-delete-var": "error",
+    "no-dupe-class-members": "error",
+    "no-dupe-else-if": "error",
+    "no-dupe-keys": "error",
+    "no-duplicate-case": "error",
+    "no-empty": [
+      "error",
+      {
+        "allowEmptyCatch": true
+      }
+    ],
+    "no-empty-character-class": "error",
+    "no-empty-pattern": "error",
+    "no-empty-static-block": "error",
+    "no-ex-assign": "error",
+    "no-extra-boolean-cast": "error",
+    "no-fallthrough": "error",
+    "no-func-assign": "error",
+    "no-global-assign": "error",
+    "no-import-assign": "error",
+    "no-invalid-regexp": "error",
+    "no-irregular-whitespace": "error",
+    "no-loss-of-precision": "error",
+    "no-misleading-character-class": "error",
+    "no-new-native-nonconstructor": "error",
+    "no-nonoctal-decimal-escape": "error",
+    "no-obj-calls": "error",
+    "no-prototype-builtins": "error",
+    "no-redeclare": "error",
+    "no-regex-spaces": "error",
+    "no-self-assign": "error",
+    "no-setter-return": "error",
+    "no-shadow-restricted-names": "error",
+    "no-sparse-arrays": "error",
+    "no-this-before-super": "error",
+    "no-unassigned-vars": "error",
+    "no-undef": "error",
+    "no-unexpected-multiline": "error",
+    "no-unreachable": "error",
+    "no-unsafe-finally": "error",
+    "no-unsafe-negation": "error",
+    "no-unsafe-optional-chaining": "error",
+    "no-unused-labels": "error",
+    "no-unused-private-class-members": "error",
+    "no-unused-vars": "error",
+    "no-useless-assignment": "error",
+    "no-useless-backreference": "error",
+    "no-useless-catch": "error",
+    "no-useless-escape": "error",
+    "no-with": "error",
+    "preserve-caught-error": "error",
+    "require-yield": "error",
+    "use-isnan": "error",
+    "valid-typeof": "error",
+    "jsdoc/check-access": "warn",
+    "jsdoc/check-property-names": "warn",
+    "jsdoc/check-tag-names": [
+      "warn",
+      {
+        "definedTags": ["ignore", "internal", "stable"]
+      }
+    ],
+    "jsdoc/empty-tags": "off",
+    "jsdoc/implements-on-classes": "warn",
+    "jsdoc/no-defaults": "off",
+    "jsdoc/require-param": "warn",
+    "jsdoc/require-param-description": "off",
+    "jsdoc/require-param-name": "warn",
+    "jsdoc/require-param-type": "warn",
+    "jsdoc/require-property": "off",
+    "jsdoc/require-property-description": "off",
+    "jsdoc/require-property-name": "off",
+    "jsdoc/require-property-type": "warn",
+    "jsdoc/require-returns": "warn",
+    "jsdoc/require-returns-description": "off",
+    "jsdoc/require-returns-type": "warn",
+    "jsdoc/require-yields": "warn",
+    "array-callback-return": "error",
+    "block-scoped-var": "error",
+    "curly": ["error", "all"],
+    "eqeqeq": "error",
+    "new-cap": [
+      "error",
+      {
+        "newIsCap": true,
+        "capIsNew": false,
+        "properties": true
+      }
+    ],
+    "no-array-constructor": "error",
+    "no-bitwise": "error",
+    "no-caller": "error",
+    "no-eval": "error",
+    "no-extend-native": "error",
+    "no-extra-bind": "error",
+    "no-extra-label": "error",
+    "no-implicit-coercion": [
+      "error",
+      {
+        "string": true,
+        "boolean": false,
+        "number": false
+      }
+    ],
+    "no-label-var": "error",
+    "no-loop-func": "error",
+    "no-new": "error",
+    "no-new-func": "error",
+    "no-new-wrappers": "error",
+    "no-proto": "error",
+    "no-return-assign": "error",
+    "no-script-url": "error",
+    "no-self-compare": "error",
+    "no-sequences": "error",
+    "no-shadow": [
+      "error",
+      {
+        "hoist": "all"
+      }
+    ],
+    "no-throw-literal": "error",
+    "no-underscore-dangle": "error",
+    "no-unmodified-loop-condition": "error",
+    "no-unneeded-ternary": [
+      "error",
+      {
+        "defaultAssignment": false
+      }
+    ],
+    "no-unused-expressions": "error",
+    "no-use-before-define": "error",
+    "no-useless-call": "error",
+    "no-useless-concat": "error",
+    "no-void": "error",
+    "prefer-numeric-literals": "error",
+    "unicode-bom": ["error"],
+    "yoda": ["error", "never"],
+    "unicorn/prefer-date-now": "error",
+    "unicorn/prefer-string-slice": "error",
+    "unicorn/throw-new-error": "error",
+    "typescript/dot-notation": ["error"]
+  }
+}

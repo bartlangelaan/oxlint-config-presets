@@ -1,0 +1,11 @@
+{
+  "plugins": ["react"],
+  "rules": {
+    "react/only-export-components": [
+      "error",
+      {
+        "allowConstantExport": true
+      }
+    ]
+  }
+}

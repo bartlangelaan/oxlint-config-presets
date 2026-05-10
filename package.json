@@ -64,6 +64,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "eslint-plugin-unicorn": "^64.0.0",
+    "eslint8": "npm:eslint@^8.57.1",
     "next": "16.2.1",
     "oxfmt": "^0.48.0",
     "oxlint": "1.63.0",
@@ -77,20 +78,6 @@
   "peerDependenciesMeta": {
     "oxlint": {
       "optional": true
-    }
-  },
-  "pnpm": {
-    "packageExtensions": {
-      "eslint-config-airbnb@*": {
-        "dependencies": {
-          "eslint": "^8.57.1"
-        }
-      },
-      "eslint-config-airbnb-base@*": {
-        "dependencies": {
-          "eslint": "^8.57.1"
-        }
-      }
     }
   },
   "packageManager": "pnpm@10.29.3"

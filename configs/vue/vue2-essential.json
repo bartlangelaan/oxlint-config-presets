@@ -1,0 +1,10 @@
+{
+  "plugins": ["vue"],
+  "rules": {
+    "vue/no-arrow-functions-in-watch": "error",
+    "vue/no-export-in-script-setup": "error",
+    "vue/return-in-computed-property": "error",
+    "vue/valid-define-emits": "error",
+    "vue/valid-define-props": "error"
+  }
+}
