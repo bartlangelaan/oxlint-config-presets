@@ -863,7 +863,9 @@ const CATEGORY_LABELS: Record<string, string> = {
 };
 
 function skippedSection(skipped: SkippedRulesByCategory): string {
-  const categories = Object.entries(skipped).filter(([, rules]) => rules.length > 0);
+  const categories = Object.entries(skipped)
+    .map(([category, rules]) => [category, [...new Set(rules)]] as const)
+    .filter(([, rules]) => rules.length > 0);
   if (categories.length === 0) return '';
 
   const totalSkipped = categories.reduce((sum, [, rules]) => sum + rules.length, 0);
