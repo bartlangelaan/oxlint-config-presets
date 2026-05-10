@@ -197,6 +197,9 @@ function isErrorSeverity(ruleConfig: unknown): boolean {
 }
 
 function toWarnRuleConfig(ruleConfig: unknown): RuleConfigValue {
+  if (ruleConfig === 'off' || ruleConfig === 0 || ruleConfig === 'warn' || ruleConfig === 1) {
+    return ruleConfig as RuleConfigValue;
+  }
   if (Array.isArray(ruleConfig)) {
     const ruleConfigArray = ruleConfig as unknown[];
     return ['warn', ...ruleConfigArray.slice(1)] as RuleConfigValue;
@@ -343,8 +346,8 @@ const fromAirbnbWhitespace = () => {
   const baseConfigPath = req.resolve('eslint-config-airbnb');
   const baseConfig = req(baseConfigPath) as OldStyleEslintConfig;
   const airbnbDir = dirname(req.resolve('eslint-config-airbnb/package.json'));
-  const whitespaceRules = req(join(airbnbDir, 'whitespaceRules.js')) as string[];
-  const whitespaceRulesSet = new Set(whitespaceRules);
+  const whitespaceRuleNames = req(join(airbnbDir, 'whitespaceRules.js')) as string[];
+  const whitespaceRulesSet = new Set(whitespaceRuleNames);
 
   const resolvedBaseEntries = oldStyleToFlat(baseConfig, dirname(baseConfigPath));
   const resolvedBaseRules: ResolvedRules = {};
@@ -355,6 +358,8 @@ const fromAirbnbWhitespace = () => {
 
   const rules: ResolvedRules = baseConfig.rules ? { ...baseConfig.rules } : {};
   for (const [ruleName, ruleConfig] of Object.entries(resolvedBaseRules)) {
+    // Match upstream airbnb/whitespace behavior: keep whitespace-focused rules at "error"
+    // and downgrade other "error" rules to "warn".
     if (whitespaceRulesSet.has(ruleName)) continue;
     if (!isErrorSeverity(ruleConfig)) continue;
     rules[ruleName] = toWarnRuleConfig(ruleConfig);
