@@ -14,8 +14,9 @@
  */
 
 import { spawnSync } from 'node:child_process';
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, mkdtempSync, rmSync } from 'node:fs';
 import { createRequire } from 'node:module';
+import { tmpdir } from 'node:os';
 import { dirname, resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import migrate, { type default as Migrate } from '@oxlint/migrate';
@@ -309,10 +310,12 @@ const fromPackage = (pkg: string) => () => {
 
 const fromAirbnbWhitespace = () => {
   const configPath = req.resolve('eslint-config-airbnb/whitespace');
-  const hookPath = '/tmp/oxlint-config-presets-eslint8-alias.cjs';
-  writeFileSync(
-    hookPath,
-    `
+  const tempDir = mkdtempSync(join(tmpdir(), 'oxlint-config-presets-eslint8-'));
+  const hookPath = join(tempDir, 'eslint8-alias.cjs');
+  try {
+    writeFileSync(
+      hookPath,
+      `
     const Module = require('node:module');
     const originalLoad = Module._load;
     Module._load = function(request, parent, isMain) {
@@ -322,33 +325,36 @@ const fromAirbnbWhitespace = () => {
       return originalLoad.call(this, request, parent, isMain);
     };
 `,
-  );
+    );
 
-  const resolverScript = `
+    const resolverScript = `
     const config = require(${JSON.stringify(configPath)});
     process.stdout.write(JSON.stringify(config));
   `;
-  const nodeOptions = process.env.NODE_OPTIONS
-    ? `${process.env.NODE_OPTIONS} --require ${hookPath}`
-    : `--require ${hookPath}`;
+    const nodeOptions = process.env.NODE_OPTIONS
+      ? `${process.env.NODE_OPTIONS} --require ${hookPath}`
+      : `--require ${hookPath}`;
 
-  const result = spawnSync(process.execPath, ['-e', resolverScript], {
-    cwd: rootDir,
-    encoding: 'utf-8',
-    env: {
-      ...process.env,
-      NODE_OPTIONS: nodeOptions,
-    },
-  });
+    const result = spawnSync(process.execPath, ['-e', resolverScript], {
+      cwd: rootDir,
+      encoding: 'utf-8',
+      env: {
+        ...process.env,
+        NODE_OPTIONS: nodeOptions,
+      },
+    });
 
-  if (result.status !== 0) {
-    throw new Error(
-      `Failed to resolve eslint-config-airbnb/whitespace with eslint8:\n${result.stderr}`,
-    );
+    if (result.status !== 0) {
+      throw new Error(
+        `Failed to resolve eslint-config-airbnb/whitespace with eslint8:\n${result.stderr}`,
+      );
+    }
+
+    const config = JSON.parse(result.stdout) as OldStyleEslintConfig;
+    return oldStyleToFlat(config, dirname(configPath));
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
   }
-
-  const config = JSON.parse(result.stdout) as OldStyleEslintConfig;
-  return oldStyleToFlat(config, dirname(configPath));
 };
 
 /**
