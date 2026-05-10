@@ -119,6 +119,7 @@ export default defineConfig({
   - jsx-runtime `react/jsx-runtime.json`
 - **eslint-plugin-react-hooks**
   - recommended `react-hooks/recommended.json`
+  - recommended-latest `react-hooks/recommended-latest.json`
 - **eslint-plugin-react-refresh**
   - recommended `react-refresh/recommended.json`
   - next `react-refresh/next.json`
@@ -1222,7 +1223,7 @@ Extracted from `eslint-config-next@16.2.1`.
 </details>
 
 <details>
-<summary>18 rules have no oxlint equivalent</summary>
+<summary>17 rules have no oxlint equivalent</summary>
 
 **Not yet implemented in oxlint**
 
@@ -1230,7 +1231,7 @@ Extracted from `eslint-config-next@16.2.1`.
 
 **Not portable to oxlint**
 
-`react/jsx-uses-react`, `react/jsx-uses-vars`, `react-hooks/static-components`, `react-hooks/use-memo`, `react-hooks/component-hook-factories`, `react-hooks/preserve-manual-memoization`, `react-hooks/incompatible-library`, `react-hooks/immutability`, `react-hooks/globals`, `react-hooks/refs`, `react-hooks/set-state-in-effect`, `react-hooks/error-boundaries`, `react-hooks/purity`, `react-hooks/set-state-in-render`, `react-hooks/unsupported-syntax`, `react-hooks/config`, `react-hooks/gating`
+`react/jsx-uses-react`, `react/jsx-uses-vars`, `react-hooks/static-components`, `react-hooks/use-memo`, `react-hooks/preserve-manual-memoization`, `react-hooks/incompatible-library`, `react-hooks/immutability`, `react-hooks/globals`, `react-hooks/refs`, `react-hooks/set-state-in-effect`, `react-hooks/error-boundaries`, `react-hooks/purity`, `react-hooks/set-state-in-render`, `react-hooks/unsupported-syntax`, `react-hooks/config`, `react-hooks/gating`
 
 </details>
 
@@ -1250,7 +1251,7 @@ Extracted from `eslint-config-next@16.2.1`.
 </details>
 
 <details>
-<summary>18 rules have no oxlint equivalent</summary>
+<summary>17 rules have no oxlint equivalent</summary>
 
 **Not yet implemented in oxlint**
 
@@ -1258,7 +1259,7 @@ Extracted from `eslint-config-next@16.2.1`.
 
 **Not portable to oxlint**
 
-`react/jsx-uses-react`, `react/jsx-uses-vars`, `react-hooks/static-components`, `react-hooks/use-memo`, `react-hooks/component-hook-factories`, `react-hooks/preserve-manual-memoization`, `react-hooks/incompatible-library`, `react-hooks/immutability`, `react-hooks/globals`, `react-hooks/refs`, `react-hooks/set-state-in-effect`, `react-hooks/error-boundaries`, `react-hooks/purity`, `react-hooks/set-state-in-render`, `react-hooks/unsupported-syntax`, `react-hooks/config`, `react-hooks/gating`
+`react/jsx-uses-react`, `react/jsx-uses-vars`, `react-hooks/static-components`, `react-hooks/use-memo`, `react-hooks/preserve-manual-memoization`, `react-hooks/incompatible-library`, `react-hooks/immutability`, `react-hooks/globals`, `react-hooks/refs`, `react-hooks/set-state-in-effect`, `react-hooks/error-boundaries`, `react-hooks/purity`, `react-hooks/set-state-in-render`, `react-hooks/unsupported-syntax`, `react-hooks/config`, `react-hooks/gating`
 
 </details>
 
@@ -1339,12 +1340,45 @@ Extracted from `eslint-plugin-react@7.37.5`.
 "./node_modules/oxlint-config-presets/react-hooks/recommended.json"
 ```
 
-Extracted from `eslint-plugin-react-hooks@4.6.2`.
+Extracted from `eslint-plugin-react-hooks@7.1.1`.
 
 <details>
 <summary>2 rules successfully migrated</summary>
 
 `react/rules-of-hooks`, `react/exhaustive-deps`
+
+</details>
+
+<details>
+<summary>14 rules have no oxlint equivalent</summary>
+
+**Not portable to oxlint**
+
+`react-hooks/static-components`, `react-hooks/use-memo`, `react-hooks/preserve-manual-memoization`, `react-hooks/incompatible-library`, `react-hooks/immutability`, `react-hooks/globals`, `react-hooks/refs`, `react-hooks/set-state-in-effect`, `react-hooks/error-boundaries`, `react-hooks/purity`, `react-hooks/set-state-in-render`, `react-hooks/unsupported-syntax`, `react-hooks/config`, `react-hooks/gating`
+
+</details>
+
+### `react-hooks/recommended-latest.json`
+
+```json
+"./node_modules/oxlint-config-presets/react-hooks/recommended-latest.json"
+```
+
+Extracted from `eslint-plugin-react-hooks@7.1.1`.
+
+<details>
+<summary>2 rules successfully migrated</summary>
+
+`react/rules-of-hooks`, `react/exhaustive-deps`
+
+</details>
+
+<details>
+<summary>15 rules have no oxlint equivalent</summary>
+
+**Not portable to oxlint**
+
+`react-hooks/static-components`, `react-hooks/use-memo`, `react-hooks/void-use-memo`, `react-hooks/preserve-manual-memoization`, `react-hooks/incompatible-library`, `react-hooks/immutability`, `react-hooks/globals`, `react-hooks/refs`, `react-hooks/set-state-in-effect`, `react-hooks/error-boundaries`, `react-hooks/purity`, `react-hooks/set-state-in-render`, `react-hooks/unsupported-syntax`, `react-hooks/config`, `react-hooks/gating`
 
 </details>
 
