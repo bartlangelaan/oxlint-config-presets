@@ -14,8 +14,9 @@
  */
 
 import { spawnSync } from 'node:child_process';
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, mkdtempSync, rmSync } from 'node:fs';
 import { createRequire } from 'node:module';
+import { tmpdir } from 'node:os';
 import { dirname, resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import migrate, { type default as Migrate } from '@oxlint/migrate';
@@ -318,6 +319,59 @@ const fromPackage = (pkg: string) => () => {
   return oldStyleToFlat(config, dirname(configPath));
 };
 
+const fromAirbnbWhitespace = () => {
+  const configPath = req.resolve('eslint-config-airbnb/whitespace');
+  const tempDir = mkdtempSync(join(tmpdir(), 'oxlint-eslint8-'));
+  const hookPath = join(tempDir, 'eslint8-alias.cjs');
+  try {
+    writeFileSync(
+      hookPath,
+      `const Module = require('node:module');
+const originalLoad = Module._load;
+Module._load = function(request, parent, isMain) {
+  if (request === 'eslint') {
+    return originalLoad.call(this, 'eslint8', parent, isMain);
+  }
+  return originalLoad.call(this, request, parent, isMain);
+};
+`,
+    );
+
+    const resolverScript = `try {
+  const config = require(${JSON.stringify(configPath)});
+  process.stdout.write(JSON.stringify(config));
+} catch (error) {
+  const message = error instanceof Error ? error.stack || error.message : String(error);
+  process.stderr.write(message);
+  process.exit(1);
+}
+`;
+    const nodeOptions = process.env.NODE_OPTIONS
+      ? `${process.env.NODE_OPTIONS} --require ${hookPath}`
+      : `--require ${hookPath}`;
+
+    const result = spawnSync(process.execPath, ['-e', resolverScript], {
+      cwd: rootDir,
+      encoding: 'utf-8',
+      env: {
+        ...process.env,
+        NODE_OPTIONS: nodeOptions,
+      },
+    });
+
+    if (result.status !== 0) {
+      throw new Error(
+        `Failed to resolve eslint-config-airbnb/whitespace with eslint8:\n${result.stderr}`,
+      );
+    }
+
+    const config = JSON.parse(result.stdout) as OldStyleEslintConfig;
+    return oldStyleToFlat(config, dirname(configPath));
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+};
+
 /**
  * Some shareable packages export old-style config objects (`extends` + `rules`)
  * while others export flat config objects or arrays of flat config entries.
@@ -504,7 +558,7 @@ const configs: ConfigEntry[] = [
   {
     sourcePackage: 'eslint-config-airbnb',
     sourceConfig: 'whitespace',
-    resolveConfig: fromPackage('eslint-config-airbnb/whitespace'),
+    resolveConfig: fromAirbnbWhitespace,
   },
 
   // ── standard / google ─────────────────────────────────────────────────────

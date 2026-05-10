@@ -1658,11 +1658,7 @@ Extracted from `eslint-plugin-jsdoc@62.9.0`.
 Extracted from `eslint-plugin-jsdoc@62.9.0`.
 
 <details>
-<summary>4 rules have no oxlint equivalent</summary>
-
-**Not portable to oxlint**
-
-`quotes`, `semi`
+<summary>2 rules have no oxlint equivalent</summary>
 
 **Require JS plugin support**
 
@@ -1687,11 +1683,7 @@ Extracted from `eslint-plugin-jsdoc@62.9.0`.
 Extracted from `eslint-plugin-jsdoc@62.9.0`.
 
 <details>
-<summary>4 rules have no oxlint equivalent</summary>
-
-**Not portable to oxlint**
-
-`quotes`, `semi`
+<summary>2 rules have no oxlint equivalent</summary>
 
 **Require JS plugin support**
 
