@@ -328,7 +328,7 @@ Module._load = function(request, parent, isMain) {
 
     const resolverScript = `const config = require(${JSON.stringify(configPath)});
 process.stdout.write(JSON.stringify(config));
-  `;
+`;
     const nodeOptions = process.env.NODE_OPTIONS
       ? `${process.env.NODE_OPTIONS} --require ${hookPath}`
       : `--require ${hookPath}`;
