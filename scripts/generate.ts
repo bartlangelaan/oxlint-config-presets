@@ -37,7 +37,7 @@ type MigrateRules = NonNullable<ExtractRules<MigrateInput>>;
 type ResolvedRules = MigrateRules;
 type PluginPresetConfig = { rules?: ResolvedRules } | Array<{ rules?: ResolvedRules }>;
 type PluginPresetEntry = OldStyleEslintConfig | MigrateConfig;
-type PluginPreset = PluginPresetEntry | MigrateConfig[];
+type PluginPreset = PluginPresetEntry | PluginPresetEntry[];
 type PluginPresetMap = Record<string, PluginPreset>;
 // Some plugin packages are loaded via CommonJS (`module.exports.configs`) while
 // ESM-oriented packages loaded through createRequire expose presets on
@@ -155,9 +155,7 @@ function resolvePluginConfig(pluginRef: string, visited = new Set<string>()): Re
     if (!pluginConfig) return {};
 
     const rules: ResolvedRules = {};
-    const entries = (
-      Array.isArray(pluginConfig) ? pluginConfig : [pluginConfig]
-    ) as PluginPresetEntry[];
+    const entries = Array.isArray(pluginConfig) ? pluginConfig : [pluginConfig];
     for (const entry of entries) {
       if (isOldStyleConfig(entry) && entry.extends) {
         const exts = Array.isArray(entry.extends) ? entry.extends : [entry.extends];
@@ -377,7 +375,7 @@ const fromPluginPackage = (pkg: string, name: string) => () => {
   const cfg = getPluginPresetMap(pkg)[name];
   if (!cfg) return [];
 
-  const entries = (Array.isArray(cfg) ? cfg : [cfg]) as PluginPresetEntry[];
+  const entries = Array.isArray(cfg) ? cfg : [cfg];
   const flat: MigrateConfig[] = [];
 
   for (const entry of entries) {
