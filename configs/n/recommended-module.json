@@ -1,6 +1,0 @@
-{
-  "plugins": ["node"],
-  "rules": {
-    "node/no-exports-assign": "error"
-  }
-}

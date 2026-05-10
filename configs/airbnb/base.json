@@ -1,5 +1,8 @@
 {
-  "plugins": ["typescript", "import"],
+  "plugins": [
+    "typescript",
+    "import"
+  ],
   "options": {
     "typeAware": true
   },
@@ -12,14 +15,20 @@
       }
     ],
     "block-scoped-var": "error",
-    "complexity": ["off", 20],
+    "complexity": [
+      "off",
+      20
+    ],
     "class-methods-use-this": [
       "error",
       {
         "exceptMethods": []
       }
     ],
-    "curly": ["error", "multi-line"],
+    "curly": [
+      "error",
+      "multi-line"
+    ],
     "default-case": [
       "error",
       {
@@ -37,7 +46,10 @@
     ],
     "grouped-accessor-pairs": "error",
     "guard-for-in": "error",
-    "max-classes-per-file": ["error", 1],
+    "max-classes-per-file": [
+      "error",
+      1
+    ],
     "no-alert": "warn",
     "no-caller": "error",
     "no-case-declarations": "error",
@@ -52,7 +64,11 @@
     "no-empty-function": [
       "error",
       {
-        "allow": ["arrowFunctions", "functions", "methods"]
+        "allow": [
+          "arrowFunctions",
+          "functions",
+          "methods"
+        ]
       }
     ],
     "no-empty-pattern": "error",
@@ -173,7 +189,10 @@
         "message": "Use the exponentiation operator (**) instead."
       }
     ],
-    "no-return-assign": ["error", "always"],
+    "no-return-assign": [
+      "error",
+      "always"
+    ],
     "no-script-url": "error",
     "no-self-assign": [
       "error",
@@ -203,7 +222,11 @@
     "no-warning-comments": [
       "off",
       {
-        "terms": ["todo", "fixme", "xxx"],
+        "terms": [
+          "todo",
+          "fixme",
+          "xxx"
+        ],
         "location": "start"
       }
     ],
@@ -229,7 +252,10 @@
     "no-async-promise-executor": "error",
     "no-await-in-loop": "error",
     "no-compare-neg-zero": "error",
-    "no-cond-assign": ["error", "always"],
+    "no-cond-assign": [
+      "error",
+      "always"
+    ],
     "no-console": "warn",
     "no-constant-condition": "warn",
     "no-control-regex": "error",
@@ -299,9 +325,15 @@
       }
     ],
     "func-names": "warn",
-    "func-style": ["off", "expression"],
+    "func-style": [
+      "off",
+      "expression"
+    ],
     "id-length": "off",
-    "max-depth": ["off", 4],
+    "max-depth": [
+      "off",
+      4
+    ],
     "max-lines": [
       "off",
       {
@@ -320,15 +352,25 @@
       }
     ],
     "max-nested-callbacks": "off",
-    "max-params": ["off", 3],
-    "max-statements": ["off", 10],
+    "max-params": [
+      "off",
+      3
+    ],
+    "max-statements": [
+      "off",
+      10
+    ],
     "new-cap": [
       "error",
       {
         "newIsCap": true,
         "newIsCapExceptions": [],
         "capIsNew": false,
-        "capIsNewExceptions": ["Immutable.Map", "Immutable.Set", "Immutable.List"]
+        "capIsNewExceptions": [
+          "Immutable.Map",
+          "Immutable.Set",
+          "Immutable.List"
+        ]
       }
     ],
     "no-array-constructor": "error",
@@ -336,7 +378,9 @@
     "no-continue": "error",
     "no-inline-comments": "off",
     "no-lonely-if": "error",
-    "no-multi-assign": ["error"],
+    "no-multi-assign": [
+      "error"
+    ],
     "no-negated-condition": "off",
     "no-nested-ternary": "error",
     "no-plusplus": "error",
@@ -356,7 +400,10 @@
         "defaultAssignment": false
       }
     ],
-    "operator-assignment": ["error", "always"],
+    "operator-assignment": [
+      "error",
+      "always"
+    ],
     "prefer-exponentiation-operator": "error",
     "prefer-object-spread": "error",
     "sort-keys": [
@@ -368,7 +415,10 @@
       }
     ],
     "sort-vars": "off",
-    "unicode-bom": ["error", "never"],
+    "unicode-bom": [
+      "error",
+      "never"
+    ],
     "init-declarations": "off",
     "no-delete-var": "error",
     "no-label-var": "error",
@@ -476,7 +526,10 @@
     "no-restricted-exports": [
       "error",
       {
-        "restrictedNamedExports": ["default", "then"]
+        "restrictedNamedExports": [
+          "default",
+          "then"
+        ]
       }
     ],
     "no-restricted-imports": [

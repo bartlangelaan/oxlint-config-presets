@@ -1,5 +1,10 @@
 {
-  "plugins": ["typescript", "import", "react", "jsx-a11y"],
+  "plugins": [
+    "typescript",
+    "import",
+    "react",
+    "jsx-a11y"
+  ],
   "options": {
     "typeAware": true
   },
@@ -12,7 +17,10 @@
       }
     ],
     "block-scoped-var": "error",
-    "complexity": ["off", 20],
+    "complexity": [
+      "off",
+      20
+    ],
     "class-methods-use-this": [
       "error",
       {
@@ -36,7 +44,10 @@
         ]
       }
     ],
-    "curly": ["error", "multi-line"],
+    "curly": [
+      "error",
+      "multi-line"
+    ],
     "default-case": [
       "error",
       {
@@ -54,7 +65,10 @@
     ],
     "grouped-accessor-pairs": "error",
     "guard-for-in": "error",
-    "max-classes-per-file": ["error", 1],
+    "max-classes-per-file": [
+      "error",
+      1
+    ],
     "no-alert": "warn",
     "no-caller": "error",
     "no-case-declarations": "error",
@@ -69,7 +83,11 @@
     "no-empty-function": [
       "error",
       {
-        "allow": ["arrowFunctions", "functions", "methods"]
+        "allow": [
+          "arrowFunctions",
+          "functions",
+          "methods"
+        ]
       }
     ],
     "no-empty-pattern": "error",
@@ -190,7 +208,10 @@
         "message": "Use the exponentiation operator (**) instead."
       }
     ],
-    "no-return-assign": ["error", "always"],
+    "no-return-assign": [
+      "error",
+      "always"
+    ],
     "no-script-url": "error",
     "no-self-assign": [
       "error",
@@ -220,7 +241,11 @@
     "no-warning-comments": [
       "off",
       {
-        "terms": ["todo", "fixme", "xxx"],
+        "terms": [
+          "todo",
+          "fixme",
+          "xxx"
+        ],
         "location": "start"
       }
     ],
@@ -246,7 +271,10 @@
     "no-async-promise-executor": "error",
     "no-await-in-loop": "error",
     "no-compare-neg-zero": "error",
-    "no-cond-assign": ["error", "always"],
+    "no-cond-assign": [
+      "error",
+      "always"
+    ],
     "no-console": "warn",
     "no-constant-condition": "warn",
     "no-control-regex": "error",
@@ -316,9 +344,15 @@
       }
     ],
     "func-names": "warn",
-    "func-style": ["off", "expression"],
+    "func-style": [
+      "off",
+      "expression"
+    ],
     "id-length": "off",
-    "max-depth": ["off", 4],
+    "max-depth": [
+      "off",
+      4
+    ],
     "max-lines": [
       "off",
       {
@@ -337,15 +371,25 @@
       }
     ],
     "max-nested-callbacks": "off",
-    "max-params": ["off", 3],
-    "max-statements": ["off", 10],
+    "max-params": [
+      "off",
+      3
+    ],
+    "max-statements": [
+      "off",
+      10
+    ],
     "new-cap": [
       "error",
       {
         "newIsCap": true,
         "newIsCapExceptions": [],
         "capIsNew": false,
-        "capIsNewExceptions": ["Immutable.Map", "Immutable.Set", "Immutable.List"]
+        "capIsNewExceptions": [
+          "Immutable.Map",
+          "Immutable.Set",
+          "Immutable.List"
+        ]
       }
     ],
     "no-array-constructor": "error",
@@ -353,7 +397,9 @@
     "no-continue": "error",
     "no-inline-comments": "off",
     "no-lonely-if": "error",
-    "no-multi-assign": ["error"],
+    "no-multi-assign": [
+      "error"
+    ],
     "no-negated-condition": "off",
     "no-nested-ternary": "error",
     "no-plusplus": "error",
@@ -361,7 +407,9 @@
     "no-underscore-dangle": [
       "error",
       {
-        "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"],
+        "allow": [
+          "__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"
+        ],
         "allowAfterThis": false,
         "allowAfterSuper": false,
         "enforceInMethodNames": true
@@ -373,7 +421,10 @@
         "defaultAssignment": false
       }
     ],
-    "operator-assignment": ["error", "always"],
+    "operator-assignment": [
+      "error",
+      "always"
+    ],
     "prefer-exponentiation-operator": "error",
     "prefer-object-spread": "error",
     "sort-keys": [
@@ -385,7 +436,10 @@
       }
     ],
     "sort-vars": "off",
-    "unicode-bom": ["error", "never"],
+    "unicode-bom": [
+      "error",
+      "never"
+    ],
     "init-declarations": "off",
     "no-delete-var": "error",
     "no-label-var": "error",
@@ -493,7 +547,10 @@
     "no-restricted-exports": [
       "error",
       {
-        "restrictedNamedExports": ["default", "then"]
+        "restrictedNamedExports": [
+          "default",
+          "then"
+        ]
       }
     ],
     "no-restricted-imports": [
@@ -651,7 +708,10 @@
     "react/no-set-state": "off",
     "react/no-string-refs": "error",
     "react/no-unknown-property": "error",
-    "react/prefer-es6-class": ["error", "always"],
+    "react/prefer-es6-class": [
+      "error",
+      "always"
+    ],
     "react/react-in-jsx-scope": "error",
     "react/require-render-return": "error",
     "react/self-closing-comp": "error",
@@ -664,7 +724,9 @@
     "react/jsx-filename-extension": [
       "error",
       {
-        "extensions": [".jsx"]
+        "extensions": [
+          ".jsx"
+        ]
       }
     ],
     "react/jsx-no-comment-textnodes": "error",
@@ -707,8 +769,14 @@
     "react/no-this-in-sfc": "error",
     "react/jsx-max-depth": "off",
     "react/no-unsafe": "off",
-    "react/jsx-fragments": ["error", "syntax"],
-    "react/state-in-constructor": ["error", "always"],
+    "react/jsx-fragments": [
+      "error",
+      "syntax"
+    ],
+    "react/state-in-constructor": [
+      "error",
+      "always"
+    ],
     "react/jsx-props-no-spreading": [
       "error",
       {
@@ -723,7 +791,9 @@
       [
         {
           "name": "Link",
-          "props": ["to"]
+          "props": [
+            "to"
+          ]
         }
       ]
     ],
@@ -733,7 +803,12 @@
     "jsx-a11y/alt-text": [
       "error",
       {
-        "elements": ["img", "object", "area", "input[type=\"image\"]"],
+        "elements": [
+          "img",
+          "object",
+          "area",
+          "input[type=\"image\"]"
+        ],
         "img": [],
         "object": [],
         "area": [],
@@ -744,9 +819,17 @@
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
-        "components": ["Link"],
-        "specialLink": ["to"],
-        "aspects": ["noHref", "invalidHref", "preferButton"]
+        "components": [
+          "Link"
+        ],
+        "specialLink": [
+          "to"
+        ],
+        "aspects": [
+          "noHref",
+          "invalidHref",
+          "preferButton"
+        ]
       }
     ],
     "jsx-a11y/aria-activedescendant-has-tabindex": "error",
@@ -769,7 +852,9 @@
     "jsx-a11y/heading-has-content": [
       "error",
       {
-        "components": [""]
+        "components": [
+          ""
+        ]
       }
     ],
     "jsx-a11y/html-has-lang": "error",
@@ -806,21 +891,33 @@
     "jsx-a11y/no-distracting-elements": [
       "error",
       {
-        "elements": ["marquee", "blink"]
+        "elements": [
+          "marquee",
+          "blink"
+        ]
       }
     ],
     "jsx-a11y/no-noninteractive-tabindex": [
       "error",
       {
         "tags": [],
-        "roles": ["tabpanel"]
+        "roles": [
+          "tabpanel"
+        ]
       }
     ],
     "jsx-a11y/no-redundant-roles": "error",
     "jsx-a11y/no-static-element-interactions": [
       "error",
       {
-        "handlers": ["onClick", "onMouseDown", "onMouseUp", "onKeyPress", "onKeyDown", "onKeyUp"]
+        "handlers": [
+          "onClick",
+          "onMouseDown",
+          "onMouseUp",
+          "onKeyPress",
+          "onKeyDown",
+          "onKeyUp"
+        ]
       }
     ],
     "jsx-a11y/role-has-required-aria-props": "error",
