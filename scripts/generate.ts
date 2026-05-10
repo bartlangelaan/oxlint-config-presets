@@ -198,8 +198,8 @@ function isErrorSeverity(ruleConfig: unknown): boolean {
 
 function toWarnRuleConfig(ruleConfig: unknown): RuleConfigValue {
   if (Array.isArray(ruleConfig)) {
-    const ruleConfigParts = ruleConfig as unknown[];
-    return ['warn', ...ruleConfigParts.slice(1)] as RuleConfigValue;
+    const ruleConfigArray = ruleConfig as unknown[];
+    return ['warn', ...ruleConfigArray.slice(1)] as RuleConfigValue;
   }
   if (typeof ruleConfig === 'number') {
     return 1 as RuleConfigValue;
@@ -343,7 +343,7 @@ const fromAirbnbWhitespace = () => {
   const baseConfigPath = req.resolve('eslint-config-airbnb');
   const baseConfig = req(baseConfigPath) as OldStyleEslintConfig;
   const airbnbDir = dirname(req.resolve('eslint-config-airbnb/package.json'));
-  const whitespaceRules = req(join(airbnbDir, 'whitespaceRules')) as string[];
+  const whitespaceRules = req(join(airbnbDir, 'whitespaceRules.js')) as string[];
   const whitespaceRulesSet = new Set(whitespaceRules);
 
   const resolvedBaseEntries = oldStyleToFlat(baseConfig, dirname(baseConfigPath));
