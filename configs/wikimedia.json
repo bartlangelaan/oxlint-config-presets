@@ -194,6 +194,7 @@
     "no-useless-concat": "error",
     "no-void": "error",
     "prefer-numeric-literals": "error",
+    "prefer-regex-literals": "error",
     "unicode-bom": ["error"],
     "yoda": ["error", "never"],
     "unicorn/prefer-date-now": "error",

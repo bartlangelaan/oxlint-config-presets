@@ -78,6 +78,7 @@
     "no-control-regex": "error",
     "no-misleading-character-class": "error",
     "no-regex-spaces": "error",
+    "prefer-regex-literals": "error",
     "no-invalid-regexp": "error",
     "no-useless-backreference": "error",
     "no-empty-character-class": "error",

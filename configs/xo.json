@@ -282,6 +282,12 @@
             "allowEmptyReject": true
           }
         ],
+        "prefer-regex-literals": [
+          "error",
+          {
+            "disallowRedundantWrapping": true
+          }
+        ],
         "radix": "error",
         "require-unicode-regexp": [
           "error",
