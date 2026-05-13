@@ -229,6 +229,7 @@
     "prefer-object-has-own": "off",
     "prefer-object-spread": "error",
     "prefer-promise-reject-errors": "error",
+    "prefer-regex-literals": "error",
     "prefer-rest-params": "off",
     "prefer-spread": "off",
     "prefer-template": "off",
