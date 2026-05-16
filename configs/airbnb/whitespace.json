@@ -97,6 +97,7 @@
         "allow": []
       }
     ],
+    "no-implicit-globals": "off",
     "no-iterator": ["warn"],
     "no-labels": [
       "warn",
@@ -233,6 +234,12 @@
       "warn",
       {
         "allowEmptyReject": true
+      }
+    ],
+    "prefer-regex-literals": [
+      "warn",
+      {
+        "disallowRedundantWrapping": true
       }
     ],
     "radix": ["warn"],
@@ -533,6 +540,13 @@
         "avoidQuotes": true
       }
     ],
+    "prefer-arrow-callback": [
+      "warn",
+      {
+        "allowNamedFunctions": false,
+        "allowUnboundThis": true
+      }
+    ],
     "prefer-const": [
       "warn",
       {
@@ -778,6 +792,27 @@
       }
     ],
     "jsx-a11y/click-events-have-key-events": ["warn"],
+    "jsx-a11y/control-has-associated-label": [
+      "warn",
+      {
+        "labelAttributes": ["label"],
+        "controlComponents": [],
+        "ignoreElements": ["audio", "canvas", "embed", "input", "textarea", "tr", "video"],
+        "ignoreRoles": [
+          "grid",
+          "listbox",
+          "menu",
+          "menubar",
+          "radiogroup",
+          "row",
+          "tablist",
+          "toolbar",
+          "tree",
+          "treegrid"
+        ],
+        "depth": 5
+      }
+    ],
     "jsx-a11y/heading-has-content": [
       "warn",
       {
@@ -819,6 +854,28 @@
       "warn",
       {
         "elements": ["marquee", "blink"]
+      }
+    ],
+    "jsx-a11y/no-interactive-element-to-noninteractive-role": [
+      "warn",
+      {
+        "tr": ["none", "presentation"]
+      }
+    ],
+    "jsx-a11y/no-noninteractive-element-interactions": [
+      "warn",
+      {
+        "handlers": ["onClick", "onMouseDown", "onMouseUp", "onKeyPress", "onKeyDown", "onKeyUp"]
+      }
+    ],
+    "jsx-a11y/no-noninteractive-element-to-interactive-role": [
+      "warn",
+      {
+        "ul": ["listbox", "menu", "menubar", "radiogroup", "tablist", "tree", "treegrid"],
+        "ol": ["listbox", "menu", "menubar", "radiogroup", "tablist", "tree", "treegrid"],
+        "li": ["menuitem", "option", "row", "tab", "treeitem"],
+        "table": ["grid"],
+        "td": ["gridcell"]
       }
     ],
     "jsx-a11y/no-noninteractive-tabindex": [

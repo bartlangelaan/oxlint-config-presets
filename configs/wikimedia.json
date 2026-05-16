@@ -135,7 +135,10 @@
     "jsdoc/require-returns": "warn",
     "jsdoc/require-returns-description": "off",
     "jsdoc/require-returns-type": "warn",
+    "jsdoc/require-throws-description": "off",
+    "jsdoc/require-throws-type": "warn",
     "jsdoc/require-yields": "warn",
+    "jsdoc/require-yields-type": "off",
     "array-callback-return": "error",
     "block-scoped-var": "error",
     "curly": ["error", "all"],
@@ -163,6 +166,7 @@
         "number": false
       }
     ],
+    "no-implicit-globals": "error",
     "no-label-var": "error",
     "no-loop-func": "error",
     "no-new": "error",
@@ -194,6 +198,7 @@
     "no-useless-concat": "error",
     "no-void": "error",
     "prefer-numeric-literals": "error",
+    "prefer-regex-literals": "error",
     "unicode-bom": ["error"],
     "yoda": ["error", "never"],
     "unicorn/prefer-date-now": "error",
