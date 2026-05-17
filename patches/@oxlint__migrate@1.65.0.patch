@@ -1,0 +1,12 @@
+diff --git a/dist/src-8GynZAvi.mjs b/dist/src-8GynZAvi.mjs
+index 5cce55f794b5429a8d0b71949cf915fdea1000f9..e75cb71aae354087a36e26b82f4da3978ce01f18 100644
+--- a/dist/src-8GynZAvi.mjs
++++ b/dist/src-8GynZAvi.mjs
+@@ -2011,7 +2011,6 @@ const cleanUpOxlintConfig = (config) => {
+ 	}
+ 	if (!("files" in config)) {
+ 		cleanUpUselessOverridesEntries(config);
+-		cleanUpDisabledRootRules(config);
+ 		cleanUpUnusedJsPlugins(config);
+ 	}
+ };

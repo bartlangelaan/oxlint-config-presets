@@ -1,5 +1,6 @@
+ignorePatchFailures: false
+
 patchedDependencies:
-  '@oxlint/migrate': patches/@oxlint__migrate.patch
+  '@oxlint/migrate@1.65.0': patches/@oxlint__migrate@1.65.0.patch
 
 shamefullyHoist: true
-ignorePatchFailures: false
