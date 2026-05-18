@@ -242,6 +242,12 @@
       }
     ],
     "grouped-accessor-pairs": ["error", "getBeforeSet"],
+    "no-implicit-globals": [
+      "error",
+      {
+        "lexicalBindings": true
+      }
+    ],
     "array-callback-return": [
       "error",
       {
@@ -277,6 +283,12 @@
       "error",
       {
         "disallowTemplateShorthand": true
+      }
+    ],
+    "prefer-regex-literals": [
+      "error",
+      {
+        "disallowRedundantWrapping": true
       }
     ],
     "logical-assignment-operators": [

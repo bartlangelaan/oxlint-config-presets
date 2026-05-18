@@ -1,6 +1,6 @@
---- a/dist/src-B_Nt7OeT.mjs
-+++ b/dist/src-B_Nt7OeT.mjs
-@@ -1988,7 +1988,6 @@
+--- a/dist/src-8GynZAvi.mjs
++++ b/dist/src-8GynZAvi.mjs
+@@ -2011,7 +2011,6 @@
  	}
  	if (!("files" in config)) {
  		cleanUpUselessOverridesEntries(config);
