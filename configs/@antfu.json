@@ -191,6 +191,13 @@
         "ignoreConstructors": false
       }
     ],
+    "prefer-arrow-callback": [
+      "error",
+      {
+        "allowNamedFunctions": false,
+        "allowUnboundThis": true
+      }
+    ],
     "prefer-const": [
       "error",
       {
@@ -200,6 +207,12 @@
     ],
     "prefer-exponentiation-operator": "error",
     "prefer-promise-reject-errors": "error",
+    "prefer-regex-literals": [
+      "error",
+      {
+        "disallowRedundantWrapping": true
+      }
+    ],
     "prefer-rest-params": "error",
     "prefer-spread": "error",
     "prefer-template": "error",

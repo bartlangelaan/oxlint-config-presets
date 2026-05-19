@@ -23,6 +23,9 @@
     "jsdoc/require-returns": "error",
     "jsdoc/require-returns-description": "error",
     "jsdoc/require-returns-type": "off",
-    "jsdoc/require-yields": "error"
+    "jsdoc/require-throws-description": "off",
+    "jsdoc/require-throws-type": "error",
+    "jsdoc/require-yields": "error",
+    "jsdoc/require-yields-type": "error"
   }
 }
