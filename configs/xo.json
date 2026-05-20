@@ -233,6 +233,8 @@
         "no-fallthrough": "error",
         "no-global-assign": "error",
         "no-implicit-coercion": "error",
+        "no-implicit-globals": "error",
+        "no-implied-eval": "error",
         "no-iterator": "error",
         "no-labels": "error",
         "no-lone-blocks": "error",
@@ -280,6 +282,12 @@
           "error",
           {
             "allowEmptyReject": true
+          }
+        ],
+        "prefer-regex-literals": [
+          "error",
+          {
+            "disallowRedundantWrapping": true
           }
         ],
         "radix": "error",
@@ -406,6 +414,12 @@
             "avoidExplicitReturnArrows": true
           }
         ],
+        "prefer-arrow-callback": [
+          "error",
+          {
+            "allowNamedFunctions": true
+          }
+        ],
         "prefer-const": [
           "error",
           {
@@ -480,6 +494,7 @@
             "ignoreExternal": true
           }
         ],
+        "import/newline-after-import": ["error", {}],
         "import/no-amd": "error",
         "import/no-duplicates": [
           "error",

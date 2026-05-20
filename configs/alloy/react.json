@@ -40,6 +40,7 @@
     "react/no-is-mounted": "error",
     "react/no-multi-comp": "off",
     "react/no-namespace": "error",
+    "react/no-object-type-as-default-prop": "off",
     "react/no-redundant-should-component-update": "error",
     "react/no-render-return-value": "error",
     "react/no-set-state": "off",
@@ -53,6 +54,7 @@
         "checkAliases": true
       }
     ],
+    "react/no-unstable-nested-components": "error",
     "react/no-will-update-set-state": "off",
     "react/prefer-es6-class": ["error", "always"],
     "react/react-in-jsx-scope": "off",

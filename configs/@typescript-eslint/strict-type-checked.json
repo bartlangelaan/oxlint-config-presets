@@ -5,6 +5,7 @@
   },
   "rules": {
     "no-array-constructor": "error",
+    "no-implied-eval": "off",
     "no-unused-expressions": "error",
     "no-unused-vars": "error",
     "no-useless-constructor": "error",

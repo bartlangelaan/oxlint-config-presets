@@ -75,6 +75,7 @@
     "no-fallthrough": "error",
     "no-func-assign": "error",
     "no-global-assign": "error",
+    "no-implied-eval": "error",
     "no-import-assign": "error",
     "no-invalid-regexp": "error",
     "no-irregular-whitespace": "error",
@@ -170,6 +171,12 @@
       }
     ],
     "prefer-promise-reject-errors": "error",
+    "prefer-regex-literals": [
+      "error",
+      {
+        "disallowRedundantWrapping": true
+      }
+    ],
     "symbol-description": "error",
     "unicode-bom": ["error", "never"],
     "use-isnan": [
