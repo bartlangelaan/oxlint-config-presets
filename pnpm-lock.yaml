@@ -104,7 +104,7 @@ importers:
         specifier: ^0.51.0
         version: 0.51.0
       oxlint:
-        specifier: 1.66.0
+        specifier: ^1.66.0
         version: 1.66.0(oxlint-tsgolint@0.23.0)
       oxlint-tsgolint:
         specifier: ^0.23.0
