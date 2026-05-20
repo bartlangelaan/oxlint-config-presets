@@ -103,6 +103,7 @@
     "no-eval": "error",
     "no-extend-native": "error",
     "no-extra-bind": "error",
+    "no-implied-eval": "error",
     "no-iterator": "error",
     "no-labels": "error",
     "no-lone-blocks": "error",
@@ -128,6 +129,7 @@
     "no-useless-return": "error",
     "no-var": "error",
     "object-shorthand": "error",
+    "prefer-arrow-callback": "error",
     "prefer-const": "error",
     "prefer-destructuring": [
       "error",
@@ -145,6 +147,7 @@
     "prefer-exponentiation-operator": "error",
     "prefer-numeric-literals": "error",
     "prefer-object-spread": "error",
+    "prefer-regex-literals": "error",
     "prefer-rest-params": "error",
     "prefer-spread": "error",
     "prefer-template": "error",

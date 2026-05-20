@@ -41,6 +41,7 @@
     "grouped-accessor-pairs": "error",
     "guard-for-in": "error",
     "id-length": "off",
+    "id-match": "off",
     "init-declarations": "off",
     "logical-assignment-operators": "off",
     "max-classes-per-file": "off",
@@ -115,6 +116,8 @@
         "allow": ["!!"]
       }
     ],
+    "no-implicit-globals": "off",
+    "no-implied-eval": "error",
     "no-import-assign": "error",
     "no-inline-comments": "off",
     "no-inner-declarations": ["error", "both"],
@@ -222,6 +225,7 @@
     "no-with": "off",
     "object-shorthand": "off",
     "operator-assignment": "off",
+    "prefer-arrow-callback": "error",
     "prefer-const": "off",
     "prefer-destructuring": "off",
     "prefer-exponentiation-operator": "off",
@@ -229,6 +233,7 @@
     "prefer-object-has-own": "off",
     "prefer-object-spread": "error",
     "prefer-promise-reject-errors": "error",
+    "prefer-regex-literals": "error",
     "prefer-rest-params": "off",
     "prefer-spread": "off",
     "prefer-template": "off",

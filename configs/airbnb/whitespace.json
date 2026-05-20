@@ -97,6 +97,8 @@
         "allow": []
       }
     ],
+    "no-implicit-globals": "off",
+    "no-implied-eval": ["warn"],
     "no-iterator": ["warn"],
     "no-labels": [
       "warn",
@@ -235,6 +237,12 @@
         "allowEmptyReject": true
       }
     ],
+    "prefer-regex-literals": [
+      "warn",
+      {
+        "disallowRedundantWrapping": true
+      }
+    ],
     "radix": ["warn"],
     "require-await": "off",
     "require-unicode-regexp": "off",
@@ -322,6 +330,7 @@
     "func-names": "warn",
     "func-style": ["off", "expression"],
     "id-length": "off",
+    "id-match": "off",
     "max-depth": ["off", 4],
     "max-lines": [
       "off",
@@ -533,6 +542,13 @@
         "avoidQuotes": true
       }
     ],
+    "prefer-arrow-callback": [
+      "warn",
+      {
+        "allowNamedFunctions": false,
+        "allowUnboundThis": true
+      }
+    ],
     "prefer-const": [
       "warn",
       {
@@ -584,6 +600,7 @@
         "jsx": "never"
       }
     ],
+    "import/newline-after-import": "error",
     "import/prefer-default-export": ["warn"],
     "import/max-dependencies": [
       "off",
@@ -741,6 +758,7 @@
     ],
     "react/jsx-no-useless-fragment": ["warn"],
     "react/jsx-no-constructed-context-values": ["warn"],
+    "react/no-unstable-nested-components": ["warn"],
     "react/no-namespace": ["warn"],
     "jsx-a11y/alt-text": [
       "warn",
@@ -778,6 +796,27 @@
       }
     ],
     "jsx-a11y/click-events-have-key-events": ["warn"],
+    "jsx-a11y/control-has-associated-label": [
+      "warn",
+      {
+        "labelAttributes": ["label"],
+        "controlComponents": [],
+        "ignoreElements": ["audio", "canvas", "embed", "input", "textarea", "tr", "video"],
+        "ignoreRoles": [
+          "grid",
+          "listbox",
+          "menu",
+          "menubar",
+          "radiogroup",
+          "row",
+          "tablist",
+          "toolbar",
+          "tree",
+          "treegrid"
+        ],
+        "depth": 5
+      }
+    ],
     "jsx-a11y/heading-has-content": [
       "warn",
       {
@@ -819,6 +858,28 @@
       "warn",
       {
         "elements": ["marquee", "blink"]
+      }
+    ],
+    "jsx-a11y/no-interactive-element-to-noninteractive-role": [
+      "warn",
+      {
+        "tr": ["none", "presentation"]
+      }
+    ],
+    "jsx-a11y/no-noninteractive-element-interactions": [
+      "warn",
+      {
+        "handlers": ["onClick", "onMouseDown", "onMouseUp", "onKeyPress", "onKeyDown", "onKeyUp"]
+      }
+    ],
+    "jsx-a11y/no-noninteractive-element-to-interactive-role": [
+      "warn",
+      {
+        "ul": ["listbox", "menu", "menubar", "radiogroup", "tablist", "tree", "treegrid"],
+        "ol": ["listbox", "menu", "menubar", "radiogroup", "tablist", "tree", "treegrid"],
+        "li": ["menuitem", "option", "row", "tab", "treeitem"],
+        "table": ["grid"],
+        "td": ["gridcell"]
       }
     ],
     "jsx-a11y/no-noninteractive-tabindex": [

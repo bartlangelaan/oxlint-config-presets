@@ -61,6 +61,7 @@
     "no-fallthrough": "error",
     "no-func-assign": "error",
     "no-global-assign": "error",
+    "no-implied-eval": "error",
     "no-import-assign": "error",
     "no-invalid-regexp": "off",
     "no-irregular-whitespace": "error",
@@ -191,6 +192,13 @@
         "ignoreConstructors": false
       }
     ],
+    "prefer-arrow-callback": [
+      "error",
+      {
+        "allowNamedFunctions": false,
+        "allowUnboundThis": true
+      }
+    ],
     "prefer-const": [
       "error",
       {
@@ -200,6 +208,12 @@
     ],
     "prefer-exponentiation-operator": "error",
     "prefer-promise-reject-errors": "error",
+    "prefer-regex-literals": [
+      "error",
+      {
+        "disallowRedundantWrapping": true
+      }
+    ],
     "prefer-rest-params": "error",
     "prefer-spread": "error",
     "prefer-template": "error",
@@ -225,6 +239,12 @@
     "import/no-duplicates": "error",
     "import/no-mutable-exports": "error",
     "import/no-named-default": "error",
+    "import/newline-after-import": [
+      "error",
+      {
+        "count": 1
+      }
+    ],
     "unicorn/consistent-empty-array-spread": "error",
     "unicorn/error-message": "error",
     "unicorn/escape-case": "error",

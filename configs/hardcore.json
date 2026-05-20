@@ -29,6 +29,7 @@
     "no-extra-bind": "error",
     "no-fallthrough": "error",
     "no-func-assign": "error",
+    "no-implied-eval": "error",
     "no-inner-declarations": "error",
     "no-invalid-regexp": "error",
     "no-iterator": "error",
@@ -242,6 +243,12 @@
       }
     ],
     "grouped-accessor-pairs": ["error", "getBeforeSet"],
+    "no-implicit-globals": [
+      "error",
+      {
+        "lexicalBindings": true
+      }
+    ],
     "array-callback-return": [
       "error",
       {
@@ -277,6 +284,12 @@
       "error",
       {
         "disallowTemplateShorthand": true
+      }
+    ],
+    "prefer-regex-literals": [
+      "error",
+      {
+        "disallowRedundantWrapping": true
       }
     ],
     "logical-assignment-operators": [
@@ -418,6 +431,12 @@
       "error",
       {
         "allowCallExpression": false
+      }
+    ],
+    "import/newline-after-import": [
+      "error",
+      {
+        "considerComments": true
       }
     ],
     "import/no-duplicates": [

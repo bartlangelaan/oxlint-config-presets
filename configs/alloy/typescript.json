@@ -11,6 +11,7 @@
     "no-array-constructor": "off",
     "no-dupe-class-members": "off",
     "no-empty-function": "off",
+    "no-implied-eval": "off",
     "no-loop-func": "off",
     "no-loss-of-precision": "error",
     "no-magic-numbers": "off",
