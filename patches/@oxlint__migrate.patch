@@ -1,6 +1,6 @@
---- a/dist/src-IOFYZ1gX.mjs
-+++ b/dist/src-IOFYZ1gX.mjs
-@@ -2018,7 +2018,6 @@
+--- a/dist/src-lamrnkq_.mjs
++++ b/dist/src-lamrnkq_.mjs
+@@ -2033,7 +2033,6 @@
  	}
  	if (!("files" in config)) {
  		cleanUpUselessOverridesEntries(config);
