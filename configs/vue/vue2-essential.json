@@ -2,9 +2,14 @@
   "plugins": ["vue"],
   "rules": {
     "vue/no-arrow-functions-in-watch": "error",
+    "vue/no-computed-properties-in-data": "error",
     "vue/no-export-in-script-setup": "error",
+    "vue/no-shared-component-data": "error",
+    "vue/require-render-return": "error",
     "vue/return-in-computed-property": "error",
+    "vue/return-in-emits-validator": "error",
     "vue/valid-define-emits": "error",
-    "vue/valid-define-props": "error"
+    "vue/valid-define-props": "error",
+    "vue/valid-next-tick": "error"
   }
 }
