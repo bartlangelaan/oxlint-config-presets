@@ -16,6 +16,7 @@
     "unicorn/escape-case": "error",
     "unicorn/explicit-length-check": "off",
     "unicorn/filename-case": "off",
+    "unicorn/import-style": "error",
     "unicorn/new-for-builtins": "error",
     "unicorn/no-abusive-eslint-disable": "error",
     "unicorn/no-accessor-recursion": "error",
