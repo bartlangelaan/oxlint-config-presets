@@ -21,6 +21,7 @@
         "unicorn/escape-case": "error",
         "unicorn/explicit-length-check": "error",
         "unicorn/filename-case": "error",
+        "unicorn/import-style": "error",
         "unicorn/new-for-builtins": "error",
         "unicorn/no-abusive-eslint-disable": "error",
         "unicorn/no-accessor-recursion": "error",
@@ -569,6 +570,7 @@
         "default-case": "off",
         "no-undef": "off",
         "no-duplicate-imports": "off",
+        "unicorn/import-style": "off",
         "import/namespace": "off",
         "import/named": "off",
         "import/export": "off",
@@ -782,7 +784,7 @@
         ],
         "typescript/use-unknown-in-catch-callback-variable": "error"
       },
-      "plugins": ["typescript", "import"]
+      "plugins": ["typescript", "import", "unicorn"]
     },
     {
       "files": ["**/*.d.ts"],
