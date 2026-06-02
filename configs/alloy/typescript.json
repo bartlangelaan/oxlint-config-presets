@@ -54,6 +54,7 @@
     "typescript/explicit-function-return-type": "off",
     "typescript/explicit-member-accessibility": "error",
     "typescript/explicit-module-boundary-types": "off",
+    "typescript/method-signature-style": "error",
     "typescript/no-base-to-string": "off",
     "typescript/no-confusing-non-null-assertion": "off",
     "typescript/no-confusing-void-expression": "off",

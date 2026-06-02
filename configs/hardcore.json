@@ -115,6 +115,7 @@
     "no-misleading-character-class": "error",
     "no-async-promise-executor": "error",
     "no-useless-catch": "error",
+    "prefer-named-capture-group": "error",
     "no-redeclare": "error",
     "no-prototype-builtins": "error",
     "no-import-assign": "error",

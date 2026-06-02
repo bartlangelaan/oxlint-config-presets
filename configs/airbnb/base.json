@@ -216,6 +216,7 @@
         "allowEmptyReject": true
       }
     ],
+    "prefer-named-capture-group": "off",
     "prefer-regex-literals": [
       "error",
       {

@@ -1,3 +1,6 @@
 {
-  "plugins": []
+  "plugins": ["vue"],
+  "rules": {
+    "vue/component-definition-name-casing": "warn"
+  }
 }

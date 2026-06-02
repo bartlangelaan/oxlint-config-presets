@@ -43,6 +43,7 @@
     "typescript/explicit-function-return-type": "error",
     "typescript/explicit-member-accessibility": "error",
     "typescript/explicit-module-boundary-types": "error",
+    "typescript/method-signature-style": "error",
     "typescript/no-array-delete": "error",
     "typescript/no-base-to-string": "error",
     "typescript/no-confusing-non-null-assertion": "error",
