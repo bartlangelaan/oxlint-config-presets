@@ -77,6 +77,7 @@
     "jsdoc/require-throws-description": "off",
     "jsdoc/require-throws-type": "off",
     "jsdoc/require-yields": "off",
+    "jsdoc/require-yields-description": "off",
     "jsdoc/require-yields-type": "off",
     "no-control-regex": "error",
     "no-misleading-character-class": "error",
@@ -282,6 +283,7 @@
       "files": ["**/*.js"],
       "rules": {
         "node/no-exports-assign": "error",
+        "node/callback-return": ["error", ["cb", "callback", "next"]],
         "node/handle-callback-err": ["error", "err"]
       },
       "plugins": ["node"],
@@ -293,6 +295,7 @@
       "files": ["**/*.cjs"],
       "rules": {
         "node/no-exports-assign": "error",
+        "node/callback-return": ["error", ["cb", "callback", "next"]],
         "node/handle-callback-err": ["error", "err"],
         "node/no-new-require": "error",
         "node/no-path-concat": "error"

@@ -138,6 +138,7 @@
     "jsdoc/require-throws-description": "off",
     "jsdoc/require-throws-type": "warn",
     "jsdoc/require-yields": "warn",
+    "jsdoc/require-yields-description": "off",
     "jsdoc/require-yields-type": "off",
     "array-callback-return": "error",
     "block-scoped-var": "error",

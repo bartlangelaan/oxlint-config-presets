@@ -77,6 +77,7 @@
     "jsdoc/require-throws-description": "off",
     "jsdoc/require-throws-type": "off",
     "jsdoc/require-yields": "off",
+    "jsdoc/require-yields-description": "off",
     "jsdoc/require-yields-type": "off",
     "no-control-regex": "error",
     "no-misleading-character-class": "error",

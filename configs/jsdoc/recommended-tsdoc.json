@@ -26,6 +26,7 @@
     "jsdoc/require-throws-description": "off",
     "jsdoc/require-throws-type": "off",
     "jsdoc/require-yields": "warn",
+    "jsdoc/require-yields-description": "off",
     "jsdoc/require-yields-type": "off"
   }
 }
