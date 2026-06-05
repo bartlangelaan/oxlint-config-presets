@@ -5,7 +5,7 @@
   },
   "overrides": [
     {
-      "files": ["**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,vue,svelte,astro}"],
+      "files": ["**/*.{js,jsx,mjs,cjs,vue,svelte,astro,ts,tsx,mts,cts}"],
       "rules": {
         "no-negated-condition": "error",
         "no-nested-ternary": "off",
@@ -15,6 +15,7 @@
         "unicorn/consistent-empty-array-spread": "error",
         "unicorn/consistent-existence-index-check": "error",
         "unicorn/consistent-function-scoping": "off",
+        "unicorn/consistent-template-literal-escape": "error",
         "unicorn/custom-error-definition": "off",
         "unicorn/empty-brace-spaces": "error",
         "unicorn/error-message": "error",
@@ -66,6 +67,7 @@
         "unicorn/no-useless-collection-argument": "error",
         "unicorn/no-useless-error-capture-stack-trace": "error",
         "unicorn/no-useless-fallback-in-spread": "error",
+        "unicorn/no-useless-iterator-to-array": "error",
         "unicorn/no-useless-length-check": "error",
         "unicorn/no-useless-promise-resolve-reject": "error",
         "unicorn/no-useless-spread": "error",
@@ -133,6 +135,7 @@
         "unicorn/require-number-to-fixed-digits-argument": "error",
         "unicorn/require-post-message-target-origin": "off",
         "unicorn/switch-case-braces": "error",
+        "unicorn/switch-case-break-position": "error",
         "unicorn/text-encoding-identifier-case": "error",
         "unicorn/throw-new-error": "error",
         "for-direction": "error",
@@ -334,13 +337,165 @@
           "punycode",
           "sys",
           "querystring",
-          "colors"
+          "colors",
+          {
+            "name": "mkdirp",
+            "message": "Use `fs.mkdir` with `{recursive: true}` instead."
+          },
+          {
+            "name": "rimraf",
+            "message": "Use `fs.rm` with `{recursive: true}` instead."
+          },
+          {
+            "name": "object-assign",
+            "message": "Use `Object.assign()` or object spread instead."
+          },
+          {
+            "name": "xtend",
+            "message": "Use `Object.assign()` or object spread instead."
+          },
+          {
+            "name": "extend-shallow",
+            "message": "Use `Object.assign()` or object spread instead."
+          },
+          {
+            "name": "left-pad",
+            "message": "Use `String.prototype.padStart()` instead."
+          },
+          {
+            "name": "pad-left",
+            "message": "Use `String.prototype.padStart()` instead."
+          },
+          {
+            "name": "right-pad",
+            "message": "Use `String.prototype.padEnd()` instead."
+          },
+          {
+            "name": "pad-right",
+            "message": "Use `String.prototype.padEnd()` instead."
+          },
+          {
+            "name": "safe-buffer",
+            "message": "Use `Buffer.alloc()` or `Buffer.from()` instead."
+          },
+          {
+            "name": "safer-buffer",
+            "message": "Use `Buffer.alloc()` or `Buffer.from()` instead."
+          },
+          {
+            "name": "buffer-alloc",
+            "message": "Use `Buffer.alloc()` instead."
+          },
+          {
+            "name": "array-flatten",
+            "message": "Use `Array.prototype.flat()` instead."
+          },
+          {
+            "name": "concat-map",
+            "message": "Use `Array.prototype.flatMap()` instead."
+          },
+          {
+            "name": "pad",
+            "message": "Use `String.prototype.padStart()` / `String.prototype.padEnd()` instead."
+          },
+          {
+            "name": "co",
+            "message": "Use async/await instead."
+          },
+          {
+            "name": "inherits",
+            "message": "Use `class extends` instead."
+          },
+          {
+            "name": "windows-1252",
+            "message": "Use `TextDecoder` instead."
+          },
+          {
+            "name": "string_decoder",
+            "message": "Use `TextDecoder` instead."
+          },
+          {
+            "name": "isarray",
+            "message": "Use `Array.isArray()` instead."
+          },
+          {
+            "name": "object-keys",
+            "message": "Use `Object.keys()` instead."
+          },
+          {
+            "name": "object.assign",
+            "message": "Use `Object.assign()` or object spread instead."
+          },
+          {
+            "name": "globalthis",
+            "message": "Use the `globalThis` global instead."
+          },
+          {
+            "name": "es6-promise",
+            "message": "Use `Promise` instead."
+          },
+          {
+            "name": "abort-controller",
+            "message": "Use the native `AbortController` instead."
+          },
+          {
+            "name": "queue-microtask",
+            "message": "Use `queueMicrotask()` instead."
+          },
+          {
+            "name": "buffer-from",
+            "message": "Use `Buffer.from()` instead."
+          },
+          {
+            "name": "has",
+            "message": "Use `Object.hasOwn()` instead."
+          },
+          {
+            "name": "hasown",
+            "message": "Use `Object.hasOwn()` instead."
+          },
+          {
+            "name": "repeat-string",
+            "message": "Use `String.prototype.repeat()` instead."
+          },
+          {
+            "name": "path-parse",
+            "message": "Use `path.parse()` instead."
+          },
+          {
+            "name": "node.extend",
+            "message": "Use `Object.assign()` or object spread instead."
+          },
+          {
+            "name": "aggregate-error",
+            "message": "Use the native `AggregateError` instead."
+          },
+          {
+            "name": "is-nan",
+            "message": "Use `Number.isNaN()` instead."
+          },
+          {
+            "name": "is-finite",
+            "message": "Use `Number.isFinite()` instead."
+          },
+          {
+            "name": "object-is",
+            "message": "Use `Object.is()` instead."
+          },
+          {
+            "name": "defaults",
+            "message": "Use `Object.assign()` instead."
+          },
+          {
+            "name": "whatwg-url",
+            "message": "Use the native `URL` API instead."
+          }
         ],
         "capitalized-comments": [
           "error",
           "always",
           {
-            "ignorePattern": "pragma|ignore|prettier-ignore|biome-ignore|codespell:ignore|webpack\\w+:|c8|v8|type-coverage:",
+            "ignorePattern": "pragma|ignore|prettier-ignore|biome-ignore|codespell:ignore|webpack\\w+:|c8|v8|type-coverage:|const |let |var |import |export |function |class |if \\(|for \\(|while \\(|switch \\(",
             "ignoreInlineComments": true,
             "ignoreConsecutiveComments": true
           }
@@ -534,6 +689,85 @@
       "plugins": ["unicorn", "import", "node", "typescript"]
     },
     {
+      "files": ["**/*.{js,jsx,mjs,cjs,vue,svelte,astro,ts,tsx,mts,cts}"],
+      "rules": {
+        "no-invalid-regexp": "off",
+        "no-useless-backreference": "off",
+        "no-empty-character-class": "off",
+        "jsdoc/check-access": "error",
+        "jsdoc/check-property-names": "error",
+        "jsdoc/check-tag-names": [
+          "error",
+          {
+            "definedTags": [
+              "jest-environment",
+              "ts-check",
+              "ts-expect-error",
+              "ts-expect-no-error",
+              "ts-ignore",
+              "ts-nocheck",
+              "vitest-environment",
+              "defaultValue"
+            ],
+            "jsxTags": true
+          }
+        ],
+        "jsdoc/empty-tags": "error",
+        "jsdoc/implements-on-classes": "error",
+        "jsdoc/require-param": "error",
+        "jsdoc/require-param-description": "error",
+        "jsdoc/require-param-name": "error",
+        "jsdoc/require-param-type": "error",
+        "jsdoc/require-property": "error",
+        "jsdoc/require-property-description": "error",
+        "jsdoc/require-property-name": "error",
+        "jsdoc/require-property-type": "error",
+        "jsdoc/require-returns-description": "error",
+        "jsdoc/require-returns-type": "error",
+        "jsdoc/require-throws-description": "off",
+        "jsdoc/require-throws-type": "error",
+        "jsdoc/require-yields": "error",
+        "jsdoc/require-yields-description": "off",
+        "jsdoc/require-yields-type": "error"
+      },
+      "plugins": ["jsdoc"]
+    },
+    {
+      "files": ["**/*.{ts,tsx,mts,cts}"],
+      "rules": {
+        "jsdoc/check-tag-names": [
+          "error",
+          {
+            "definedTags": [
+              "jest-environment",
+              "ts-check",
+              "ts-expect-error",
+              "ts-expect-no-error",
+              "ts-ignore",
+              "ts-nocheck",
+              "vitest-environment",
+              "defaultValue"
+            ],
+            "jsxTags": true,
+            "typed": true
+          }
+        ],
+        "jsdoc/require-param": [
+          "error",
+          {
+            "ignoreWhenAllParamsMissing": true,
+            "contexts": ["ArrowFunctionExpression", "FunctionDeclaration", "FunctionExpression"]
+          }
+        ],
+        "jsdoc/require-param-type": "off",
+        "jsdoc/require-property-type": "off",
+        "jsdoc/require-returns-type": "off",
+        "jsdoc/require-throws-type": "off",
+        "jsdoc/require-yields-type": "off"
+      },
+      "plugins": ["jsdoc"]
+    },
+    {
       "files": ["**/*.{ts,tsx,mts,cts}"],
       "rules": {
         "default-param-last": "error",
@@ -557,7 +791,167 @@
         "no-restricted-imports": [
           "error",
           {
-            "paths": ["domain", "freelist", "smalloc", "punycode", "sys", "querystring", "colors"]
+            "paths": [
+              "domain",
+              "freelist",
+              "smalloc",
+              "punycode",
+              "sys",
+              "querystring",
+              "colors",
+              {
+                "name": "mkdirp",
+                "message": "Use `fs.mkdir` with `{recursive: true}` instead."
+              },
+              {
+                "name": "rimraf",
+                "message": "Use `fs.rm` with `{recursive: true}` instead."
+              },
+              {
+                "name": "object-assign",
+                "message": "Use `Object.assign()` or object spread instead."
+              },
+              {
+                "name": "xtend",
+                "message": "Use `Object.assign()` or object spread instead."
+              },
+              {
+                "name": "extend-shallow",
+                "message": "Use `Object.assign()` or object spread instead."
+              },
+              {
+                "name": "left-pad",
+                "message": "Use `String.prototype.padStart()` instead."
+              },
+              {
+                "name": "pad-left",
+                "message": "Use `String.prototype.padStart()` instead."
+              },
+              {
+                "name": "right-pad",
+                "message": "Use `String.prototype.padEnd()` instead."
+              },
+              {
+                "name": "pad-right",
+                "message": "Use `String.prototype.padEnd()` instead."
+              },
+              {
+                "name": "safe-buffer",
+                "message": "Use `Buffer.alloc()` or `Buffer.from()` instead."
+              },
+              {
+                "name": "safer-buffer",
+                "message": "Use `Buffer.alloc()` or `Buffer.from()` instead."
+              },
+              {
+                "name": "buffer-alloc",
+                "message": "Use `Buffer.alloc()` instead."
+              },
+              {
+                "name": "array-flatten",
+                "message": "Use `Array.prototype.flat()` instead."
+              },
+              {
+                "name": "concat-map",
+                "message": "Use `Array.prototype.flatMap()` instead."
+              },
+              {
+                "name": "pad",
+                "message": "Use `String.prototype.padStart()` / `String.prototype.padEnd()` instead."
+              },
+              {
+                "name": "co",
+                "message": "Use async/await instead."
+              },
+              {
+                "name": "inherits",
+                "message": "Use `class extends` instead."
+              },
+              {
+                "name": "windows-1252",
+                "message": "Use `TextDecoder` instead."
+              },
+              {
+                "name": "string_decoder",
+                "message": "Use `TextDecoder` instead."
+              },
+              {
+                "name": "isarray",
+                "message": "Use `Array.isArray()` instead."
+              },
+              {
+                "name": "object-keys",
+                "message": "Use `Object.keys()` instead."
+              },
+              {
+                "name": "object.assign",
+                "message": "Use `Object.assign()` or object spread instead."
+              },
+              {
+                "name": "globalthis",
+                "message": "Use the `globalThis` global instead."
+              },
+              {
+                "name": "es6-promise",
+                "message": "Use `Promise` instead."
+              },
+              {
+                "name": "abort-controller",
+                "message": "Use the native `AbortController` instead."
+              },
+              {
+                "name": "queue-microtask",
+                "message": "Use `queueMicrotask()` instead."
+              },
+              {
+                "name": "buffer-from",
+                "message": "Use `Buffer.from()` instead."
+              },
+              {
+                "name": "has",
+                "message": "Use `Object.hasOwn()` instead."
+              },
+              {
+                "name": "hasown",
+                "message": "Use `Object.hasOwn()` instead."
+              },
+              {
+                "name": "repeat-string",
+                "message": "Use `String.prototype.repeat()` instead."
+              },
+              {
+                "name": "path-parse",
+                "message": "Use `path.parse()` instead."
+              },
+              {
+                "name": "node.extend",
+                "message": "Use `Object.assign()` or object spread instead."
+              },
+              {
+                "name": "aggregate-error",
+                "message": "Use the native `AggregateError` instead."
+              },
+              {
+                "name": "is-nan",
+                "message": "Use `Number.isNaN()` instead."
+              },
+              {
+                "name": "is-finite",
+                "message": "Use `Number.isFinite()` instead."
+              },
+              {
+                "name": "object-is",
+                "message": "Use `Object.is()` instead."
+              },
+              {
+                "name": "defaults",
+                "message": "Use `Object.assign()` instead."
+              },
+              {
+                "name": "whatwg-url",
+                "message": "Use the native `URL` API instead."
+              }
+            ]
           }
         ],
         "no-throw-literal": "off",
@@ -568,11 +962,26 @@
         "no-useless-constructor": "error",
         "prefer-promise-reject-errors": "off",
         "default-case": "off",
+        "constructor-super": "off",
+        "getter-return": "off",
+        "no-class-assign": "off",
+        "no-const-assign": "off",
+        "no-dupe-keys": "off",
+        "no-func-assign": "off",
+        "no-import-assign": "off",
+        "no-new-native-nonconstructor": "off",
+        "no-obj-calls": "off",
+        "no-setter-return": "off",
+        "no-this-before-super": "off",
         "no-undef": "off",
+        "no-unreachable": "off",
+        "no-unsafe-negation": "off",
+        "no-with": "off",
         "no-duplicate-imports": "off",
         "unicorn/import-style": "off",
         "import/namespace": "off",
         "import/named": "off",
+        "import/extensions": "off",
         "import/export": "off",
         "import/default": "off",
         "typescript/adjacent-overload-signatures": "error",
@@ -646,12 +1055,6 @@
         "typescript/no-duplicate-enum-values": "error",
         "typescript/no-duplicate-type-constituents": "error",
         "typescript/no-dynamic-delete": "error",
-        "typescript/no-empty-interface": [
-          "error",
-          {
-            "allowSingleExtends": true
-          }
-        ],
         "typescript/no-empty-object-type": "error",
         "typescript/no-extra-non-null-assertion": "error",
         "typescript/no-extraneous-class": [
@@ -712,7 +1115,6 @@
         "typescript/no-unsafe-function-type": "error",
         "typescript/no-unsafe-member-access": "error",
         "typescript/no-unsafe-return": "error",
-        "typescript/no-unsafe-type-assertion": "error",
         "typescript/no-useless-empty-export": "error",
         "typescript/no-useless-default-assignment": "error",
         "typescript/no-wrapper-object-types": "error",
@@ -758,6 +1160,15 @@
             "ignoreStringArrays": true
           }
         ],
+        "typescript/strict-boolean-expressions": [
+          "error",
+          {
+            "allowNullableBoolean": true,
+            "allowNullableObject": true,
+            "allowNumber": false,
+            "allowString": false
+          }
+        ],
         "typescript/strict-void-return": "error",
         "typescript/switch-exhaustiveness-check": [
           "error",
@@ -797,7 +1208,9 @@
       "files": ["**/*.test-d.ts"],
       "rules": {
         "typescript/no-unsafe-call": "off",
-        "typescript/no-confusing-void-expression": "off"
+        "typescript/no-confusing-void-expression": "off",
+        "typescript/no-unnecessary-type-arguments": "off",
+        "typescript/no-unsafe-argument": "off"
       },
       "plugins": ["typescript"]
     },

@@ -451,7 +451,7 @@ Extracted from `eslint-config-google@0.14.0`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/recommended.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.59.2`.
+Extracted from `@typescript-eslint/eslint-plugin@8.60.1`.
 
 <details>
 <summary>20 rules successfully migrated</summary>
@@ -466,7 +466,7 @@ Extracted from `@typescript-eslint/eslint-plugin@8.59.2`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/recommended-type-checked.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.59.2`.
+Extracted from `@typescript-eslint/eslint-plugin@8.60.1`.
 
 <details>
 <summary>47 rules successfully migrated</summary>
@@ -481,7 +481,7 @@ Extracted from `@typescript-eslint/eslint-plugin@8.59.2`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/strict.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.59.2`.
+Extracted from `@typescript-eslint/eslint-plugin@8.60.1`.
 
 <details>
 <summary>28 rules successfully migrated</summary>
@@ -496,7 +496,7 @@ Extracted from `@typescript-eslint/eslint-plugin@8.59.2`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/strict-type-checked.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.59.2`.
+Extracted from `@typescript-eslint/eslint-plugin@8.60.1`.
 
 <details>
 <summary>72 rules successfully migrated</summary>
@@ -511,7 +511,7 @@ Extracted from `@typescript-eslint/eslint-plugin@8.59.2`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/stylistic.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.59.2`.
+Extracted from `@typescript-eslint/eslint-plugin@8.60.1`.
 
 <details>
 <summary>13 rules successfully migrated</summary>
@@ -526,7 +526,7 @@ Extracted from `@typescript-eslint/eslint-plugin@8.59.2`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/stylistic-type-checked.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.59.2`.
+Extracted from `@typescript-eslint/eslint-plugin@8.60.1`.
 
 <details>
 <summary>21 rules successfully migrated</summary>
@@ -541,7 +541,7 @@ Extracted from `@typescript-eslint/eslint-plugin@8.59.2`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/all.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.59.2`.
+Extracted from `@typescript-eslint/eslint-plugin@8.60.1`.
 
 <details>
 <summary>128 rules successfully migrated</summary>
@@ -621,34 +621,35 @@ Extracted from `@eslint/js@10.0.1`.
 "./node_modules/oxlint-config-presets/xo.json"
 ```
 
-Extracted from `eslint-config-xo@0.51.0`.
+Extracted from `eslint-config-xo@0.52.0`.
 
 <details>
-<summary>172 rules have no oxlint equivalent</summary>
+<summary>353 rules have no oxlint equivalent</summary>
 
 **Not yet implemented in oxlint**
 
-`unicorn/better-regex`, `unicorn/expiring-todo-comments`, `unicorn/isolated-functions`, `unicorn/no-unnecessary-polyfills`, `unicorn/prefer-export-from`, `unicorn/prefer-single-call`, `unicorn/prefer-switch`, `unicorn/prevent-abbreviations`, `import-x/no-useless-path-segments`, `import-x/no-extraneous-dependencies`, `n/no-extraneous-import`, `n/no-unpublished-bin`, `n/file-extension-in-import`, `n/no-mixed-requires`, `n/process-exit-as-throw`, `n/no-deprecated-api`, `n/prefer-global/buffer`, `n/prefer-global/console`, `n/prefer-global/process`, `n/prefer-global/text-decoder`, `n/prefer-global/text-encoder`, `n/prefer-global/url-search-params`, `n/prefer-global/url`, `n/prefer-promises/dns`, `n/prefer-promises/fs`, `no-unreachable-loop`, `one-var`, `@typescript-eslint/member-ordering`, `@typescript-eslint/naming-convention`, `@typescript-eslint/no-unused-private-class-members`, `@typescript-eslint/naming-convention`
+`unicorn/better-regex`, `unicorn/expiring-todo-comments`, `unicorn/isolated-functions`, `unicorn/no-unnecessary-polyfills`, `unicorn/prefer-export-from`, `unicorn/prefer-simple-condition-first`, `unicorn/prefer-single-call`, `unicorn/prefer-switch`, `unicorn/prevent-abbreviations`, `import-x/no-useless-path-segments`, `import-x/no-extraneous-dependencies`, `n/no-extraneous-import`, `n/no-unpublished-bin`, `n/file-extension-in-import`, `n/no-mixed-requires`, `n/process-exit-as-throw`, `n/no-deprecated-api`, `n/prefer-global/buffer`, `n/prefer-global/console`, `n/prefer-global/process`, `n/prefer-global/text-decoder`, `n/prefer-global/text-encoder`, `n/prefer-global/url-search-params`, `n/prefer-global/url`, `n/prefer-promises/dns`, `n/prefer-promises/fs`, `no-unreachable-loop`, `one-var`, `jsdoc/check-indentation`, `jsdoc/check-line-alignment`, `jsdoc/check-param-names`, `jsdoc/check-syntax`, `jsdoc/check-template-names`, `jsdoc/check-types`, `jsdoc/check-values`, `jsdoc/escape-inline-tags`, `jsdoc/multiline-blocks`, `jsdoc/no-bad-blocks`, `jsdoc/no-blank-block-descriptions`, `jsdoc/no-blank-blocks`, `jsdoc/no-multi-asterisks`, `jsdoc/require-asterisk-prefix`, `jsdoc/tag-lines`, `jsdoc/imports-as-dependencies`, `jsdoc/informative-docs`, `jsdoc/reject-any-type`, `jsdoc/reject-function-type`, `jsdoc/valid-types`, `jsdoc/require-description`, `jsdoc/require-next-type`, `jsdoc/require-returns-check`, `jsdoc/require-yields-check`, `jsdoc/ts-no-empty-object-type`, `jsdoc/no-types`, `@typescript-eslint/member-ordering`, `@typescript-eslint/naming-convention`, `@typescript-eslint/no-unused-private-class-members`, `@typescript-eslint/naming-convention`
 
 **Not portable to oxlint**
 
-`unicorn/no-for-loop`, `unicorn/no-named-default`, `unicorn/template-indent`, `import-x/order`, `no-dupe-args`, `no-octal-escape`, `no-octal`, `no-return-await`, `no-undef-init`, `no-buffer-constructor`, `camelcase`
+`unicorn/no-for-loop`, `unicorn/no-named-default`, `unicorn/template-indent`, `import-x/order`, `no-dupe-args`, `no-octal-escape`, `no-octal`, `no-undef-init`, `camelcase`
 
 **Require JS plugin support**
 
-`ava/assertion-arguments`, `ava/hooks-order`, `ava/no-async-fn-without-await`, `ava/no-commented-tests`, `ava/no-conditional-assertion`, `ava/no-duplicate-hooks`, `ava/no-identical-title`, `ava/no-ignored-test-files`, `ava/no-import-test-files`, `ava/no-incorrect-deep-equal`, `ava/no-inline-assertions`, `ava/no-invalid-modifier-chain`, `ava/no-negated-assertion`, `ava/no-nested-assertions`, `ava/no-nested-tests`, `ava/no-only-test`, `ava/no-skip-assert`, `ava/no-skip-test`, `ava/no-todo-implementation`, `ava/no-todo-test`, `ava/no-useless-t-pass`, `ava/prefer-async-await`, `ava/prefer-t-regex`, `ava/prefer-t-throws`, `ava/require-assertion`, `ava/test-title`, `ava/use-t`, `ava/use-t-throws-async-well`, `ava/use-t-well`, `ava/use-test`, `ava/use-true-false`, `ava/no-ava-in-dependencies`, `no-use-extend-native/no-use-extend-native`, `@eslint-community/eslint-comments/disable-enable-pair`, `@eslint-community/eslint-comments/no-aggregating-enable`, `@eslint-community/eslint-comments/no-duplicate-disable`, `@eslint-community/eslint-comments/no-unused-disable`, `@eslint-community/eslint-comments/no-unused-enable`, `@stylistic/comma-dangle`, `@stylistic/no-extra-semi`, `@stylistic/curly-newline`, `@stylistic/dot-location`, `@stylistic/no-floating-decimal`, `@stylistic/no-multi-spaces`, `@stylistic/wrap-iife`, `@stylistic/array-bracket-newline`, `@stylistic/array-bracket-spacing`, `@stylistic/array-element-newline`, `@stylistic/brace-style`, `@stylistic/comma-spacing`, `@stylistic/comma-style`, `@stylistic/computed-property-spacing`, `@stylistic/eol-last`, `@stylistic/function-call-spacing`, `@stylistic/function-paren-newline`, `@stylistic/function-call-argument-newline`, `@stylistic/indent`, `@stylistic/jsx-quotes`, `@stylistic/key-spacing`, `@stylistic/keyword-spacing`, `@stylistic/linebreak-style`, `@stylistic/lines-between-class-members`, `@stylistic/max-len`, `@stylistic/max-statements-per-line`, `@stylistic/multiline-ternary`, `@stylistic/new-parens`, `@stylistic/no-mixed-operators`, `@stylistic/no-mixed-spaces-and-tabs`, `@stylistic/no-multiple-empty-lines`, `@stylistic/no-whitespace-before-property`, `@stylistic/no-trailing-spaces`, `@stylistic/object-curly-spacing`, `@stylistic/object-curly-newline`, `@stylistic/one-var-declaration-per-line`, `@stylistic/operator-linebreak`, `@stylistic/padded-blocks`, `@stylistic/padding-line-between-statements`, `@stylistic/quote-props`, `@stylistic/quotes`, `@stylistic/semi-spacing`, `@stylistic/semi-style`, `@stylistic/semi`, `@stylistic/space-before-blocks`, `@stylistic/space-before-function-paren`, `@stylistic/space-in-parens`, `@stylistic/space-infix-ops`, `@stylistic/space-unary-ops`, `@stylistic/spaced-comment`, `@stylistic/switch-colon-spacing`, `@stylistic/template-tag-spacing`, `@stylistic/arrow-parens`, `@stylistic/arrow-spacing`, `@stylistic/block-spacing`, `@stylistic/generator-star-spacing`, `@stylistic/rest-spread-spacing`, `@stylistic/template-curly-spacing`, `@stylistic/yield-star-spacing`, `@stylistic/indent-binary-ops`, `json/no-duplicate-keys`, `json/no-empty-keys`, `json/no-unsafe-values`, `json/no-unnormalized-keys`, `json/no-duplicate-keys`, `json/no-empty-keys`, `json/no-unsafe-values`, `json/no-unnormalized-keys`, `json/no-duplicate-keys`, `json/no-empty-keys`, `json/no-unsafe-values`, `json/no-unnormalized-keys`, `@stylistic/brace-style`, `@stylistic/comma-dangle`, `@stylistic/comma-spacing`, `@stylistic/function-call-spacing`, `@stylistic/indent`, `@stylistic/keyword-spacing`, `@stylistic/lines-between-class-members`, `@stylistic/member-delimiter-style`, `@stylistic/no-extra-semi`, `@stylistic/object-curly-spacing`, `@stylistic/padding-line-between-statements`, `@stylistic/quotes`, `@stylistic/space-before-function-paren`, `@stylistic/space-infix-ops`, `@stylistic/semi`, `@stylistic/space-before-blocks`, `@stylistic/type-annotation-spacing`, `@stylistic/type-generic-spacing`, `@stylistic/type-named-tuple-spacing`, `@stylistic/indent-binary-ops`
+`ava/assertion-arguments`, `ava/hooks-order`, `ava/no-async-fn-without-await`, `ava/no-commented-tests`, `ava/no-conditional-assertion`, `ava/no-duplicate-hooks`, `ava/no-identical-title`, `ava/no-ignored-test-files`, `ava/no-import-test-files`, `ava/no-incorrect-deep-equal`, `ava/no-inline-assertions`, `ava/no-invalid-modifier-chain`, `ava/no-negated-assertion`, `ava/no-nested-assertions`, `ava/no-nested-tests`, `ava/no-only-test`, `ava/no-skip-assert`, `ava/no-skip-test`, `ava/no-todo-implementation`, `ava/no-todo-test`, `ava/no-useless-t-pass`, `ava/prefer-async-await`, `ava/prefer-t-regex`, `ava/prefer-t-throws`, `ava/require-assertion`, `ava/test-title`, `ava/use-t`, `ava/use-t-throws-async-well`, `ava/use-t-well`, `ava/use-test`, `ava/use-true-false`, `ava/no-ava-in-dependencies`, `no-use-extend-native/no-use-extend-native`, `xo/import-specifier-newline`, `@eslint-community/eslint-comments/disable-enable-pair`, `@eslint-community/eslint-comments/no-aggregating-enable`, `@eslint-community/eslint-comments/no-duplicate-disable`, `@eslint-community/eslint-comments/no-unused-disable`, `@eslint-community/eslint-comments/no-unused-enable`, `@eslint-community/eslint-comments/require-description`, `@stylistic/comma-dangle`, `@stylistic/no-extra-semi`, `@stylistic/curly-newline`, `@stylistic/dot-location`, `@stylistic/no-floating-decimal`, `@stylistic/no-multi-spaces`, `@stylistic/wrap-iife`, `@stylistic/array-bracket-newline`, `@stylistic/array-bracket-spacing`, `@stylistic/array-element-newline`, `@stylistic/brace-style`, `@stylistic/comma-spacing`, `@stylistic/comma-style`, `@stylistic/computed-property-spacing`, `@stylistic/eol-last`, `@stylistic/function-call-spacing`, `@stylistic/function-paren-newline`, `@stylistic/function-call-argument-newline`, `@stylistic/indent`, `@stylistic/jsx-quotes`, `@stylistic/key-spacing`, `@stylistic/keyword-spacing`, `@stylistic/linebreak-style`, `@stylistic/lines-between-class-members`, `@stylistic/max-len`, `@stylistic/max-statements-per-line`, `@stylistic/multiline-ternary`, `@stylistic/new-parens`, `@stylistic/no-mixed-operators`, `@stylistic/no-mixed-spaces-and-tabs`, `@stylistic/no-multiple-empty-lines`, `@stylistic/no-whitespace-before-property`, `@stylistic/no-trailing-spaces`, `@stylistic/object-curly-spacing`, `@stylistic/object-curly-newline`, `@stylistic/one-var-declaration-per-line`, `@stylistic/operator-linebreak`, `@stylistic/padded-blocks`, `@stylistic/padding-line-between-statements`, `@stylistic/quote-props`, `@stylistic/quotes`, `@stylistic/semi-spacing`, `@stylistic/semi-style`, `@stylistic/semi`, `@stylistic/space-before-blocks`, `@stylistic/space-before-function-paren`, `@stylistic/space-in-parens`, `@stylistic/space-infix-ops`, `@stylistic/space-unary-ops`, `@stylistic/spaced-comment`, `@stylistic/switch-colon-spacing`, `@stylistic/template-tag-spacing`, `@stylistic/arrow-parens`, `@stylistic/arrow-spacing`, `@stylistic/block-spacing`, `@stylistic/generator-star-spacing`, `@stylistic/rest-spread-spacing`, `@stylistic/template-curly-spacing`, `@stylistic/yield-star-spacing`, `@stylistic/indent-binary-ops`, `json/no-duplicate-keys`, `json/no-empty-keys`, `json/no-unsafe-values`, `json/no-unnormalized-keys`, `json/no-duplicate-keys`, `json/no-empty-keys`, `json/no-unsafe-values`, `json/no-unnormalized-keys`, `json/no-duplicate-keys`, `json/no-empty-keys`, `json/no-unsafe-values`, `json/no-unnormalized-keys`, `regexp/no-contradiction-with-assertion`, `regexp/no-control-character`, `regexp/no-dupe-disjunctions`, `regexp/no-empty-alternative`, `regexp/no-empty-capturing-group`, `regexp/no-empty-character-class`, `regexp/no-empty-group`, `regexp/no-empty-lookarounds-assertion`, `regexp/no-escape-backspace`, `regexp/no-invalid-regexp`, `regexp/no-lazy-ends`, `regexp/no-misleading-capturing-group`, `regexp/no-misleading-unicode-character`, `regexp/no-missing-g-flag`, `regexp/no-optional-assertion`, `regexp/no-potentially-useless-backreference`, `regexp/no-super-linear-backtracking`, `regexp/no-super-linear-move`, `regexp/no-useless-assertions`, `regexp/no-useless-backreference`, `regexp/no-useless-dollar-replacements`, `regexp/strict`, `regexp/confusing-quantifier`, `regexp/control-character-escape`, `regexp/negation`, `regexp/no-dupe-characters-character-class`, `regexp/no-empty-string-literal`, `regexp/no-extra-lookaround-assertions`, `regexp/no-invisible-character`, `regexp/no-legacy-features`, `regexp/no-non-standard-flag`, `regexp/no-obscure-range`, `regexp/no-octal`, `regexp/no-standalone-backslash`, `regexp/no-trivially-nested-assertion`, `regexp/no-trivially-nested-quantifier`, `regexp/no-unused-capturing-group`, `regexp/no-useless-character-class`, `regexp/no-useless-flag`, `regexp/no-useless-lazy`, `regexp/no-useless-quantifier`, `regexp/no-useless-range`, `regexp/no-useless-set-operand`, `regexp/no-useless-string-literal`, `regexp/no-useless-two-nums-quantifier`, `regexp/no-zero-quantifier`, `regexp/optimal-lookaround-quantifier`, `regexp/optimal-quantifier-concatenation`, `regexp/prefer-escape-replacement-dollar-char`, `regexp/prefer-predefined-assertion`, `regexp/prefer-range`, `regexp/prefer-regexp-exec`, `regexp/prefer-regexp-test`, `regexp/prefer-set-operation`, `regexp/simplify-set-operations`, `regexp/use-ignore-case`, `regexp/grapheme-string-literal`, `regexp/hexadecimal-escape`, `regexp/letter-case`, `regexp/match-any`, `regexp/no-useless-escape`, `regexp/no-useless-non-capturing-group`, `regexp/prefer-character-class`, `regexp/prefer-d`, `regexp/prefer-lookaround`, `regexp/prefer-named-backreference`, `regexp/prefer-named-capture-group`, `regexp/prefer-named-replacement`, `regexp/prefer-plus-quantifier`, `regexp/prefer-question-quantifier`, `regexp/prefer-result-array-groups`, `regexp/prefer-star-quantifier`, `regexp/prefer-unicode-codepoint-escapes`, `regexp/prefer-w`, `regexp/sort-character-class-elements`, `regexp/sort-flags`, `regexp/unicode-escape`, `regexp/unicode-property`, `@html-eslint/css-no-empty-blocks`, `@html-eslint/head-order`, `@html-eslint/no-duplicate-attrs`, `@html-eslint/no-duplicate-class`, `@html-eslint/no-duplicate-id`, `@html-eslint/no-duplicate-in-head`, `@html-eslint/no-ineffective-attrs`, `@html-eslint/no-inline-styles`, `@html-eslint/no-invalid-attr-value`, `@html-eslint/no-invalid-entity`, `@html-eslint/no-nested-interactive`, `@html-eslint/no-obsolete-attrs`, `@html-eslint/no-obsolete-tags`, `@html-eslint/no-script-style-type`, `@html-eslint/no-target-blank`, `@html-eslint/no-whitespace-only-children`, `@html-eslint/prefer-https`, `@html-eslint/require-button-type`, `@html-eslint/require-closing-tags`, `@html-eslint/require-content`, `@html-eslint/require-details-summary`, `@html-eslint/require-doctype`, `@html-eslint/require-explicit-size`, `@html-eslint/require-li-container`, `@html-eslint/require-meta-charset`, `@html-eslint/svg-require-viewbox`, `@html-eslint/use-baseline`, `@html-eslint/no-multiple-h1`, `@html-eslint/require-lang`, `@html-eslint/require-meta-description`, `@html-eslint/require-open-graph-protocol`, `@html-eslint/require-title`, `@html-eslint/no-abstract-roles`, `@html-eslint/no-accesskey-attrs`, `@html-eslint/no-aria-hidden-body`, `@html-eslint/no-aria-hidden-on-focusable`, `@html-eslint/no-empty-headings`, `@html-eslint/no-heading-inside-button`, `@html-eslint/no-invalid-role`, `@html-eslint/no-non-scalable-viewport`, `@html-eslint/no-positive-tabindex`, `@html-eslint/no-redundant-role`, `@html-eslint/no-skip-heading-levels`, `@html-eslint/require-form-method`, `@html-eslint/require-frame-title`, `@html-eslint/require-img-alt`, `@html-eslint/require-input-label`, `@html-eslint/require-meta-viewport`, `@html-eslint/attrs-newline`, `@html-eslint/class-spacing`, `@html-eslint/element-newline`, `@html-eslint/indent`, `@html-eslint/lowercase`, `@html-eslint/no-extra-spacing-tags`, `@html-eslint/no-extra-spacing-text`, `@html-eslint/no-multiple-empty-lines`, `@html-eslint/no-trailing-spaces`, `@html-eslint/quotes`, `@html-eslint/sort-attrs`, `markdown/fenced-code-language`, `markdown/no-duplicate-definitions`, `markdown/no-duplicate-headings`, `markdown/no-empty-definitions`, `markdown/no-empty-images`, `markdown/no-empty-links`, `markdown/no-invalid-label-refs`, `markdown/no-missing-atx-heading-space`, `markdown/no-missing-label-refs`, `markdown/no-missing-link-fragments`, `markdown/no-multiple-h1`, `markdown/no-reference-like-urls`, `markdown/no-reversed-media-syntax`, `markdown/no-space-in-emphasis`, `markdown/no-unused-definitions`, `markdown/table-column-count`, `@stylistic/brace-style`, `@stylistic/comma-dangle`, `@stylistic/comma-spacing`, `@stylistic/function-call-spacing`, `@stylistic/indent`, `@stylistic/keyword-spacing`, `@stylistic/lines-between-class-members`, `@stylistic/member-delimiter-style`, `@stylistic/no-extra-semi`, `@stylistic/object-curly-spacing`, `@stylistic/padding-line-between-statements`, `@stylistic/quotes`, `@stylistic/space-before-function-paren`, `@stylistic/space-infix-ops`, `@stylistic/semi`, `@stylistic/space-before-blocks`, `@stylistic/type-annotation-spacing`, `@stylistic/type-generic-spacing`, `@stylistic/type-named-tuple-spacing`, `@stylistic/operator-linebreak`, `@stylistic/indent-binary-ops`
 
 </details>
 
 <details>
-<summary>6 migration warnings</summary>
+<summary>7 migration warnings</summary>
 
 - Settings found under a 'files' pattern — oxlint does not support settings in overrides and they will be skipped:
 - `import-x/extensions`
 - `import-x/core-modules`
 - `import-x/parsers`
-- `import-x/external-module-folders`
-- `import-x/resolver`
+- `import-x/resolver-next`
+- `jsdoc`
+- special parser detected: @html-eslint/parser
 
 </details>
 
@@ -964,7 +965,7 @@ Extracted from `eslint-config-prettier@10.1.8`.
 "./node_modules/oxlint-config-presets/@antfu.json"
 ```
 
-Extracted from `@antfu/eslint-config@8.2.0`.
+Extracted from `@antfu/eslint-config@9.0.0`.
 
 <details>
 <summary>118 rules successfully migrated</summary>
@@ -1213,7 +1214,7 @@ Extracted from `eslint-plugin-import-x@4.16.2`.
 "./node_modules/oxlint-config-presets/next/recommended.json"
 ```
 
-Extracted from `eslint-config-next@16.2.6`.
+Extracted from `eslint-config-next@16.2.7`.
 
 <details>
 <summary>48 rules successfully migrated</summary>
@@ -1237,7 +1238,7 @@ Extracted from `eslint-config-next@16.2.6`.
 "./node_modules/oxlint-config-presets/next/core-web-vitals.json"
 ```
 
-Extracted from `eslint-config-next@16.2.6`.
+Extracted from `eslint-config-next@16.2.7`.
 
 <details>
 <summary>48 rules successfully migrated</summary>
@@ -1860,7 +1861,7 @@ Extracted from `eslint-plugin-jest@28.14.0`.
 "./node_modules/oxlint-config-presets/@vitest/recommended.json"
 ```
 
-Extracted from `@vitest/eslint-plugin@1.6.17`.
+Extracted from `@vitest/eslint-plugin@1.6.19`.
 
 <details>
 <summary>17 rules successfully migrated</summary>
@@ -1875,7 +1876,7 @@ Extracted from `@vitest/eslint-plugin@1.6.17`.
 "./node_modules/oxlint-config-presets/@vitest/all.json"
 ```
 
-Extracted from `@vitest/eslint-plugin@1.6.17`.
+Extracted from `@vitest/eslint-plugin@1.6.19`.
 
 <details>
 <summary>70 rules successfully migrated</summary>
@@ -1903,7 +1904,7 @@ Extracted from `@vitest/eslint-plugin@1.6.17`.
 "./node_modules/oxlint-config-presets/vue/recommended.json"
 ```
 
-Extracted from `eslint-plugin-vue@10.9.1`.
+Extracted from `eslint-plugin-vue@10.9.2`.
 
 <details>
 <summary>2 rules successfully migrated</summary>
@@ -1931,7 +1932,7 @@ Extracted from `eslint-plugin-vue@10.9.1`.
 "./node_modules/oxlint-config-presets/vue/recommended-error.json"
 ```
 
-Extracted from `eslint-plugin-vue@10.9.1`.
+Extracted from `eslint-plugin-vue@10.9.2`.
 
 <details>
 <summary>2 rules successfully migrated</summary>
@@ -1959,7 +1960,7 @@ Extracted from `eslint-plugin-vue@10.9.1`.
 "./node_modules/oxlint-config-presets/vue/essential.json"
 ```
 
-Extracted from `eslint-plugin-vue@10.9.1`.
+Extracted from `eslint-plugin-vue@10.9.2`.
 
 <details>
 <summary>25 rules successfully migrated</summary>
@@ -1987,7 +1988,7 @@ Extracted from `eslint-plugin-vue@10.9.1`.
 "./node_modules/oxlint-config-presets/vue/strongly-recommended.json"
 ```
 
-Extracted from `eslint-plugin-vue@10.9.1`.
+Extracted from `eslint-plugin-vue@10.9.2`.
 
 <details>
 <summary>1 rule successfully migrated</summary>
@@ -2015,7 +2016,7 @@ Extracted from `eslint-plugin-vue@10.9.1`.
 "./node_modules/oxlint-config-presets/vue/strongly-recommended-error.json"
 ```
 
-Extracted from `eslint-plugin-vue@10.9.1`.
+Extracted from `eslint-plugin-vue@10.9.2`.
 
 <details>
 <summary>1 rule successfully migrated</summary>
@@ -2043,7 +2044,7 @@ Extracted from `eslint-plugin-vue@10.9.1`.
 "./node_modules/oxlint-config-presets/vue/vue2-essential.json"
 ```
 
-Extracted from `eslint-plugin-vue@10.9.1`.
+Extracted from `eslint-plugin-vue@10.9.2`.
 
 <details>
 <summary>12 rules successfully migrated</summary>
@@ -2071,7 +2072,7 @@ Extracted from `eslint-plugin-vue@10.9.1`.
 "./node_modules/oxlint-config-presets/vue/vue2-recommended.json"
 ```
 
-Extracted from `eslint-plugin-vue@10.9.1`.
+Extracted from `eslint-plugin-vue@10.9.2`.
 
 <details>
 <summary>2 rules successfully migrated</summary>
@@ -2099,7 +2100,7 @@ Extracted from `eslint-plugin-vue@10.9.1`.
 "./node_modules/oxlint-config-presets/vue/vue2-recommended-error.json"
 ```
 
-Extracted from `eslint-plugin-vue@10.9.1`.
+Extracted from `eslint-plugin-vue@10.9.2`.
 
 <details>
 <summary>2 rules successfully migrated</summary>
@@ -2127,7 +2128,7 @@ Extracted from `eslint-plugin-vue@10.9.1`.
 "./node_modules/oxlint-config-presets/vue/vue2-strongly-recommended.json"
 ```
 
-Extracted from `eslint-plugin-vue@10.9.1`.
+Extracted from `eslint-plugin-vue@10.9.2`.
 
 <details>
 <summary>1 rule successfully migrated</summary>
@@ -2155,7 +2156,7 @@ Extracted from `eslint-plugin-vue@10.9.1`.
 "./node_modules/oxlint-config-presets/vue/vue2-strongly-recommended-error.json"
 ```
 
-Extracted from `eslint-plugin-vue@10.9.1`.
+Extracted from `eslint-plugin-vue@10.9.2`.
 
 <details>
 <summary>1 rule successfully migrated</summary>
