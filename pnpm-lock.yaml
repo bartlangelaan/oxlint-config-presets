@@ -6332,8 +6332,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  semver@7.8.1:
-    resolution: {integrity: sha512-rkVq3IXh+4FDGch+KwzX3aV9W3kO54GyEgpvBzSyctDA6Xtd7RJQV1xmXbeQp5v7+VzLOfVqiutSE6GICgPFvg==}
+  semver@7.8.2:
+    resolution: {integrity: sha512-c8jsqUZm3omBOI66G90z1Dyw5z622G8oLG+omfsHBJf3CWQTlOcwOjvOG6wtiNfW6anKm/eA39LMwMtMez2TiQ==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -8544,6 +8544,8 @@ snapshots:
       '@putout/operator-filesystem': 6.4.1(putout@38.5.7(eslint@10.3.0)(typescript@6.0.3))
       '@putout/operator-json': 2.2.0
       putout: 38.5.7(eslint@10.3.0)(typescript@6.0.3)
+    transitivePeerDependencies:
+      - supports-color
 
   '@putout/operator-parens@1.2.0':
     dependencies:
@@ -9902,7 +9904,7 @@ snapshots:
       eslint: 10.3.0
       json-stable-stringify-without-jsonify: 1.0.1
       lodash.merge: 4.6.2
-      semver: 7.8.1
+      semver: 7.8.2
       typescript: 6.0.3
     transitivePeerDependencies:
       - supports-color
@@ -14606,7 +14608,7 @@ snapshots:
 
   semver@7.8.0: {}
 
-  semver@7.8.1: {}
+  semver@7.8.2: {}
 
   sentence-case@3.0.4:
     dependencies:
