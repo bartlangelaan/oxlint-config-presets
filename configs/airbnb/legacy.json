@@ -248,22 +248,7 @@
         "requireStringLiterals": true
       }
     ],
-    "capitalized-comments": [
-      "off",
-      "never",
-      {
-        "line": {
-          "ignorePattern": ".*",
-          "ignoreInlineComments": true,
-          "ignoreConsecutiveComments": true
-        },
-        "block": {
-          "ignorePattern": ".*",
-          "ignoreInlineComments": true,
-          "ignoreConsecutiveComments": true
-        }
-      }
-    ],
+    "capitalized-comments": "off",
     "func-name-matching": [
       "off",
       "always",

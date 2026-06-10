@@ -1,6 +1,8 @@
 {
   "plugins": ["vue"],
   "rules": {
-    "vue/component-definition-name-casing": "error"
+    "vue/component-definition-name-casing": "error",
+    "vue/prop-name-casing": "error",
+    "vue/require-prop-types": "error"
   }
 }
