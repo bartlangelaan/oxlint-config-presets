@@ -14,6 +14,8 @@
     "vue/no-expose-after-await": "error",
     "vue/no-lifecycle-after-await": "error",
     "vue/no-reserved-component-names": "error",
+    "vue/no-reserved-keys": "error",
+    "vue/no-reserved-props": "error",
     "vue/no-shared-component-data": "error",
     "vue/no-watch-after-await": "error",
     "vue/prefer-import-from-vue": "error",

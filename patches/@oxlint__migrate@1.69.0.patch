@@ -1,0 +1,12 @@
+diff --git a/dist/src-OzarEdss.mjs b/dist/src-OzarEdss.mjs
+index 88f25bb501df73f24f4f2769d9a5a2976e81fb23..a1f77003fb77b860d6b7d3818aa8a82f609ed5db 100644
+--- a/dist/src-OzarEdss.mjs
++++ b/dist/src-OzarEdss.mjs
+@@ -2044,7 +2044,6 @@ const cleanUpOxlintConfig = (config) => {
+ 	}
+ 	if (!("files" in config)) {
+ 		cleanUpUselessOverridesEntries(config);
+-		cleanUpDisabledRootRules(config);
+ 		cleanUpUnusedJsPlugins(config);
+ 	}
+ };

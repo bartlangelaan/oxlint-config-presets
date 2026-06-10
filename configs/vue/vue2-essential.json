@@ -5,6 +5,13 @@
     "vue/no-computed-properties-in-data": "error",
     "vue/no-export-in-script-setup": "error",
     "vue/no-reserved-component-names": "error",
+    "vue/no-reserved-keys": "error",
+    "vue/no-reserved-props": [
+      "error",
+      {
+        "vueVersion": 2
+      }
+    ],
     "vue/no-shared-component-data": "error",
     "vue/require-prop-type-constructor": "error",
     "vue/require-render-return": "error",
