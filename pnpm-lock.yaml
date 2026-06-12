@@ -8569,6 +8569,8 @@ snapshots:
       '@putout/operator-filesystem': 6.4.1(putout@38.5.7(eslint@10.3.0)(typescript@6.0.3))
       '@putout/operator-json': 2.2.0
       putout: 38.5.7(eslint@10.3.0)(typescript@6.0.3)
+    transitivePeerDependencies:
+      - supports-color
 
   '@putout/operator-parens@1.2.0':
     dependencies:
