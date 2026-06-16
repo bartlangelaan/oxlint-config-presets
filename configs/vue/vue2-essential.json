@@ -3,6 +3,7 @@
   "rules": {
     "vue/no-arrow-functions-in-watch": "error",
     "vue/no-computed-properties-in-data": "error",
+    "vue/no-dupe-keys": "error",
     "vue/no-export-in-script-setup": "error",
     "vue/no-reserved-component-names": "error",
     "vue/no-reserved-keys": "error",
@@ -13,6 +14,7 @@
       }
     ],
     "vue/no-shared-component-data": "error",
+    "vue/no-side-effects-in-computed-properties": "error",
     "vue/require-prop-type-constructor": "error",
     "vue/require-render-return": "error",
     "vue/return-in-computed-property": "error",
