@@ -1,0 +1,12 @@
+diff --git a/dist/src-Cuy3Jdkv.mjs b/dist/src-Cuy3Jdkv.mjs
+index cbc03b5517b1bba4240ca7bc64c54df435bdafc2..7c844761c0f3fe95fbe3d35415b727d108a2b42e 100644
+--- a/dist/src-Cuy3Jdkv.mjs
++++ b/dist/src-Cuy3Jdkv.mjs
+@@ -2052,7 +2052,6 @@ const cleanUpOxlintConfig = (config) => {
+ 	}
+ 	if (!("files" in config)) {
+ 		cleanUpUselessOverridesEntries(config);
+-		cleanUpDisabledRootRules(config);
+ 		cleanUpUnusedJsPlugins(config);
+ 	}
+ };

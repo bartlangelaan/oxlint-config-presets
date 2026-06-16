@@ -194,7 +194,7 @@
       }
     ],
     "no-unused-expressions": "error",
-    "no-use-before-define": "error",
+    "no-use-before-define": ["error", "nofunc"],
     "no-useless-call": "error",
     "no-useless-concat": "error",
     "no-void": "error",

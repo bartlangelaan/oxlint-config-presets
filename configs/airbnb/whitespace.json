@@ -304,7 +304,22 @@
         "requireStringLiterals": true
       }
     ],
-    "capitalized-comments": "off",
+    "capitalized-comments": [
+      "off",
+      "never",
+      {
+        "line": {
+          "ignorePattern": ".*",
+          "ignoreInlineComments": true,
+          "ignoreConsecutiveComments": true
+        },
+        "block": {
+          "ignorePattern": ".*",
+          "ignoreInlineComments": true,
+          "ignoreConsecutiveComments": true
+        }
+      }
+    ],
     "func-name-matching": [
       "off",
       "always",
@@ -646,6 +661,12 @@
     ],
     "react/jsx-key": "off",
     "react/jsx-no-duplicate-props": "warn",
+    "react/jsx-no-literals": [
+      "off",
+      {
+        "noStrings": true
+      }
+    ],
     "react/jsx-no-undef": ["warn"],
     "react/jsx-pascal-case": [
       "warn",
@@ -858,16 +879,7 @@
         "handlers": ["onClick", "onMouseDown", "onMouseUp", "onKeyPress", "onKeyDown", "onKeyUp"]
       }
     ],
-    "jsx-a11y/no-noninteractive-element-to-interactive-role": [
-      "warn",
-      {
-        "ul": ["listbox", "menu", "menubar", "radiogroup", "tablist", "tree", "treegrid"],
-        "ol": ["listbox", "menu", "menubar", "radiogroup", "tablist", "tree", "treegrid"],
-        "li": ["menuitem", "option", "row", "tab", "treeitem"],
-        "table": ["grid"],
-        "td": ["gridcell"]
-      }
-    ],
+    "jsx-a11y/no-noninteractive-element-to-interactive-role": "warn",
     "jsx-a11y/no-noninteractive-tabindex": [
       "warn",
       {
