@@ -735,11 +735,17 @@ const configs: ConfigEntry[] = [
   }),
 ];
 
+interface PartiallyStrippedRule {
+  removedFields: string[];
+  keptFields: string[];
+}
+
 interface GenerateResult {
   config: ConfigEntryWithVersion;
   oxlintResult: OxlintConfig;
   skipped: SkippedRulesByCategory;
   strippedOptions: string[];
+  partiallyStrippedOptions: Map<string, PartiallyStrippedRule>;
   warnings: string[];
 }
 
@@ -800,6 +806,7 @@ for (const config of configs) {
   const oxlintBin = join(rootDir, 'node_modules/.bin/oxlint');
 
   const strippedOptions: string[] = [];
+  const partiallyStrippedOptions = new Map<string, PartiallyStrippedRule>();
 
   for (let attempt = 1; ; attempt++) {
     writeFileSync(outputPath, JSON.stringify(oxlintResult, null, 2) + '\n');
@@ -844,12 +851,27 @@ for (const config of configs) {
 
       if (unknownFields && options && typeof options === 'object' && !Array.isArray(options)) {
         // Remove only the unknown fields, keeping valid options.
+        const keptFields = Object.keys(options as Record<string, unknown>).filter(
+          (f) => !unknownFields.includes(f),
+        );
         for (const field of unknownFields) {
           delete (options as Record<string, unknown>)[field];
         }
         if (Object.keys(options as Record<string, unknown>).length === 0) {
           (oxlintResult.rules as Record<string, unknown>)[ruleName] = value[0];
           if (!strippedOptions.includes(ruleName)) strippedOptions.push(ruleName);
+        } else {
+          const existing = partiallyStrippedOptions.get(ruleName);
+          if (existing) {
+            for (const f of unknownFields) {
+              if (!existing.removedFields.includes(f)) existing.removedFields.push(f);
+            }
+          } else {
+            partiallyStrippedOptions.set(ruleName, {
+              removedFields: [...unknownFields],
+              keptFields,
+            });
+          }
         }
         console.log(`  [fix] Removed unknown fields from ${ruleName}: ${unknownFields.join(', ')}`);
       } else {
@@ -872,6 +894,7 @@ for (const config of configs) {
     oxlintResult,
     skipped: reporter.getSkippedRulesByCategory(),
     strippedOptions,
+    partiallyStrippedOptions,
     warnings: reporter.getWarnings(),
   });
 }
@@ -945,8 +968,13 @@ const table =
   `\n\n` +
   `Generated with \`@oxlint/migrate@${oxlintMigrateVersion}\`.`;
 
-function migratedSection(rules: OxlintConfig['rules'], strippedOptions: string[]): string {
-  const names = Object.keys(rules ?? {}).filter((name) => !strippedOptions.includes(name));
+function migratedSection(
+  rules: OxlintConfig['rules'],
+  strippedOptions: string[],
+  partiallyStrippedOptions: Map<string, PartiallyStrippedRule>,
+): string {
+  const excluded = new Set([...strippedOptions, ...partiallyStrippedOptions.keys()]);
+  const names = Object.keys(rules ?? {}).filter((name) => !excluded.has(name));
   if (names.length === 0) return '';
   const ruleWord = names.length === 1 ? 'rule' : 'rules';
 
@@ -956,6 +984,29 @@ function migratedSection(rules: OxlintConfig['rules'], strippedOptions: string[]
     `<details>\n` +
     `<summary>${names.length} ${ruleWord} successfully migrated</summary>\n\n` +
     `${ruleList}\n\n` +
+    `</details>`
+  );
+}
+
+function partiallyStrippedSection(
+  partiallyStrippedOptions: Map<string, PartiallyStrippedRule>,
+): string {
+  if (partiallyStrippedOptions.size === 0) return '';
+
+  const ruleWord = partiallyStrippedOptions.size === 1 ? 'rule' : 'rules';
+  const body = [...partiallyStrippedOptions.entries()]
+    .map(([rule, { removedFields, keptFields }]) => {
+      const removed = removedFields.map((f) => `\`${f}\``).join(', ');
+      const kept = keptFields.map((f) => `\`${f}\``).join(', ');
+      return `- \`${rule}\`\n  - **Removed (incompatible):** ${removed}\n  - **Kept:** ${kept}`;
+    })
+    .join('\n');
+
+  return (
+    `<details>\n` +
+    `<summary>${partiallyStrippedOptions.size} ${ruleWord} migrated with some options removed (incompatible schema)</summary>\n\n` +
+    `These rules are enabled with their compatible options. Incompatible options were removed because oxlint's schema does not accept them.\n\n` +
+    `${body}\n\n` +
     `</details>`
   );
 }
@@ -1022,14 +1073,17 @@ function formatWarningDetails(warnings: string[]): string {
 }
 
 const configSections = results
-  .map(({ config, oxlintResult, skipped, strippedOptions, warnings }) => {
+  .map(({ config, oxlintResult, skipped, strippedOptions, partiallyStrippedOptions, warnings }) => {
     const extendsExample =
       `\`\`\`json\n` + `"./node_modules/oxlint-config-presets/${outputFor(config)}"\n` + `\`\`\``;
     const sourceVersionInfo = `Extracted from \`${config.sourcePackage}@${config.sourcePackageVersion}\`.`;
     const parts: string[] = [`### \`${outputFor(config)}\``, extendsExample, sourceVersionInfo];
 
-    const migrated = migratedSection(oxlintResult.rules, strippedOptions);
+    const migrated = migratedSection(oxlintResult.rules, strippedOptions, partiallyStrippedOptions);
     if (migrated) parts.push(migrated);
+
+    const partialSection = partiallyStrippedSection(partiallyStrippedOptions);
+    if (partialSection) parts.push(partialSection);
 
     if (strippedOptions.length > 0) {
       const ruleList = strippedOptions.map((r) => `\`${r}\``).join(', ');
