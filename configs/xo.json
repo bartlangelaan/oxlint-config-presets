@@ -525,6 +525,13 @@
             ]
           }
         ],
+        "node/no-mixed-requires": [
+          "error",
+          {
+            "grouping": true,
+            "allowCall": true
+          }
+        ],
         "node/no-new-require": "error",
         "node/no-path-concat": "error",
         "typescript/dot-notation": "error"

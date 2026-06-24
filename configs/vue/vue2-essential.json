@@ -2,6 +2,7 @@
   "plugins": ["vue"],
   "rules": {
     "vue/no-arrow-functions-in-watch": "error",
+    "vue/no-async-in-computed-properties": "error",
     "vue/no-computed-properties-in-data": "error",
     "vue/no-dupe-keys": "error",
     "vue/no-export-in-script-setup": "error",
