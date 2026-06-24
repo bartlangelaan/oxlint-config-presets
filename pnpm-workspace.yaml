@@ -1,4 +1,4 @@
 patchedDependencies:
-  '@oxlint/migrate@1.70.0': patches/@oxlint__migrate@1.70.0.patch
+  '@oxlint/migrate@1.71.0': patches/@oxlint__migrate@1.71.0.patch
 
 shamefullyHoist: true
