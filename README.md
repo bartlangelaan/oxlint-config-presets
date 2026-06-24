@@ -1679,18 +1679,9 @@ Extracted from `eslint-plugin-jsdoc@62.9.0`.
 Extracted from `eslint-plugin-jsx-a11y@6.10.2`.
 
 <details>
-<summary>32 rules successfully migrated</summary>
+<summary>33 rules successfully migrated</summary>
 
-`jsx-a11y/alt-text`, `jsx-a11y/anchor-ambiguous-text`, `jsx-a11y/anchor-has-content`, `jsx-a11y/anchor-is-valid`, `jsx-a11y/aria-activedescendant-has-tabindex`, `jsx-a11y/aria-props`, `jsx-a11y/aria-proptypes`, `jsx-a11y/aria-role`, `jsx-a11y/aria-unsupported-elements`, `jsx-a11y/autocomplete-valid`, `jsx-a11y/click-events-have-key-events`, `jsx-a11y/heading-has-content`, `jsx-a11y/html-has-lang`, `jsx-a11y/iframe-has-title`, `jsx-a11y/img-redundant-alt`, `jsx-a11y/interactive-supports-focus`, `jsx-a11y/label-has-associated-control`, `jsx-a11y/media-has-caption`, `jsx-a11y/mouse-events-have-key-events`, `jsx-a11y/no-access-key`, `jsx-a11y/no-autofocus`, `jsx-a11y/no-distracting-elements`, `jsx-a11y/no-interactive-element-to-noninteractive-role`, `jsx-a11y/no-noninteractive-element-interactions`, `jsx-a11y/no-noninteractive-element-to-interactive-role`, `jsx-a11y/no-noninteractive-tabindex`, `jsx-a11y/no-redundant-roles`, `jsx-a11y/no-static-element-interactions`, `jsx-a11y/role-has-required-aria-props`, `jsx-a11y/role-supports-aria-props`, `jsx-a11y/scope`, `jsx-a11y/tabindex-no-positive`
-
-</details>
-
-<details>
-<summary>1 rules migrated without options (incompatible schema)</summary>
-
-These rules are enabled but their configuration options were dropped because oxlint's schema does not accept them. Only the severity level was kept.
-
-`jsx-a11y/control-has-associated-label`
+`jsx-a11y/alt-text`, `jsx-a11y/anchor-ambiguous-text`, `jsx-a11y/anchor-has-content`, `jsx-a11y/anchor-is-valid`, `jsx-a11y/aria-activedescendant-has-tabindex`, `jsx-a11y/aria-props`, `jsx-a11y/aria-proptypes`, `jsx-a11y/aria-role`, `jsx-a11y/aria-unsupported-elements`, `jsx-a11y/autocomplete-valid`, `jsx-a11y/click-events-have-key-events`, `jsx-a11y/control-has-associated-label`, `jsx-a11y/heading-has-content`, `jsx-a11y/html-has-lang`, `jsx-a11y/iframe-has-title`, `jsx-a11y/img-redundant-alt`, `jsx-a11y/interactive-supports-focus`, `jsx-a11y/label-has-associated-control`, `jsx-a11y/media-has-caption`, `jsx-a11y/mouse-events-have-key-events`, `jsx-a11y/no-access-key`, `jsx-a11y/no-autofocus`, `jsx-a11y/no-distracting-elements`, `jsx-a11y/no-interactive-element-to-noninteractive-role`, `jsx-a11y/no-noninteractive-element-interactions`, `jsx-a11y/no-noninteractive-element-to-interactive-role`, `jsx-a11y/no-noninteractive-tabindex`, `jsx-a11y/no-redundant-roles`, `jsx-a11y/no-static-element-interactions`, `jsx-a11y/role-has-required-aria-props`, `jsx-a11y/role-supports-aria-props`, `jsx-a11y/scope`, `jsx-a11y/tabindex-no-positive`
 
 </details>
 
@@ -1703,18 +1694,9 @@ These rules are enabled but their configuration options were dropped because oxl
 Extracted from `eslint-plugin-jsx-a11y@6.10.2`.
 
 <details>
-<summary>31 rules successfully migrated</summary>
+<summary>32 rules successfully migrated</summary>
 
-`jsx-a11y/alt-text`, `jsx-a11y/anchor-has-content`, `jsx-a11y/anchor-is-valid`, `jsx-a11y/aria-activedescendant-has-tabindex`, `jsx-a11y/aria-props`, `jsx-a11y/aria-proptypes`, `jsx-a11y/aria-role`, `jsx-a11y/aria-unsupported-elements`, `jsx-a11y/autocomplete-valid`, `jsx-a11y/click-events-have-key-events`, `jsx-a11y/heading-has-content`, `jsx-a11y/html-has-lang`, `jsx-a11y/iframe-has-title`, `jsx-a11y/img-redundant-alt`, `jsx-a11y/interactive-supports-focus`, `jsx-a11y/label-has-associated-control`, `jsx-a11y/media-has-caption`, `jsx-a11y/mouse-events-have-key-events`, `jsx-a11y/no-access-key`, `jsx-a11y/no-autofocus`, `jsx-a11y/no-distracting-elements`, `jsx-a11y/no-interactive-element-to-noninteractive-role`, `jsx-a11y/no-noninteractive-element-interactions`, `jsx-a11y/no-noninteractive-element-to-interactive-role`, `jsx-a11y/no-noninteractive-tabindex`, `jsx-a11y/no-redundant-roles`, `jsx-a11y/no-static-element-interactions`, `jsx-a11y/role-has-required-aria-props`, `jsx-a11y/role-supports-aria-props`, `jsx-a11y/scope`, `jsx-a11y/tabindex-no-positive`
-
-</details>
-
-<details>
-<summary>1 rules migrated without options (incompatible schema)</summary>
-
-These rules are enabled but their configuration options were dropped because oxlint's schema does not accept them. Only the severity level was kept.
-
-`jsx-a11y/control-has-associated-label`
+`jsx-a11y/alt-text`, `jsx-a11y/anchor-has-content`, `jsx-a11y/anchor-is-valid`, `jsx-a11y/aria-activedescendant-has-tabindex`, `jsx-a11y/aria-props`, `jsx-a11y/aria-proptypes`, `jsx-a11y/aria-role`, `jsx-a11y/aria-unsupported-elements`, `jsx-a11y/autocomplete-valid`, `jsx-a11y/click-events-have-key-events`, `jsx-a11y/control-has-associated-label`, `jsx-a11y/heading-has-content`, `jsx-a11y/html-has-lang`, `jsx-a11y/iframe-has-title`, `jsx-a11y/img-redundant-alt`, `jsx-a11y/interactive-supports-focus`, `jsx-a11y/label-has-associated-control`, `jsx-a11y/media-has-caption`, `jsx-a11y/mouse-events-have-key-events`, `jsx-a11y/no-access-key`, `jsx-a11y/no-autofocus`, `jsx-a11y/no-distracting-elements`, `jsx-a11y/no-interactive-element-to-noninteractive-role`, `jsx-a11y/no-noninteractive-element-interactions`, `jsx-a11y/no-noninteractive-element-to-interactive-role`, `jsx-a11y/no-noninteractive-tabindex`, `jsx-a11y/no-redundant-roles`, `jsx-a11y/no-static-element-interactions`, `jsx-a11y/role-has-required-aria-props`, `jsx-a11y/role-supports-aria-props`, `jsx-a11y/scope`, `jsx-a11y/tabindex-no-positive`
 
 </details>
 

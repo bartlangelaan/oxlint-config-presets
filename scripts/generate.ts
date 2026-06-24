@@ -823,10 +823,37 @@ for (const config of configs) {
       break;
     }
 
+    // Also extract unknown field names so we can surgically remove only those
+    // instead of dropping all options.
+    const unknownFieldsByRule = new Map<string, string[]>();
+    for (const m of output.matchAll(
+      /Invalid configuration for rule `([^`]+)`:\s*\n\s*\|\s+unknown field `([^`]+)`/g,
+    )) {
+      const rule = m[1].replace(/_/g, '-');
+      const fields = unknownFieldsByRule.get(rule) ?? [];
+      fields.push(m[2]);
+      unknownFieldsByRule.set(rule, fields);
+    }
+
     for (const ruleName of badRules) {
       const value = oxlintResult.rules?.[ruleName];
-      if (Array.isArray(value) && value.length > 0) {
-        // Keep only the severity, dropping the incompatible options object.
+      if (!Array.isArray(value) || value.length === 0) continue;
+
+      const unknownFields = unknownFieldsByRule.get(ruleName);
+      const options = value[1];
+
+      if (unknownFields && options && typeof options === 'object' && !Array.isArray(options)) {
+        // Remove only the unknown fields, keeping valid options.
+        for (const field of unknownFields) {
+          delete (options as Record<string, unknown>)[field];
+        }
+        if (Object.keys(options as Record<string, unknown>).length === 0) {
+          (oxlintResult.rules as Record<string, unknown>)[ruleName] = value[0];
+          if (!strippedOptions.includes(ruleName)) strippedOptions.push(ruleName);
+        }
+        console.log(`  [fix] Removed unknown fields from ${ruleName}: ${unknownFields.join(', ')}`);
+      } else {
+        // Fallback: drop all options when we can't surgically fix.
         (oxlintResult.rules as Record<string, unknown>)[ruleName] = value[0];
         if (!strippedOptions.includes(ruleName)) strippedOptions.push(ruleName);
         console.log(`  [fix] Stripped options from ${ruleName}`);
