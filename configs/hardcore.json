@@ -557,6 +557,7 @@
         "functions": ["fromPairs", "R.fromPairs"]
       }
     ],
+    "unicorn/prefer-export-from": "error",
     "curly": "error",
     "no-unexpected-multiline": "off",
     "unicorn/empty-brace-spaces": "off",

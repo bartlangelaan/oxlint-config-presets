@@ -661,6 +661,12 @@
     ],
     "react/jsx-key": "off",
     "react/jsx-no-duplicate-props": "warn",
+    "react/jsx-no-literals": [
+      "off",
+      {
+        "noStrings": true
+      }
+    ],
     "react/jsx-no-undef": ["warn"],
     "react/jsx-pascal-case": [
       "warn",
