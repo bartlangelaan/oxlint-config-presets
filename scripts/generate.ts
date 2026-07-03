@@ -408,7 +408,7 @@ const fromTsEslint =
   (name: string): (() => MigrateConfig[]) =>
   () => {
     const cfg = tsEslint.configs[name];
-    return (Array.isArray(cfg) ? cfg : [cfg]) as MigrateConfig[];
+    return Array.isArray(cfg) ? cfg : [cfg];
   };
 
 function isOldStyleConfig(entry: unknown): entry is OldStyleEslintConfig {
@@ -495,14 +495,14 @@ const fromEsmPluginPackagePresets = (
     .map(([name, cfg]) => ({
       sourcePackage,
       sourceConfig: name,
-      resolveConfig: () => (Array.isArray(cfg) ? cfg : [cfg]) as MigrateConfig[],
+      resolveConfig: () => (Array.isArray(cfg) ? cfg : [cfg]),
     }))
     .filter((cfg) => countRules(cfg.resolveConfig()) > 0);
 
 // eslint-config-xo uses flat config (ESM function returning an array of config objects).
 // We merge all rules from the returned entries to get the full effective rule set.
 const xoModule = await import('eslint-config-xo');
-const xoFn = xoModule.default as () => Array<{ rules?: ResolvedRules }>;
+const xoFn = xoModule.default;
 const fromXo = () => {
   return xoFn() as MigrateConfig[];
 };
