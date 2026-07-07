@@ -287,6 +287,12 @@
     "no-template-curly-in-string": ["warn"],
     "no-unexpected-multiline": ["warn"],
     "no-unreachable": ["warn"],
+    "no-unreachable-loop": [
+      "warn",
+      {
+        "ignore": []
+      }
+    ],
     "no-unsafe-finally": ["warn"],
     "no-unsafe-negation": ["warn"],
     "no-unsafe-optional-chaining": [

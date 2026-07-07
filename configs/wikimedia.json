@@ -193,6 +193,7 @@
         "defaultAssignment": false
       }
     ],
+    "no-unreachable-loop": "error",
     "no-unused-expressions": "error",
     "no-use-before-define": ["error", "nofunc"],
     "no-useless-call": "error",

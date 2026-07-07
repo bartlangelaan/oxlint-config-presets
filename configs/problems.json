@@ -89,6 +89,7 @@
     "no-promise-executor-return": "error",
     "no-self-compare": "error",
     "no-unmodified-loop-condition": "error",
+    "no-unreachable-loop": "error",
     "no-use-before-define": [
       "error",
       {
