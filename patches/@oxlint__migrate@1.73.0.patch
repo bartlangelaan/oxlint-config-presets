@@ -1,0 +1,12 @@
+diff --git a/dist/src-aj7n0D2s.mjs b/dist/src-aj7n0D2s.mjs
+index a8dcbde61551a7346edf468f8862814f70b9da84..d0b4ffea8dc67900e7636283fb21b8c8b93981a9 100644
+--- a/dist/src-aj7n0D2s.mjs
++++ b/dist/src-aj7n0D2s.mjs
+@@ -2074,7 +2074,6 @@ const cleanUpOxlintConfig = (config) => {
+ 	}
+ 	if (!("files" in config)) {
+ 		cleanUpUselessOverridesEntries(config);
+-		cleanUpDisabledRootRules(config);
+ 		cleanUpUnusedJsPlugins(config);
+ 	}
+ };

@@ -231,6 +231,12 @@
     "no-template-curly-in-string": "error",
     "no-unexpected-multiline": "error",
     "no-unreachable": "error",
+    "no-unreachable-loop": [
+      "error",
+      {
+        "ignore": []
+      }
+    ],
     "no-unsafe-finally": "error",
     "no-unsafe-negation": "error",
     "no-unsafe-optional-chaining": [
