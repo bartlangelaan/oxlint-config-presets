@@ -137,6 +137,9 @@
     "unicorn/switch-case-braces": "error",
     "unicorn/switch-case-break-position": "error",
     "unicorn/text-encoding-identifier-case": "error",
-    "unicorn/throw-new-error": "error"
+    "unicorn/throw-new-error": "error",
+    "unicorn/prefer-dom-node-dataset": "error",
+    "unicorn/no-array-for-each": "error",
+    "unicorn/no-hex-escape": "error"
   }
 }

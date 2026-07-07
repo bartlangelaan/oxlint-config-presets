@@ -1,8 +1,49 @@
 diff --git a/dist/src-aj7n0D2s.mjs b/dist/src-aj7n0D2s.mjs
-index a8dcbde61551a7346edf468f8862814f70b9da84..d0b4ffea8dc67900e7636283fb21b8c8b93981a9 100644
+index a8dcbde61551a7346edf468f8862814f70b9da84..d3a4a50c5c0ad3368d5f7cc8bb36b78a4b9d1157 100644
 --- a/dist/src-aj7n0D2s.mjs
 +++ b/dist/src-aj7n0D2s.mjs
-@@ -2074,7 +2074,6 @@ const cleanUpOxlintConfig = (config) => {
+@@ -197,14 +197,21 @@ const rulesPrefixesForPlugins = {
+ 	vitest: "vitest",
+ 	vue: "vue"
+ };
++const ruleRenames = {
++	"unicorn/no-for-each": "unicorn/no-array-for-each",
++	"unicorn/prefer-unicode-code-point-escapes": "unicorn/no-hex-escape",
++	"unicorn/dom-node-dataset": "unicorn/prefer-dom-node-dataset"
++};
+ /**
+ * Normalizes an ESLint-style rule name to its canonical Oxlint form.
+ * e.g. "@typescript-eslint/no-floating-promises" → "typescript/no-floating-promises"
+ *      "react-hooks/exhaustive-deps" → "react/exhaustive-deps"
+ *      "@next/next/inline-script-id" → "nextjs/inline-script-id"
+ *      "no-unused-vars" → "no-unused-vars" (unchanged for unprefixed rules)
++*      "unicorn/no-for-each" → "unicorn/no-array-for-each" (rules known under a different name in oxlint)
+ */
+ function normalizeRuleToCanonical(rule) {
++	if (rule in ruleRenames) return ruleRenames[rule];
+ 	for (const [prefix, plugin] of Object.entries(rulesPrefixesForPlugins)) if (prefix !== plugin && rule.startsWith(`${prefix}/`)) return `${plugin}/${rule.slice(prefix.length + 1)}`;
+ 	return rule;
+ }
+@@ -2007,8 +2014,18 @@ const replaceRulePrefix = (config, oldPrefix, newPrefix) => {
+ *
+ * This should run AFTER `replaceTypescriptAliasRules` so that rules which
+ * extend core ESLint rules have already been stripped of their prefix.
++*
++* Also applies `normalizeRuleToCanonical`'s `ruleRenames` map, so rules known
++* under a different name in Oxlint (e.g. "unicorn/no-for-each" →
++* "unicorn/no-array-for-each") end up under the name Oxlint actually implements.
+ */
+ const replaceCanonicalPluginPrefixes = (config) => {
++	if (config.rules !== void 0) for (const rule of Object.keys(config.rules)) {
++		const renamedRule = ruleRenames[rule];
++		if (renamedRule === void 0 || renamedRule === rule) continue;
++		config.rules[renamedRule] = config.rules[rule];
++		delete config.rules[rule];
++	}
+ 	for (const [prefix, plugin] of Object.entries(rulesPrefixesForPlugins)) if (prefix !== plugin) replaceRulePrefix(config, prefix, plugin);
+ };
+ //#endregion
+@@ -2074,7 +2091,6 @@ const cleanUpOxlintConfig = (config) => {
  	}
  	if (!("files" in config)) {
  		cleanUpUselessOverridesEntries(config);

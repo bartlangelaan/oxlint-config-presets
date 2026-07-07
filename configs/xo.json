@@ -621,6 +621,9 @@
             "checkGlobalObject": true
           }
         ],
+        "unicorn/prefer-dom-node-dataset": "error",
+        "unicorn/no-array-for-each": "error",
+        "unicorn/no-hex-escape": "error",
         "import/default": "error",
         "import/export": "error",
         "import/extensions": [
