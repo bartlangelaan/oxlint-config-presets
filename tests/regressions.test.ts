@@ -27,3 +27,18 @@ test('@typescript-eslint/stylistic-type-checked keeps prefer-spread', () => {
     'Expected prefer-spread to be present in top-level rules or overrides.',
   );
 });
+
+test('unicorn/recommended keeps unicorn/no-array-for-each', () => {
+  const configPath = join(rootDir, 'configs/unicorn/recommended.json');
+  const config = JSON.parse(readFileSync(configPath, 'utf-8')) as OxlintConfig;
+
+  const topLevelRule = config.rules?.['unicorn/no-array-for-each'];
+  const overrideRule = config.overrides?.find(
+    (override) => override.rules?.['unicorn/no-array-for-each'],
+  )?.rules?.['unicorn/no-array-for-each'];
+
+  assert.ok(
+    topLevelRule !== undefined || overrideRule !== undefined,
+    'Expected unicorn/no-array-for-each (migrated from unicorn/no-for-each) to be present in top-level rules or overrides.',
+  );
+});
