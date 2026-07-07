@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   '@oxlint/migrate@1.73.0':
-    hash: bbe7e425ee6462b718b7ef75fa3089ae8ff3ac36deecadf5023d223b1510a179
+    hash: a3271495594fd1ed476cfc636a4564e348530375fc8e926b3959a808bb7cd58a
     path: patches/@oxlint__migrate@1.73.0.patch
 
 importers:
@@ -21,7 +21,7 @@ importers:
         version: 10.0.1(eslint@10.6.0)
       '@oxlint/migrate':
         specifier: ^1.73.0
-        version: 1.73.0(patch_hash=bbe7e425ee6462b718b7ef75fa3089ae8ff3ac36deecadf5023d223b1510a179)
+        version: 1.73.0(patch_hash=a3271495594fd1ed476cfc636a4564e348530375fc8e926b3959a808bb7cd58a)
       '@types/node':
         specifier: ^26.1.0
         version: 26.1.0
@@ -8253,7 +8253,7 @@ snapshots:
   '@oxlint/binding-win32-x64-msvc@1.73.0':
     optional: true
 
-  '@oxlint/migrate@1.73.0(patch_hash=bbe7e425ee6462b718b7ef75fa3089ae8ff3ac36deecadf5023d223b1510a179)':
+  '@oxlint/migrate@1.73.0(patch_hash=a3271495594fd1ed476cfc636a4564e348530375fc8e926b3959a808bb7cd58a)':
     dependencies:
       commander: 15.0.0
       globals: 17.7.0

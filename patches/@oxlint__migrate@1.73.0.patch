@@ -1,30 +1,33 @@
 diff --git a/dist/src-aj7n0D2s.mjs b/dist/src-aj7n0D2s.mjs
-index a8dcbde61551a7346edf468f8862814f70b9da84..d3a4a50c5c0ad3368d5f7cc8bb36b78a4b9d1157 100644
+index a8dcbde61551a7346edf468f8862814f70b9da84..1dcc93aab390b084660d43a69cb088a94d0c8cda 100644
 --- a/dist/src-aj7n0D2s.mjs
 +++ b/dist/src-aj7n0D2s.mjs
-@@ -197,14 +197,21 @@ const rulesPrefixesForPlugins = {
+@@ -1,4 +1,6 @@
+ import globals from "globals";
++import { readFileSync } from "node:fs";
++import { join } from "node:path";
+ //#region \0rolldown/runtime.js
+ var __defProp = Object.defineProperty;
+ var __exportAll = (all, no_symbols) => {
+@@ -197,14 +199,17 @@ const rulesPrefixesForPlugins = {
  	vitest: "vitest",
  	vue: "vue"
  };
-+const ruleRenames = {
-+	"unicorn/no-for-each": "unicorn/no-array-for-each",
-+	"unicorn/prefer-unicode-code-point-escapes": "unicorn/no-hex-escape",
-+	"unicorn/dom-node-dataset": "unicorn/prefer-dom-node-dataset"
-+};
++const ruleRenames = JSON.parse(readFileSync(join(process.cwd(), "scripts/rule-renames.json"), "utf-8"));
  /**
  * Normalizes an ESLint-style rule name to its canonical Oxlint form.
  * e.g. "@typescript-eslint/no-floating-promises" → "typescript/no-floating-promises"
  *      "react-hooks/exhaustive-deps" → "react/exhaustive-deps"
  *      "@next/next/inline-script-id" → "nextjs/inline-script-id"
  *      "no-unused-vars" → "no-unused-vars" (unchanged for unprefixed rules)
-+*      "unicorn/no-for-each" → "unicorn/no-array-for-each" (rules known under a different name in oxlint)
++*      "unicorn/no-for-each" → "unicorn/no-array-for-each" (rules known under a different name in oxlint, see scripts/rule-renames.json)
  */
  function normalizeRuleToCanonical(rule) {
 +	if (rule in ruleRenames) return ruleRenames[rule];
  	for (const [prefix, plugin] of Object.entries(rulesPrefixesForPlugins)) if (prefix !== plugin && rule.startsWith(`${prefix}/`)) return `${plugin}/${rule.slice(prefix.length + 1)}`;
  	return rule;
  }
-@@ -2007,8 +2014,18 @@ const replaceRulePrefix = (config, oldPrefix, newPrefix) => {
+@@ -2007,8 +2012,18 @@ const replaceRulePrefix = (config, oldPrefix, newPrefix) => {
  *
  * This should run AFTER `replaceTypescriptAliasRules` so that rules which
  * extend core ESLint rules have already been stripped of their prefix.
@@ -43,7 +46,7 @@ index a8dcbde61551a7346edf468f8862814f70b9da84..d3a4a50c5c0ad3368d5f7cc8bb36b78a
  	for (const [prefix, plugin] of Object.entries(rulesPrefixesForPlugins)) if (prefix !== plugin) replaceRulePrefix(config, prefix, plugin);
  };
  //#endregion
-@@ -2074,7 +2091,6 @@ const cleanUpOxlintConfig = (config) => {
+@@ -2074,7 +2089,6 @@ const cleanUpOxlintConfig = (config) => {
  	}
  	if (!("files" in config)) {
  		cleanUpUselessOverridesEntries(config);
