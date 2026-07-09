@@ -1870,7 +1870,7 @@ Extracted from `eslint-plugin-jest@28.14.0`.
 "./node_modules/oxlint-config-presets/@vitest/recommended.json"
 ```
 
-Extracted from `@vitest/eslint-plugin@1.6.21`.
+Extracted from `@vitest/eslint-plugin@1.6.22`.
 
 <details>
 <summary>17 rules successfully migrated</summary>
@@ -1885,7 +1885,7 @@ Extracted from `@vitest/eslint-plugin@1.6.21`.
 "./node_modules/oxlint-config-presets/@vitest/all.json"
 ```
 
-Extracted from `@vitest/eslint-plugin@1.6.21`.
+Extracted from `@vitest/eslint-plugin@1.6.22`.
 
 <details>
 <summary>70 rules successfully migrated</summary>
