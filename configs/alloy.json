@@ -180,6 +180,7 @@
     "no-unmodified-loop-condition": "error",
     "no-unneeded-ternary": "off",
     "no-unreachable": "error",
+    "no-unreachable-loop": "error",
     "no-unsafe-finally": "error",
     "no-unsafe-negation": "error",
     "no-unsafe-optional-chaining": "error",
