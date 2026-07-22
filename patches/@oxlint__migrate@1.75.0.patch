@@ -1,7 +1,7 @@
-diff --git a/dist/src-aj7n0D2s.mjs b/dist/src-aj7n0D2s.mjs
-index a8dcbde61551a7346edf468f8862814f70b9da84..1dcc93aab390b084660d43a69cb088a94d0c8cda 100644
---- a/dist/src-aj7n0D2s.mjs
-+++ b/dist/src-aj7n0D2s.mjs
+diff --git a/dist/src-V0W_ayvY.mjs b/dist/src-V0W_ayvY.mjs
+index 2c2135ee6c237ce6cf023262e79e64f0af7188d9..adb7e2a0e16edf77869efa9c41636491a6713e41 100644
+--- a/dist/src-V0W_ayvY.mjs
++++ b/dist/src-V0W_ayvY.mjs
 @@ -1,4 +1,6 @@
  import globals from "globals";
 +import { readFileSync } from "node:fs";
@@ -27,14 +27,8 @@ index a8dcbde61551a7346edf468f8862814f70b9da84..1dcc93aab390b084660d43a69cb088a9
  	for (const [prefix, plugin] of Object.entries(rulesPrefixesForPlugins)) if (prefix !== plugin && rule.startsWith(`${prefix}/`)) return `${plugin}/${rule.slice(prefix.length + 1)}`;
  	return rule;
  }
-@@ -2007,8 +2012,18 @@ const replaceRulePrefix = (config, oldPrefix, newPrefix) => {
- *
- * This should run AFTER `replaceTypescriptAliasRules` so that rules which
+@@ -2038,6 +2043,12 @@ const replaceRulePrefix = (config, oldPrefix, newPrefix) => {
  * extend core ESLint rules have already been stripped of their prefix.
-+*
-+* Also applies `normalizeRuleToCanonical`'s `ruleRenames` map, so rules known
-+* under a different name in Oxlint (e.g. "unicorn/no-for-each" →
-+* "unicorn/no-array-for-each") end up under the name Oxlint actually implements.
  */
  const replaceCanonicalPluginPrefixes = (config) => {
 +	if (config.rules !== void 0) for (const rule of Object.keys(config.rules)) {
@@ -46,7 +40,7 @@ index a8dcbde61551a7346edf468f8862814f70b9da84..1dcc93aab390b084660d43a69cb088a9
  	for (const [prefix, plugin] of Object.entries(rulesPrefixesForPlugins)) if (prefix !== plugin) replaceRulePrefix(config, prefix, plugin);
  };
  //#endregion
-@@ -2074,7 +2089,6 @@ const cleanUpOxlintConfig = (config) => {
+@@ -2103,7 +2114,6 @@ const cleanUpOxlintConfig = (config) => {
  	}
  	if (!("files" in config)) {
  		cleanUpUselessOverridesEntries(config);

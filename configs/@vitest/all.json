@@ -31,6 +31,7 @@
     "vitest/no-test-return-statement": "warn",
     "vitest/no-unneeded-async-expect-function": "warn",
     "vitest/padding-around-after-all-blocks": "warn",
+    "vitest/padding-around-test-blocks": "warn",
     "vitest/prefer-called-exactly-once-with": "warn",
     "vitest/prefer-called-once": "off",
     "vitest/prefer-called-times": "warn",
