@@ -6,6 +6,7 @@
     "react/forbid-component-props": "off",
     "react/forbid-dom-props": "off",
     "react/forbid-elements": "off",
+    "react/function-component-definition": "off",
     "react/hook-use-state": "off",
     "react/iframe-missing-sandbox": "error",
     "react/jsx-boolean-value": "off",
