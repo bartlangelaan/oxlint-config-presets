@@ -548,7 +548,12 @@
         "constructor-super": "error",
         "no-class-assign": "error",
         "no-const-assign": "error",
-        "no-constant-binary-expression": "error",
+        "no-constant-binary-expression": [
+          "error",
+          {
+            "checkRelationalComparisons": true
+          }
+        ],
         "no-dupe-class-members": "error",
         "no-new-native-nonconstructor": "error",
         "no-this-before-super": "error",
@@ -626,13 +631,7 @@
         "unicorn/no-hex-escape": "error",
         "import/default": "error",
         "import/export": "error",
-        "import/extensions": [
-          "error",
-          "always",
-          {
-            "ignorePackages": true
-          }
-        ],
+        "import/extensions": "off",
         "import/first": "error",
         "import/named": "error",
         "import/namespace": [
