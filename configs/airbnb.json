@@ -758,6 +758,13 @@
       ]
     ],
     "react/jsx-no-useless-fragment": "error",
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": ["function-declaration", "function-expression"],
+        "unnamedComponents": "function-expression"
+      }
+    ],
     "react/jsx-no-constructed-context-values": "error",
     "react/no-unstable-nested-components": "error",
     "react/no-namespace": "error",
