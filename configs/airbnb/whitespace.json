@@ -770,6 +770,13 @@
       ]
     ],
     "react/jsx-no-useless-fragment": ["warn"],
+    "react/function-component-definition": [
+      "warn",
+      {
+        "namedComponents": ["function-declaration", "function-expression"],
+        "unnamedComponents": "function-expression"
+      }
+    ],
     "react/jsx-no-constructed-context-values": ["warn"],
     "react/no-unstable-nested-components": ["warn"],
     "react/no-namespace": ["warn"],
