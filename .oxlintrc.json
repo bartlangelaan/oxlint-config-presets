@@ -1,6 +1,8 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "extends": ["./configs/@typescript-eslint/recommended-type-checked.json"],
+  "extends": [
+    "./packages/oxlint-config-presets/configs/@typescript-eslint/recommended-type-checked.json"
+  ],
   "options": {
     "typeCheck": true,
     "reportUnusedDisableDirectives": "warn",
@@ -8,7 +10,7 @@
   },
   "overrides": [
     {
-      "files": ["tests/**/*.ts"],
+      "files": ["packages/*/tests/**/*.ts"],
       "rules": {
         "@typescript-eslint/no-floating-promises": "off"
       }

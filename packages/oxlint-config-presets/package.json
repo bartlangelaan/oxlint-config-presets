@@ -1,0 +1,79 @@
+{
+  "name": "oxlint-config-presets",
+  "version": "0.1.17",
+  "description": "Oxlint configurations ported from popular ESLint styleguides",
+  "keywords": [
+    "config",
+    "eslint",
+    "lint",
+    "oxlint",
+    "styleguide"
+  ],
+  "homepage": "https://github.com/popup-plus/oxlint-config-presets#readme",
+  "bugs": {
+    "url": "https://github.com/popup-plus/oxlint-config-presets/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/popup-plus/oxlint-config-presets.git",
+    "directory": "packages/oxlint-config-presets"
+  },
+  "type": "module",
+  "exports": {
+    "./*.json": {
+      "types": "./oxlint-config.d.ts",
+      "default": "./*.json"
+    }
+  },
+  "publishConfig": {
+    "directory": "configs"
+  },
+  "scripts": {
+    "generate": "rm -rf configs && node --import tsx/esm scripts/generate.ts && oxfmt",
+    "prepack": "node --import tsx/esm scripts/prepack.ts",
+    "test": "node --import tsx/esm --test tests/*.test.ts"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^9.2.0",
+    "@eslint/js": "^10.0.1",
+    "@oxlint/migrate": "^1.75.0",
+    "@types/node": "^26.1.1",
+    "@typescript-eslint/eslint-plugin": "^8.65.0",
+    "@typescript-eslint/parser": "^8.65.0",
+    "eslint": "^10.8.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-alloy": "^5.1.2",
+    "eslint-config-eslint": "^14.0.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-hardcore": "^49.0.0",
+    "eslint-config-next": "^16.2.11",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-config-problems": "^10.0.1",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-config-wikimedia": "^0.32.4",
+    "eslint-config-xo": "^0.58.1",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-n": "^18.2.2",
+    "eslint-plugin-promise": "^7.3.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.3",
+    "eslint-plugin-unicorn": "^72.0.0",
+    "eslint8": "npm:eslint@^8.57.1",
+    "next": "^16.2.11",
+    "oxfmt": "^0.60.0",
+    "oxlint": "^1.75.0",
+    "tsx": "^4.23.1"
+  },
+  "peerDependencies": {
+    "oxlint": ">=0.15.0"
+  },
+  "peerDependenciesMeta": {
+    "oxlint": {
+      "optional": true
+    }
+  }
+}
