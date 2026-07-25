@@ -57,8 +57,9 @@ type SkippedRulesByCategory = ReturnType<MigrateReporter['getSkippedRulesByCateg
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = resolve(__dirname, '..');
+const monorepoRootDir = resolve(rootDir, '..', '..');
 const configsDir = join(rootDir, 'configs');
-const readmePath = join(rootDir, 'README.md');
+const readmePath = join(monorepoRootDir, 'README.md');
 const generatedStartMarker = '<!-- GENERATED CONFIGS START -->';
 const generatedEndMarker = '<!-- GENERATED CONFIGS END -->';
 
@@ -249,7 +250,7 @@ const outputFor = (cfg: ConfigEntry) => {
 const oxlintConfigFor = (cfg: ConfigEntry) => `oxlint-config-presets/${outputFor(cfg)}`;
 
 const packageVersionCache = new Map<string, string>();
-const lockfilePath = join(rootDir, 'pnpm-lock.yaml');
+const lockfilePath = join(monorepoRootDir, 'pnpm-lock.yaml');
 const lockfileContent = existsSync(lockfilePath) ? readFileSync(lockfilePath, 'utf-8') : '';
 
 function escapeForRegex(input: string): string {

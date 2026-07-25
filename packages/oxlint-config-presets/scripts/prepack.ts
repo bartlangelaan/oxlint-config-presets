@@ -1,12 +1,11 @@
 /**
- * Assembles dist/ (this package's publishConfig.directory) before publishing,
- * and copies this package's README to the monorepo root so it's visible on
- * GitHub.
+ * Assembles dist/ (this package's publishConfig.directory) before publishing.
  *
  * dist/ is gitignored: it's rebuilt from configs/ (the tracked, generated
  * source of truth) plus a clean package.json derived from the root
  * package.json (dropping fields not needed by consumers, like
- * devDependencies and scripts), the README, and the type definitions.
+ * devDependencies and scripts), the monorepo root README (this package has
+ * no README of its own), and the type definitions.
  *
  * Invoked automatically by pnpm via the "prepack" lifecycle hook.
  */
@@ -34,12 +33,10 @@ const publishPkg = Object.fromEntries(
 rmSync(distDir, { recursive: true, force: true });
 cpSync(join(rootDir, 'configs'), distDir, { recursive: true });
 writeFileSync(join(distDir, 'package.json'), JSON.stringify(publishPkg, null, 2) + '\n');
-copyFileSync(join(rootDir, 'README.md'), join(distDir, 'README.md'));
+copyFileSync(join(monorepoRootDir, 'README.md'), join(distDir, 'README.md'));
 copyFileSync(join(rootDir, 'oxlint-config.d.ts'), join(distDir, 'oxlint-config.d.ts'));
-copyFileSync(join(rootDir, 'README.md'), join(monorepoRootDir, 'README.md'));
 
 console.log('Copied configs/ to dist/');
 console.log('Written dist/package.json');
 console.log('Copied README.md to dist/README.md');
 console.log('Copied oxlint-config.d.ts to dist/oxlint-config.d.ts');
-console.log('Copied README.md to monorepo root README.md');
