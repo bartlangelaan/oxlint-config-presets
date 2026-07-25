@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { CheckCircle2, CircleDashed, ExternalLink } from 'lucide-react';
+import { ExternalLink, Sparkles } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -13,7 +13,9 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { getAllRules, getRuleById } from '@/lib/data';
+import { configHref, getAllRules, getRuleById } from '@/lib/data';
+import { FIX_STATUS_META, STATUS_META } from '@/lib/status';
+import { cn } from '@/lib/utils';
 
 export function generateStaticParams() {
   return getAllRules().map((r) => ({ plugin: r.plugin, rule: r.name }));
@@ -31,14 +33,6 @@ export async function generateMetadata({
     description: found?.eslint.description ?? undefined,
   };
 }
-
-const SKIP_REASON_LABEL: Record<string, string> = {
-  nursery: 'Available as a nursery rule (experimental, opt-in)',
-  'type-aware': 'Requires type-aware linting',
-  'not-implemented': 'Not yet implemented in oxlint',
-  unsupported: 'Not portable to oxlint',
-  'js-plugins': 'Requires JS plugin support',
-};
 
 const SEVERITY_STYLE: Record<string, string> = {
   error: 'text-destructive',
@@ -58,6 +52,9 @@ export default async function RuleDetailPage({
 
   const enabledPresets = found.presets.filter((p) => p.severity !== 'off');
   const disabledPresets = found.presets.filter((p) => p.severity === 'off');
+  const status = STATUS_META[found.oxlint.migrationStatus];
+  const StatusIcon = status.icon;
+  const migrated = found.oxlint.migrationStatus === 'migrated';
 
   return (
     <div className="mx-auto flex w-full max-w-4xl flex-1 flex-col gap-6 p-4 md:p-8">
@@ -73,30 +70,53 @@ export default async function RuleDetailPage({
           <p className="text-muted-foreground max-w-2xl text-balance">{found.eslint.description}</p>
         ) : null}
         <div className="flex flex-wrap items-center gap-2">
-          {found.oxlint.migrated ? (
-            <Badge className="bg-emerald-600 text-white dark:bg-emerald-500">
-              <CheckCircle2 className="size-3.5" /> Migrated to oxlint
-            </Badge>
-          ) : (
-            <Badge variant="secondary">
-              <CircleDashed className="size-3.5" />
-              {found.oxlint.skipReason
-                ? (SKIP_REASON_LABEL[found.oxlint.skipReason] ?? found.oxlint.skipReason)
-                : 'Not migrated'}
-            </Badge>
-          )}
+          <Badge
+            className={cn(
+              'gap-1',
+              migrated
+                ? 'bg-emerald-600 text-white dark:bg-emerald-500'
+                : found.oxlint.migrationStatus === 'not-portable'
+                  ? 'bg-muted text-muted-foreground'
+                  : found.oxlint.migrationStatus === 'needs-js-plugin'
+                    ? 'bg-sky-600 text-white dark:bg-sky-500'
+                    : 'bg-amber-500 text-white dark:bg-amber-600',
+            )}
+          >
+            <StatusIcon className="size-3.5" /> {status.label}
+          </Badge>
           {found.oxlint.category ? (
             <Badge variant="outline" className="font-mono capitalize">
               {found.oxlint.category}
             </Badge>
           ) : null}
+          {found.oxlint.nursery ? (
+            <Badge
+              variant="outline"
+              className="gap-1 border-violet-500/40 text-violet-700 dark:text-violet-400"
+            >
+              <Sparkles className="size-3.5" /> Nursery (experimental)
+            </Badge>
+          ) : null}
+          {found.oxlint.typeAware ? (
+            <Badge variant="outline" className="border-sky-500/40 text-sky-700 dark:text-sky-400">
+              Type-aware
+            </Badge>
+          ) : null}
           {found.oxlint.default ? <Badge variant="outline">On by default in oxlint</Badge> : null}
           {found.eslint.recommended ? <Badge variant="outline">ESLint recommended</Badge> : null}
           {found.eslint.deprecated ? <Badge variant="destructive">Deprecated in ESLint</Badge> : null}
-          {found.eslint.fixable || found.oxlint.fix?.includes('fix') ? (
-            <Badge variant="outline">Fixable</Badge>
-          ) : null}
         </div>
+        {migrated && found.oxlint.fixStatus ? (
+          <p className={cn('text-sm font-medium', FIX_STATUS_META[found.oxlint.fixStatus].className)}>
+            {FIX_STATUS_META[found.oxlint.fixStatus].label}
+          </p>
+        ) : null}
+        {!migrated && found.oxlint.reason ? (
+          <p className="max-w-2xl rounded-lg border border-dashed p-3 text-sm text-balance">
+            <span className="font-medium">Why: </span>
+            {found.oxlint.reason}
+          </p>
+        ) : null}
         <div className="flex flex-wrap gap-3 text-sm">
           {found.eslint.docsUrl ? (
             <a
@@ -126,11 +146,14 @@ export default async function RuleDetailPage({
           <CardTitle>How to enable or disable this rule</CardTitle>
         </CardHeader>
         <CardContent>
-          {!found.oxlint.migrated ? (
+          {!migrated ? (
             <p className="text-muted-foreground text-sm">
-              This rule has no oxlint equivalent yet, so no oxlint-config-presets preset can enable
-              it. Once oxlint implements it, presets that enable the source ESLint rule will pick it
-              up automatically the next time configs are regenerated.
+              This rule has no oxlint equivalent{' '}
+              {found.oxlint.migrationStatus === 'not-portable' ? 'and will not get one' : 'yet'}, so
+              no oxlint-config-presets preset can enable it.
+              {found.oxlint.migrationStatus !== 'not-portable'
+                ? ' Once oxlint implements it, presets that enable the source ESLint rule will pick it up automatically the next time configs are regenerated.'
+                : ''}
             </p>
           ) : found.presets.length === 0 ? (
             <p className="text-muted-foreground text-sm">
@@ -165,7 +188,7 @@ export default async function RuleDetailPage({
                       <TableRow key={p.config}>
                         <TableCell>
                           <Link
-                            href={`/configs/${p.config.replace(/\.json$/, '')}`}
+                            href={configHref(p.config)}
                             className="block max-w-[60vw] truncate font-mono text-sm hover:underline sm:max-w-none sm:inline-block"
                           >
                             {p.config}

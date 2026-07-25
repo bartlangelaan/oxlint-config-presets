@@ -25,8 +25,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   const summary = getSummary();
   const plugins = getPlugins()
     .slice()
-    .sort((a, b) => b.total - a.total)
-    .map((p) => ({ id: p.id, label: p.label, total: p.total, migrated: p.migrated }));
+    .sort((a, b) => b.eligible - a.eligible)
+    .map((p) => ({ id: p.id, label: p.label, eligible: p.eligible, migrated: p.migrated }));
 
   return (
     <html lang="en" className={cn('font-sans', geist.variable, geistMono.variable)} suppressHydrationWarning>

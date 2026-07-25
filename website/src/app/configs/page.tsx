@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { getConfigs } from '@/lib/data';
+import { configHref, getConfigs } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Config presets',
@@ -45,7 +45,7 @@ export default function ConfigsPage() {
                 .map((c) => (
                   <Link
                     key={c.path}
-                    href={`/configs/${c.path.replace(/\.json$/, '')}`}
+                    href={configHref(c.path)}
                     className="hover:bg-accent flex items-center justify-between rounded-md px-2 py-1.5 text-sm transition-colors"
                   >
                     <span className="font-mono">{c.path}</span>

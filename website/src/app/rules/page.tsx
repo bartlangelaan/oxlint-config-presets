@@ -18,7 +18,7 @@ export default function RulesPage() {
       <div className="flex flex-col gap-2">
         <h1 className="text-3xl font-semibold tracking-tight">All rules</h1>
         <p className="text-muted-foreground max-w-2xl">
-          {summary.totalRules.toLocaleString()} ESLint rules across {plugins.length} plugins.
+          {summary.total.toLocaleString()} ESLint rules across {plugins.length} plugins.
           Search, filter by plugin or migration status, then open a rule to see exactly which
           oxlint-config-presets presets enable or disable it.
         </p>

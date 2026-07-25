@@ -12,14 +12,10 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { getConfig, getConfigs, getRulesForConfig } from '@/lib/data';
-
-function slugToPath(slug: string[]): string {
-  return `${slug.join('/')}.json`;
-}
+import { configPathToSlug, getConfig, getConfigs, getRulesForConfig, slugToConfigPath } from '@/lib/data';
 
 export function generateStaticParams() {
-  return getConfigs().map((c) => ({ slug: c.path.replace(/\.json$/, '').split('/') }));
+  return getConfigs().map((c) => ({ slug: configPathToSlug(c.path) }));
 }
 
 export async function generateMetadata({
@@ -28,7 +24,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string[] }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const path = slugToPath(slug);
+  const path = slugToConfigPath(slug);
   const config = getConfig(path);
   return {
     title: config ? path : 'Unknown config',
@@ -49,7 +45,7 @@ export default async function ConfigDetailPage({
   params: Promise<{ slug: string[] }>;
 }) {
   const { slug } = await params;
-  const path = slugToPath(slug);
+  const path = slugToConfigPath(slug);
   const config = getConfig(path);
   if (!config) notFound();
 

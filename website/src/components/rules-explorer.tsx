@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
-import { CheckCircle2, CircleDashed, Search } from 'lucide-react';
+import { useDeferredValue, useMemo, useState } from 'react';
+import { Search, Sparkles, Wrench } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
@@ -21,12 +21,12 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Button } from '@/components/ui/button';
-import type { RuleListItem } from '@/lib/data';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import type { MigrationStatus, RuleListItem } from '@/lib/data';
+import { FIX_STATUS_META, STATUS_META } from '@/lib/status';
+import { cn } from '@/lib/utils';
 
-const PAGE_SIZE = 40;
-
-type StatusFilter = 'all' | 'migrated' | 'not-migrated';
+type StatusFilter = 'all' | MigrationStatus;
 
 export function RulesExplorer({
   rules,
@@ -42,27 +42,17 @@ export function RulesExplorer({
   const [query, setQuery] = useState('');
   const [plugin, setPlugin] = useState(defaultPlugin);
   const [status, setStatus] = useState<StatusFilter>('all');
-  const [page, setPage] = useState(0);
+  const deferredQuery = useDeferredValue(query);
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
+    const q = deferredQuery.trim().toLowerCase();
     return rules.filter((r) => {
       if (plugin !== 'all' && r.plugin !== plugin) return false;
-      if (status === 'migrated' && !r.migrated) return false;
-      if (status === 'not-migrated' && r.migrated) return false;
+      if (status !== 'all' && r.migrationStatus !== status) return false;
       if (q && !`${r.pluginLabel} ${r.name}`.toLowerCase().includes(q)) return false;
       return true;
     });
-  }, [rules, plugin, status, query]);
-
-  const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
-  const currentPage = Math.min(page, pageCount - 1);
-  const pageItems = filtered.slice(currentPage * PAGE_SIZE, (currentPage + 1) * PAGE_SIZE);
-
-  function updateFilter<T>(setter: (v: T) => void, value: T) {
-    setter(value);
-    setPage(0);
-  }
+  }, [rules, plugin, status, deferredQuery]);
 
   return (
     <div className="flex flex-col gap-4">
@@ -73,11 +63,11 @@ export function RulesExplorer({
             placeholder="Search rules…"
             className="pl-8"
             value={query}
-            onChange={(e) => updateFilter(setQuery, e.target.value)}
+            onChange={(e) => setQuery(e.target.value)}
           />
         </div>
         {showPluginFilter ? (
-          <Select value={plugin} onValueChange={(v) => updateFilter(setPlugin, v ?? 'all')}>
+          <Select value={plugin} onValueChange={(v) => setPlugin(v ?? 'all')}>
             <SelectTrigger className="w-full sm:w-48">
               <SelectValue placeholder="Plugin" />
             </SelectTrigger>
@@ -91,17 +81,17 @@ export function RulesExplorer({
             </SelectContent>
           </Select>
         ) : null}
-        <Select
-          value={status}
-          onValueChange={(v) => updateFilter(setStatus, v ?? 'all')}
-        >
-          <SelectTrigger className="w-full sm:w-44">
+        <Select value={status} onValueChange={(v) => setStatus(v ?? 'all')}>
+          <SelectTrigger className="w-full sm:w-56">
             <SelectValue placeholder="Status" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All statuses</SelectItem>
-            <SelectItem value="migrated">Migrated</SelectItem>
-            <SelectItem value="not-migrated">Not migrated</SelectItem>
+            {(Object.keys(STATUS_META) as MigrationStatus[]).map((s) => (
+              <SelectItem key={s} value={s}>
+                {STATUS_META[s].label}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
       </div>
@@ -122,52 +112,87 @@ export function RulesExplorer({
             </TableRow>
           </TableHeader>
           <TableBody>
-            {pageItems.map((r) => (
-              <TableRow key={r.id}>
-                <TableCell>
-                  <Link
-                    href={`/rules/${r.plugin}/${r.name}`}
-                    className="block max-w-[52vw] truncate font-mono text-sm font-medium hover:underline sm:max-w-none sm:inline-block"
-                  >
-                    {r.name}
-                  </Link>
-                  {r.deprecated ? (
-                    <Badge variant="secondary" className="ml-2 hidden text-[10px] sm:inline-flex">
-                      deprecated
-                    </Badge>
-                  ) : null}
-                </TableCell>
-                <TableCell className="text-muted-foreground hidden sm:table-cell">
-                  {r.pluginLabel}
-                </TableCell>
-                <TableCell className="hidden md:table-cell">
-                  {r.category ? (
-                    <Badge variant="outline" className="font-mono text-[10px] capitalize">
-                      {r.category}
-                    </Badge>
-                  ) : (
-                    <span className="text-muted-foreground text-xs">—</span>
-                  )}
-                </TableCell>
-                <TableCell className="text-muted-foreground hidden md:table-cell text-right font-mono text-xs tabular-nums">
-                  {r.presetCount || '—'}
-                </TableCell>
-                <TableCell className="text-right">
-                  {r.migrated ? (
-                    <span className="inline-flex items-center gap-1 text-xs font-medium text-emerald-600 dark:text-emerald-400">
-                      <CheckCircle2 className="size-3.5" />
-                      <span className="hidden sm:inline">Migrated</span>
+            {filtered.map((r) => {
+              const meta = STATUS_META[r.migrationStatus];
+              const Icon = meta.icon;
+              return (
+                <TableRow key={r.id}>
+                  <TableCell>
+                    <Link
+                      href={`/rules/${r.plugin}/${r.name}`}
+                      className="block max-w-[52vw] truncate font-mono text-sm font-medium hover:underline sm:max-w-none sm:inline-block"
+                    >
+                      {r.name}
+                    </Link>
+                    <span className="ml-1.5 hidden gap-1 sm:inline-flex">
+                      {r.deprecated ? (
+                        <Badge variant="secondary" className="text-[10px]">
+                          deprecated
+                        </Badge>
+                      ) : null}
+                      {r.nursery ? (
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <Badge
+                              variant="outline"
+                              className="gap-0.5 border-violet-500/40 text-[10px] text-violet-700 dark:text-violet-400"
+                            >
+                              <Sparkles className="size-2.5" /> nursery
+                            </Badge>
+                          </TooltipTrigger>
+                          <TooltipContent>Experimental, opt-in oxlint rule</TooltipContent>
+                        </Tooltip>
+                      ) : null}
+                      {r.typeAware ? (
+                        <Badge
+                          variant="outline"
+                          className="border-sky-500/40 text-[10px] text-sky-700 dark:text-sky-400"
+                        >
+                          type-aware
+                        </Badge>
+                      ) : null}
+                      {r.fixStatus && r.fixStatus !== 'none' ? (
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <Wrench
+                              className={cn(
+                                'size-3',
+                                r.fixStatus === 'implemented'
+                                  ? 'text-emerald-600 dark:text-emerald-400'
+                                  : 'text-amber-600 dark:text-amber-400',
+                              )}
+                            />
+                          </TooltipTrigger>
+                          <TooltipContent>{FIX_STATUS_META[r.fixStatus].label}</TooltipContent>
+                        </Tooltip>
+                      ) : null}
                     </span>
-                  ) : (
-                    <span className="text-muted-foreground inline-flex items-center gap-1 text-xs">
-                      <CircleDashed className="size-3.5" />
-                      <span className="hidden sm:inline">{r.skipReason ?? 'Not yet'}</span>
+                  </TableCell>
+                  <TableCell className="text-muted-foreground hidden sm:table-cell">
+                    {r.pluginLabel}
+                  </TableCell>
+                  <TableCell className="hidden md:table-cell">
+                    {r.category ? (
+                      <Badge variant="outline" className="font-mono text-[10px] capitalize">
+                        {r.category}
+                      </Badge>
+                    ) : (
+                      <span className="text-muted-foreground text-xs">—</span>
+                    )}
+                  </TableCell>
+                  <TableCell className="text-muted-foreground hidden md:table-cell text-right font-mono text-xs tabular-nums">
+                    {r.presetCount || '—'}
+                  </TableCell>
+                  <TableCell className="text-right">
+                    <span className={cn('inline-flex items-center gap-1 text-xs font-medium', meta.className)}>
+                      <Icon className="size-3.5 shrink-0" />
+                      <span className="hidden sm:inline">{meta.short}</span>
                     </span>
-                  )}
-                </TableCell>
-              </TableRow>
-            ))}
-            {pageItems.length === 0 ? (
+                  </TableCell>
+                </TableRow>
+              );
+            })}
+            {filtered.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={5} className="text-muted-foreground h-24 text-center">
                   No rules match your filters.
@@ -177,32 +202,6 @@ export function RulesExplorer({
           </TableBody>
         </Table>
       </div>
-
-      {pageCount > 1 ? (
-        <div className="flex items-center justify-between">
-          <span className="text-muted-foreground text-xs">
-            Page {currentPage + 1} of {pageCount}
-          </span>
-          <div className="flex gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              disabled={currentPage === 0}
-              onClick={() => setPage((p) => Math.max(0, p - 1))}
-            >
-              Previous
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              disabled={currentPage >= pageCount - 1}
-              onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
-            >
-              Next
-            </Button>
-          </div>
-        </div>
-      ) : null}
     </div>
   );
 }

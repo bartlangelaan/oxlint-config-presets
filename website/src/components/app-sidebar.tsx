@@ -31,13 +31,13 @@ import { cn } from '@/lib/utils';
 export interface SidebarPlugin {
   id: string;
   label: string;
-  total: number;
+  eligible: number;
   migrated: number;
 }
 
 export interface SidebarSummary {
-  totalRules: number;
-  totalMigrated: number;
+  eligible: number;
+  migrated: number;
   oxlintVersion: string;
 }
 
@@ -49,7 +49,7 @@ export function AppSidebar({
   summary: SidebarSummary;
 }) {
   const pathname = usePathname();
-  const pct = Math.round((summary.totalMigrated / summary.totalRules) * 100);
+  const pct = summary.eligible > 0 ? Math.round((summary.migrated / summary.eligible) * 100) : 0;
 
   return (
     <Sidebar collapsible="icon">
@@ -100,7 +100,7 @@ export function AppSidebar({
                 <SidebarMenuItem key={plugin.id}>
                   <SidebarMenuButton
                     isActive={pathname === `/rules/${plugin.id}`}
-                    tooltip={`${plugin.label}: ${plugin.migrated}/${plugin.total} migrated`}
+                    tooltip={`${plugin.label}: ${plugin.migrated}/${plugin.eligible} migrated (target)`}
                     render={
                       <Link href={`/rules/${plugin.id}`}>
                         <span>{plugin.label}</span>
@@ -108,7 +108,7 @@ export function AppSidebar({
                     }
                   />
                   <SidebarMenuBadge>
-                    {plugin.migrated}/{plugin.total}
+                    {plugin.migrated}/{plugin.eligible}
                   </SidebarMenuBadge>
                 </SidebarMenuItem>
               ))}

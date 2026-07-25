@@ -8,6 +8,43 @@ export interface PresetRuleEntry {
   severity: string;
 }
 
+/**
+ * Next.js reserves a leading `@` in a URL segment for parallel routes, even
+ * inside a catch-all route, so scoped-package config paths like
+ * "@eslint/recommended.json" 404 if used verbatim. Encode/decode consistently
+ * wherever a /configs/... link is built. "_" doesn't collide with any
+ * existing (unscoped) config directory name.
+ */
+export function configPathToSlug(path: string): string[] {
+  return path
+    .replace(/\.json$/, '')
+    .split('/')
+    .map((segment) => (segment.startsWith('@') ? `_${segment.slice(1)}` : segment));
+}
+
+export function slugToConfigPath(slug: string[]): string {
+  return (
+    slug.map((segment) => (segment.startsWith('_') ? `@${segment.slice(1)}` : segment)).join('/') +
+    '.json'
+  );
+}
+
+export function configHref(path: string): string {
+  return `/configs/${configPathToSlug(path).join('/')}`;
+}
+
+/**
+ * Four buckets, matching how the target for "full migration" should be read:
+ *  - migrated: oxlint implements it today. The goal.
+ *  - not-implemented: a valid rule oxlint hasn't ported yet. Part of the target.
+ *  - needs-js-plugin: portable, but only via oxlint's JS plugin bridge rather
+ *    than a native Rust port. Still part of the target, different mechanism.
+ *  - not-portable: oxlint has decided this will never be ported. EXCLUDED from
+ *    the target — "fully migrated" never includes these.
+ */
+export type MigrationStatus = 'migrated' | 'not-implemented' | 'needs-js-plugin' | 'not-portable';
+export type FixStatus = 'implemented' | 'planned' | 'none';
+
 export interface Rule {
   id: string;
   plugin: string;
@@ -22,24 +59,38 @@ export interface Rule {
     fixable: boolean;
   };
   oxlint: {
-    migrated: boolean;
+    migrationStatus: MigrationStatus;
+    reason: string | null;
     category: string | null;
+    nursery: boolean;
+    typeAware: boolean;
+    fixStatus: FixStatus | null;
     default: boolean | null;
-    fix: string | null;
     docsUrl: string | null;
-    skipReason: string | null;
   };
   presets: PresetRuleEntry[];
 }
 
-export interface PluginSummary {
-  id: string;
+export interface Stats {
   label: string;
-  oxlintScope: string;
-  sourcePackages: string[];
   total: number;
   migrated: number;
+  notImplemented: number;
+  needsJsPlugin: number;
+  notPortable: number;
+  eligible: number;
+  nursery: number;
+  typeAware: number;
+  fixImplemented: number;
+  fixPlanned: number;
+  fixNone: number;
   deprecated: number;
+}
+
+export interface PluginSummary extends Stats {
+  id: string;
+  oxlintScope: string;
+  sourcePackages: string[];
 }
 
 export interface ConfigSummary {
@@ -54,13 +105,11 @@ export interface MigrationSample {
   byScope: Record<string, number>;
 }
 
-const rules: Rule[] = rulesJson;
+const rules = rulesJson as Rule[];
 
-interface PluginsData {
+interface PluginsData extends Stats {
   generatedAt: string;
   oxlintVersion: string;
-  totalRules: number;
-  totalMigrated: number;
   plugins: PluginSummary[];
 }
 
@@ -71,7 +120,7 @@ interface ConfigsData {
 
 interface MigrationHistoryData {
   generatedAt: string;
-  totalEslintRulesNow: number | null;
+  totalEligibleNow: number | null;
   samples: MigrationSample[];
 }
 
@@ -91,13 +140,10 @@ export function getRulesByPlugin(pluginId: string): Rule[] {
   return rules.filter((r) => r.plugin === pluginId);
 }
 
-export function getSummary() {
-  return {
-    generatedAt: pluginsData.generatedAt,
-    oxlintVersion: pluginsData.oxlintVersion,
-    totalRules: pluginsData.totalRules,
-    totalMigrated: pluginsData.totalMigrated,
-  };
+export function getSummary(): Stats & { generatedAt: string; oxlintVersion: string } {
+  const { plugins: _plugins, ...stats } = pluginsData;
+  void _plugins;
+  return stats;
 }
 
 export function getPlugins(): PluginSummary[] {
@@ -135,11 +181,13 @@ export interface RuleListItem {
   plugin: string;
   pluginLabel: string;
   name: string;
-  migrated: boolean;
+  migrationStatus: MigrationStatus;
   deprecated: boolean;
   recommended: boolean;
   category: string | null;
-  skipReason: string | null;
+  nursery: boolean;
+  typeAware: boolean;
+  fixStatus: FixStatus | null;
   presetCount: number;
 }
 
@@ -149,11 +197,13 @@ export function getRuleListItems(): RuleListItem[] {
     plugin: r.plugin,
     pluginLabel: r.pluginLabel,
     name: r.name,
-    migrated: r.oxlint.migrated,
+    migrationStatus: r.oxlint.migrationStatus,
     deprecated: r.eslint.deprecated,
     recommended: r.eslint.recommended,
     category: r.oxlint.category,
-    skipReason: r.oxlint.skipReason,
+    nursery: r.oxlint.nursery,
+    typeAware: r.oxlint.typeAware,
+    fixStatus: r.oxlint.fixStatus,
     presetCount: r.presets.length,
   }));
 }

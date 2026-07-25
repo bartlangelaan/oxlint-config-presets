@@ -11,11 +11,13 @@ export default function Home() {
   const plugins = getPlugins();
   const configs = getConfigs();
   const history = getMigrationHistory();
-  const pct = ((summary.totalMigrated / summary.totalRules) * 100).toFixed(1);
+  const pct = summary.eligible > 0 ? ((summary.migrated / summary.eligible) * 100).toFixed(1) : '0';
+
+  const points = history.samples.map((s) => ({ date: s.date, version: s.version, value: s.totalImplemented }));
 
   const topPlugins = plugins
     .slice()
-    .sort((a, b) => b.total - a.total)
+    .sort((a, b) => b.eligible - a.eligible)
     .slice(0, 4);
 
   return (
@@ -28,17 +30,18 @@ export default function Home() {
           Where does oxlint stand on the ESLint ecosystem?
         </h1>
         <p className="text-muted-foreground max-w-2xl text-balance">
-          A live look at which of the {summary.totalRules.toLocaleString()} ESLint rules across 14
+          A live look at which of the {summary.total.toLocaleString()} ESLint rules across 14
           plugins have an oxlint equivalent, which oxlint-config-presets presets enable each rule,
-          and how migration has progressed over time.
+          and how migration has progressed over time. The target excludes{' '}
+          {summary.notPortable.toLocaleString()} rules marked not portable.
         </p>
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <StatCard
           label="Rules migrated"
-          value={`${summary.totalMigrated.toLocaleString()} / ${summary.totalRules.toLocaleString()}`}
-          sub={`${pct}% of the ESLint ecosystem`}
+          value={`${summary.migrated.toLocaleString()} / ${summary.eligible.toLocaleString()}`}
+          sub={`${pct}% of the migration target`}
         />
         <StatCard label="Plugins tracked" value={String(plugins.length)} sub="from ESLint core to Vue" />
         <StatCard
@@ -52,12 +55,12 @@ export default function Home() {
         <CardHeader>
           <CardTitle>Migration progress over time</CardTitle>
           <CardDescription>
-            Rules oxlint has implemented, sampled monthly from published oxlint releases since{' '}
+            Rules oxlint has implemented, from every oxlint release ever published since{' '}
             {new Date(history.samples[0]?.date).getFullYear()}.
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <MigrationLineChart samples={history.samples} totalEslintRulesNow={history.totalEslintRulesNow} />
+          <MigrationLineChart points={points} targetValue={summary.eligible} />
         </CardContent>
       </Card>
 
@@ -72,7 +75,7 @@ export default function Home() {
           </CardHeader>
           <CardContent className="flex flex-col gap-3">
             {topPlugins.map((p) => {
-              const pluginPct = Math.round((p.migrated / p.total) * 100);
+              const pluginPct = p.eligible > 0 ? Math.round((p.migrated / p.eligible) * 100) : 0;
               return (
                 <Link
                   key={p.id}
@@ -82,7 +85,7 @@ export default function Home() {
                   <div className="flex items-center justify-between text-sm">
                     <span className="font-medium">{p.label}</span>
                     <span className="text-muted-foreground font-mono text-xs">
-                      {p.migrated}/{p.total}
+                      {p.migrated}/{p.eligible}
                     </span>
                   </div>
                   <div className="bg-muted h-1.5 w-full overflow-hidden rounded-full">
@@ -116,7 +119,7 @@ export default function Home() {
           </CardHeader>
           <CardContent className="flex flex-col gap-3">
             <p className="text-muted-foreground text-sm">
-              Browse all {summary.totalRules.toLocaleString()} rules, filter by plugin or migration
+              Browse all {summary.total.toLocaleString()} rules, filter by plugin or migration
               status, and jump straight to a rule&apos;s detail page to see every config preset
               that turns it on.
             </p>

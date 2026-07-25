@@ -62,6 +62,12 @@ interface PluginDef {
   /** Builds a docs URL for a rule in the *source* ESLint plugin (best-effort). */
   docsUrl: (name: string) => string;
   sourcePackages: string[];
+  /**
+   * Prefixes to try (in order) when looking up a rule's "why it's not portable"
+   * explanation in @oxlint/migrate's internal unsupported-rules map, which uses
+   * its own historical/ecosystem prefix convention rather than any one of ours.
+   */
+  explanationPrefixes: string[];
 }
 
 function cjsRules(pkg: string): RuleDict {
@@ -97,6 +103,7 @@ const plugins: PluginDef[] = [
     loadRules: eslintCoreRules,
     docsUrl: (name) => `https://eslint.org/docs/latest/rules/${name}`,
     sourcePackages: ['eslint'],
+    explanationPrefixes: ['eslint/'],
   },
   {
     id: 'typescript',
@@ -107,6 +114,7 @@ const plugins: PluginDef[] = [
     loadRules: () => cjsRules('@typescript-eslint/eslint-plugin'),
     docsUrl: (name) => `https://typescript-eslint.io/rules/${name}/`,
     sourcePackages: ['@typescript-eslint/eslint-plugin'],
+    explanationPrefixes: ['typescript/', '@typescript-eslint/'],
   },
   {
     id: 'unicorn',
@@ -117,6 +125,7 @@ const plugins: PluginDef[] = [
     loadRules: () => esmRules('eslint-plugin-unicorn'),
     docsUrl: (name) => `https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/${name}.md`,
     sourcePackages: ['eslint-plugin-unicorn'],
+    explanationPrefixes: ['unicorn/'],
   },
   {
     id: 'react',
@@ -127,6 +136,7 @@ const plugins: PluginDef[] = [
     loadRules: () => mergeRuleDicts(cjsRules('eslint-plugin-react'), cjsRules('eslint-plugin-react-hooks')),
     docsUrl: (name) => `https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/${name}.md`,
     sourcePackages: ['eslint-plugin-react', 'eslint-plugin-react-hooks'],
+    explanationPrefixes: ['react/', 'react-hooks/'],
   },
   {
     id: 'import',
@@ -137,6 +147,7 @@ const plugins: PluginDef[] = [
     loadRules: () => mergeRuleDicts(cjsRules('eslint-plugin-import'), cjsRules('eslint-plugin-import-x')),
     docsUrl: (name) => `https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/${name}.md`,
     sourcePackages: ['eslint-plugin-import', 'eslint-plugin-import-x'],
+    explanationPrefixes: ['import/', 'import-x/'],
   },
   {
     id: 'jsdoc',
@@ -147,6 +158,7 @@ const plugins: PluginDef[] = [
     loadRules: () => esmRules('eslint-plugin-jsdoc'),
     docsUrl: (name) => `https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/${name}.md`,
     sourcePackages: ['eslint-plugin-jsdoc'],
+    explanationPrefixes: ['jsdoc/'],
   },
   {
     id: 'jest',
@@ -157,6 +169,7 @@ const plugins: PluginDef[] = [
     loadRules: () => cjsRules('eslint-plugin-jest'),
     docsUrl: (name) => `https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/${name}.md`,
     sourcePackages: ['eslint-plugin-jest'],
+    explanationPrefixes: ['jest/'],
   },
   {
     id: 'vitest',
@@ -167,6 +180,7 @@ const plugins: PluginDef[] = [
     loadRules: () => esmRules('@vitest/eslint-plugin'),
     docsUrl: () => `https://github.com/vitest-dev/vitest/tree/main/packages/eslint-plugin`,
     sourcePackages: ['@vitest/eslint-plugin'],
+    explanationPrefixes: ['vitest/'],
   },
   {
     id: 'jsx-a11y',
@@ -177,6 +191,7 @@ const plugins: PluginDef[] = [
     loadRules: () => cjsRules('eslint-plugin-jsx-a11y'),
     docsUrl: (name) => `https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/${name}.md`,
     sourcePackages: ['eslint-plugin-jsx-a11y'],
+    explanationPrefixes: ['jsx-a11y/'],
   },
   {
     id: 'nextjs',
@@ -187,6 +202,7 @@ const plugins: PluginDef[] = [
     loadRules: () => cjsRules('@next/eslint-plugin-next'),
     docsUrl: (name) => `https://nextjs.org/docs/messages/${name}`,
     sourcePackages: ['@next/eslint-plugin-next'],
+    explanationPrefixes: ['nextjs/', '@next/next/'],
   },
   {
     id: 'react-perf',
@@ -197,6 +213,7 @@ const plugins: PluginDef[] = [
     loadRules: () => cjsRules('eslint-plugin-react-perf'),
     docsUrl: () => `https://github.com/cvazac/eslint-plugin-react-perf`,
     sourcePackages: ['eslint-plugin-react-perf'],
+    explanationPrefixes: ['react-perf/'],
   },
   {
     id: 'promise',
@@ -207,6 +224,7 @@ const plugins: PluginDef[] = [
     loadRules: () => cjsRules('eslint-plugin-promise'),
     docsUrl: (name) => `https://github.com/eslint-community/eslint-plugin-promise/blob/main/docs/rules/${name}.md`,
     sourcePackages: ['eslint-plugin-promise'],
+    explanationPrefixes: ['promise/'],
   },
   {
     id: 'node',
@@ -217,6 +235,7 @@ const plugins: PluginDef[] = [
     loadRules: () => cjsRules('eslint-plugin-n'),
     docsUrl: (name) => `https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/${name}.md`,
     sourcePackages: ['eslint-plugin-n'],
+    explanationPrefixes: ['n/', 'node/'],
   },
   {
     id: 'vue',
@@ -227,6 +246,7 @@ const plugins: PluginDef[] = [
     loadRules: () => cjsRules('eslint-plugin-vue'),
     docsUrl: (name) => `https://eslint.vuejs.org/rules/${name}.html`,
     sourcePackages: ['eslint-plugin-vue'],
+    explanationPrefixes: ['vue/'],
   },
 ];
 
@@ -262,6 +282,65 @@ const implementedByScope = new Map<string, Map<string, OxlintCliRule>>();
 for (const rule of oxlintCliRules) {
   if (!implementedByScope.has(rule.scope)) implementedByScope.set(rule.scope, new Map());
   implementedByScope.get(rule.scope)!.set(rule.value, rule);
+}
+
+// ---- 1b. Explanations for rules that will never be portable ------------------
+//
+// @oxlint/migrate decides "unsupported" (permanently not-portable) vs.
+// "not-implemented" (still to do) using an internal `unsupportedRules` map of
+// rule -> human-readable reason (e.g. "Superseded by strict mode.",
+// "Use `typescript/dot-notation` instead, which we support as a type-aware
+// rule."). It isn't part of the package's public API, so it's extracted by
+// locating the object literal in the bundled source rather than importing it
+// directly (its exported binding name is bundler-mangled and not stable
+// across versions).
+function loadUnsupportedExplanations(): Record<string, string> {
+  try {
+    const entryPath = fileURLToPath(import.meta.resolve('@oxlint/migrate'));
+    const entrySrc = readFileSync(entryPath, 'utf-8');
+    const importMatch = entrySrc.match(/from\s+["'](\.\.?\/[^"']+)["']/);
+    if (!importMatch) return {};
+
+    const chunkPath = resolve(dirname(entryPath), importMatch[1]);
+    const chunkSrc = readFileSync(chunkPath, 'utf-8');
+    const marker = 'var unsupportedRules = {';
+    const markerIndex = chunkSrc.indexOf(marker);
+    if (markerIndex === -1) return {};
+
+    const braceStart = markerIndex + marker.length - 1;
+    let depth = 0;
+    let braceEnd = -1;
+    for (let i = braceStart; i < chunkSrc.length; i++) {
+      if (chunkSrc[i] === '{') depth++;
+      else if (chunkSrc[i] === '}') {
+        depth--;
+        if (depth === 0) {
+          braceEnd = i;
+          break;
+        }
+      }
+    }
+    if (braceEnd === -1) return {};
+
+    const objectText = chunkSrc.slice(braceStart, braceEnd + 1).replace(/,(\s*})/g, '$1');
+    return JSON.parse(objectText) as Record<string, string>;
+  } catch (error) {
+    console.warn(`  [warn] Could not extract unsupported-rule explanations: ${String(error)}`);
+    return {};
+  }
+}
+
+const unsupportedExplanations = loadUnsupportedExplanations();
+console.log(
+  `Loaded ${Object.keys(unsupportedExplanations).length} "why this isn't portable" explanations.`,
+);
+
+function findExplanation(plugin: PluginDef, name: string): string | null {
+  for (const prefix of plugin.explanationPrefixes) {
+    const explanation = unsupportedExplanations[`${prefix}${name}`];
+    if (explanation) return explanation;
+  }
+  return null;
 }
 
 // ---- 2. Skip reasons, via @oxlint/migrate ------------------------------------
@@ -330,6 +409,26 @@ function normalizeDeprecated(value: unknown): boolean {
   return false;
 }
 
+/**
+ * Four buckets, matching how the target for "full migration" should be read:
+ *  - migrated: oxlint implements it today. The goal.
+ *  - not-implemented: a valid rule oxlint hasn't ported yet. Part of the target.
+ *  - needs-js-plugin: portable, but only via oxlint's JS plugin bridge rather
+ *    than a native Rust port. Still part of the target, different mechanism.
+ *  - not-portable: oxlint has decided this will never be ported (superseded,
+ *    covered by a different rule, architecturally impossible, etc). EXCLUDED
+ *    from the target — "fully migrated" never includes these.
+ */
+type MigrationStatus = 'migrated' | 'not-implemented' | 'needs-js-plugin' | 'not-portable';
+type FixStatus = 'implemented' | 'planned' | 'none';
+
+const GENERIC_REASON: Record<Exclude<MigrationStatus, 'migrated'>, string> = {
+  'not-implemented': 'Recognized by oxlint but not implemented yet.',
+  'needs-js-plugin':
+    "Can be used today via oxlint's JS plugin bridge, but has no native Rust implementation yet.",
+  'not-portable': "oxlint has no plan to port this rule; it won't count toward full migration.",
+};
+
 interface OutputRule {
   id: string;
   plugin: string;
@@ -344,28 +443,91 @@ interface OutputRule {
     fixable: boolean;
   };
   oxlint: {
-    migrated: boolean;
+    migrationStatus: MigrationStatus;
+    reason: string | null;
     category: string | null;
+    nursery: boolean;
+    typeAware: boolean;
+    fixStatus: FixStatus | null;
     default: boolean | null;
-    fix: string | null;
     docsUrl: string | null;
-    skipReason: SkipCategory | null;
   };
   presets: PresetRuleEntry[];
+}
+
+interface Stats {
+  label: string;
+  total: number;
+  migrated: number;
+  notImplemented: number;
+  needsJsPlugin: number;
+  notPortable: number;
+  eligible: number;
+  nursery: number;
+  typeAware: number;
+  fixImplemented: number;
+  fixPlanned: number;
+  fixNone: number;
+  deprecated: number;
+}
+
+function emptyStats(label: string): Stats {
+  return {
+    label,
+    total: 0,
+    migrated: 0,
+    notImplemented: 0,
+    needsJsPlugin: 0,
+    notPortable: 0,
+    eligible: 0,
+    nursery: 0,
+    typeAware: 0,
+    fixImplemented: 0,
+    fixPlanned: 0,
+    fixNone: 0,
+    deprecated: 0,
+  };
+}
+
+function addToStats(stats: Stats, rule: OutputRule): void {
+  stats.total++;
+  if (rule.eslint.deprecated) stats.deprecated++;
+  if (rule.oxlint.nursery) stats.nursery++;
+  if (rule.oxlint.typeAware) stats.typeAware++;
+  if (rule.oxlint.fixStatus === 'implemented') stats.fixImplemented++;
+  else if (rule.oxlint.fixStatus === 'planned') stats.fixPlanned++;
+  else if (rule.oxlint.fixStatus === 'none') stats.fixNone++;
+
+  switch (rule.oxlint.migrationStatus) {
+    case 'migrated':
+      stats.migrated++;
+      break;
+    case 'not-implemented':
+      stats.notImplemented++;
+      break;
+    case 'needs-js-plugin':
+      stats.needsJsPlugin++;
+      break;
+    case 'not-portable':
+      stats.notPortable++;
+      break;
+  }
+  stats.eligible = stats.total - stats.notPortable;
+}
+
+function fixStatusFor(fix: string | undefined): FixStatus {
+  if (!fix || fix === 'none') return 'none';
+  if (fix === 'pending') return 'planned';
+  return 'implemented';
 }
 
 const reporter = createReporter();
 const migrateInputs: { rules: Record<string, string> } = { rules: {} };
 const allOutputRules: OutputRule[] = [];
-const pluginRuleCounts: Record<
-  string,
-  { label: string; total: number; migrated: number; deprecated: number }
-> = {};
 
 for (const plugin of plugins) {
   const ruleDict = await plugin.loadRules();
   const ruleNames = Object.keys(ruleDict).sort((a, b) => a.localeCompare(b));
-  pluginRuleCounts[plugin.id] = { label: plugin.label, total: 0, migrated: 0, deprecated: 0 };
 
   for (const name of ruleNames) {
     const rule = ruleDict[name];
@@ -385,6 +547,7 @@ for (const plugin of plugins) {
         : [`${plugin.configPrefix}${name}`];
 
     const presets = configKeyCandidates.flatMap((key) => presetsByRuleKey.get(key) ?? []);
+    const migrated = Boolean(implementedEntry) || presets.length > 0;
 
     const outputRule: OutputRule = {
       id: `${plugin.id}__${name}`,
@@ -400,20 +563,21 @@ for (const plugin of plugins) {
         fixable: Boolean(meta.fixable),
       },
       oxlint: {
-        migrated: Boolean(implementedEntry) || presets.length > 0,
+        // Placeholder for rules not yet migrated; resolved to a specific
+        // status below once @oxlint/migrate's skip reasons are available.
+        migrationStatus: migrated ? 'migrated' : 'not-implemented',
+        reason: null,
         category: implementedEntry?.category ?? null,
+        nursery: implementedEntry?.category === 'nursery',
+        typeAware: implementedEntry?.type_aware ?? false,
+        fixStatus: migrated ? fixStatusFor(implementedEntry?.fix) : null,
         default: implementedEntry?.default ?? null,
-        fix: implementedEntry?.fix ?? null,
         docsUrl: implementedEntry?.docs_url ?? null,
-        skipReason: null,
       },
       presets,
     };
 
     allOutputRules.push(outputRule);
-    pluginRuleCounts[plugin.id].total++;
-    if (outputRule.oxlint.migrated) pluginRuleCounts[plugin.id].migrated++;
-    if (outputRule.eslint.deprecated) pluginRuleCounts[plugin.id].deprecated++;
   }
 }
 
@@ -428,17 +592,43 @@ const migrateResult = await migrate([migrateInputs], undefined, {
 void migrateResult;
 
 const skipped = reporter.getSkipped();
+const pluginById = new Map(plugins.map((p) => [p.id, p]));
+
 for (const rule of allOutputRules) {
-  if (rule.oxlint.migrated) continue;
-  const plugin = plugins.find((p) => p.id === rule.plugin)!;
+  if (rule.oxlint.migrationStatus === 'migrated') continue;
+  const plugin = pluginById.get(rule.plugin)!;
   const sourceId = `${plugin.sourcePrefix}${rule.name}`;
-  rule.oxlint.skipReason = skipped.get(sourceId) ?? 'not-implemented';
+  const skipCategory = skipped.get(sourceId);
+  const explanation = findExplanation(plugin, rule.name);
+
+  // @oxlint/migrate's own "unsupported" categorization is keyed off the exact
+  // same explanations map, but by an internal rule-id form that doesn't always
+  // line up with the source id we feed it (e.g. it expects "eslint/dot-notation"
+  // for a bare core rule). Finding an explanation independently is itself a
+  // reliable signal the rule is intentionally not-portable, so it takes
+  // priority; otherwise trust whatever category the live pipeline produced.
+  const status: MigrationStatus = explanation
+    ? 'not-portable'
+    : skipCategory === 'unsupported'
+      ? 'not-portable'
+      : skipCategory === 'js-plugins'
+        ? 'needs-js-plugin'
+        : 'not-implemented';
+
+  rule.oxlint.migrationStatus = status;
+  rule.oxlint.reason = explanation ?? GENERIC_REASON[status];
 }
 
-// ---- 5. Write output ----------------------------------------------------------
+// ---- 5. Aggregate stats, per plugin and overall -------------------------------
 
-const totalRules = allOutputRules.length;
-const totalMigrated = allOutputRules.filter((r) => r.oxlint.migrated).length;
+const globalStats = emptyStats('All plugins');
+const pluginStats = new Map(plugins.map((p) => [p.id, emptyStats(p.label)]));
+for (const rule of allOutputRules) {
+  addToStats(globalStats, rule);
+  addToStats(pluginStats.get(rule.plugin)!, rule);
+}
+
+// ---- 6. Write output -----------------------------------------------------------
 
 writeFileSync(join(dataDir, 'rules.json'), JSON.stringify(allOutputRules));
 writeFileSync(
@@ -446,13 +636,12 @@ writeFileSync(
   JSON.stringify({
     generatedAt: new Date().toISOString(),
     oxlintVersion,
-    totalRules,
-    totalMigrated,
+    ...globalStats,
     plugins: plugins.map((p) => ({
       id: p.id,
       oxlintScope: p.oxlintScope,
       sourcePackages: p.sourcePackages,
-      ...pluginRuleCounts[p.id],
+      ...pluginStats.get(p.id)!,
     })),
   }),
 );
@@ -465,6 +654,8 @@ writeFileSync(
 );
 
 console.log(
-  `Done. ${totalMigrated}/${totalRules} rules migrated (${((totalMigrated / totalRules) * 100).toFixed(1)}%).`,
+  `Done. ${globalStats.migrated}/${globalStats.eligible} eligible rules migrated ` +
+    `(${((globalStats.migrated / globalStats.eligible) * 100).toFixed(1)}%), ` +
+    `${globalStats.notPortable} rules marked not portable.`,
 );
 console.log(`Written to ${relative(monorepoRoot, dataDir)}/{rules,plugins,configs}.json`);

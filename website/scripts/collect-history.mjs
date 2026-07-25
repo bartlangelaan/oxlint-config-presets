@@ -1,11 +1,12 @@
 /**
  * Builds website/src/data/migration-history.json: a real time series of how many
- * ESLint rules oxlint had implemented, sampled from published oxlint npm releases
- * (one per month since oxlint's first release) rather than synthetic data.
+ * ESLint rules oxlint had implemented, sampled from every oxlint release ever
+ * published on npm, rather than synthetic data.
  *
- * For each sampled version we run `npx oxlint@<version> --rules` (in whichever
- * output format that release supports: JSON, markdown table, or bullet list) and
- * count rules by scope. Results are cached under .cache/ so re-runs are cheap.
+ * For each version we run `npx oxlint@<version> --rules` (in whichever output
+ * format that release supports: JSON, markdown table, or bullet list) and count
+ * rules by scope. Results are cached under .cache/ so re-runs only fetch newly
+ * published versions.
  *
  * Run with: pnpm collect-history
  */
@@ -54,14 +55,11 @@ function npmViewTimes() {
   return data;
 }
 
-/** Pick the last-published version for each calendar month. */
-function pickMonthlySamples(times) {
-  const byMonth = new Map();
-  for (const [version, iso] of Object.entries(times)) {
-    const month = iso.slice(0, 7);
-    byMonth.set(month, { version, date: iso });
-  }
-  return [...byMonth.values()].sort((a, b) => a.date.localeCompare(b.date));
+/** Every published version, oldest first. */
+function allVersionsSorted(times) {
+  return Object.entries(times)
+    .map(([version, iso]) => ({ version, date: iso }))
+    .sort((a, b) => a.date.localeCompare(b.date));
 }
 
 function parseJsonFormat(output) {
@@ -77,7 +75,6 @@ function parseJsonFormat(output) {
 
 function parseMarkdownTable(output) {
   const rows = [];
-  let currentScope = null;
   for (const line of output.split('\n')) {
     const headingMatch = line.match(/^##\s+([A-Za-z ]+?)\s*\(\d+\)/);
     if (headingMatch) continue; // category headings (Correctness, Style, ...), not scopes.
@@ -92,7 +89,6 @@ function parseMarkdownTable(output) {
     if (!name || !source) continue;
     rows.push({ scope: source, value: name });
   }
-  void currentScope;
   return rows.length > 0 ? rows : null;
 }
 
@@ -146,10 +142,12 @@ function fetchVersionRules(version) {
   }
 
   if (!rows) {
-    console.warn(`  [warn] Could not parse --rules output for oxlint@${version}`);
-    rows = [];
+    console.warn(`  [warn] Could not parse --rules output for oxlint@${version} (will retry later)`);
+    return [];
   }
 
+  // Only cache successful parses, so a broken/unparseable release (bad publish,
+  // network hiccup) gets retried on the next run instead of being stuck at 0.
   writeFileSync(cachePath, JSON.stringify(rows));
   return rows;
 }
@@ -167,28 +165,32 @@ function summarize(rows) {
 }
 
 const times = npmViewTimes();
-const samples = pickMonthlySamples(times);
-console.log(`Sampling ${samples.length} monthly oxlint releases (${samples[0].version} .. ${samples.at(-1).version})`);
+const samples = allVersionsSorted(times);
+console.log(`Sampling all ${samples.length} oxlint releases (${samples[0].version} .. ${samples.at(-1).version})`);
 
 const results = [];
 for (const { version, date } of samples) {
   const rows = fetchVersionRules(version);
   const { totalImplemented, byScope } = summarize(rows);
+  if (totalImplemented === 0) {
+    console.warn(`  [skip] oxlint@${version} produced no parseable rules, omitting`);
+    continue;
+  }
   results.push({ version, date, totalImplemented, byScope });
   console.log(`  ${date.slice(0, 10)}  oxlint@${version.padEnd(8)} -> ${totalImplemented} rules`);
 }
 
-let totalEslintRulesNow = null;
+let totalEligibleNow = null;
 const pluginsJsonPath = join(dataDir, 'plugins.json');
 if (existsSync(pluginsJsonPath)) {
-  totalEslintRulesNow = JSON.parse(readFileSync(pluginsJsonPath, 'utf-8')).totalRules;
+  totalEligibleNow = JSON.parse(readFileSync(pluginsJsonPath, 'utf-8')).eligible;
 }
 
 writeFileSync(
   join(dataDir, 'migration-history.json'),
   JSON.stringify({
     generatedAt: new Date().toISOString(),
-    totalEslintRulesNow,
+    totalEligibleNow,
     samples: results,
   }),
 );
