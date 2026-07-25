@@ -27,7 +27,7 @@
     }
   },
   "publishConfig": {
-    "directory": "configs"
+    "directory": "dist"
   },
   "scripts": {
     "generate": "rm -rf configs && node --import tsx/esm scripts/generate.ts && oxfmt",
