@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/breadcrumb';
 import { Separator } from '@/components/ui/separator';
 import { SidebarTrigger } from '@/components/ui/sidebar';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 function titleCase(segment: string) {
   return segment
@@ -33,9 +34,7 @@ export function SiteHeader() {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link href="/">Home</Link>
-              </BreadcrumbLink>
+              <BreadcrumbLink render={<Link href="/">Home</Link>} />
             </BreadcrumbItem>
             {segments.map((segment, i) => {
               const href = '/' + segments.slice(0, i + 1).join('/');
@@ -47,9 +46,7 @@ export function SiteHeader() {
                     {isLast ? (
                       <BreadcrumbPage className="font-mono">{titleCase(segment)}</BreadcrumbPage>
                     ) : (
-                      <BreadcrumbLink asChild>
-                        <Link href={href}>{titleCase(segment)}</Link>
-                      </BreadcrumbLink>
+                      <BreadcrumbLink render={<Link href={href}>{titleCase(segment)}</Link>} />
                     )}
                   </BreadcrumbItem>
                 </Fragment>
@@ -57,6 +54,9 @@ export function SiteHeader() {
             })}
           </BreadcrumbList>
         </Breadcrumb>
+        <div className="ml-auto flex items-center gap-1">
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

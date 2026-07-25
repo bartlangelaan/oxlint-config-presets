@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import {
   BookOpenText,
   Boxes,
-  Github,
+  GitFork,
   LayoutDashboard,
   LineChart,
   ListChecks,
@@ -56,19 +56,22 @@ export function AppSidebar({
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
-              <Link href="/">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-brand text-brand-foreground">
-                  <Boxes className="size-4" />
-                </div>
-                <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-semibold">oxlint-config-presets</span>
-                  <span className="text-muted-foreground text-xs">
-                    {pct}% of ESLint rules migrated
-                  </span>
-                </div>
-              </Link>
-            </SidebarMenuButton>
+            <SidebarMenuButton
+              size="lg"
+              render={
+                <Link href="/">
+                  <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-brand text-brand-foreground">
+                    <Boxes className="size-4" />
+                  </div>
+                  <div className="flex flex-col gap-0.5 leading-none">
+                    <span className="font-semibold">oxlint-config-presets</span>
+                    <span className="text-muted-foreground text-xs">
+                      {pct}% of ESLint rules migrated
+                    </span>
+                  </div>
+                </Link>
+              }
+            />
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
@@ -96,14 +99,14 @@ export function AppSidebar({
               {plugins.map((plugin) => (
                 <SidebarMenuItem key={plugin.id}>
                   <SidebarMenuButton
-                    asChild
                     isActive={pathname === `/rules/${plugin.id}`}
                     tooltip={`${plugin.label}: ${plugin.migrated}/${plugin.total} migrated`}
-                  >
-                    <Link href={`/rules/${plugin.id}`}>
-                      <span>{plugin.label}</span>
-                    </Link>
-                  </SidebarMenuButton>
+                    render={
+                      <Link href={`/rules/${plugin.id}`}>
+                        <span>{plugin.label}</span>
+                      </Link>
+                    }
+                  />
                   <SidebarMenuBadge>
                     {plugin.migrated}/{plugin.total}
                   </SidebarMenuBadge>
@@ -118,7 +121,7 @@ export function AppSidebar({
           <NavItem
             href="https://github.com/popup-plus/oxlint-config-presets"
             pathname={pathname}
-            icon={Github}
+            icon={GitFork}
             label="GitHub"
             external
           />
@@ -152,12 +155,20 @@ function NavItem({
   const isActive = !external && pathname === href;
   return (
     <SidebarMenuItem>
-      <SidebarMenuButton asChild isActive={isActive} tooltip={label}>
-        <Link href={href} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined}>
-          <Icon className={cn('size-4')} />
-          <span>{label}</span>
-        </Link>
-      </SidebarMenuButton>
+      <SidebarMenuButton
+        isActive={isActive}
+        tooltip={label}
+        render={
+          <Link
+            href={href}
+            target={external ? '_blank' : undefined}
+            rel={external ? 'noreferrer' : undefined}
+          >
+            <Icon className={cn('size-4')} />
+            <span>{label}</span>
+          </Link>
+        }
+      />
     </SidebarMenuItem>
   );
 }

@@ -98,7 +98,7 @@ function parseMarkdownTable(output) {
 
 function parseBulletList(output) {
   const rows = [];
-  const re = /^[•\-]\s*([\w.@-]+)[:/]\s*([\w./-]+)/;
+  const re = /^[•-]\s*([\w.@-]+)[:/]\s*([\w./-]+)/;
   for (const rawLine of output.split('\n')) {
     const line = rawLine.trim();
     const match = re.exec(line);

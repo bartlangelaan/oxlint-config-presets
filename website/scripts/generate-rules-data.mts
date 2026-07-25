@@ -450,7 +450,6 @@ writeFileSync(
     totalMigrated,
     plugins: plugins.map((p) => ({
       id: p.id,
-      label: p.label,
       oxlintScope: p.oxlintScope,
       sourcePackages: p.sourcePackages,
       ...pluginRuleCounts[p.id],

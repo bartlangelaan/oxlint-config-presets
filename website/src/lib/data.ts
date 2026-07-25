@@ -54,26 +54,30 @@ export interface MigrationSample {
   byScope: Record<string, number>;
 }
 
-const rules = rulesJson as Rule[];
+const rules: Rule[] = rulesJson;
 
-const pluginsData = pluginsJson as {
+interface PluginsData {
   generatedAt: string;
   oxlintVersion: string;
   totalRules: number;
   totalMigrated: number;
   plugins: PluginSummary[];
-};
+}
 
-const configsData = configsJson as {
+interface ConfigsData {
   generatedAt: string;
   configs: ConfigSummary[];
-};
+}
 
-const migrationHistoryData = migrationHistoryJson as {
+interface MigrationHistoryData {
   generatedAt: string;
   totalEslintRulesNow: number | null;
   samples: MigrationSample[];
-};
+}
+
+const pluginsData: PluginsData = pluginsJson;
+const configsData: ConfigsData = configsJson;
+const migrationHistoryData = migrationHistoryJson as MigrationHistoryData;
 
 export function getAllRules(): Rule[] {
   return rules;
