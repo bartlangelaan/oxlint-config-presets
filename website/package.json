@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "collect-data": "node --import tsx/esm scripts/generate-rules-data.ts",
+    "collect-data": "node --import tsx/esm scripts/generate-rules-data.mts",
     "collect-history": "node --import tsx/esm scripts/collect-history.mjs"
   },
   "dependencies": {

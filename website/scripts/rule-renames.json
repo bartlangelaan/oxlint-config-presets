@@ -1,0 +1,5 @@
+{
+  "unicorn/no-for-each": "unicorn/no-array-for-each",
+  "unicorn/prefer-unicode-code-point-escapes": "unicorn/no-hex-escape",
+  "unicorn/dom-node-dataset": "unicorn/prefer-dom-node-dataset"
+}
