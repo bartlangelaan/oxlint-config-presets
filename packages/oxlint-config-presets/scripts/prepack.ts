@@ -1,5 +1,6 @@
 /**
- * Writes a clean package.json into configs/ before publishing.
+ * Writes a clean package.json into configs/ before publishing, and copies
+ * this package's README to the monorepo root so it's visible on GitHub.
  *
  * pnpm requires a package.json to be present in publishConfig.directory.
  * This script derives it from the root package.json, dropping only fields
@@ -15,6 +16,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = join(__dirname, '..');
+const monorepoRootDir = join(rootDir, '..', '..');
 
 interface PackageJson {
   [key: string]: unknown;
@@ -30,7 +32,9 @@ const publishPkg = Object.fromEntries(
 writeFileSync(join(rootDir, 'configs', 'package.json'), JSON.stringify(publishPkg, null, 2) + '\n');
 copyFileSync(join(rootDir, 'README.md'), join(rootDir, 'configs', 'README.md'));
 copyFileSync(join(rootDir, 'oxlint-config.d.ts'), join(rootDir, 'configs', 'oxlint-config.d.ts'));
+copyFileSync(join(rootDir, 'README.md'), join(monorepoRootDir, 'README.md'));
 
 console.log('Written configs/package.json');
 console.log('Copied README.md to configs/README.md');
 console.log('Copied oxlint-config.d.ts to configs/oxlint-config.d.ts');
+console.log('Copied README.md to monorepo root README.md');
