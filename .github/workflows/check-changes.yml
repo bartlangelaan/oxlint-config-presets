@@ -15,11 +15,11 @@ jobs:
           node-version: lts/*
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm generate
-      - run: pnpm prepack
+      - run: pnpm --filter oxlint-config-presets run generate
+      - run: pnpm --filter oxlint-config-presets run prepack
       - name: Check for uncommitted changes
         run: |
           if [ -n "$(git status --porcelain)" ]; then
-            echo "Running 'pnpm generate' and 'pnpm prepack' produced uncommitted changes. Please run them locally and commit the result."
+            echo "Running 'generate' and 'prepack' produced uncommitted changes. Please run them locally and commit the result."
             exit 1
           fi

@@ -42,9 +42,9 @@ test('package.json is included', () => {
   assert.ok(publishedFiles.includes('package.json'));
 });
 
-const expectedConfigs = globSync('configs/**/*.json', { cwd: rootDir })
-  .map((f) => f.replace(/^configs\//, ''))
-  .filter((f) => f !== 'package.json');
+const expectedConfigs = globSync('configs/**/*.json', { cwd: rootDir }).map((f) =>
+  f.replace(/^configs\//, ''),
+);
 
 for (const file of expectedConfigs) {
   test(`${file} is included`, () => {

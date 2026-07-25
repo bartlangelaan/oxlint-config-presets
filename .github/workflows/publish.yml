@@ -24,6 +24,7 @@ jobs:
       - name: Decide publish/bump strategy
         id: plan
         shell: bash
+        working-directory: packages/oxlint-config-presets
         run: |
           set -euo pipefail
 
@@ -62,6 +63,7 @@ jobs:
 
       - name: Bump patch version
         if: steps.plan.outputs.should_bump == 'true'
+        working-directory: packages/oxlint-config-presets
         run: npm version patch --no-git-tag-version
 
       - name: Run checks before commit
@@ -73,13 +75,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          VERSION=$(node -p "require('./package.json').version")
+          VERSION=$(node -p "require('./packages/oxlint-config-presets/package.json').version")
           git add -A
           git commit -m "Release $VERSION"
 
       - name: Publish to npm
         if: steps.plan.outputs.should_publish == 'true'
-        run: pnpm publish
+        run: pnpm --filter oxlint-config-presets publish
 
       - name: Push version bump commit
         if: steps.plan.outputs.should_bump == 'true'

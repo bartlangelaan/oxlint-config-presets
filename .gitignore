@@ -1,5 +1,2 @@
 node_modules/
 dist/
-configs/package.json
-configs/README.md
-configs/oxlint-config.d.ts
