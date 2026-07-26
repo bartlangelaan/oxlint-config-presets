@@ -1,11 +1,17 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import rulesJson from '@/data/rules.json';
 import pluginsJson from '@/data/plugins.json';
 import configsJson from '@/data/configs.json';
 import migrationHistoryJson from '@/data/migration-history.json';
 
+const configsDir = join(process.cwd(), '..', 'packages/oxlint-config-presets/configs');
+
 export interface PresetRuleEntry {
   config: string;
   severity: string;
+  /** Options configured after the severity, if any, e.g. [{ allowConstantExport: true }]. */
+  options: unknown[] | null;
 }
 
 /**
@@ -67,6 +73,10 @@ export interface Rule {
     fixStatus: FixStatus | null;
     default: boolean | null;
     docsUrl: string | null;
+    /** True for rules native to oxlint with no ESLint equivalent (the `oxc` scope). */
+    original: boolean;
+    /** Canonical "<prefix>/<name>" key for this rule in an .oxlintrc.json `rules` object. */
+    configKey: string;
   };
   presets: PresetRuleEntry[];
 }
@@ -91,6 +101,8 @@ export interface PluginSummary extends Stats {
   id: string;
   oxlintScope: string;
   sourcePackages: string[];
+  /** True for the synthetic "Oxlint original" bucket (rules with no ESLint equivalent). */
+  original: boolean;
 }
 
 export interface ConfigSummary {
@@ -162,11 +174,20 @@ export function getConfig(path: string): ConfigSummary | undefined {
   return configsData.configs.find((c) => c.path === path);
 }
 
-export function getRulesForConfig(path: string): { rule: Rule; severity: string }[] {
-  const out: { rule: Rule; severity: string }[] = [];
+/** Raw JSON source of a generated preset, read straight from oxlint-config-presets/configs. */
+export function getConfigSource(path: string): string | null {
+  try {
+    return readFileSync(join(configsDir, path), 'utf-8');
+  } catch {
+    return null;
+  }
+}
+
+export function getRulesForConfig(path: string): { rule: Rule; severity: string; options: unknown[] | null }[] {
+  const out: { rule: Rule; severity: string; options: unknown[] | null }[] = [];
   for (const rule of rules) {
     const entry = rule.presets.find((p) => p.config === path);
-    if (entry) out.push({ rule, severity: entry.severity });
+    if (entry) out.push({ rule, severity: entry.severity, options: entry.options });
   }
   return out;
 }
@@ -182,12 +203,14 @@ export interface RuleListItem {
   pluginLabel: string;
   name: string;
   migrationStatus: MigrationStatus;
+  reason: string | null;
   deprecated: boolean;
   recommended: boolean;
   category: string | null;
   nursery: boolean;
   typeAware: boolean;
   fixStatus: FixStatus | null;
+  original: boolean;
   presetCount: number;
 }
 
@@ -198,12 +221,14 @@ export function getRuleListItems(): RuleListItem[] {
     pluginLabel: r.pluginLabel,
     name: r.name,
     migrationStatus: r.oxlint.migrationStatus,
+    reason: r.oxlint.reason,
     deprecated: r.eslint.deprecated,
     recommended: r.eslint.recommended,
     category: r.oxlint.category,
     nursery: r.oxlint.nursery,
     typeAware: r.oxlint.typeAware,
     fixStatus: r.oxlint.fixStatus,
+    original: r.oxlint.original,
     presetCount: r.presets.length,
   }));
 }

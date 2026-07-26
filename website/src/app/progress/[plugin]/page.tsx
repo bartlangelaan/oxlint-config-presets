@@ -7,10 +7,15 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { MigrationLineChart } from '@/components/charts/migration-line-chart';
 import { AutofixTiles, StatusTiles, TargetHeadline } from '@/components/status-breakdown';
+import { SetBreadcrumb } from '@/components/breadcrumb-context';
 import { getMigrationHistory, getPlugin, getPlugins } from '@/lib/data';
 
+// "Oxlint original" rules aren't part of the ESLint migration target, so there's
+// no progress-over-time page for them.
 export function generateStaticParams() {
-  return getPlugins().map((p) => ({ plugin: p.id }));
+  return getPlugins()
+    .filter((p) => !p.original)
+    .map((p) => ({ plugin: p.id }));
 }
 
 export async function generateMetadata({
@@ -35,7 +40,7 @@ export default async function PluginProgressPage({
 }) {
   const { plugin: pluginId } = await params;
   const plugin = getPlugin(pluginId);
-  if (!plugin) notFound();
+  if (!plugin || plugin.original) notFound();
 
   const history = getMigrationHistory();
   const points = history.samples.map((s) => ({
@@ -46,6 +51,9 @@ export default async function PluginProgressPage({
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 p-4 md:p-8">
+      <SetBreadcrumb
+        items={[{ label: 'Migration progress', href: '/progress' }, { label: plugin.label }]}
+      />
       <div className="flex flex-col gap-2">
         <Link href="/progress" className="text-muted-foreground text-sm hover:underline">
           Migration progress

@@ -1,6 +1,5 @@
 'use client';
 
-import { useMemo, useState } from 'react';
 import { Area, AreaChart, CartesianGrid, ReferenceLine, XAxis, YAxis } from 'recharts';
 
 import {
@@ -9,7 +8,6 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from '@/components/ui/chart';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 
 export interface MigrationChartPoint {
   date: string;
@@ -28,13 +26,6 @@ function formatMonth(dateIso: string) {
   return new Date(dateIso).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
 }
 
-/** Keep only the last sample published in each calendar month. */
-function toMonthly(points: MigrationChartPoint[]): MigrationChartPoint[] {
-  const byMonth = new Map<string, MigrationChartPoint>();
-  for (const point of points) byMonth.set(point.date.slice(0, 7), point);
-  return [...byMonth.values()];
-}
-
 export function MigrationLineChart({
   points,
   targetValue,
@@ -44,14 +35,7 @@ export function MigrationLineChart({
   targetValue: number | null;
   targetLabel?: string;
 }) {
-  const [granularity, setGranularity] = useState<'all' | 'monthly'>(
-    points.length > 80 ? 'monthly' : 'all',
-  );
-
-  const monthly = useMemo(() => toMonthly(points), [points]);
-  const shown = granularity === 'all' ? points : monthly;
-
-  const data = shown.map((p) => ({
+  const data = points.map((p) => ({
     date: p.date,
     label: formatMonth(p.date),
     version: p.version,
@@ -60,24 +44,7 @@ export function MigrationLineChart({
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="flex items-center justify-between">
-        <p className="text-muted-foreground text-xs">
-          {granularity === 'all'
-            ? `Every published release (${points.length})`
-            : `One point per month (${monthly.length})`}
-        </p>
-        <ToggleGroup
-          value={[granularity]}
-          onValueChange={(values) => {
-            const next = values[0] as 'all' | 'monthly' | undefined;
-            if (next) setGranularity(next);
-          }}
-          size="sm"
-        >
-          <ToggleGroupItem value="all">All releases</ToggleGroupItem>
-          <ToggleGroupItem value="monthly">Monthly</ToggleGroupItem>
-        </ToggleGroup>
-      </div>
+      <p className="text-muted-foreground text-xs">Every published oxlint release ({points.length})</p>
       <ChartContainer config={chartConfig} className="aspect-auto h-[320px] w-full">
         <AreaChart data={data} margin={{ left: 4, right: 12, top: 12, bottom: 0 }}>
           <defs>
@@ -116,7 +83,6 @@ export function MigrationLineChart({
             />
           ) : null}
           <ChartTooltip
-            cursor={false}
             content={
               <ChartTooltipContent
                 labelFormatter={(_, payload) => {
@@ -134,6 +100,7 @@ export function MigrationLineChart({
             fill="url(#fillMigrated)"
             stroke="var(--color-value)"
             strokeWidth={2}
+            activeDot={{ r: 4 }}
           />
         </AreaChart>
       </ChartContainer>

@@ -9,21 +9,35 @@ import {
   type ChartConfig,
 } from '@/components/ui/chart';
 import type { PluginSummary } from '@/lib/data';
+import { STATUS_CHART_COLOR, STATUS_META } from '@/lib/status';
 
 const chartConfig = {
-  migrated: { label: 'Migrated', color: '#10b981' },
-  notImplemented: { label: 'Not yet implemented', color: '#f59e0b' },
-  needsJsPlugin: { label: 'Needs JS plugin', color: '#0ea5e9' },
-  notPortable: { label: 'Not portable (excluded)', color: 'var(--muted-foreground)' },
+  migrated: { label: STATUS_META.migrated.label, color: STATUS_CHART_COLOR.migrated },
+  migratedFixPlanned: {
+    label: STATUS_META['migrated-fix-planned'].label,
+    color: STATUS_CHART_COLOR['migrated-fix-planned'],
+  },
+  notImplemented: {
+    label: STATUS_META['not-implemented'].label,
+    color: STATUS_CHART_COLOR['not-implemented'],
+  },
+  needsJsPlugin: {
+    label: STATUS_META['needs-js-plugin'].label,
+    color: STATUS_CHART_COLOR['needs-js-plugin'],
+  },
+  notPortable: { label: 'Not portable (excluded)', color: STATUS_CHART_COLOR['not-portable'] },
 } satisfies ChartConfig;
 
 export function PluginProgressChart({ plugins }: { plugins: PluginSummary[] }) {
+  const showJsPlugin = plugins.some((p) => p.needsJsPlugin > 0);
+
   const data = plugins
     .slice()
     .sort((a, b) => b.eligible - a.eligible)
     .map((p) => ({
       label: p.label,
-      migrated: p.migrated,
+      migrated: p.fixImplemented + p.fixNone,
+      migratedFixPlanned: p.fixPlanned,
       notImplemented: p.notImplemented,
       needsJsPlugin: p.needsJsPlugin,
       notPortable: p.notPortable,
@@ -57,10 +71,15 @@ export function PluginProgressChart({ plugins }: { plugins: PluginSummary[] }) {
             <ChartTooltipContent
               formatter={(value, name, item) => {
                 if (name !== 'migrated') return null;
-                const p = item.payload as { eligible: number; total: number };
+                const p = item.payload as {
+                  eligible: number;
+                  total: number;
+                  migratedFixPlanned: number;
+                };
+                const migratedTotal = Number(value) + p.migratedFixPlanned;
                 return (
                   <span className="text-foreground font-mono font-medium tabular-nums">
-                    {String(value)} / {p.eligible} target · {p.total} total
+                    {migratedTotal} / {p.eligible} target · {p.total} total
                   </span>
                 );
               }}
@@ -68,23 +87,26 @@ export function PluginProgressChart({ plugins }: { plugins: PluginSummary[] }) {
           }
         />
         <Bar dataKey="migrated" stackId="a" fill="var(--color-migrated)" radius={[4, 0, 0, 4]} />
+        <Bar dataKey="migratedFixPlanned" stackId="a" fill="var(--color-migratedFixPlanned)" />
         <Bar dataKey="notImplemented" stackId="a" fill="var(--color-notImplemented)" />
-        <Bar dataKey="needsJsPlugin" stackId="a" fill="var(--color-needsJsPlugin)">
-          <LabelList
-            dataKey="eligible"
-            position="right"
-            offset={8}
-            className="fill-foreground"
-            fontSize={11}
-          />
-        </Bar>
+        {showJsPlugin ? (
+          <Bar dataKey="needsJsPlugin" stackId="a" fill="var(--color-needsJsPlugin)" />
+        ) : null}
         <Bar
           dataKey="notPortable"
           stackId="a"
           fill="var(--color-notPortable)"
           fillOpacity={0.35}
           radius={[0, 4, 4, 0]}
-        />
+        >
+          <LabelList
+            dataKey="total"
+            position="right"
+            offset={8}
+            className="fill-foreground"
+            fontSize={11}
+          />
+        </Bar>
       </BarChart>
     </ChartContainer>
   );

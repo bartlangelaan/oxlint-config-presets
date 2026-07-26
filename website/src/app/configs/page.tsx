@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { SetBreadcrumb } from '@/components/breadcrumb-context';
 import { configHref, getConfigs } from '@/lib/data';
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function ConfigsPage() {
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 p-4 md:p-8">
+      <SetBreadcrumb items={[{ label: 'Config presets' }]} />
       <div className="flex flex-col gap-2">
         <h1 className="text-3xl font-semibold tracking-tight">Config presets</h1>
         <p className="text-muted-foreground max-w-2xl">

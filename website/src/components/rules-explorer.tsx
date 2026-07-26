@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useDeferredValue, useMemo, useState } from 'react';
-import { Search, Sparkles, Wrench } from 'lucide-react';
+import { Boxes, Search, Sparkles, Wrench } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
@@ -22,11 +22,11 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import type { MigrationStatus, RuleListItem } from '@/lib/data';
-import { FIX_STATUS_META, STATUS_META } from '@/lib/status';
+import type { RuleListItem } from '@/lib/data';
+import { FIX_STATUS_META, STATUS_META, toDisplayStatus, type DisplayStatus } from '@/lib/status';
 import { cn } from '@/lib/utils';
 
-type StatusFilter = 'all' | MigrationStatus;
+type StatusFilter = 'eligible' | 'all' | DisplayStatus;
 
 export function RulesExplorer({
   rules,
@@ -41,18 +41,32 @@ export function RulesExplorer({
 }) {
   const [query, setQuery] = useState('');
   const [plugin, setPlugin] = useState(defaultPlugin);
-  const [status, setStatus] = useState<StatusFilter>('all');
+  const [status, setStatus] = useState<StatusFilter>('eligible');
   const deferredQuery = useDeferredValue(query);
+
+  const withDisplayStatus = useMemo(
+    () => rules.map((r) => ({ ...r, displayStatus: toDisplayStatus(r) })),
+    [rules],
+  );
+
+  const availableStatuses = useMemo(() => {
+    const present = new Set(withDisplayStatus.map((r) => r.displayStatus));
+    return (Object.keys(STATUS_META) as DisplayStatus[]).filter((s) => present.has(s));
+  }, [withDisplayStatus]);
 
   const filtered = useMemo(() => {
     const q = deferredQuery.trim().toLowerCase();
-    return rules.filter((r) => {
+    return withDisplayStatus.filter((r) => {
       if (plugin !== 'all' && r.plugin !== plugin) return false;
-      if (status !== 'all' && r.migrationStatus !== status) return false;
+      if (status === 'eligible' && r.displayStatus === 'not-portable') return false;
+      if (status !== 'eligible' && status !== 'all' && r.displayStatus !== status) return false;
       if (q && !`${r.pluginLabel} ${r.name}`.toLowerCase().includes(q)) return false;
       return true;
     });
-  }, [rules, plugin, status, deferredQuery]);
+  }, [withDisplayStatus, plugin, status, deferredQuery]);
+
+  const hiddenNotPortable =
+    status === 'eligible' ? rules.length - withDisplayStatus.filter((r) => r.displayStatus !== 'not-portable').length : 0;
 
   return (
     <div className="flex flex-col gap-4">
@@ -81,13 +95,14 @@ export function RulesExplorer({
             </SelectContent>
           </Select>
         ) : null}
-        <Select value={status} onValueChange={(v) => setStatus(v ?? 'all')}>
-          <SelectTrigger className="w-full sm:w-56">
+        <Select value={status} onValueChange={(v) => setStatus(v ?? 'eligible')}>
+          <SelectTrigger className="w-full sm:w-64">
             <SelectValue placeholder="Status" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">All statuses</SelectItem>
-            {(Object.keys(STATUS_META) as MigrationStatus[]).map((s) => (
+            <SelectItem value="eligible">All eligible (hide not portable)</SelectItem>
+            <SelectItem value="all">All rules, incl. not portable</SelectItem>
+            {availableStatuses.map((s) => (
               <SelectItem key={s} value={s}>
                 {STATUS_META[s].label}
               </SelectItem>
@@ -98,6 +113,9 @@ export function RulesExplorer({
 
       <p className="text-muted-foreground text-sm">
         {filtered.length.toLocaleString()} rule{filtered.length === 1 ? '' : 's'}
+        {hiddenNotPortable > 0
+          ? ` · ${hiddenNotPortable.toLocaleString()} not-portable rule${hiddenNotPortable === 1 ? '' : 's'} hidden`
+          : ''}
       </p>
 
       <div className="overflow-hidden rounded-lg border">
@@ -113,8 +131,14 @@ export function RulesExplorer({
           </TableHeader>
           <TableBody>
             {filtered.map((r) => {
-              const meta = STATUS_META[r.migrationStatus];
+              const meta = STATUS_META[r.displayStatus];
               const Icon = meta.icon;
+              const statusCell = (
+                <span className={cn('inline-flex items-center gap-1 text-xs font-medium', meta.className)}>
+                  <Icon className="size-3.5 shrink-0" />
+                  <span className="hidden sm:inline">{meta.short}</span>
+                </span>
+              );
               return (
                 <TableRow key={r.id}>
                   <TableCell>
@@ -125,6 +149,19 @@ export function RulesExplorer({
                       {r.name}
                     </Link>
                     <span className="ml-1.5 hidden gap-1 sm:inline-flex">
+                      {r.original ? (
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <Badge
+                              variant="outline"
+                              className="gap-0.5 border-brand/40 text-[10px] text-brand"
+                            >
+                              <Boxes className="size-2.5" /> original
+                            </Badge>
+                          </TooltipTrigger>
+                          <TooltipContent>Native to oxlint, no ESLint equivalent</TooltipContent>
+                        </Tooltip>
+                      ) : null}
                       {r.deprecated ? (
                         <Badge variant="secondary" className="text-[10px]">
                           deprecated
@@ -184,10 +221,14 @@ export function RulesExplorer({
                     {r.presetCount || '—'}
                   </TableCell>
                   <TableCell className="text-right">
-                    <span className={cn('inline-flex items-center gap-1 text-xs font-medium', meta.className)}>
-                      <Icon className="size-3.5 shrink-0" />
-                      <span className="hidden sm:inline">{meta.short}</span>
-                    </span>
+                    {r.reason ? (
+                      <Tooltip>
+                        <TooltipTrigger>{statusCell}</TooltipTrigger>
+                        <TooltipContent className="max-w-64 text-balance">{r.reason}</TooltipContent>
+                      </Tooltip>
+                    ) : (
+                      statusCell
+                    )}
                   </TableCell>
                 </TableRow>
               );

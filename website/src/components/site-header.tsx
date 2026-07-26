@@ -15,6 +15,7 @@ import {
 import { Separator } from '@/components/ui/separator';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { useBreadcrumbContext, type BreadcrumbItemData } from '@/components/breadcrumb-context';
 
 function titleCase(segment: string) {
   return segment
@@ -22,9 +23,20 @@ function titleCase(segment: string) {
     .replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
-export function SiteHeader() {
+/** Fallback breadcrumb derived from the URL when a page hasn't set a custom one. */
+function useAutoBreadcrumb(): BreadcrumbItemData[] {
   const pathname = usePathname() ?? '/';
   const segments = pathname.split('/').filter(Boolean);
+  return segments.map((segment, i) => ({
+    label: titleCase(segment),
+    href: i === segments.length - 1 ? undefined : '/' + segments.slice(0, i + 1).join('/'),
+  }));
+}
+
+export function SiteHeader() {
+  const { items } = useBreadcrumbContext();
+  const auto = useAutoBreadcrumb();
+  const crumbs = items ?? auto;
 
   return (
     <header className="bg-background/80 sticky top-0 z-10 flex h-14 shrink-0 items-center gap-2 border-b backdrop-blur-sm">
@@ -36,22 +48,18 @@ export function SiteHeader() {
             <BreadcrumbItem>
               <BreadcrumbLink render={<Link href="/">Home</Link>} />
             </BreadcrumbItem>
-            {segments.map((segment, i) => {
-              const href = '/' + segments.slice(0, i + 1).join('/');
-              const isLast = i === segments.length - 1;
-              return (
-                <Fragment key={href}>
-                  <BreadcrumbSeparator />
-                  <BreadcrumbItem>
-                    {isLast ? (
-                      <BreadcrumbPage className="font-mono">{titleCase(segment)}</BreadcrumbPage>
-                    ) : (
-                      <BreadcrumbLink render={<Link href={href}>{titleCase(segment)}</Link>} />
-                    )}
-                  </BreadcrumbItem>
-                </Fragment>
-              );
-            })}
+            {crumbs.map((crumb, i) => (
+              <Fragment key={`${crumb.label}-${i}`}>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  {crumb.href ? (
+                    <BreadcrumbLink render={<Link href={crumb.href}>{crumb.label}</Link>} />
+                  ) : (
+                    <BreadcrumbPage className="font-mono">{crumb.label}</BreadcrumbPage>
+                  )}
+                </BreadcrumbItem>
+              </Fragment>
+            ))}
           </BreadcrumbList>
         </Breadcrumb>
         <div className="ml-auto flex items-center gap-1">

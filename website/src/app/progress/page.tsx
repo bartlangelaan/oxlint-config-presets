@@ -15,6 +15,7 @@ import {
 import { MigrationLineChart } from '@/components/charts/migration-line-chart';
 import { PluginProgressChart } from '@/components/charts/plugin-progress-chart';
 import { AutofixTiles, StatusTiles, TargetHeadline } from '@/components/status-breakdown';
+import { SetBreadcrumb } from '@/components/breadcrumb-context';
 import { getMigrationHistory, getPlugins, getSummary } from '@/lib/data';
 
 export const metadata: Metadata = {
@@ -24,7 +25,10 @@ export const metadata: Metadata = {
 
 export default function ProgressPage() {
   const stats = getSummary();
-  const plugins = getPlugins().slice().sort((a, b) => b.eligible - a.eligible);
+  // "Oxlint original" isn't part of the ESLint migration target, so it's excluded here.
+  const plugins = getPlugins()
+    .filter((p) => !p.original)
+    .sort((a, b) => b.eligible - a.eligible);
   const history = getMigrationHistory();
   const first = history.samples[0];
   const last = history.samples.at(-1);
@@ -33,6 +37,7 @@ export default function ProgressPage() {
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 p-4 md:p-8">
+      <SetBreadcrumb items={[{ label: 'Migration progress' }]} />
       <div className="flex flex-col gap-2">
         <Badge variant="outline" className="w-fit">
           Are we oxlint yet?

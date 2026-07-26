@@ -35,6 +35,12 @@ export interface SidebarPlugin {
   migrated: number;
 }
 
+export interface SidebarOriginalPlugin {
+  id: string;
+  label: string;
+  total: number;
+}
+
 export interface SidebarSummary {
   eligible: number;
   migrated: number;
@@ -43,9 +49,11 @@ export interface SidebarSummary {
 
 export function AppSidebar({
   plugins,
+  originalPlugin,
   summary,
 }: {
   plugins: SidebarPlugin[];
+  originalPlugin: SidebarOriginalPlugin | null;
   summary: SidebarSummary;
 }) {
   const pathname = usePathname();
@@ -115,6 +123,27 @@ export function AppSidebar({
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+        {originalPlugin ? (
+          <SidebarGroup>
+            <SidebarGroupLabel>Native to oxlint</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    isActive={pathname === `/rules/${originalPlugin.id}`}
+                    tooltip={`${originalPlugin.total} rules with no ESLint equivalent`}
+                    render={
+                      <Link href={`/rules/${originalPlugin.id}`}>
+                        <span>{originalPlugin.label}</span>
+                      </Link>
+                    }
+                  />
+                  <SidebarMenuBadge>{originalPlugin.total}</SidebarMenuBadge>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        ) : null}
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>

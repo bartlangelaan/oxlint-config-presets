@@ -133,10 +133,20 @@ const plugins: PluginDef[] = [
     sourcePrefix: 'react/',
     configPrefix: 'react/',
     oxlintScope: 'react',
-    loadRules: () => mergeRuleDicts(cjsRules('eslint-plugin-react'), cjsRules('eslint-plugin-react-hooks')),
-    docsUrl: (name) => `https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/${name}.md`,
-    sourcePackages: ['eslint-plugin-react', 'eslint-plugin-react-hooks'],
-    explanationPrefixes: ['react/', 'react-hooks/'],
+    loadRules: () =>
+      mergeRuleDicts(
+        cjsRules('eslint-plugin-react'),
+        cjsRules('eslint-plugin-react-hooks'),
+        cjsRules('eslint-plugin-react-refresh'),
+      ),
+    docsUrl: (name) =>
+      name === 'only-export-components'
+        ? 'https://github.com/ArnaudBarre/eslint-plugin-react-refresh#usage'
+        : name === 'rules-of-hooks' || name === 'exhaustive-deps'
+          ? 'https://react.dev/reference/rules/rules-of-hooks'
+          : `https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/${name}.md`,
+    sourcePackages: ['eslint-plugin-react', 'eslint-plugin-react-hooks', 'eslint-plugin-react-refresh'],
+    explanationPrefixes: ['react/', 'react-hooks/', 'react-refresh/'],
   },
   {
     id: 'import',
@@ -366,6 +376,8 @@ function createReporter() {
 interface PresetRuleEntry {
   config: string;
   severity: string;
+  /** The raw options array configured after the severity, if any (e.g. [{ allowExportNames: [...] }]). */
+  options: unknown[] | null;
 }
 
 function walkJsonFiles(dir: string): string[] {
@@ -390,8 +402,9 @@ for (const file of presetFiles) {
   configSummaries.push({ path: relPath, ruleCount: Object.keys(rules).length });
   for (const [key, value] of Object.entries(rules)) {
     const severity = Array.isArray(value) ? String(value[0]) : String(value);
+    const options = Array.isArray(value) && value.length > 1 ? value.slice(1) : null;
     if (!presetsByRuleKey.has(key)) presetsByRuleKey.set(key, []);
-    presetsByRuleKey.get(key)!.push({ config: relPath, severity });
+    presetsByRuleKey.get(key)!.push({ config: relPath, severity, options });
   }
 }
 
@@ -451,6 +464,10 @@ interface OutputRule {
     fixStatus: FixStatus | null;
     default: boolean | null;
     docsUrl: string | null;
+    /** True for rules native to oxlint with no ESLint equivalent (the `oxc` scope). */
+    original: boolean;
+    /** Canonical "<prefix>/<name>" key for this rule in an .oxlintrc.json `rules` object. */
+    configKey: string;
   };
   presets: PresetRuleEntry[];
 }
@@ -573,6 +590,8 @@ for (const plugin of plugins) {
         fixStatus: migrated ? fixStatusFor(implementedEntry?.fix) : null,
         default: implementedEntry?.default ?? null,
         docsUrl: implementedEntry?.docs_url ?? null,
+        original: false,
+        configKey: `${plugin.configPrefix}${name}`,
       },
       presets,
     };
@@ -619,11 +638,62 @@ for (const rule of allOutputRules) {
   rule.oxlint.reason = explanation ?? GENERIC_REASON[status];
 }
 
+// ---- 4b. Oxlint-original rules: no ESLint equivalent, nothing to "migrate" ----
+//
+// The `oxc` scope holds rules oxlint invented itself (e.g. ported from
+// DeepScan, or new correctness checks). They aren't part of the ESLint
+// migration target, but are still real rules users can enable, so they get
+// their own browsable bucket instead of being silently dropped.
+
+const OXC_CONFIG_PREFIX = 'oxc/';
+const oxcOutputRules: OutputRule[] = [];
+
+for (const [name, entry] of implementedByScope.get('oxc') ?? []) {
+  const presets = presetsByRuleKey.get(`${OXC_CONFIG_PREFIX}${name}`) ?? [];
+  oxcOutputRules.push({
+    id: `oxc__${name}`,
+    plugin: 'oxc',
+    pluginLabel: 'Oxlint original',
+    name,
+    eslint: {
+      deprecated: false,
+      recommended: false,
+      description: null,
+      docsUrl: null,
+      type: null,
+      fixable: false,
+    },
+    oxlint: {
+      migrationStatus: 'migrated',
+      reason: null,
+      category: entry.category,
+      nursery: entry.category === 'nursery',
+      typeAware: entry.type_aware,
+      fixStatus: fixStatusFor(entry.fix),
+      default: entry.default,
+      docsUrl: entry.docs_url,
+      original: true,
+      configKey: `${OXC_CONFIG_PREFIX}${name}`,
+    },
+    presets,
+  });
+}
+oxcOutputRules.sort((a, b) => a.name.localeCompare(b.name));
+allOutputRules.push(...oxcOutputRules);
+console.log(`Added ${oxcOutputRules.length} oxlint-original rules (no ESLint equivalent).`);
+
 // ---- 5. Aggregate stats, per plugin and overall -------------------------------
+//
+// Oxlint-original rules aren't part of the ESLint migration target, so they get
+// their own stats bucket but are excluded from the global (all-plugins) totals.
 
 const globalStats = emptyStats('All plugins');
 const pluginStats = new Map(plugins.map((p) => [p.id, emptyStats(p.label)]));
+const oxcStats = emptyStats('Oxlint original');
+for (const rule of oxcOutputRules) addToStats(oxcStats, rule);
+
 for (const rule of allOutputRules) {
+  if (rule.oxlint.original) continue;
   addToStats(globalStats, rule);
   addToStats(pluginStats.get(rule.plugin)!, rule);
 }
@@ -637,12 +707,22 @@ writeFileSync(
     generatedAt: new Date().toISOString(),
     oxlintVersion,
     ...globalStats,
-    plugins: plugins.map((p) => ({
-      id: p.id,
-      oxlintScope: p.oxlintScope,
-      sourcePackages: p.sourcePackages,
-      ...pluginStats.get(p.id)!,
-    })),
+    plugins: [
+      ...plugins.map((p) => ({
+        id: p.id,
+        oxlintScope: p.oxlintScope,
+        sourcePackages: p.sourcePackages,
+        original: false,
+        ...pluginStats.get(p.id)!,
+      })),
+      {
+        id: 'oxc',
+        oxlintScope: 'oxc',
+        sourcePackages: [],
+        original: true,
+        ...oxcStats,
+      },
+    ],
   }),
 );
 writeFileSync(

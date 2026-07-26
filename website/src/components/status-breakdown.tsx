@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import type { MigrationStatus, Stats } from '@/lib/data';
-import { STATUS_META, TARGET_STATUSES } from '@/lib/status';
+import type { Stats } from '@/lib/data';
+import { STATUS_META, TARGET_STATUSES, type DisplayStatus } from '@/lib/status';
 import { cn } from '@/lib/utils';
 
 export function TargetHeadline({ stats }: { stats: Stats }) {
@@ -26,16 +26,20 @@ export function TargetHeadline({ stats }: { stats: Stats }) {
 }
 
 export function StatusTiles({ stats }: { stats: Stats }) {
-  const counts: Record<MigrationStatus, number> = {
-    migrated: stats.migrated,
+  const counts: Record<DisplayStatus, number> = {
+    migrated: stats.fixImplemented + stats.fixNone,
+    'migrated-fix-planned': stats.fixPlanned,
     'not-implemented': stats.notImplemented,
     'needs-js-plugin': stats.needsJsPlugin,
     'not-portable': stats.notPortable,
   };
+  const statuses = (Object.keys(STATUS_META) as DisplayStatus[]).filter(
+    (status) => status !== 'needs-js-plugin' || counts[status] > 0,
+  );
 
   return (
-    <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-      {(Object.keys(STATUS_META) as MigrationStatus[]).map((status) => {
+    <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-5">
+      {statuses.map((status) => {
         const meta = STATUS_META[status];
         const Icon = meta.icon;
         const count = counts[status];

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import { RulesExplorer } from '@/components/rules-explorer';
+import { SetBreadcrumb } from '@/components/breadcrumb-context';
 import { getPlugins, getRuleListItems, getSummary } from '@/lib/data';
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export default function RulesPage() {
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 p-4 md:p-8">
+      <SetBreadcrumb items={[{ label: 'All rules' }]} />
       <div className="flex flex-col gap-2">
         <h1 className="text-3xl font-semibold tracking-tight">All rules</h1>
         <p className="text-muted-foreground max-w-2xl">
