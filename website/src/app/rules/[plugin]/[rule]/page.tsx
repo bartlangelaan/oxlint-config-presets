@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/table';
 import { SetBreadcrumb } from '@/components/breadcrumb-context';
 import { configHref, getAllRules, getRuleById, type PresetRuleEntry } from '@/lib/data';
-import { formatCategorySnippet, formatRuleSnippet } from '@/lib/rule-config';
+import { formatCategorySnippet, formatExtendsSnippet, formatRuleSnippet } from '@/lib/rule-config';
 import { STATUS_META, toDisplayStatus } from '@/lib/status';
 import { cn } from '@/lib/utils';
 
@@ -59,6 +59,7 @@ function PresetTable({ presets }: { presets: PresetRuleEntry[] }) {
         <TableRow>
           <TableHead>Preset</TableHead>
           <TableHead className="text-right">Configuration</TableHead>
+          <TableHead className="text-right">Add it</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -101,6 +102,14 @@ function PresetTable({ presets }: { presets: PresetRuleEntry[] }) {
                     {p.severity}
                   </span>
                 )}
+              </TableCell>
+              <TableCell className="text-right">
+                <details className="group inline-block text-right">
+                  <summary className="text-muted-foreground hover:text-foreground inline-flex cursor-pointer list-none items-center gap-1 text-xs whitespace-nowrap">
+                    Show snippet
+                  </summary>
+                  <CodeBlock code={formatExtendsSnippet(p.config)} className="mt-2 text-left" />
+                </details>
               </TableCell>
             </TableRow>
           ))}
@@ -259,10 +268,10 @@ export default async function RuleDetailPage({
                     <p className="text-muted-foreground text-xs">
                       {enabledPresets.length} oxlint-config-presets preset
                       {enabledPresets.length === 1 ? '' : 's'} already enable{' '}
-                      {enabledPresets.length === 1 ? 's' : ''} this rule as shown. Extend one from{' '}
-                      <code className="bg-muted rounded px-1 py-0.5">.oxlintrc.json</code>:
+                      {enabledPresets.length === 1 ? 's' : ''} this rule as shown. Extend one from your{' '}
+                      <code className="bg-muted rounded px-1 py-0.5">.oxlintrc.json</code> — click
+                      &quot;Show snippet&quot; on a row for the exact <code className="bg-muted rounded px-1 py-0.5">extends</code> config.
                     </p>
-                    <CodeBlock code={`{ "extends": ["oxlint-config-presets/<preset>.json"] }`} />
                     <PresetTable presets={enabledPresets} />
                   </>
                 ) : (
@@ -289,7 +298,8 @@ export default async function RuleDetailPage({
                   <>
                     <p className="text-muted-foreground text-xs">
                       {disabledPresets.length} preset{disabledPresets.length === 1 ? '' : 's'}{' '}
-                      explicitly turn{disabledPresets.length === 1 ? 's' : ''} this rule off:
+                      explicitly turn{disabledPresets.length === 1 ? 's' : ''} this rule off. Extending
+                      one of these also disables it.
                     </p>
                     <PresetTable presets={disabledPresets} />
                   </>
