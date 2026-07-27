@@ -4,21 +4,30 @@ import { Area, AreaChart, CartesianGrid, ReferenceLine, XAxis, YAxis } from 'rec
 
 import {
   ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
 } from '@/components/ui/chart';
+import { STATUS_CHART_COLOR } from '@/lib/status';
 
 export interface MigrationChartPoint {
   date: string;
   version: string;
   value: number;
+  /** Rules with no pending autofix at this point (a subset of `value`). */
+  fullyMigrated: number;
 }
 
 const chartConfig = {
   value: {
-    label: 'Rules implemented',
+    label: 'Migrated (incl. autofix planned)',
     color: 'var(--chart-1)',
+  },
+  fullyMigrated: {
+    label: 'Fully migrated',
+    color: STATUS_CHART_COLOR.migrated,
   },
 } satisfies ChartConfig;
 
@@ -40,6 +49,7 @@ export function MigrationLineChart({
     label: formatMonth(p.date),
     version: p.version,
     value: p.value,
+    fullyMigrated: p.fullyMigrated,
   }));
 
   return (
@@ -102,6 +112,15 @@ export function MigrationLineChart({
             strokeWidth={2}
             activeDot={{ r: 4 }}
           />
+          <Area
+            dataKey="fullyMigrated"
+            type="monotone"
+            fill="none"
+            stroke="var(--color-fullyMigrated)"
+            strokeWidth={2}
+            activeDot={{ r: 4 }}
+          />
+          <ChartLegend content={<ChartLegendContent />} />
         </AreaChart>
       </ChartContainer>
     </div>

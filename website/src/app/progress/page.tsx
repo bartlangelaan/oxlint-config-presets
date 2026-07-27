@@ -33,7 +33,12 @@ export default function ProgressPage() {
   const first = history.samples[0];
   const last = history.samples.at(-1);
 
-  const points = history.samples.map((s) => ({ date: s.date, version: s.version, value: s.totalImplemented }));
+  const points = history.samples.map((s) => ({
+    date: s.date,
+    version: s.version,
+    value: s.totalImplemented,
+    fullyMigrated: s.fullyMigrated,
+  }));
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 p-4 md:p-8">
@@ -100,9 +105,11 @@ export default function ProgressPage() {
         <CardHeader>
           <CardTitle>Implemented rules over time</CardTitle>
           <CardDescription>
-            Every oxlint release ever published on npm. The dashed line marks today&apos;s target
-            (rules that are migrated, not-yet-implemented, or need a JS plugin — i.e. everything
-            except &quot;not portable&quot;).
+            Every oxlint release ever published on npm. The top line is every rule migrated,
+            including ones with a planned-but-not-implemented autofix; the bottom line is rules
+            with nothing outstanding. The dashed line marks today&apos;s target (rules that are
+            migrated, not-yet-implemented, or need a JS plugin — i.e. everything except &quot;not
+            portable&quot;).
           </CardDescription>
         </CardHeader>
         <CardContent>

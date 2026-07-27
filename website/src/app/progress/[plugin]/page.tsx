@@ -46,7 +46,8 @@ export default async function PluginProgressPage({
   const points = history.samples.map((s) => ({
     date: s.date,
     version: s.version,
-    value: s.byScope[plugin.oxlintScope] ?? 0,
+    value: s.byScope[plugin.oxlintScope]?.total ?? 0,
+    fullyMigrated: s.byScope[plugin.oxlintScope]?.fullyMigrated ?? 0,
   }));
 
   return (
@@ -95,7 +96,9 @@ export default async function PluginProgressPage({
           <CardDescription>
             Every oxlint release ever published on npm, counting rules under the{' '}
             <code className="bg-muted rounded px-1 py-0.5">{plugin.oxlintScope}</code> scope. The
-            dashed line marks today&apos;s target ({plugin.eligible} rules).
+            top line includes rules with a planned-but-not-implemented autofix; the bottom line is
+            rules with nothing outstanding. The dashed line marks today&apos;s target (
+            {plugin.eligible} rules).
           </CardDescription>
         </CardHeader>
         <CardContent>

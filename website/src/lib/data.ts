@@ -110,11 +110,19 @@ export interface ConfigSummary {
   ruleCount: number;
 }
 
+export interface MigrationScopeSample {
+  total: number;
+  /** Rules with no pending ("planned but not implemented") autofix at this release. */
+  fullyMigrated: number;
+}
+
 export interface MigrationSample {
   version: string;
   date: string;
   totalImplemented: number;
-  byScope: Record<string, number>;
+  /** Rules with no pending autofix at this release (a subset of totalImplemented). */
+  fullyMigrated: number;
+  byScope: Record<string, MigrationScopeSample>;
 }
 
 const rules = rulesJson as Rule[];

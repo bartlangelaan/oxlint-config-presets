@@ -67,7 +67,10 @@ function parseJsonFormat(output) {
   if (!trimmed.startsWith('[')) return null;
   try {
     const data = JSON.parse(trimmed);
-    return data.map((r) => ({ scope: r.scope, value: r.value }));
+    // `fix` has been present on every release that supports --format json; older
+    // releases (parsed by the other two formats below) never carry it, so callers
+    // must treat a missing/undefined fix as "unknown, assume nothing pending".
+    return data.map((r) => ({ scope: r.scope, value: r.value, fix: r.fix ?? null }));
   } catch {
     return null;
   }
@@ -87,7 +90,10 @@ function parseMarkdownTable(output) {
     const [name, source] = cells;
     if (name === 'Rule name' || /^-+$/.test(name)) continue;
     if (!name || !source) continue;
-    rows.push({ scope: source, value: name });
+    // The markdown table's "Fixable?" column (when present) only says whether a
+    // fixer exists at all, not whether it's "pending" vs implemented, so it can't
+    // tell us what we need here — fix status is unknown for this format.
+    rows.push({ scope: source, value: name, fix: null });
   }
   return rows.length > 0 ? rows : null;
 }
@@ -99,7 +105,7 @@ function parseBulletList(output) {
     const line = rawLine.trim();
     const match = re.exec(line);
     if (!match) continue;
-    rows.push({ scope: match[1], value: match[2] });
+    rows.push({ scope: match[1], value: match[2], fix: null });
   }
   return rows.length > 0 ? rows : null;
 }
@@ -152,16 +158,27 @@ function fetchVersionRules(version) {
   return rows;
 }
 
+/** Rules whose autofix is explicitly marked "planned but not implemented" by oxlint. */
+function isFixPending(fix) {
+  return fix === 'pending';
+}
+
 function summarize(rows) {
   const byScope = {};
   let totalImplemented = 0;
-  for (const { scope, value } of rows) {
+  let fullyMigrated = 0;
+  for (const { scope, value, fix } of rows) {
     void value;
     if (!KNOWN_SCOPES.has(scope)) continue;
-    byScope[scope] = (byScope[scope] ?? 0) + 1;
+    if (!byScope[scope]) byScope[scope] = { total: 0, fullyMigrated: 0 };
+    byScope[scope].total++;
     totalImplemented++;
+    if (!isFixPending(fix)) {
+      byScope[scope].fullyMigrated++;
+      fullyMigrated++;
+    }
   }
-  return { totalImplemented, byScope };
+  return { totalImplemented, fullyMigrated, byScope };
 }
 
 const times = npmViewTimes();
@@ -171,13 +188,15 @@ console.log(`Sampling all ${samples.length} oxlint releases (${samples[0].versio
 const results = [];
 for (const { version, date } of samples) {
   const rows = fetchVersionRules(version);
-  const { totalImplemented, byScope } = summarize(rows);
+  const { totalImplemented, fullyMigrated, byScope } = summarize(rows);
   if (totalImplemented === 0) {
     console.warn(`  [skip] oxlint@${version} produced no parseable rules, omitting`);
     continue;
   }
-  results.push({ version, date, totalImplemented, byScope });
-  console.log(`  ${date.slice(0, 10)}  oxlint@${version.padEnd(8)} -> ${totalImplemented} rules`);
+  results.push({ version, date, totalImplemented, fullyMigrated, byScope });
+  console.log(
+    `  ${date.slice(0, 10)}  oxlint@${version.padEnd(8)} -> ${totalImplemented} rules (${fullyMigrated} fully migrated)`,
+  );
 }
 
 let totalEligibleNow = null;

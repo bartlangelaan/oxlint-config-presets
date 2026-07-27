@@ -13,7 +13,12 @@ export default function Home() {
   const history = getMigrationHistory();
   const pct = summary.eligible > 0 ? ((summary.migrated / summary.eligible) * 100).toFixed(1) : '0';
 
-  const points = history.samples.map((s) => ({ date: s.date, version: s.version, value: s.totalImplemented }));
+  const points = history.samples.map((s) => ({
+    date: s.date,
+    version: s.version,
+    value: s.totalImplemented,
+    fullyMigrated: s.fullyMigrated,
+  }));
 
   const topPlugins = plugins
     .slice()
