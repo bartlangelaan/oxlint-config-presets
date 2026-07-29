@@ -1,7 +1,4 @@
 packages:
   - packages/*
 
-patchedDependencies:
-  '@oxlint/migrate@1.75.0': patches/@oxlint__migrate@1.75.0.patch
-
 shamefullyHoist: true
