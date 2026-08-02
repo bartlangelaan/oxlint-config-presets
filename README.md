@@ -742,7 +742,7 @@ These rules are enabled but their configuration options were dropped because oxl
 "./node_modules/oxlint-config-presets/wikimedia.json"
 ```
 
-Extracted from `eslint-config-wikimedia@0.32.4`.
+Extracted from `eslint-config-wikimedia@0.32.5`.
 
 <details>
 <summary>127 rules successfully migrated</summary>
@@ -1205,7 +1205,7 @@ Extracted from `eslint-plugin-import-x@4.17.1`.
 "./node_modules/oxlint-config-presets/next/recommended.json"
 ```
 
-Extracted from `eslint-config-next@16.2.11`.
+Extracted from `eslint-config-next@16.2.12`.
 
 <details>
 <summary>48 rules successfully migrated</summary>
@@ -1229,7 +1229,7 @@ Extracted from `eslint-config-next@16.2.11`.
 "./node_modules/oxlint-config-presets/next/core-web-vitals.json"
 ```
 
-Extracted from `eslint-config-next@16.2.11`.
+Extracted from `eslint-config-next@16.2.12`.
 
 <details>
 <summary>48 rules successfully migrated</summary>
@@ -1443,7 +1443,7 @@ Extracted from `eslint-plugin-react-perf@3.3.3`.
 "./node_modules/oxlint-config-presets/jsdoc/recommended.json"
 ```
 
-Extracted from `eslint-plugin-jsdoc@63.2.2`.
+Extracted from `eslint-plugin-jsdoc@63.3.2`.
 
 <details>
 <summary>22 rules successfully migrated</summary>
@@ -1467,7 +1467,7 @@ Extracted from `eslint-plugin-jsdoc@63.2.2`.
 "./node_modules/oxlint-config-presets/jsdoc/recommended-error.json"
 ```
 
-Extracted from `eslint-plugin-jsdoc@63.2.2`.
+Extracted from `eslint-plugin-jsdoc@63.3.2`.
 
 <details>
 <summary>22 rules successfully migrated</summary>
@@ -1491,7 +1491,7 @@ Extracted from `eslint-plugin-jsdoc@63.2.2`.
 "./node_modules/oxlint-config-presets/jsdoc/recommended-tsdoc.json"
 ```
 
-Extracted from `eslint-plugin-jsdoc@63.2.2`.
+Extracted from `eslint-plugin-jsdoc@63.3.2`.
 
 <details>
 <summary>22 rules successfully migrated</summary>
@@ -1515,7 +1515,7 @@ Extracted from `eslint-plugin-jsdoc@63.2.2`.
 "./node_modules/oxlint-config-presets/jsdoc/recommended-tsdoc-error.json"
 ```
 
-Extracted from `eslint-plugin-jsdoc@63.2.2`.
+Extracted from `eslint-plugin-jsdoc@63.3.2`.
 
 <details>
 <summary>22 rules successfully migrated</summary>
@@ -1539,7 +1539,7 @@ Extracted from `eslint-plugin-jsdoc@63.2.2`.
 "./node_modules/oxlint-config-presets/jsdoc/recommended-typescript.json"
 ```
 
-Extracted from `eslint-plugin-jsdoc@63.2.2`.
+Extracted from `eslint-plugin-jsdoc@63.3.2`.
 
 <details>
 <summary>22 rules successfully migrated</summary>
@@ -1563,7 +1563,7 @@ Extracted from `eslint-plugin-jsdoc@63.2.2`.
 "./node_modules/oxlint-config-presets/jsdoc/recommended-typescript-error.json"
 ```
 
-Extracted from `eslint-plugin-jsdoc@63.2.2`.
+Extracted from `eslint-plugin-jsdoc@63.3.2`.
 
 <details>
 <summary>22 rules successfully migrated</summary>
@@ -1587,7 +1587,7 @@ Extracted from `eslint-plugin-jsdoc@63.2.2`.
 "./node_modules/oxlint-config-presets/jsdoc/recommended-typescript-flavor.json"
 ```
 
-Extracted from `eslint-plugin-jsdoc@63.2.2`.
+Extracted from `eslint-plugin-jsdoc@63.3.2`.
 
 <details>
 <summary>22 rules successfully migrated</summary>
@@ -1611,7 +1611,7 @@ Extracted from `eslint-plugin-jsdoc@63.2.2`.
 "./node_modules/oxlint-config-presets/jsdoc/recommended-typescript-flavor-error.json"
 ```
 
-Extracted from `eslint-plugin-jsdoc@63.2.2`.
+Extracted from `eslint-plugin-jsdoc@63.3.2`.
 
 <details>
 <summary>22 rules successfully migrated</summary>
@@ -1635,7 +1635,7 @@ Extracted from `eslint-plugin-jsdoc@63.2.2`.
 "./node_modules/oxlint-config-presets/jsdoc/default-expressions.json"
 ```
 
-Extracted from `eslint-plugin-jsdoc@63.2.2`.
+Extracted from `eslint-plugin-jsdoc@63.3.2`.
 
 <details>
 <summary>2 rules have no oxlint equivalent</summary>
@@ -1652,7 +1652,7 @@ Extracted from `eslint-plugin-jsdoc@63.2.2`.
 "./node_modules/oxlint-config-presets/jsdoc/examples.json"
 ```
 
-Extracted from `eslint-plugin-jsdoc@63.2.2`.
+Extracted from `eslint-plugin-jsdoc@63.3.2`.
 
 ### `jsdoc/examples-and-default-expressions.json`
 
@@ -1660,7 +1660,7 @@ Extracted from `eslint-plugin-jsdoc@63.2.2`.
 "./node_modules/oxlint-config-presets/jsdoc/examples-and-default-expressions.json"
 ```
 
-Extracted from `eslint-plugin-jsdoc@63.2.2`.
+Extracted from `eslint-plugin-jsdoc@63.3.2`.
 
 <details>
 <summary>2 rules have no oxlint equivalent</summary>
@@ -1870,7 +1870,7 @@ Extracted from `eslint-plugin-jest@28.14.0`.
 "./node_modules/oxlint-config-presets/@vitest/recommended.json"
 ```
 
-Extracted from `@vitest/eslint-plugin@1.6.24`.
+Extracted from `@vitest/eslint-plugin@1.6.25`.
 
 <details>
 <summary>17 rules successfully migrated</summary>
@@ -1885,7 +1885,7 @@ Extracted from `@vitest/eslint-plugin@1.6.24`.
 "./node_modules/oxlint-config-presets/@vitest/all.json"
 ```
 
-Extracted from `@vitest/eslint-plugin@1.6.24`.
+Extracted from `@vitest/eslint-plugin@1.6.25`.
 
 <details>
 <summary>71 rules successfully migrated</summary>
