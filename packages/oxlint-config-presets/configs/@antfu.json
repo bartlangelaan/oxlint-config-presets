@@ -255,7 +255,14 @@
   },
   "overrides": [
     {
-      "files": ["**/*.?([cm])[jt]s?(x)"],
+      "files": [
+        "**/*.[jt]s",
+        "**/*.[jt]sx",
+        "**/*.c[jt]s",
+        "**/*.c[jt]sx",
+        "**/*.m[jt]s",
+        "**/*.m[jt]sx"
+      ],
       "rules": {
         "node/handle-callback-err": ["error", "^(err|error)$"],
         "node/no-exports-assign": "error",
@@ -290,7 +297,7 @@
       "plugins": ["node", "jsdoc", "unicorn"]
     },
     {
-      "files": ["**/*.?([cm])ts", "**/*.?([cm])tsx"],
+      "files": ["**/*.ts", "**/*.cts", "**/*.mts", "**/*.tsx", "**/*.ctsx", "**/*.mtsx"],
       "rules": {
         "constructor-super": "off",
         "getter-return": "off",
@@ -325,18 +332,50 @@
     },
     {
       "files": [
-        "**/__tests__/**/*.?([cm])[jt]s?(x)",
-        "**/*.spec.?([cm])[jt]s?(x)",
-        "**/*.test.?([cm])[jt]s?(x)",
-        "**/*.bench.?([cm])[jt]s?(x)",
-        "**/*.benchmark.?([cm])[jt]s?(x)"
+        "**/__tests__/**/*.[jt]s",
+        "**/__tests__/**/*.[jt]sx",
+        "**/__tests__/**/*.c[jt]s",
+        "**/__tests__/**/*.c[jt]sx",
+        "**/__tests__/**/*.m[jt]s",
+        "**/__tests__/**/*.m[jt]sx",
+        "**/*.spec.[jt]s",
+        "**/*.spec.[jt]sx",
+        "**/*.spec.c[jt]s",
+        "**/*.spec.c[jt]sx",
+        "**/*.spec.m[jt]s",
+        "**/*.spec.m[jt]sx",
+        "**/*.test.[jt]s",
+        "**/*.test.[jt]sx",
+        "**/*.test.c[jt]s",
+        "**/*.test.c[jt]sx",
+        "**/*.test.m[jt]s",
+        "**/*.test.m[jt]sx",
+        "**/*.bench.[jt]s",
+        "**/*.bench.[jt]sx",
+        "**/*.bench.c[jt]s",
+        "**/*.bench.c[jt]sx",
+        "**/*.bench.m[jt]s",
+        "**/*.bench.m[jt]sx",
+        "**/*.benchmark.[jt]s",
+        "**/*.benchmark.[jt]sx",
+        "**/*.benchmark.c[jt]s",
+        "**/*.benchmark.c[jt]sx",
+        "**/*.benchmark.m[jt]s",
+        "**/*.benchmark.m[jt]sx"
       ],
       "rules": {
         "no-unused-expressions": "off"
       }
     },
     {
-      "files": ["**/*.md/**/*.?([cm])[jt]s?(x)"],
+      "files": [
+        "**/*.md/**/*.[jt]s",
+        "**/*.md/**/*.[jt]sx",
+        "**/*.md/**/*.c[jt]s",
+        "**/*.md/**/*.c[jt]sx",
+        "**/*.md/**/*.m[jt]s",
+        "**/*.md/**/*.m[jt]sx"
+      ],
       "rules": {
         "no-alert": "off",
         "no-console": "off",
@@ -351,11 +390,36 @@
     },
     {
       "files": [
-        "**/scripts/**/*.?([cm])[jt]s?(x)",
-        "**/cli/**/*.?([cm])[jt]s?(x)",
-        "**/cli.?([cm])[jt]s?(x)",
-        "**/*.config.?([cm])[jt]s?(x)",
-        "**/*.config.*.?([cm])[jt]s?(x)"
+        "**/scripts/**/*.[jt]s",
+        "**/scripts/**/*.[jt]sx",
+        "**/scripts/**/*.c[jt]s",
+        "**/scripts/**/*.c[jt]sx",
+        "**/scripts/**/*.m[jt]s",
+        "**/scripts/**/*.m[jt]sx",
+        "**/cli/**/*.[jt]s",
+        "**/cli/**/*.[jt]sx",
+        "**/cli/**/*.c[jt]s",
+        "**/cli/**/*.c[jt]sx",
+        "**/cli/**/*.m[jt]s",
+        "**/cli/**/*.m[jt]sx",
+        "**/cli.[jt]s",
+        "**/cli.[jt]sx",
+        "**/cli.c[jt]s",
+        "**/cli.c[jt]sx",
+        "**/cli.m[jt]s",
+        "**/cli.m[jt]sx",
+        "**/*.config.[jt]s",
+        "**/*.config.[jt]sx",
+        "**/*.config.c[jt]s",
+        "**/*.config.c[jt]sx",
+        "**/*.config.m[jt]s",
+        "**/*.config.m[jt]sx",
+        "**/*.config.*.[jt]s",
+        "**/*.config.*.[jt]sx",
+        "**/*.config.*.c[jt]s",
+        "**/*.config.*.c[jt]sx",
+        "**/*.config.*.m[jt]s",
+        "**/*.config.*.m[jt]sx"
       ],
       "rules": {
         "no-console": "off"
