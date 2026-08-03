@@ -38,7 +38,7 @@
     "@antfu/eslint-config": "^9.2.0",
     "@eslint/js": "^10.0.1",
     "@oxlint/migrate": "^1.76.0",
-    "@types/node": "^26.1.1",
+    "@types/node": "^26.1.2",
     "@typescript-eslint/eslint-plugin": "^8.65.0",
     "@typescript-eslint/parser": "^8.65.0",
     "eslint": "^10.8.0",
@@ -48,11 +48,11 @@
     "eslint-config-eslint": "^14.0.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-hardcore": "^49.0.0",
-    "eslint-config-next": "^16.2.11",
+    "eslint-config-next": "^16.2.12",
     "eslint-config-prettier": "^10.1.8",
     "eslint-config-problems": "^10.0.1",
     "eslint-config-standard": "^17.1.0",
-    "eslint-config-wikimedia": "^0.32.4",
+    "eslint-config-wikimedia": "^0.32.5",
     "eslint-config-xo": "^0.58.1",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
@@ -63,10 +63,10 @@
     "eslint-plugin-react-refresh": "^0.5.3",
     "eslint-plugin-unicorn": "^72.0.0",
     "eslint8": "npm:eslint@^8.57.1",
-    "next": "^16.2.11",
+    "next": "^16.2.12",
     "oxfmt": "^0.61.0",
     "oxlint": "^1.76.0",
-    "tsx": "^4.23.1"
+    "tsx": "^4.23.4"
   },
   "peerDependencies": {
     "oxlint": ">=0.15.0"
