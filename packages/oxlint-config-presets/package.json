@@ -37,7 +37,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^9.2.0",
     "@eslint/js": "^10.0.1",
-    "@oxlint/migrate": "^1.76.0",
+    "@oxlint/migrate": "^1.77.0",
     "@types/node": "^26.1.2",
     "@typescript-eslint/eslint-plugin": "^8.65.0",
     "@typescript-eslint/parser": "^8.65.0",
@@ -64,8 +64,8 @@
     "eslint-plugin-unicorn": "^72.0.0",
     "eslint8": "npm:eslint@^8.57.1",
     "next": "^16.2.12",
-    "oxfmt": "^0.61.0",
-    "oxlint": "^1.76.0",
+    "oxfmt": "^0.62.0",
+    "oxlint": "^1.77.0",
     "tsx": "^4.23.4"
   },
   "peerDependencies": {
