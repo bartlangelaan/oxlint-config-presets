@@ -745,13 +745,6 @@ interface GenerateResult {
   warnings: string[];
 }
 
-// Patterns that use extglob syntax with no finite plain-glob equivalent
-// (`*(...)`, `+(...)`, `!(...)`) and so can't be auto-expanded by
-// expandExtglob. Add a manually verified plain-glob replacement here if one
-// of these ever shows up in a source config; expandGlobPattern() below
-// throws instead of silently dropping the pattern so this can't go unnoticed.
-const MANUAL_GLOB_REWRITES: Record<string, string[]> = {};
-
 /**
  * Rewrites a single `overrides[].files` pattern into one or more plain-glob
  * patterns with no extglob syntax, since fast-glob (used by oxlint's file
@@ -759,17 +752,14 @@ const MANUAL_GLOB_REWRITES: Record<string, string[]> = {};
  * erroring: https://github.com/oxc-project/oxc/issues/21525
  */
 function expandGlobPattern(pattern: string): string[] {
-  const manual = MANUAL_GLOB_REWRITES[pattern];
-  if (manual) return manual;
-
   const expanded = expandExtglob(pattern);
   if (expanded === null) {
     throw new Error(
       `overrides[].files pattern "${pattern}" uses extglob syntax with no finite plain-glob ` +
         `equivalent (a "*(...)", "+(...)", or "!(...)" group, or a nested group). fast-glob ` +
         `(used by oxlint) does not support extglob and would silently ignore this pattern: ` +
-        `https://github.com/oxc-project/oxc/issues/21525. Add a manually verified replacement ` +
-        `to MANUAL_GLOB_REWRITES in generate.ts.`,
+        `https://github.com/oxc-project/oxc/issues/21525. Add a manually verified plain-glob ` +
+        `replacement for it here in generate.ts.`,
     );
   }
   return expanded;
