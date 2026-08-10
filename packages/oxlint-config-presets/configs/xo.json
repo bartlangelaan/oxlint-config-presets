@@ -540,6 +540,7 @@
         "no-lonely-if": "error",
         "no-multi-assign": "error",
         "no-unneeded-ternary": "error",
+        "one-var": ["error", "never"],
         "operator-assignment": ["error", "always"],
         "prefer-exponentiation-operator": "error",
         "prefer-object-spread": "error",
@@ -722,6 +723,7 @@
           }
         ],
         "jsdoc/empty-tags": "error",
+        "jsdoc/no-blank-blocks": "error",
         "jsdoc/implements-on-classes": "error",
         "jsdoc/require-param": "error",
         "jsdoc/require-param-description": "error",

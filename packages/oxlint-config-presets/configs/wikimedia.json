@@ -123,6 +123,7 @@
     ],
     "jsdoc/empty-tags": "off",
     "jsdoc/implements-on-classes": "warn",
+    "jsdoc/no-blank-blocks": "warn",
     "jsdoc/no-defaults": "off",
     "jsdoc/require-param": "warn",
     "jsdoc/require-param-description": "off",

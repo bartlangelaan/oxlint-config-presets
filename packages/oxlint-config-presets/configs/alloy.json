@@ -226,6 +226,7 @@
     "no-warning-comments": "off",
     "no-with": "off",
     "object-shorthand": "off",
+    "one-var": ["error", "never"],
     "operator-assignment": "off",
     "prefer-arrow-callback": "error",
     "prefer-const": "off",

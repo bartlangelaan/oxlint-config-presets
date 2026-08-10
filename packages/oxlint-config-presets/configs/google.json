@@ -22,6 +22,14 @@
     ],
     "new-cap": "error",
     "no-array-constructor": "error",
+    "one-var": [
+      "error",
+      {
+        "var": "never",
+        "let": "never",
+        "const": "never"
+      }
+    ],
     "constructor-super": "error",
     "no-this-before-super": "error",
     "no-var": "error",
