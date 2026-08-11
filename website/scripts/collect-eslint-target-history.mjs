@@ -90,7 +90,7 @@ const BUCKETS = [
   {
     id: 'jsdoc',
     oxlintScope: 'jsdoc',
-    packages: [{ name: 'eslint-plugin-jsdoc', dirs: ['src/rules', 'dist/rules'] }],
+    packages: [{ name: 'eslint-plugin-jsdoc', dirs: ['src/rules', 'dist/rules'], camelCase: true }],
   },
   {
     id: 'jest',
@@ -146,8 +146,18 @@ function stableVersionsSince(pkg, floorDate) {
     .sort((a, b) => a.date.localeCompare(b.date));
 }
 
-/** Reads rule file basenames straight off disk — never executes package code. */
-function extractRuleNames(pkgDir, candidateDirs) {
+function camelToKebab(name) {
+  return name.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+}
+
+/**
+ * Reads rule file basenames straight off disk — never executes package code.
+ * Most ESLint plugins name each rule file after its kebab-case rule id
+ * directly (`no-array-for-each.js`); a few (eslint-plugin-jsdoc) name files
+ * in camelCase instead (`checkAccess.js` for the `check-access` rule), so
+ * `camelToKebab` normalizes those to match rules.json's naming.
+ */
+function extractRuleNames(pkgDir, candidateDirs, camelCase) {
   for (const rel of candidateDirs) {
     const dir = join(pkgDir, rel);
     if (!existsSync(dir)) continue;
@@ -164,14 +174,14 @@ function extractRuleNames(pkgDir, candidateDirs) {
       if (!ext) continue;
       const base = entry.name.slice(0, -ext.length);
       if (EXCLUDE_BASENAMES.has(base.toLowerCase())) continue;
-      names.add(base);
+      names.add(camelCase ? camelToKebab(base) : base);
     }
     if (names.size > 0) return [...names];
   }
   return null;
 }
 
-function fetchVersionRuleNames(pkg, version, candidateDirs) {
+function fetchVersionRuleNames(pkg, version, candidateDirs, camelCase) {
   const cachePath = join(cacheDir, safePkgDirName(pkg), `${version}.json`);
   if (existsSync(cachePath)) return JSON.parse(readFileSync(cachePath, 'utf-8'));
 
@@ -190,7 +200,7 @@ function fetchVersionRuleNames(pkg, version, candidateDirs) {
     const tgz = readdirSync(workDir).find((f) => f.endsWith('.tgz'));
     if (tgz) {
       execFileSync('tar', ['-xzf', join(workDir, tgz), '-C', workDir], { timeout: 30_000 });
-      names = extractRuleNames(join(workDir, 'package'), candidateDirs);
+      names = extractRuleNames(join(workDir, 'package'), candidateDirs, camelCase);
     }
   } catch {
     names = null;
@@ -227,7 +237,7 @@ for (const bucket of BUCKETS) {
     const versions = stableVersionsSince(pkg.name, FLOOR_DATE);
     console.log(`${bucket.id} / ${pkg.name}: ${versions.length} versions since ${FLOOR_DATE}`);
     for (const { version, date } of versions) {
-      const names = fetchVersionRuleNames(pkg.name, version, pkg.dirs);
+      const names = fetchVersionRuleNames(pkg.name, version, pkg.dirs, pkg.camelCase);
       if (names === null) continue;
       hasHistory = true;
       for (const name of names) {
