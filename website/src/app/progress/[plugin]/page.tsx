@@ -102,12 +102,12 @@ export default async function PluginProgressPage({
             solid line is rules with nothing outstanding (it starts later — older oxlint releases
             didn&apos;t report autofix status at all). The dashed step line is {plugin.label}
             &apos;s own target — every eligible {plugin.label} rule that existed as of that date,
-            currently {targetValue} — {plugin.label} gains new ESLint rules over time too, so this
-            line isn&apos;t flat.
+            currently {targetValue}. {`${plugin.label} `}gains new ESLint rules over time too, so
+            this line isn&apos;t flat.
           </CardDescription>
           {coverage && !coverage.hasHistory ? (
             <p className="text-muted-foreground max-w-2xl text-xs">
-              {plugin.sourcePackages.join(', ')} ships as a single pre-bundled file with no
+              {`${plugin.sourcePackages.join(', ')} `}ships as a single pre-bundled file with no
               discoverable per-release rule listing, so this target line uses today&apos;s count
               throughout rather than a real growth curve.
             </p>
