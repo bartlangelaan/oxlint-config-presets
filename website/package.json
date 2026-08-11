@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
     "collect-data": "node --import tsx/esm scripts/generate-rules-data.mts",
-    "collect-history": "node --import tsx/esm scripts/collect-history.mjs"
+    "collect-history": "node --import tsx/esm scripts/collect-history.mjs",
+    "dev": "next dev",
+    "start": "next start"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

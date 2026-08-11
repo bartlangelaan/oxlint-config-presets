@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Fragment } from 'react';
-
+import { useBreadcrumbContext, type BreadcrumbItemData } from '@/components/breadcrumb-context';
+import { ThemeToggle } from '@/components/theme-toggle';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -14,13 +15,9 @@ import {
 } from '@/components/ui/breadcrumb';
 import { Separator } from '@/components/ui/separator';
 import { SidebarTrigger } from '@/components/ui/sidebar';
-import { ThemeToggle } from '@/components/theme-toggle';
-import { useBreadcrumbContext, type BreadcrumbItemData } from '@/components/breadcrumb-context';
 
 function titleCase(segment: string) {
-  return segment
-    .replace(/-/g, ' ')
-    .replace(/\b\w/g, (c) => c.toUpperCase());
+  return segment.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 /** Fallback breadcrumb derived from the URL when a page hasn't set a custom one. */

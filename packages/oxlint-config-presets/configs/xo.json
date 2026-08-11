@@ -694,7 +694,7 @@
       "plugins": ["unicorn", "import", "node", "typescript"],
       "env": {
         "es2026": true,
-        "node": true
+        "commonjs": true
       }
     },
     {

@@ -1,11 +1,11 @@
+import { ExternalLink, Sparkles } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ExternalLink, Sparkles } from 'lucide-react';
-
+import { SetBreadcrumb } from '@/components/breadcrumb-context';
+import { CodeBlock } from '@/components/code-block';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CodeBlock } from '@/components/code-block';
 import {
   Table,
   TableBody,
@@ -14,7 +14,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { SetBreadcrumb } from '@/components/breadcrumb-context';
 import { configHref, getAllRules, getRuleById, type PresetRuleEntry } from '@/lib/data';
 import { formatCategorySnippet, formatExtendsSnippet, formatRuleSnippet } from '@/lib/rule-config';
 import { STATUS_META, toDisplayStatus } from '@/lib/status';
@@ -91,13 +90,20 @@ function PresetTable({ presets }: { presets: PresetRuleEntry[] }) {
                       </span>
                     </summary>
                     <CodeBlock
-                      code={JSON.stringify(p.options.length === 1 ? p.options[0] : p.options, null, 2)}
+                      code={JSON.stringify(
+                        p.options.length === 1 ? p.options[0] : p.options,
+                        null,
+                        2,
+                      )}
                       className="mt-2 text-left"
                     />
                   </details>
                 ) : (
                   <span
-                    className={cn('font-mono text-sm whitespace-nowrap', SEVERITY_STYLE[p.severity] ?? '')}
+                    className={cn(
+                      'font-mono text-sm whitespace-nowrap',
+                      SEVERITY_STYLE[p.severity] ?? '',
+                    )}
                   >
                     {p.severity}
                   </span>
@@ -146,7 +152,10 @@ export default async function RuleDetailPage({
       />
       <div className="flex flex-col gap-3">
         <div className="flex flex-wrap items-center gap-2">
-          <Link href={`/rules/${found.plugin}`} className="text-muted-foreground text-sm hover:underline">
+          <Link
+            href={`/rules/${found.plugin}`}
+            className="text-muted-foreground text-sm hover:underline"
+          >
             {found.pluginLabel}
           </Link>
           <span className="text-muted-foreground">/</span>
@@ -184,7 +193,9 @@ export default async function RuleDetailPage({
           ) : null}
           {found.oxlint.default ? <Badge variant="outline">On by default in oxlint</Badge> : null}
           {found.eslint.recommended ? <Badge variant="outline">ESLint recommended</Badge> : null}
-          {found.eslint.deprecated ? <Badge variant="destructive">Deprecated in ESLint</Badge> : null}
+          {found.eslint.deprecated ? (
+            <Badge variant="destructive">Deprecated in ESLint</Badge>
+          ) : null}
         </div>
         {!migrated && found.oxlint.reason ? (
           <p className="max-w-2xl rounded-lg border border-dashed p-3 text-sm text-balance">
@@ -242,7 +253,8 @@ export default async function RuleDetailPage({
               <div className="flex flex-col gap-2">
                 <h3 className="text-sm font-medium">Manually</h3>
                 <p className="text-muted-foreground text-xs">
-                  Add it directly to your <code className="bg-muted rounded px-1 py-0.5">.oxlintrc.json</code>.
+                  Add it directly to your{' '}
+                  <code className="bg-muted rounded px-1 py-0.5">.oxlintrc.json</code>.
                 </p>
                 <CodeBlock code={formatRuleSnippet(configKey, 'error')} />
               </div>
@@ -254,8 +266,9 @@ export default async function RuleDetailPage({
                     category
                   </h3>
                   <p className="text-muted-foreground text-xs">
-                    Turns on every <span className="font-mono capitalize">{found.oxlint.category}</span>{' '}
-                    rule, not just this one — a broader stroke than enabling it individually.
+                    Turns on every{' '}
+                    <span className="font-mono capitalize">{found.oxlint.category}</span> rule, not
+                    just this one — a broader stroke than enabling it individually.
                   </p>
                   <CodeBlock code={formatCategorySnippet(found.oxlint.category, 'warn')} />
                 </div>
@@ -268,9 +281,10 @@ export default async function RuleDetailPage({
                     <p className="text-muted-foreground text-xs">
                       {enabledPresets.length} oxlint-config-presets preset
                       {enabledPresets.length === 1 ? '' : 's'} already enable{' '}
-                      {enabledPresets.length === 1 ? 's' : ''} this rule as shown. Extend one from your{' '}
-                      <code className="bg-muted rounded px-1 py-0.5">.oxlintrc.json</code> — click
-                      &quot;Show snippet&quot; on a row for the exact <code className="bg-muted rounded px-1 py-0.5">extends</code> config.
+                      {enabledPresets.length === 1 ? 's' : ''} this rule as shown. Extend one from
+                      your <code className="bg-muted rounded px-1 py-0.5">.oxlintrc.json</code> —
+                      click &quot;Show snippet&quot; on a row for the exact{' '}
+                      <code className="bg-muted rounded px-1 py-0.5">extends</code> config.
                     </p>
                     <PresetTable presets={enabledPresets} />
                   </>
@@ -298,8 +312,8 @@ export default async function RuleDetailPage({
                   <>
                     <p className="text-muted-foreground text-xs">
                       {disabledPresets.length} preset{disabledPresets.length === 1 ? '' : 's'}{' '}
-                      explicitly turn{disabledPresets.length === 1 ? 's' : ''} this rule off. Extending
-                      one of these also disables it.
+                      explicitly turn{disabledPresets.length === 1 ? 's' : ''} this rule off.
+                      Extending one of these also disables it.
                     </p>
                     <PresetTable presets={disabledPresets} />
                   </>

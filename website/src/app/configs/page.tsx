@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-
+import { SetBreadcrumb } from '@/components/breadcrumb-context';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { SetBreadcrumb } from '@/components/breadcrumb-context';
 import { configHref, getConfigs } from '@/lib/data';
 
 export const metadata: Metadata = {

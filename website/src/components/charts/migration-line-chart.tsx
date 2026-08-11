@@ -1,7 +1,6 @@
 'use client';
 
 import { Area, AreaChart, CartesianGrid, ReferenceLine, XAxis, YAxis } from 'recharts';
-
 import {
   ChartContainer,
   ChartLegend,
@@ -54,7 +53,9 @@ export function MigrationLineChart({
 
   return (
     <div className="flex flex-col gap-3">
-      <p className="text-muted-foreground text-xs">Every published oxlint release ({points.length})</p>
+      <p className="text-muted-foreground text-xs">
+        Every published oxlint release ({points.length})
+      </p>
       <ChartContainer config={chartConfig} className="aspect-auto h-[320px] w-full">
         <AreaChart data={data} margin={{ left: 4, right: 12, top: 12, bottom: 0 }}>
           <defs>

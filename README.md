@@ -451,7 +451,7 @@ Extracted from `eslint-config-google@0.14.0`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/recommended.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
+Extracted from `@typescript-eslint/eslint-plugin@8.67.0`.
 
 <details>
 <summary>20 rules successfully migrated</summary>
@@ -466,7 +466,7 @@ Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/recommended-type-checked.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
+Extracted from `@typescript-eslint/eslint-plugin@8.67.0`.
 
 <details>
 <summary>47 rules successfully migrated</summary>
@@ -481,7 +481,7 @@ Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/strict.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
+Extracted from `@typescript-eslint/eslint-plugin@8.67.0`.
 
 <details>
 <summary>28 rules successfully migrated</summary>
@@ -496,7 +496,7 @@ Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/strict-type-checked.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
+Extracted from `@typescript-eslint/eslint-plugin@8.67.0`.
 
 <details>
 <summary>72 rules successfully migrated</summary>
@@ -511,7 +511,7 @@ Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/stylistic.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
+Extracted from `@typescript-eslint/eslint-plugin@8.67.0`.
 
 <details>
 <summary>13 rules successfully migrated</summary>
@@ -526,7 +526,7 @@ Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/stylistic-type-checked.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
+Extracted from `@typescript-eslint/eslint-plugin@8.67.0`.
 
 <details>
 <summary>21 rules successfully migrated</summary>
@@ -541,7 +541,7 @@ Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/all.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
+Extracted from `@typescript-eslint/eslint-plugin@8.67.0`.
 
 <details>
 <summary>126 rules successfully migrated</summary>
@@ -992,11 +992,12 @@ These rules are enabled but their configuration options were dropped because oxl
 </details>
 
 <details>
-<summary>3 migration warnings</summary>
+<summary>4 migration warnings</summary>
 
 - special parser detected: yaml-eslint-parser
 - special parser detected: toml-eslint-parser
 - ignore list inside overrides is not supported
+- Added 14 globals to the root config. This may happen when your ESLint config uses a different version of the `globals` package than @oxlint/migrate. Try updating `globals` and rerun the migration to get a simpler config.
 
 </details>
 
@@ -1878,7 +1879,7 @@ Extracted from `eslint-plugin-jest@28.14.0`.
 "./node_modules/oxlint-config-presets/@vitest/recommended.json"
 ```
 
-Extracted from `@vitest/eslint-plugin@1.6.26`.
+Extracted from `@vitest/eslint-plugin@1.6.27`.
 
 <details>
 <summary>17 rules successfully migrated</summary>
@@ -1893,7 +1894,7 @@ Extracted from `@vitest/eslint-plugin@1.6.26`.
 "./node_modules/oxlint-config-presets/@vitest/all.json"
 ```
 
-Extracted from `@vitest/eslint-plugin@1.6.26`.
+Extracted from `@vitest/eslint-plugin@1.6.27`.
 
 <details>
 <summary>71 rules successfully migrated</summary>

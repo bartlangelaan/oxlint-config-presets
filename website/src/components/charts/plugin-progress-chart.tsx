@@ -1,7 +1,6 @@
 'use client';
 
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis, YAxis } from 'recharts';
-
 import {
   ChartContainer,
   ChartTooltip,

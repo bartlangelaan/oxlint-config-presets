@@ -148,7 +148,9 @@ function fetchVersionRules(version) {
   }
 
   if (!rows) {
-    console.warn(`  [warn] Could not parse --rules output for oxlint@${version} (will retry later)`);
+    console.warn(
+      `  [warn] Could not parse --rules output for oxlint@${version} (will retry later)`,
+    );
     return [];
   }
 
@@ -183,7 +185,9 @@ function summarize(rows) {
 
 const times = npmViewTimes();
 const samples = allVersionsSorted(times);
-console.log(`Sampling all ${samples.length} oxlint releases (${samples[0].version} .. ${samples.at(-1).version})`);
+console.log(
+  `Sampling all ${samples.length} oxlint releases (${samples[0].version} .. ${samples.at(-1).version})`,
+);
 
 const results = [];
 for (const { version, date } of samples) {

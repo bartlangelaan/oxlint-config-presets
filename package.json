@@ -8,7 +8,7 @@
     "url": "git+https://github.com/popup-plus/oxlint-config-presets.git"
   },
   "scripts": {
-    "before-commit": "pnpm --filter oxlint-config-presets run generate && pnpm -r run test && pnpm oxlint",
+    "before-commit": "pnpm --filter oxlint-config-presets run generate && pnpm -r run test && pnpm fmt && pnpm oxlint",
     "fmt": "oxfmt",
     "oxlint": "oxlint"
   },

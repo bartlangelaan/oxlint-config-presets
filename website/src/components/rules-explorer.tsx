@@ -1,9 +1,8 @@
 'use client';
 
+import { Boxes, Search, Sparkles, Wrench } from 'lucide-react';
 import Link from 'next/link';
 import { useDeferredValue, useMemo, useState } from 'react';
-import { Boxes, Search, Sparkles, Wrench } from 'lucide-react';
-
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import {
@@ -66,7 +65,9 @@ export function RulesExplorer({
   }, [withDisplayStatus, plugin, status, deferredQuery]);
 
   const hiddenNotPortable =
-    status === 'eligible' ? rules.length - withDisplayStatus.filter((r) => r.displayStatus !== 'not-portable').length : 0;
+    status === 'eligible'
+      ? rules.length - withDisplayStatus.filter((r) => r.displayStatus !== 'not-portable').length
+      : 0;
 
   return (
     <div className="flex flex-col gap-4">
@@ -134,7 +135,12 @@ export function RulesExplorer({
               const meta = STATUS_META[r.displayStatus];
               const Icon = meta.icon;
               const statusCell = (
-                <span className={cn('inline-flex items-center gap-1 text-xs font-medium', meta.className)}>
+                <span
+                  className={cn(
+                    'inline-flex items-center gap-1 text-xs font-medium',
+                    meta.className,
+                  )}
+                >
                   <Icon className="size-3.5 shrink-0" />
                   <span className="hidden sm:inline">{meta.short}</span>
                 </span>
@@ -224,7 +230,9 @@ export function RulesExplorer({
                     {r.reason ? (
                       <Tooltip>
                         <TooltipTrigger>{statusCell}</TooltipTrigger>
-                        <TooltipContent className="max-w-64 text-balance">{r.reason}</TooltipContent>
+                        <TooltipContent className="max-w-64 text-balance">
+                          {r.reason}
+                        </TooltipContent>
                       </Tooltip>
                     ) : (
                       statusCell

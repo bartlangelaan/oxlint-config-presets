@@ -1,13 +1,12 @@
+import { ListChecks } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ListChecks } from 'lucide-react';
-
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { SetBreadcrumb } from '@/components/breadcrumb-context';
 import { MigrationLineChart } from '@/components/charts/migration-line-chart';
 import { AutofixTiles, StatusTiles, TargetHeadline } from '@/components/status-breakdown';
-import { SetBreadcrumb } from '@/components/breadcrumb-context';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { getMigrationHistory, getPlugin, getPlugins } from '@/lib/data';
 
 // "Oxlint original" rules aren't part of the ESLint migration target, so there's

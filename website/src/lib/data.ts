@@ -1,9 +1,9 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import rulesJson from '@/data/rules.json';
-import pluginsJson from '@/data/plugins.json';
 import configsJson from '@/data/configs.json';
 import migrationHistoryJson from '@/data/migration-history.json';
+import pluginsJson from '@/data/plugins.json';
+import rulesJson from '@/data/rules.json';
 
 const configsDir = join(process.cwd(), '..', 'packages/oxlint-config-presets/configs');
 
@@ -191,7 +191,9 @@ export function getConfigSource(path: string): string | null {
   }
 }
 
-export function getRulesForConfig(path: string): { rule: Rule; severity: string; options: unknown[] | null }[] {
+export function getRulesForConfig(
+  path: string,
+): { rule: Rule; severity: string; options: unknown[] | null }[] {
   const out: { rule: Rule; severity: string; options: unknown[] | null }[] = [];
   for (const rule of rules) {
     const entry = rule.presets.find((p) => p.config === path);
