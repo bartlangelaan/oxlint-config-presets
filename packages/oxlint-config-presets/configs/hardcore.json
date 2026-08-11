@@ -153,6 +153,7 @@
     ],
     "func-names": ["error", "as-needed"],
     "func-style": ["error", "declaration"],
+    "one-var": ["error", "never"],
     "no-else-return": [
       "error",
       {

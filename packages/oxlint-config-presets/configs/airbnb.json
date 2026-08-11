@@ -390,6 +390,7 @@
         "defaultAssignment": false
       }
     ],
+    "one-var": ["error", "never"],
     "operator-assignment": ["error", "always"],
     "prefer-exponentiation-operator": "error",
     "prefer-object-spread": "error",
@@ -779,7 +780,12 @@
         "input[type=\"image\"]": []
       }
     ],
-    "jsx-a11y/anchor-has-content": "error",
+    "jsx-a11y/anchor-has-content": [
+      "error",
+      {
+        "components": []
+      }
+    ],
     "jsx-a11y/anchor-is-valid": [
       "error",
       {

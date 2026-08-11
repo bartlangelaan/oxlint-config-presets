@@ -338,6 +338,7 @@
         "defaultAssignment": false
       }
     ],
+    "one-var": ["error", "never"],
     "operator-assignment": ["error", "always"],
     "prefer-exponentiation-operator": "error",
     "prefer-object-spread": "off",
