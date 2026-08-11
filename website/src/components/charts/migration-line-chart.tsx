@@ -1,7 +1,6 @@
 'use client';
 
 import { Area, AreaChart, CartesianGrid, ReferenceLine, XAxis, YAxis } from 'recharts';
-
 import {
   ChartContainer,
   ChartLegend,
@@ -65,7 +64,8 @@ export function MigrationLineChart({
   return (
     <div className="flex flex-col gap-3">
       <p className="text-muted-foreground text-xs">
-        Every published oxlint release ({points.length}) — scroll horizontally to inspect any of them
+        Every published oxlint release ({points.length}) — scroll horizontally to inspect any of
+        them
       </p>
       {/*
         `contain: inline-size` makes this box's own width independent of its
@@ -118,7 +118,9 @@ export function MigrationLineChart({
                 content={
                   <ChartTooltipContent
                     labelFormatter={(_, payload) => {
-                      const p = payload?.[0]?.payload as { date: string; version: string } | undefined;
+                      const p = payload?.[0]?.payload as
+                        | { date: string; version: string }
+                        | undefined;
                       if (!p) return '';
                       return `${new Date(p.date).toLocaleDateString('en-US', { dateStyle: 'medium' })} · oxlint@${p.version}`;
                     }}

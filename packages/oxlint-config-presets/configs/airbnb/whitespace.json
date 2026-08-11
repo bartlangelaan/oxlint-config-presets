@@ -336,6 +336,7 @@
     ],
     "func-names": "warn",
     "func-style": ["off", "expression"],
+    "id-denylist": "off",
     "id-length": "off",
     "id-match": "off",
     "max-depth": ["off", 4],
@@ -399,6 +400,7 @@
         "defaultAssignment": false
       }
     ],
+    "one-var": ["warn", "never"],
     "operator-assignment": ["warn", "always"],
     "prefer-exponentiation-operator": ["warn"],
     "prefer-object-spread": ["warn"],
@@ -790,7 +792,12 @@
         "input[type=\"image\"]": []
       }
     ],
-    "jsx-a11y/anchor-has-content": "warn",
+    "jsx-a11y/anchor-has-content": [
+      "warn",
+      {
+        "components": []
+      }
+    ],
     "jsx-a11y/anchor-is-valid": [
       "warn",
       {

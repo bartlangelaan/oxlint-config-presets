@@ -8,15 +8,15 @@
     "url": "git+https://github.com/popup-plus/oxlint-config-presets.git"
   },
   "scripts": {
-    "before-commit": "pnpm --filter oxlint-config-presets run generate && pnpm -r run test && pnpm oxlint",
+    "before-commit": "pnpm --filter oxlint-config-presets run generate && pnpm -r run test && pnpm fmt && pnpm oxlint",
     "fmt": "oxfmt",
     "oxlint": "oxlint"
   },
   "devDependencies": {
-    "@types/node": "^26.1.1",
+    "@types/node": "^26.2.0",
     "@typescript/native": "npm:typescript@^7.0.2",
-    "oxfmt": "^0.60.0",
-    "oxlint": "^1.75.0",
+    "oxfmt": "^0.63.0",
+    "oxlint": "^1.78.0",
     "oxlint-tsgolint": "^7.0.2001",
     "typescript": "npm:@typescript/typescript6@^6.0.2"
   },
@@ -24,6 +24,9 @@
   "pnpm": {
     "overrides": {
       "typescript": "npm:@typescript/typescript6@^6.0.2"
+    },
+    "patchedDependencies": {
+      "@oxlint/migrate@1.78.0": "patches/@oxlint__migrate@1.78.0.patch"
     }
   }
 }

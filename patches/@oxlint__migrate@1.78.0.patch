@@ -1,7 +1,7 @@
-diff --git a/dist/src-V0W_ayvY.mjs b/dist/src-V0W_ayvY.mjs
-index 2c2135ee6c237ce6cf023262e79e64f0af7188d9..5a136924c5d9ac0b027c2cc68a33de8e244a7226 100644
---- a/dist/src-V0W_ayvY.mjs
-+++ b/dist/src-V0W_ayvY.mjs
+diff --git a/dist/src-Bn5kidka.mjs b/dist/src-Bn5kidka.mjs
+index ad63ef58d85a049cda1172a6e4b461c6a755ff95..caa9f6fe99064a380e367c677a3c209a8eca4f6d 100644
+--- a/dist/src-Bn5kidka.mjs
++++ b/dist/src-Bn5kidka.mjs
 @@ -1,4 +1,6 @@
  import globals from "globals";
 +import { readFileSync } from "node:fs";
@@ -9,7 +9,7 @@ index 2c2135ee6c237ce6cf023262e79e64f0af7188d9..5a136924c5d9ac0b027c2cc68a33de8e
  //#region \0rolldown/runtime.js
  var __defProp = Object.defineProperty;
  var __exportAll = (all, no_symbols) => {
-@@ -197,14 +199,17 @@ const rulesPrefixesForPlugins = {
+@@ -197,14 +199,17 @@
  	vitest: "vitest",
  	vue: "vue"
  };
@@ -27,14 +27,8 @@ index 2c2135ee6c237ce6cf023262e79e64f0af7188d9..5a136924c5d9ac0b027c2cc68a33de8e
  	for (const [prefix, plugin] of Object.entries(rulesPrefixesForPlugins)) if (prefix !== plugin && rule.startsWith(`${prefix}/`)) return `${plugin}/${rule.slice(prefix.length + 1)}`;
  	return rule;
  }
-@@ -2036,8 +2041,18 @@ const replaceRulePrefix = (config, oldPrefix, newPrefix) => {
- *
- * This should run AFTER `replaceTypescriptAliasRules` so that rules which
+@@ -2047,6 +2052,12 @@
  * extend core ESLint rules have already been stripped of their prefix.
-+*
-+* Also applies `normalizeRuleToCanonical`'s `ruleRenames` map, so rules known
-+* under a different name in Oxlint (e.g. "unicorn/no-for-each" →
-+* "unicorn/no-array-for-each") end up under the name Oxlint actually implements.
  */
  const replaceCanonicalPluginPrefixes = (config) => {
 +	if (config.rules !== void 0) for (const rule of Object.keys(config.rules)) {
@@ -46,7 +40,7 @@ index 2c2135ee6c237ce6cf023262e79e64f0af7188d9..5a136924c5d9ac0b027c2cc68a33de8e
  	for (const [prefix, plugin] of Object.entries(rulesPrefixesForPlugins)) if (prefix !== plugin) replaceRulePrefix(config, prefix, plugin);
  };
  //#endregion
-@@ -2103,7 +2118,6 @@ const cleanUpOxlintConfig = (config) => {
+@@ -2112,7 +2123,6 @@
  	}
  	if (!("files" in config)) {
  		cleanUpUselessOverridesEntries(config);

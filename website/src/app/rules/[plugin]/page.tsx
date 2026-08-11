@@ -1,11 +1,10 @@
+import { LineChart } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { LineChart } from 'lucide-react';
-
-import { Badge } from '@/components/ui/badge';
-import { RulesExplorer } from '@/components/rules-explorer';
 import { SetBreadcrumb } from '@/components/breadcrumb-context';
+import { RulesExplorer } from '@/components/rules-explorer';
+import { Badge } from '@/components/ui/badge';
 import { getPlugin, getPlugins, getRuleListItems } from '@/lib/data';
 
 export function generateStaticParams() {
@@ -27,11 +26,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function PluginRulesPage({
-  params,
-}: {
-  params: Promise<{ plugin: string }>;
-}) {
+export default async function PluginRulesPage({ params }: { params: Promise<{ plugin: string }> }) {
   const { plugin: pluginId } = await params;
   const plugin = getPlugin(pluginId);
   if (!plugin) notFound();
@@ -72,8 +67,8 @@ export default async function PluginRulesPage({
           ) : (
             <>
               Source: {plugin.sourcePackages.map((s) => `\`${s}\``).join(', ')}. Rules oxlint has
-              implemented use its <code className="bg-muted rounded px-1 py-0.5">{plugin.oxlintScope}</code>{' '}
-              scope.
+              implemented use its{' '}
+              <code className="bg-muted rounded px-1 py-0.5">{plugin.oxlintScope}</code> scope.
             </>
           )}
         </p>

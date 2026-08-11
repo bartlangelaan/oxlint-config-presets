@@ -1,13 +1,12 @@
+import { ListChecks } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ListChecks } from 'lucide-react';
-
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { SetBreadcrumb } from '@/components/breadcrumb-context';
 import { MigrationLineChart } from '@/components/charts/migration-line-chart';
 import { AutofixTiles, StatusTiles, TargetHeadline } from '@/components/status-breakdown';
-import { SetBreadcrumb } from '@/components/breadcrumb-context';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { getPlugin, getPluginMigrationHistory, getPlugins } from '@/lib/data';
 
 // "Oxlint original" rules aren't part of the ESLint migration target, so there's
@@ -99,9 +98,9 @@ export default async function PluginProgressPage({
             <code className="bg-muted rounded px-1 py-0.5">{plugin.oxlintScope}</code> scope. The
             top line includes rules with a planned-but-not-implemented autofix; the bottom line is
             rules with nothing outstanding (it starts later — older oxlint releases didn&apos;t
-            report autofix status at all). The dashed line marks today&apos;s target ({targetValue}
-            {' '}rules) — {plugin.label} gains new ESLint rules over time too, so this line is
-            specific to {plugin.label}, not a global figure.
+            report autofix status at all). The dashed line marks today&apos;s target ({targetValue}{' '}
+            rules) — {plugin.label} gains new ESLint rules over time too, so this line is specific
+            to {plugin.label}, not a global figure.
           </CardDescription>
         </CardHeader>
         <CardContent>

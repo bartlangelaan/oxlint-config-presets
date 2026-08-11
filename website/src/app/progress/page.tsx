@@ -1,7 +1,10 @@
+import { LineChart } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { LineChart } from 'lucide-react';
-
+import { SetBreadcrumb } from '@/components/breadcrumb-context';
+import { MigrationLineChart } from '@/components/charts/migration-line-chart';
+import { PluginProgressChart } from '@/components/charts/plugin-progress-chart';
+import { AutofixTiles, StatusTiles, TargetHeadline } from '@/components/status-breakdown';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import {
@@ -12,10 +15,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { MigrationLineChart } from '@/components/charts/migration-line-chart';
-import { PluginProgressChart } from '@/components/charts/plugin-progress-chart';
-import { AutofixTiles, StatusTiles, TargetHeadline } from '@/components/status-breakdown';
-import { SetBreadcrumb } from '@/components/breadcrumb-context';
 import { getMigrationHistory, getPlugins, getSummary } from '@/lib/data';
 
 export const metadata: Metadata = {
@@ -82,7 +81,9 @@ export default function ProgressPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-xs">{last?.totalImplemented} rules implemented</p>
+            <p className="text-muted-foreground text-xs">
+              {last?.totalImplemented} rules implemented
+            </p>
           </CardContent>
         </Card>
       </div>
@@ -106,9 +107,9 @@ export default function ProgressPage() {
           <CardTitle>Implemented rules over time</CardTitle>
           <CardDescription>
             Every oxlint release ever published on npm. The top line is every rule migrated,
-            including ones with a planned-but-not-implemented autofix; the bottom line is rules
-            with nothing outstanding. The dashed line marks today&apos;s target (rules that are
-            migrated, not-yet-implemented, or need a JS plugin — i.e. everything except &quot;not
+            including ones with a planned-but-not-implemented autofix; the bottom line is rules with
+            nothing outstanding. The dashed line marks today&apos;s target (rules that are migrated,
+            not-yet-implemented, or need a JS plugin — i.e. everything except &quot;not
             portable&quot;).
           </CardDescription>
         </CardHeader>
@@ -160,8 +161,12 @@ export default function ProgressPage() {
                         {p.label}
                       </Link>
                     </TableCell>
-                    <TableCell className="text-right font-mono tabular-nums">{p.migrated}</TableCell>
-                    <TableCell className="text-right font-mono tabular-nums">{p.eligible}</TableCell>
+                    <TableCell className="text-right font-mono tabular-nums">
+                      {p.migrated}
+                    </TableCell>
+                    <TableCell className="text-right font-mono tabular-nums">
+                      {p.eligible}
+                    </TableCell>
                     <TableCell className="text-muted-foreground hidden text-right font-mono tabular-nums sm:table-cell">
                       {p.notPortable}
                     </TableCell>
@@ -197,8 +202,8 @@ export default function ProgressPage() {
       <p className="text-muted-foreground text-xs">
         Methodology: rule counts come straight from{' '}
         <code className="bg-muted rounded px-1 py-0.5">oxlint --rules --format json</code>,
-        cross-referenced against each ESLint plugin&apos;s own rule registry using the same logic
-        as oxc&apos;s{' '}
+        cross-referenced against each ESLint plugin&apos;s own rule registry using the same logic as
+        oxc&apos;s{' '}
         <a
           className="underline underline-offset-2"
           href="https://github.com/oxc-project/oxc/blob/main/tasks/lint_rules/src/eslint-rules.mjs"
@@ -209,9 +214,9 @@ export default function ProgressPage() {
         </a>{' '}
         scripts, plus <code className="bg-muted rounded px-1 py-0.5">@oxlint/migrate</code>&apos;s
         skip-reason reporter to tell &quot;not yet implemented&quot; apart from &quot;not
-        portable&quot;. The historical chart counts oxlint&apos;s own implemented-rule total at
-        each release (a purely oxlint-side number); today&apos;s status breakdown additionally
-        classifies rules oxlint has decided not to port, which the historical series can&apos;t do
+        portable&quot;. The historical chart counts oxlint&apos;s own implemented-rule total at each
+        release (a purely oxlint-side number); today&apos;s status breakdown additionally classifies
+        rules oxlint has decided not to port, which the historical series can&apos;t do
         retroactively without re-running that classification at every past release.
       </p>
     </div>

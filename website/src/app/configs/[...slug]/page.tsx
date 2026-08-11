@@ -1,11 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-
+import { SetBreadcrumb } from '@/components/breadcrumb-context';
+import { CodeBlock } from '@/components/code-block';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CodeBlock } from '@/components/code-block';
-import { SetBreadcrumb } from '@/components/breadcrumb-context';
 import {
   Table,
   TableBody,
@@ -39,7 +38,9 @@ export async function generateMetadata({
   const config = getConfig(path);
   return {
     title: config ? path : 'Unknown config',
-    description: config ? `${config.ruleCount} rules enabled by oxlint-config-presets/${path}.` : undefined,
+    description: config
+      ? `${config.ruleCount} rules enabled by oxlint-config-presets/${path}.`
+      : undefined,
   };
 }
 
@@ -116,13 +117,20 @@ export default async function ConfigDetailPage({
                           </span>
                         </summary>
                         <CodeBlock
-                          code={JSON.stringify(options.length === 1 ? options[0] : options, null, 2)}
+                          code={JSON.stringify(
+                            options.length === 1 ? options[0] : options,
+                            null,
+                            2,
+                          )}
                           className="mt-2 text-left"
                         />
                       </details>
                     ) : (
                       <span
-                        className={cn('font-mono text-sm whitespace-nowrap', SEVERITY_STYLE[severity] ?? '')}
+                        className={cn(
+                          'font-mono text-sm whitespace-nowrap',
+                          SEVERITY_STYLE[severity] ?? '',
+                        )}
                       >
                         {severity}
                       </span>

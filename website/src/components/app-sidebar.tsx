@@ -1,7 +1,5 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import {
   BookOpenText,
   Boxes,
@@ -11,7 +9,8 @@ import {
   ListChecks,
   Package,
 } from 'lucide-react';
-
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   Sidebar,
   SidebarContent,

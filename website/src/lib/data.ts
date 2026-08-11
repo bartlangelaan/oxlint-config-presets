@@ -1,9 +1,9 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import rulesJson from '@/data/rules.json';
-import pluginsJson from '@/data/plugins.json';
 import configsJson from '@/data/configs.json';
 import migrationHistoryJson from '@/data/oxlint-migration-history.json';
+import pluginsJson from '@/data/plugins.json';
+import rulesJson from '@/data/rules.json';
 
 const configsDir = join(process.cwd(), '..', 'packages/oxlint-config-presets/configs');
 const dataDir = join(process.cwd(), 'src/data');
@@ -205,7 +205,9 @@ export function getConfigSource(path: string): string | null {
   }
 }
 
-export function getRulesForConfig(path: string): { rule: Rule; severity: string; options: unknown[] | null }[] {
+export function getRulesForConfig(
+  path: string,
+): { rule: Rule; severity: string; options: unknown[] | null }[] {
   const out: { rule: Rule; severity: string; options: unknown[] | null }[] = [];
   for (const rule of rules) {
     const entry = rule.presets.find((p) => p.config === path);
@@ -224,7 +226,9 @@ const pluginMigrationHistoryCache = new Map<string, PluginMigrationHistory | nul
 export function getPluginMigrationHistory(scope: string): PluginMigrationHistory | null {
   if (pluginMigrationHistoryCache.has(scope)) return pluginMigrationHistoryCache.get(scope) ?? null;
   const path = join(dataDir, `oxlint-migration-history-${scope}.json`);
-  const result = existsSync(path) ? (JSON.parse(readFileSync(path, 'utf-8')) as PluginMigrationHistory) : null;
+  const result = existsSync(path)
+    ? (JSON.parse(readFileSync(path, 'utf-8')) as PluginMigrationHistory)
+    : null;
   pluginMigrationHistoryCache.set(scope, result);
   return result;
 }

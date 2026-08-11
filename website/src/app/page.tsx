@@ -1,9 +1,8 @@
-import Link from 'next/link';
 import { ArrowRight, ListChecks, Package, TrendingUp } from 'lucide-react';
-
+import Link from 'next/link';
+import { MigrationLineChart } from '@/components/charts/migration-line-chart';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { MigrationLineChart } from '@/components/charts/migration-line-chart';
 import { getConfigs, getMigrationHistory, getPlugins, getSummary } from '@/lib/data';
 
 export default function Home() {
@@ -48,7 +47,11 @@ export default function Home() {
           value={`${summary.migrated.toLocaleString()} / ${summary.eligible.toLocaleString()}`}
           sub={`${pct}% of the migration target`}
         />
-        <StatCard label="Plugins tracked" value={String(plugins.length)} sub="from ESLint core to Vue" />
+        <StatCard
+          label="Plugins tracked"
+          value={String(plugins.length)}
+          sub="from ESLint core to Vue"
+        />
         <StatCard
           label="Config presets"
           value={String(configs.length)}
@@ -125,8 +128,8 @@ export default function Home() {
           <CardContent className="flex flex-col gap-3">
             <p className="text-muted-foreground text-sm">
               Browse all {summary.total.toLocaleString()} rules, filter by plugin or migration
-              status, and jump straight to a rule&apos;s detail page to see every config preset
-              that turns it on.
+              status, and jump straight to a rule&apos;s detail page to see every config preset that
+              turns it on.
             </p>
             <Link
               href="/rules"

@@ -15,8 +15,8 @@
  */
 
 import { spawnSync } from 'node:child_process';
-import { createRequire } from 'node:module';
 import { readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import migrate from '@oxlint/migrate';
@@ -87,7 +87,9 @@ function mergeRuleDicts(...dicts: RuleDict[]): RuleDict {
 }
 
 function eslintCoreRules(): RuleDict {
-  const { builtinRules } = req('eslint/use-at-your-own-risk') as { builtinRules: Map<string, RawRule> };
+  const { builtinRules } = req('eslint/use-at-your-own-risk') as {
+    builtinRules: Map<string, RawRule>;
+  };
   const dict: RuleDict = {};
   for (const [name, rule] of builtinRules) dict[name] = rule;
   return dict;
@@ -123,7 +125,8 @@ const plugins: PluginDef[] = [
     configPrefix: 'unicorn/',
     oxlintScope: 'unicorn',
     loadRules: () => esmRules('eslint-plugin-unicorn'),
-    docsUrl: (name) => `https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/${name}.md`,
+    docsUrl: (name) =>
+      `https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/${name}.md`,
     sourcePackages: ['eslint-plugin-unicorn'],
     explanationPrefixes: ['unicorn/'],
   },
@@ -145,7 +148,11 @@ const plugins: PluginDef[] = [
         : name === 'rules-of-hooks' || name === 'exhaustive-deps'
           ? 'https://react.dev/reference/rules/rules-of-hooks'
           : `https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/${name}.md`,
-    sourcePackages: ['eslint-plugin-react', 'eslint-plugin-react-hooks', 'eslint-plugin-react-refresh'],
+    sourcePackages: [
+      'eslint-plugin-react',
+      'eslint-plugin-react-hooks',
+      'eslint-plugin-react-refresh',
+    ],
     explanationPrefixes: ['react/', 'react-hooks/', 'react-refresh/'],
   },
   {
@@ -154,8 +161,10 @@ const plugins: PluginDef[] = [
     sourcePrefix: 'import/',
     configPrefix: 'import/',
     oxlintScope: 'import',
-    loadRules: () => mergeRuleDicts(cjsRules('eslint-plugin-import'), cjsRules('eslint-plugin-import-x')),
-    docsUrl: (name) => `https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/${name}.md`,
+    loadRules: () =>
+      mergeRuleDicts(cjsRules('eslint-plugin-import'), cjsRules('eslint-plugin-import-x')),
+    docsUrl: (name) =>
+      `https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/${name}.md`,
     sourcePackages: ['eslint-plugin-import', 'eslint-plugin-import-x'],
     explanationPrefixes: ['import/', 'import-x/'],
   },
@@ -166,7 +175,8 @@ const plugins: PluginDef[] = [
     configPrefix: 'jsdoc/',
     oxlintScope: 'jsdoc',
     loadRules: () => esmRules('eslint-plugin-jsdoc'),
-    docsUrl: (name) => `https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/${name}.md`,
+    docsUrl: (name) =>
+      `https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/${name}.md`,
     sourcePackages: ['eslint-plugin-jsdoc'],
     explanationPrefixes: ['jsdoc/'],
   },
@@ -177,7 +187,8 @@ const plugins: PluginDef[] = [
     configPrefix: 'jest/',
     oxlintScope: 'jest',
     loadRules: () => cjsRules('eslint-plugin-jest'),
-    docsUrl: (name) => `https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/${name}.md`,
+    docsUrl: (name) =>
+      `https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/${name}.md`,
     sourcePackages: ['eslint-plugin-jest'],
     explanationPrefixes: ['jest/'],
   },
@@ -199,7 +210,8 @@ const plugins: PluginDef[] = [
     configPrefix: 'jsx-a11y/',
     oxlintScope: 'jsx_a11y',
     loadRules: () => cjsRules('eslint-plugin-jsx-a11y'),
-    docsUrl: (name) => `https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/${name}.md`,
+    docsUrl: (name) =>
+      `https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/${name}.md`,
     sourcePackages: ['eslint-plugin-jsx-a11y'],
     explanationPrefixes: ['jsx-a11y/'],
   },
@@ -232,7 +244,8 @@ const plugins: PluginDef[] = [
     configPrefix: 'promise/',
     oxlintScope: 'promise',
     loadRules: () => cjsRules('eslint-plugin-promise'),
-    docsUrl: (name) => `https://github.com/eslint-community/eslint-plugin-promise/blob/main/docs/rules/${name}.md`,
+    docsUrl: (name) =>
+      `https://github.com/eslint-community/eslint-plugin-promise/blob/main/docs/rules/${name}.md`,
     sourcePackages: ['eslint-plugin-promise'],
     explanationPrefixes: ['promise/'],
   },
@@ -243,7 +256,8 @@ const plugins: PluginDef[] = [
     configPrefix: 'node/',
     oxlintScope: 'node',
     loadRules: () => cjsRules('eslint-plugin-n'),
-    docsUrl: (name) => `https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/${name}.md`,
+    docsUrl: (name) =>
+      `https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/${name}.md`,
     sourcePackages: ['eslint-plugin-n'],
     explanationPrefixes: ['n/', 'node/'],
   },
@@ -604,7 +618,9 @@ console.log(`Resolved ${allOutputRules.length} ESLint rules across ${plugins.len
 console.log('Running @oxlint/migrate to recover skip reasons...');
 
 const migrateResult = await migrate([migrateInputs], undefined, {
-  reporter: reporter as unknown as Parameters<typeof migrate>[2] extends { reporter?: infer R } ? R : never,
+  reporter: reporter as unknown as Parameters<typeof migrate>[2] extends { reporter?: infer R }
+    ? R
+    : never,
   withNursery: true,
   typeAware: true,
 });

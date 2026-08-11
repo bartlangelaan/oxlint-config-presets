@@ -156,7 +156,9 @@ function fetchVersionRules(version) {
   }
 
   if (!rows) {
-    console.warn(`  [warn] Could not parse --rules output for oxlint@${version} (will retry later)`);
+    console.warn(
+      `  [warn] Could not parse --rules output for oxlint@${version} (will retry later)`,
+    );
     return [];
   }
 
@@ -201,7 +203,9 @@ function summarize(rows) {
 
 const times = npmViewTimes();
 const samples = allVersionsSorted(times);
-console.log(`Sampling all ${samples.length} oxlint releases (${samples[0].version} .. ${samples.at(-1).version})`);
+console.log(
+  `Sampling all ${samples.length} oxlint releases (${samples[0].version} .. ${samples.at(-1).version})`,
+);
 
 const results = [];
 for (const { version, date } of samples) {
@@ -250,7 +254,12 @@ for (const scope of KNOWN_SCOPES) {
   for (const r of results) {
     const s = r.byScope[scope];
     if (!s) continue; // scope didn't exist yet at this release
-    scopeSamples.push({ version: r.version, date: r.date, total: s.total, fullyMigrated: s.fullyMigrated });
+    scopeSamples.push({
+      version: r.version,
+      date: r.date,
+      total: s.total,
+      fullyMigrated: s.fullyMigrated,
+    });
   }
   writeFileSync(
     join(dataDir, `oxlint-migration-history-${scope}.json`),
@@ -261,7 +270,9 @@ for (const scope of KNOWN_SCOPES) {
       samples: scopeSamples,
     }),
   );
-  console.log(`Wrote ${join('src/data', `oxlint-migration-history-${scope}.json`)} (${scopeSamples.length} samples)`);
+  console.log(
+    `Wrote ${join('src/data', `oxlint-migration-history-${scope}.json`)} (${scopeSamples.length} samples)`,
+  );
 }
 
 // Old filename from before the rename/split — remove so it doesn't linger as stale data.

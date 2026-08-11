@@ -9,7 +9,11 @@ export function formatRuleValue(severity: string, options: unknown[] | null): st
 }
 
 /** A full `.oxlintrc.json` snippet enabling/disabling a single rule, pretty-printed. */
-export function formatRuleSnippet(configKey: string, severity: string, options: unknown[] | null = null): string {
+export function formatRuleSnippet(
+  configKey: string,
+  severity: string,
+  options: unknown[] | null = null,
+): string {
   return JSON.stringify({ rules: { [configKey]: ruleValue(severity, options) } }, null, 2);
 }
 

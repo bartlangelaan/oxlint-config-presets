@@ -9,8 +9,8 @@ export function TargetHeadline({ stats }: { stats: Stats }) {
     <Card>
       <CardHeader>
         <CardDescription>
-          Migrated / target ({stats.total.toLocaleString()} total, {stats.notPortable.toLocaleString()}{' '}
-          not portable)
+          Migrated / target ({stats.total.toLocaleString()} total,{' '}
+          {stats.notPortable.toLocaleString()} not portable)
         </CardDescription>
         <CardTitle className="text-2xl font-semibold tabular-nums">
           {stats.migrated.toLocaleString()} / {stats.eligible.toLocaleString()}
