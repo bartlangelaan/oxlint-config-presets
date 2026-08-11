@@ -47,8 +47,10 @@ export default async function PluginProgressPage({
     version: s.version,
     value: s.total,
     fullyMigrated: s.fullyMigrated,
+    target: s.target,
   }));
   const targetValue = history?.target ?? plugin.eligible;
+  const coverage = history?.targetTrackingCoverage;
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 p-4 md:p-8">
@@ -96,19 +98,23 @@ export default async function PluginProgressPage({
           <CardDescription>
             Every oxlint release ever published on npm, counting rules under the{' '}
             <code className="bg-muted rounded px-1 py-0.5">{plugin.oxlintScope}</code> scope. The
-            top line includes rules with a planned-but-not-implemented autofix; the bottom line is
-            rules with nothing outstanding (it starts later — older oxlint releases didn&apos;t
-            report autofix status at all). The dashed line marks today&apos;s target ({targetValue}{' '}
-            rules) — {plugin.label} gains new ESLint rules over time too, so this line is specific
-            to {plugin.label}, not a global figure.
+            top solid line includes rules with a planned-but-not-implemented autofix; the bottom
+            solid line is rules with nothing outstanding (it starts later — older oxlint releases
+            didn&apos;t report autofix status at all). The dashed step line is {plugin.label}
+            &apos;s own target — every eligible {plugin.label} rule that existed as of that date,
+            currently {targetValue} — {plugin.label} gains new ESLint rules over time too, so this
+            line isn&apos;t flat.
           </CardDescription>
+          {coverage && !coverage.hasHistory ? (
+            <p className="text-muted-foreground max-w-2xl text-xs">
+              {plugin.sourcePackages.join(', ')} ships as a single pre-bundled file with no
+              discoverable per-release rule listing, so this target line uses today&apos;s count
+              throughout rather than a real growth curve.
+            </p>
+          ) : null}
         </CardHeader>
         <CardContent>
-          <MigrationLineChart
-            points={points}
-            targetValue={targetValue}
-            targetLabel={`${targetValue} rules (target)`}
-          />
+          <MigrationLineChart points={points} />
         </CardContent>
       </Card>
     </div>

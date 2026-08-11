@@ -121,6 +121,12 @@ export interface MigrationSample {
    * (oxlint < 1.40.0) — genuinely unknown, not zero pending.
    */
   fullyMigrated: number | null;
+  /**
+   * How many eligible (portable) ESLint rules existed across all plugins as of
+   * this release's date — the real, growing target denominator, not a flat
+   * number. Null if collect-eslint-history.mjs hasn't been run yet.
+   */
+  target: number | null;
 }
 
 export interface PluginMigrationSample {
@@ -128,13 +134,24 @@ export interface PluginMigrationSample {
   date: string;
   total: number;
   fullyMigrated: number | null;
+  /** How many of this plugin's eligible rules existed as of this release's date. */
+  target: number | null;
+}
+
+export interface TargetTrackingCoverage {
+  matchedCount: number;
+  totalEligible: number;
+  /** False when every eligible rule fell back to a flat baseline (a bundled package with no discoverable per-release rule listing, e.g. @vitest/eslint-plugin). */
+  hasHistory: boolean;
 }
 
 export interface PluginMigrationHistory {
   generatedAt: string;
   scope: string;
-  /** Today's eligible-rule count for this plugin — the chart's target line. */
+  /** Today's eligible-rule count for this plugin — matches the last sample's target. */
   target: number | null;
+  /** How much of `target`'s history is real vs. a flat fallback baseline. Absent if collect-eslint-history.mjs hasn't been run yet. */
+  targetTrackingCoverage?: TargetTrackingCoverage;
   samples: PluginMigrationSample[];
 }
 

@@ -5,6 +5,7 @@
   "scripts": {
     "build": "next build",
     "collect-data": "node --import tsx/esm scripts/generate-rules-data.mts",
+    "collect-eslint-history": "node --import tsx/esm scripts/collect-eslint-target-history.mjs",
     "collect-history": "node --import tsx/esm scripts/collect-history.mjs",
     "dev": "next dev",
     "start": "next start"

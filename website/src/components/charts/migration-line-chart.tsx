@@ -1,6 +1,6 @@
 'use client';
 
-import { Area, AreaChart, CartesianGrid, ReferenceLine, XAxis, YAxis } from 'recharts';
+import { Area, AreaChart, CartesianGrid, Line, XAxis, YAxis } from 'recharts';
 import {
   ChartContainer,
   ChartLegend,
@@ -20,6 +20,12 @@ export interface MigrationChartPoint {
    * when this release didn't report fix status at all (unknown, not zero).
    */
   fullyMigrated: number | null;
+  /**
+   * How many eligible ESLint rules existed as of this point — the real
+   * target denominator, which grows as plugins add rules. Null if
+   * collect-eslint-history.mjs hasn't been run yet.
+   */
+  target: number | null;
 }
 
 const chartConfig = {
@@ -31,28 +37,28 @@ const chartConfig = {
     label: 'Fully migrated',
     color: STATUS_CHART_COLOR.migrated,
   },
+  target: {
+    label: 'Target (eligible ESLint rules)',
+    color: 'var(--muted-foreground)',
+  },
 } satisfies ChartConfig;
 
 function formatMonth(dateIso: string) {
   return new Date(dateIso).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
 }
 
-export function MigrationLineChart({
-  points,
-  targetValue,
-  targetLabel,
-}: {
-  points: MigrationChartPoint[];
-  targetValue: number | null;
-  targetLabel?: string;
-}) {
+export function MigrationLineChart({ points }: { points: MigrationChartPoint[] }) {
   const data = points.map((p) => ({
     date: p.date,
     label: formatMonth(p.date),
     version: p.version,
     value: p.value,
     fullyMigrated: p.fullyMigrated,
+    target: p.target,
   }));
+
+  const maxValue = Math.max(0, ...data.map((d) => Math.max(d.value, d.target ?? 0)));
+  const yMax = maxValue > 0 ? Math.ceil((maxValue * 1.08) / 10) * 10 : undefined;
 
   // Packing ~200 releases into a container-width chart leaves well under a
   // pixel per point, so most releases are practically unreachable by hover.
@@ -99,21 +105,8 @@ export function MigrationLineChart({
                 axisLine={false}
                 tickMargin={8}
                 width={40}
-                domain={[0, targetValue ? Math.ceil((targetValue * 1.08) / 10) * 10 : 'auto']}
+                domain={[0, yMax ?? 'auto']}
               />
-              {targetValue ? (
-                <ReferenceLine
-                  y={targetValue}
-                  stroke="var(--muted-foreground)"
-                  strokeDasharray="4 4"
-                  label={{
-                    value: targetLabel ?? `${targetValue} rules (target)`,
-                    position: 'insideTopRight',
-                    fill: 'var(--muted-foreground)',
-                    fontSize: 11,
-                  }}
-                />
-              ) : null}
               <ChartTooltip
                 content={
                   <ChartTooltipContent
@@ -127,6 +120,16 @@ export function MigrationLineChart({
                     indicator="dot"
                   />
                 }
+              />
+              <Line
+                dataKey="target"
+                type="stepAfter"
+                stroke="var(--color-target)"
+                strokeWidth={1.5}
+                strokeDasharray="4 4"
+                dot={false}
+                activeDot={{ r: 3 }}
+                connectNulls={false}
               />
               <Area
                 dataKey="value"

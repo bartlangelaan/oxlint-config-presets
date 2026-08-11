@@ -17,6 +17,7 @@ export default function Home() {
     version: s.version,
     value: s.totalImplemented,
     fullyMigrated: s.fullyMigrated,
+    target: s.target,
   }));
 
   const topPlugins = plugins
@@ -68,7 +69,7 @@ export default function Home() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <MigrationLineChart points={points} targetValue={history.target} />
+          <MigrationLineChart points={points} />
         </CardContent>
       </Card>
 

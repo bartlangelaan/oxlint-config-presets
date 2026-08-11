@@ -37,6 +37,7 @@ export default function ProgressPage() {
     version: s.version,
     value: s.totalImplemented,
     fullyMigrated: s.fullyMigrated,
+    target: s.target,
   }));
 
   return (
@@ -106,19 +107,15 @@ export default function ProgressPage() {
         <CardHeader>
           <CardTitle>Implemented rules over time</CardTitle>
           <CardDescription>
-            Every oxlint release ever published on npm. The top line is every rule migrated,
-            including ones with a planned-but-not-implemented autofix; the bottom line is rules with
-            nothing outstanding. The dashed line marks today&apos;s target (rules that are migrated,
-            not-yet-implemented, or need a JS plugin — i.e. everything except &quot;not
-            portable&quot;).
+            Every oxlint release ever published on npm. The top solid line is every rule migrated,
+            including ones with a planned-but-not-implemented autofix; the bottom solid line is
+            rules with nothing outstanding. The dashed step line is the target itself — every
+            eligible ESLint rule that existed as of that date — and it isn&apos;t flat: ESLint
+            plugins keep adding rules, so the goalpost moves.
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <MigrationLineChart
-            points={points}
-            targetValue={history.target}
-            targetLabel={history.target ? `${history.target} rules (target)` : undefined}
-          />
+          <MigrationLineChart points={points} />
         </CardContent>
       </Card>
 
@@ -214,10 +211,13 @@ export default function ProgressPage() {
         </a>{' '}
         scripts, plus <code className="bg-muted rounded px-1 py-0.5">@oxlint/migrate</code>&apos;s
         skip-reason reporter to tell &quot;not yet implemented&quot; apart from &quot;not
-        portable&quot;. The historical chart counts oxlint&apos;s own implemented-rule total at each
-        release (a purely oxlint-side number); today&apos;s status breakdown additionally classifies
-        rules oxlint has decided not to port, which the historical series can&apos;t do
-        retroactively without re-running that classification at every past release.
+        portable&quot;. The target line is built by reading each ESLint plugin&apos;s own npm
+        release history — the rule files present in every published tarball since 2023, without
+        executing any of that code — then keeping only the rules classified eligible today. One
+        exception: <code className="bg-muted rounded px-1 py-0.5">@vitest/eslint-plugin</code> and
+        two small React plugins ship as a single pre-bundled file with no discoverable per-release
+        rule listing, so their contribution to the target falls back to a flat count rather than a
+        fabricated growth curve.
       </p>
     </div>
   );
