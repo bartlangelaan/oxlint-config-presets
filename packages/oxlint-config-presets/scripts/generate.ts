@@ -20,6 +20,7 @@ import { tmpdir } from 'node:os';
 import { dirname, resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import migrate, { type default as Migrate } from '@oxlint/migrate';
+import { expandExtglob } from './glob-utils.js';
 
 type OxlintConfig = Awaited<ReturnType<typeof Migrate>>;
 
@@ -744,6 +745,26 @@ interface GenerateResult {
   warnings: string[];
 }
 
+/**
+ * Rewrites a single `overrides[].files` pattern into one or more plain-glob
+ * patterns with no extglob syntax, since fast-glob (used by oxlint's file
+ * matcher) doesn't support it and silently ignores such patterns instead of
+ * erroring: https://github.com/oxc-project/oxc/issues/21525
+ */
+function expandGlobPattern(pattern: string): string[] {
+  const expanded = expandExtglob(pattern);
+  if (expanded === null) {
+    throw new Error(
+      `overrides[].files pattern "${pattern}" uses extglob syntax with no finite plain-glob ` +
+        `equivalent (a "*(...)", "+(...)", or "!(...)" group, or a nested group). fast-glob ` +
+        `(used by oxlint) does not support extglob and would silently ignore this pattern: ` +
+        `https://github.com/oxc-project/oxc/issues/21525. Add a manually verified plain-glob ` +
+        `replacement for it here in generate.ts.`,
+    );
+  }
+  return expanded;
+}
+
 function sanitizeOxlintConfig(config: OxlintConfig): void {
   if (Array.isArray(config.overrides)) {
     config.overrides = config.overrides
@@ -751,9 +772,10 @@ function sanitizeOxlintConfig(config: OxlintConfig): void {
         delete override.globals;
 
         if (Array.isArray(override.files)) {
-          override.files = override.files.filter(
+          const stringPatterns = override.files.filter(
             (pattern): pattern is string => typeof pattern === 'string',
           );
+          override.files = [...new Set(stringPatterns.flatMap(expandGlobPattern))];
         }
         return override;
       })

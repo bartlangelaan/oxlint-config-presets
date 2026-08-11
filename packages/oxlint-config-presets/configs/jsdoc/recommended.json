@@ -6,6 +6,7 @@
     "jsdoc/check-tag-names": "warn",
     "jsdoc/empty-tags": "warn",
     "jsdoc/implements-on-classes": "warn",
+    "jsdoc/no-blank-blocks": "off",
     "jsdoc/no-defaults": "warn",
     "jsdoc/require-param": "warn",
     "jsdoc/require-param-description": "warn",
