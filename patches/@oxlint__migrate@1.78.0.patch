@@ -1,7 +1,7 @@
-diff --git a/dist/src-C1jP736q.mjs b/dist/src-C1jP736q.mjs
-index daa417ec17e89ead202ef243613cbd9e092ca475..1c4d9b20e1c07b91ade35825868e80c127690c0d 100644
---- a/dist/src-C1jP736q.mjs
-+++ b/dist/src-C1jP736q.mjs
+diff --git a/dist/src-Bn5kidka.mjs b/dist/src-Bn5kidka.mjs
+index ad63ef58d85a049cda1172a6e4b461c6a755ff95..caa9f6fe99064a380e367c677a3c209a8eca4f6d 100644
+--- a/dist/src-Bn5kidka.mjs
++++ b/dist/src-Bn5kidka.mjs
 @@ -1,4 +1,6 @@
  import globals from "globals";
 +import { readFileSync } from "node:fs";
@@ -9,7 +9,7 @@ index daa417ec17e89ead202ef243613cbd9e092ca475..1c4d9b20e1c07b91ade35825868e80c1
  //#region \0rolldown/runtime.js
  var __defProp = Object.defineProperty;
  var __exportAll = (all, no_symbols) => {
-@@ -197,14 +199,17 @@ const rulesPrefixesForPlugins = {
+@@ -197,14 +199,17 @@
  	vitest: "vitest",
  	vue: "vue"
  };
@@ -27,7 +27,7 @@ index daa417ec17e89ead202ef243613cbd9e092ca475..1c4d9b20e1c07b91ade35825868e80c1
  	for (const [prefix, plugin] of Object.entries(rulesPrefixesForPlugins)) if (prefix !== plugin && rule.startsWith(`${prefix}/`)) return `${plugin}/${rule.slice(prefix.length + 1)}`;
  	return rule;
  }
-@@ -2043,6 +2048,12 @@ const replaceRulePrefix = (config, oldPrefix, newPrefix) => {
+@@ -2047,6 +2052,12 @@
  * extend core ESLint rules have already been stripped of their prefix.
  */
  const replaceCanonicalPluginPrefixes = (config) => {
@@ -40,7 +40,7 @@ index daa417ec17e89ead202ef243613cbd9e092ca475..1c4d9b20e1c07b91ade35825868e80c1
  	for (const [prefix, plugin] of Object.entries(rulesPrefixesForPlugins)) if (prefix !== plugin) replaceRulePrefix(config, prefix, plugin);
  };
  //#endregion
-@@ -2108,7 +2119,6 @@ const cleanUpOxlintConfig = (config) => {
+@@ -2112,7 +2123,6 @@
  	}
  	if (!("files" in config)) {
  		cleanUpUselessOverridesEntries(config);

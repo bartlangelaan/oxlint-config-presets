@@ -11,6 +11,7 @@
     ],
     "jsdoc/empty-tags": "error",
     "jsdoc/implements-on-classes": "error",
+    "jsdoc/no-blank-blocks": "off",
     "jsdoc/no-defaults": "error",
     "jsdoc/require-param": "error",
     "jsdoc/require-param-description": "error",
