@@ -1,11 +1,12 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import rulesJson from '@/data/rules.json';
 import pluginsJson from '@/data/plugins.json';
 import configsJson from '@/data/configs.json';
-import migrationHistoryJson from '@/data/migration-history.json';
+import migrationHistoryJson from '@/data/oxlint-migration-history.json';
 
 const configsDir = join(process.cwd(), '..', 'packages/oxlint-config-presets/configs');
+const dataDir = join(process.cwd(), 'src/data');
 
 export interface PresetRuleEntry {
   config: string;
@@ -110,19 +111,31 @@ export interface ConfigSummary {
   ruleCount: number;
 }
 
-export interface MigrationScopeSample {
-  total: number;
-  /** Rules with no pending ("planned but not implemented") autofix at this release. */
-  fullyMigrated: number;
-}
-
 export interface MigrationSample {
   version: string;
   date: string;
   totalImplemented: number;
-  /** Rules with no pending autofix at this release (a subset of totalImplemented). */
-  fullyMigrated: number;
-  byScope: Record<string, MigrationScopeSample>;
+  /**
+   * Rules with no pending autofix at this release (a subset of totalImplemented).
+   * Null when this release's `--rules` output didn't report fix status at all
+   * (oxlint < 1.40.0) — genuinely unknown, not zero pending.
+   */
+  fullyMigrated: number | null;
+}
+
+export interface PluginMigrationSample {
+  version: string;
+  date: string;
+  total: number;
+  fullyMigrated: number | null;
+}
+
+export interface PluginMigrationHistory {
+  generatedAt: string;
+  scope: string;
+  /** Today's eligible-rule count for this plugin — the chart's target line. */
+  target: number | null;
+  samples: PluginMigrationSample[];
 }
 
 const rules = rulesJson as Rule[];
@@ -140,7 +153,8 @@ interface ConfigsData {
 
 interface MigrationHistoryData {
   generatedAt: string;
-  totalEligibleNow: number | null;
+  /** Today's global eligible-rule count (total - not portable) — the chart's target line. */
+  target: number | null;
   samples: MigrationSample[];
 }
 
@@ -202,6 +216,17 @@ export function getRulesForConfig(path: string): { rule: Rule; severity: string;
 
 export function getMigrationHistory() {
   return migrationHistoryData;
+}
+
+const pluginMigrationHistoryCache = new Map<string, PluginMigrationHistory | null>();
+
+/** Per-plugin history, read from oxlint-migration-history-<scope>.json. Null if never generated. */
+export function getPluginMigrationHistory(scope: string): PluginMigrationHistory | null {
+  if (pluginMigrationHistoryCache.has(scope)) return pluginMigrationHistoryCache.get(scope) ?? null;
+  const path = join(dataDir, `oxlint-migration-history-${scope}.json`);
+  const result = existsSync(path) ? (JSON.parse(readFileSync(path, 'utf-8')) as PluginMigrationHistory) : null;
+  pluginMigrationHistoryCache.set(scope, result);
+  return result;
 }
 
 /** Trimmed rule shape for shipping to client components (rules browser table). */

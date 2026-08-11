@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { MigrationLineChart } from '@/components/charts/migration-line-chart';
 import { AutofixTiles, StatusTiles, TargetHeadline } from '@/components/status-breakdown';
 import { SetBreadcrumb } from '@/components/breadcrumb-context';
-import { getMigrationHistory, getPlugin, getPlugins } from '@/lib/data';
+import { getPlugin, getPluginMigrationHistory, getPlugins } from '@/lib/data';
 
 // "Oxlint original" rules aren't part of the ESLint migration target, so there's
 // no progress-over-time page for them.
@@ -42,13 +42,14 @@ export default async function PluginProgressPage({
   const plugin = getPlugin(pluginId);
   if (!plugin || plugin.original) notFound();
 
-  const history = getMigrationHistory();
-  const points = history.samples.map((s) => ({
+  const history = getPluginMigrationHistory(plugin.oxlintScope);
+  const points = (history?.samples ?? []).map((s) => ({
     date: s.date,
     version: s.version,
-    value: s.byScope[plugin.oxlintScope]?.total ?? 0,
-    fullyMigrated: s.byScope[plugin.oxlintScope]?.fullyMigrated ?? 0,
+    value: s.total,
+    fullyMigrated: s.fullyMigrated,
   }));
+  const targetValue = history?.target ?? plugin.eligible;
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 p-4 md:p-8">
@@ -97,15 +98,17 @@ export default async function PluginProgressPage({
             Every oxlint release ever published on npm, counting rules under the{' '}
             <code className="bg-muted rounded px-1 py-0.5">{plugin.oxlintScope}</code> scope. The
             top line includes rules with a planned-but-not-implemented autofix; the bottom line is
-            rules with nothing outstanding. The dashed line marks today&apos;s target (
-            {plugin.eligible} rules).
+            rules with nothing outstanding (it starts later — older oxlint releases didn&apos;t
+            report autofix status at all). The dashed line marks today&apos;s target ({targetValue}
+            {' '}rules) — {plugin.label} gains new ESLint rules over time too, so this line is
+            specific to {plugin.label}, not a global figure.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <MigrationLineChart
             points={points}
-            targetValue={plugin.eligible}
-            targetLabel={`${plugin.eligible} rules (target)`}
+            targetValue={targetValue}
+            targetLabel={`${targetValue} rules (target)`}
           />
         </CardContent>
       </Card>

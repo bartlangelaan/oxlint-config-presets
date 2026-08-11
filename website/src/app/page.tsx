@@ -65,7 +65,7 @@ export default function Home() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <MigrationLineChart points={points} targetValue={summary.eligible} />
+          <MigrationLineChart points={points} targetValue={history.target} />
         </CardContent>
       </Card>
 

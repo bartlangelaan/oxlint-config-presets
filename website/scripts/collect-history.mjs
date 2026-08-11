@@ -1,7 +1,15 @@
 /**
- * Builds website/src/data/migration-history.json: a real time series of how many
- * ESLint rules oxlint had implemented, sampled from every oxlint release ever
- * published on npm, rather than synthetic data.
+ * Builds website/src/data/oxlint-migration-history.json (a lean global time
+ * series) plus one website/src/data/oxlint-migration-history-<scope>.json per
+ * plugin, from every oxlint release ever published on npm, rather than
+ * synthetic data.
+ *
+ * Splitting per plugin keeps each plugin's progress page from having to load
+ * every other plugin's history, and lets each file carry its own "target"
+ * (today's eligible-rule count for that plugin) alongside its samples, so the
+ * chart's target line always comes from the same file as the data it's
+ * measured against — plugins gain new ESLint rules over time, so there's no
+ * single global target that's meaningful for every plugin's own chart.
  *
  * For each version we run `npx oxlint@<version> --rules` (in whichever output
  * format that release supports: JSON, markdown table, or bullet list) and count
@@ -12,7 +20,7 @@
  */
 
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -167,16 +175,26 @@ function summarize(rows) {
   const byScope = {};
   let totalImplemented = 0;
   let fullyMigrated = 0;
+  // Older releases (pre-1.40.0, and anything parsed from the markdown-table or
+  // bullet-list formats) never report a `fix` value for any rule at all — not
+  // "none pending", just absent. Treating that as "nothing pending" would make
+  // every rule look fully migrated, which is wrong, not just unknown. Detect
+  // that case per-release and report fullyMigrated as null (unknown) instead.
+  const hasFixInfo = rows.some((r) => r.fix != null);
   for (const { scope, value, fix } of rows) {
     void value;
     if (!KNOWN_SCOPES.has(scope)) continue;
     if (!byScope[scope]) byScope[scope] = { total: 0, fullyMigrated: 0 };
     byScope[scope].total++;
     totalImplemented++;
-    if (!isFixPending(fix)) {
+    if (hasFixInfo && !isFixPending(fix)) {
       byScope[scope].fullyMigrated++;
       fullyMigrated++;
     }
+  }
+  if (!hasFixInfo) {
+    fullyMigrated = null;
+    for (const scope of Object.keys(byScope)) byScope[scope].fullyMigrated = null;
   }
   return { totalImplemented, fullyMigrated, byScope };
 }
@@ -199,19 +217,55 @@ for (const { version, date } of samples) {
   );
 }
 
-let totalEligibleNow = null;
+let globalTarget = null;
+const pluginTargets = {};
 const pluginsJsonPath = join(dataDir, 'plugins.json');
 if (existsSync(pluginsJsonPath)) {
-  totalEligibleNow = JSON.parse(readFileSync(pluginsJsonPath, 'utf-8')).eligible;
+  const pluginsData = JSON.parse(readFileSync(pluginsJsonPath, 'utf-8'));
+  globalTarget = pluginsData.eligible;
+  for (const p of pluginsData.plugins) {
+    if (!p.original) pluginTargets[p.oxlintScope] = p.eligible;
+  }
 }
 
+const generatedAt = new Date().toISOString();
+
 writeFileSync(
-  join(dataDir, 'migration-history.json'),
+  join(dataDir, 'oxlint-migration-history.json'),
   JSON.stringify({
-    generatedAt: new Date().toISOString(),
-    totalEligibleNow,
-    samples: results,
+    generatedAt,
+    target: globalTarget,
+    samples: results.map(({ version, date, totalImplemented, fullyMigrated }) => ({
+      version,
+      date,
+      totalImplemented,
+      fullyMigrated,
+    })),
   }),
 );
+console.log(`\nWrote ${join('src/data', 'oxlint-migration-history.json')}`);
 
-console.log(`\nDone. Written to ${join('src/data', 'migration-history.json')}`);
+for (const scope of KNOWN_SCOPES) {
+  const scopeSamples = [];
+  for (const r of results) {
+    const s = r.byScope[scope];
+    if (!s) continue; // scope didn't exist yet at this release
+    scopeSamples.push({ version: r.version, date: r.date, total: s.total, fullyMigrated: s.fullyMigrated });
+  }
+  writeFileSync(
+    join(dataDir, `oxlint-migration-history-${scope}.json`),
+    JSON.stringify({
+      generatedAt,
+      scope,
+      target: pluginTargets[scope] ?? null,
+      samples: scopeSamples,
+    }),
+  );
+  console.log(`Wrote ${join('src/data', `oxlint-migration-history-${scope}.json`)} (${scopeSamples.length} samples)`);
+}
+
+// Old filename from before the rename/split — remove so it doesn't linger as stale data.
+const staleFile = join(dataDir, 'migration-history.json');
+if (existsSync(staleFile)) unlinkSync(staleFile);
+
+console.log('\nDone.');

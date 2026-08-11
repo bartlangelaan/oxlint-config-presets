@@ -115,8 +115,8 @@ export default function ProgressPage() {
         <CardContent>
           <MigrationLineChart
             points={points}
-            targetValue={stats.eligible}
-            targetLabel={`${stats.eligible} rules (target)`}
+            targetValue={history.target}
+            targetLabel={history.target ? `${history.target} rules (target)` : undefined}
           />
         </CardContent>
       </Card>

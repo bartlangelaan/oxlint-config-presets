@@ -17,11 +17,15 @@ scripts:
   oxc's own `tasks/lint_rules/src/eslint-rules.mjs` uses), and joins in which
   `packages/oxlint-config-presets/configs/**/*.json` presets enable each rule.
   Writes `rules.json`, `plugins.json`, `configs.json`.
-- `pnpm collect-history` — samples one oxlint npm release per month since its
-  first 2023 release and counts implemented rules at each, to build a real
-  (not synthetic) time series for the migration-progress chart. Writes
-  `migration-history.json`. Results are cached under `.cache/` (gitignored)
-  so re-runs only fetch new releases.
+- `pnpm collect-history` — samples every oxlint release ever published on npm
+  and counts implemented rules (and autofix status, where reported) at each,
+  to build a real (not synthetic) time series for the migration-progress
+  charts. Writes `oxlint-migration-history.json` (global) and one
+  `oxlint-migration-history-<scope>.json` per plugin, each carrying its own
+  "target" (today's eligible-rule count for that plugin) alongside its
+  samples — plugins gain new ESLint rules over time, so there's no single
+  target that's meaningful across all of them. Results are cached under
+  `.cache/` (gitignored) so re-runs only fetch new releases.
 
 Re-run both after bumping the `oxlint` devDependency or regenerating configs
 in `packages/oxlint-config-presets`.
