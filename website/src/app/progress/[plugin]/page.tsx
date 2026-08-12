@@ -7,7 +7,7 @@ import { MigrationLineChart } from '@/components/charts/migration-line-chart';
 import { AutofixTiles, StatusTiles, TargetHeadline } from '@/components/status-breakdown';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { getPlugin, getPluginMigrationHistory, getPlugins } from '@/lib/data';
+import { getMigrationHistory, getPlugin, getPluginMigrationHistory, getPlugins } from '@/lib/data';
 
 // "Oxlint original" rules aren't part of the ESLint migration target, so there's
 // no progress-over-time page for them.
@@ -41,16 +41,18 @@ export default async function PluginProgressPage({
   const plugin = getPlugin(pluginId);
   if (!plugin || plugin.original) notFound();
 
-  const history = getPluginMigrationHistory(plugin.oxlintScope);
-  const points = (history?.samples ?? []).map((s) => ({
+  const oxlintHistory = getMigrationHistory();
+  const implemented = oxlintHistory.samples.map((s) => ({
     date: s.date,
     version: s.version,
-    value: s.total,
-    fullyMigrated: s.fullyMigrated,
-    target: s.target,
+    value: s.byScope[plugin.oxlintScope]?.totalImplemented ?? 0,
+    fullyMigrated: s.byScope[plugin.oxlintScope]?.fullyMigrated ?? null,
   }));
-  const targetValue = history?.target ?? plugin.eligible;
-  const coverage = history?.targetTrackingCoverage;
+
+  const targetHistory = getPluginMigrationHistory(plugin.oxlintScope);
+  const target = targetHistory?.samples ?? [];
+  const targetValue = targetHistory?.target ?? plugin.eligible;
+  const coverage = targetHistory?.targetTrackingCoverage;
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 p-4 md:p-8">
@@ -114,7 +116,7 @@ export default async function PluginProgressPage({
           ) : null}
         </CardHeader>
         <CardContent>
-          <MigrationLineChart points={points} />
+          <MigrationLineChart implemented={implemented} target={target} />
         </CardContent>
       </Card>
     </div>

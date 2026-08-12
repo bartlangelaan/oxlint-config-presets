@@ -111,6 +111,13 @@ export interface ConfigSummary {
   ruleCount: number;
 }
 
+export interface MigrationScopeSample {
+  totalImplemented: number;
+  /** Null when this release's `--rules` output didn't report fix status at all (oxlint < 1.40.0). */
+  fullyMigrated: number | null;
+}
+
+/** One oxlint release. Dated by oxlint's own release history, independent of any plugin's. */
 export interface MigrationSample {
   version: string;
   date: string;
@@ -121,21 +128,20 @@ export interface MigrationSample {
    * (oxlint < 1.40.0) — genuinely unknown, not zero pending.
    */
   fullyMigrated: number | null;
-  /**
-   * How many eligible (portable) ESLint rules existed across all plugins as of
-   * this release's date — the real, growing target denominator, not a flat
-   * number. Null if collect-eslint-history.mjs hasn't been run yet.
-   */
-  target: number | null;
+  /** Same two numbers, broken down per plugin (keyed by oxlintScope). */
+  byScope: Record<string, MigrationScopeSample>;
 }
 
-export interface PluginMigrationSample {
-  version: string;
+/** How many eligible ESLint rules existed as of a given date — a step in the target line. */
+export interface TargetSample {
   date: string;
-  total: number;
-  fullyMigrated: number | null;
-  /** How many of this plugin's eligible rules existed as of this release's date. */
-  target: number | null;
+}
+
+/** One release of one of a plugin's own source packages (its own version, not oxlint's). */
+export interface PluginTargetSample extends TargetSample {
+  package: string | null;
+  version: string | null;
+  target: number;
 }
 
 export interface TargetTrackingCoverage {
@@ -145,14 +151,16 @@ export interface TargetTrackingCoverage {
   hasHistory: boolean;
 }
 
+/** A plugin's own release-dated target history — independent of oxlint's release dates. */
 export interface PluginMigrationHistory {
   generatedAt: string;
   scope: string;
+  sourcePackages: string[];
   /** Today's eligible-rule count for this plugin — matches the last sample's target. */
   target: number | null;
-  /** How much of `target`'s history is real vs. a flat fallback baseline. Absent if collect-eslint-history.mjs hasn't been run yet. */
+  /** How much of `target`'s history is real vs. a flat fallback baseline. */
   targetTrackingCoverage?: TargetTrackingCoverage;
-  samples: PluginMigrationSample[];
+  samples: PluginTargetSample[];
 }
 
 const rules = rulesJson as Rule[];
@@ -170,8 +178,10 @@ interface ConfigsData {
 
 interface MigrationHistoryData {
   generatedAt: string;
-  /** Today's global eligible-rule count (total - not portable) — the chart's target line. */
+  /** Today's global eligible-rule count (total - not portable). */
   target: number | null;
+  /** The global target line, merged across every plugin's own release dates. */
+  targetHistory: { date: string; target: number }[];
   samples: MigrationSample[];
 }
 

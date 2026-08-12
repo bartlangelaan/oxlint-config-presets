@@ -1,1 +1,1231 @@
-{"generatedAt":"2026-08-11T21:52:36.867Z","scope":"nextjs","target":21,"samples":[{"version":"0.2.0","date":"2024-01-12T14:41:12.883Z","total":12,"fullyMigrated":null,"target":21},{"version":"0.2.1","date":"2024-01-16T11:49:04.006Z","total":15,"fullyMigrated":null,"target":21},{"version":"0.2.2","date":"2024-01-20T15:13:17.237Z","total":15,"fullyMigrated":null,"target":21},{"version":"0.2.4-alpha.0","date":"2024-01-23T11:17:02.333Z","total":15,"fullyMigrated":null,"target":21},{"version":"0.2.4","date":"2024-01-23T11:37:51.498Z","total":15,"fullyMigrated":null,"target":21},{"version":"0.2.5","date":"2024-01-25T09:27:01.970Z","total":15,"fullyMigrated":null,"target":21},{"version":"0.2.6","date":"2024-01-26T14:43:35.378Z","total":15,"fullyMigrated":null,"target":21},{"version":"0.2.7","date":"2024-02-03T13:29:26.509Z","total":17,"fullyMigrated":null,"target":21},{"version":"0.2.8","date":"2024-02-06T08:05:51.249Z","total":17,"fullyMigrated":null,"target":21},{"version":"0.2.9","date":"2024-02-18T09:03:38.302Z","total":17,"fullyMigrated":null,"target":21},{"version":"0.2.10","date":"2024-02-21T10:24:29.727Z","total":17,"fullyMigrated":null,"target":21},{"version":"0.2.11","date":"2024-02-26T10:52:47.069Z","total":17,"fullyMigrated":null,"target":21},{"version":"0.2.12","date":"2024-02-28T10:52:48.877Z","total":17,"fullyMigrated":null,"target":21},{"version":"0.2.13","date":"2024-03-05T08:03:12.771Z","total":17,"fullyMigrated":null,"target":21},{"version":"0.2.14","date":"2024-03-18T05:01:29.511Z","total":17,"fullyMigrated":null,"target":21},{"version":"0.2.15","date":"2024-03-30T05:47:10.622Z","total":17,"fullyMigrated":null,"target":21},{"version":"0.2.16","date":"2024-04-08T03:14:33.907Z","total":17,"fullyMigrated":null,"target":21},{"version":"0.2.17","date":"2024-04-11T08:38:35.991Z","total":17,"fullyMigrated":null,"target":21},{"version":"0.2.18","date":"2024-04-19T08:59:21.554Z","total":17,"fullyMigrated":null,"target":21},{"version":"0.3.0","date":"2024-04-22T05:15:34.265Z","total":17,"fullyMigrated":null,"target":21},{"version":"0.3.1","date":"2024-04-22T08:11:28.619Z","total":17,"fullyMigrated":null,"target":21},{"version":"0.3.2","date":"2024-05-04T13:18:49.953Z","total":17,"fullyMigrated":null,"target":21},{"version":"0.3.3","date":"2024-05-13T09:20:13.839Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.3.4","date":"2024-05-13T10:42:40.609Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.3.5","date":"2024-05-15T14:29:52.163Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.4.0","date":"2024-05-24T07:16:09.452Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.4.1","date":"2024-05-24T10:13:18.450Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.4.2","date":"2024-05-28T15:21:58.245Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.4.3","date":"2024-06-07T09:29:41.755Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.4.4","date":"2024-06-14T07:41:30.504Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.5.0","date":"2024-06-27T07:51:45.456Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.5.1","date":"2024-06-29T09:15:00.483Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.5.2","date":"2024-07-02T14:24:34.267Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.5.3","date":"2024-07-07T11:44:35.090Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.6.0","date":"2024-07-11T06:54:41.034Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.6.1","date":"2024-07-17T13:35:00.920Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.7.0","date":"2024-08-05T06:03:37.771Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.7.1","date":"2024-08-12T05:57:34.624Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.7.2","date":"2024-08-15T07:15:31.950Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.8.0","date":"2024-08-23T03:29:02.766Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.9.0","date":"2024-08-26T09:14:35.199Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.9.1","date":"2024-08-29T05:25:43.612Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.9.2","date":"2024-09-02T12:51:35.140Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.9.3","date":"2024-09-07T04:47:25.445Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.9.5-alpha.0","date":"2024-09-12T08:34:00.471Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.9.5","date":"2024-09-12T09:15:18.210Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.9.6","date":"2024-09-18T04:18:21.354Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.9.7","date":"2024-09-23T07:26:07.204Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.9.8","date":"2024-09-24T11:57:59.185Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.9.9","date":"2024-09-27T06:58:48.609Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.9.10","date":"2024-10-08T04:29:33.804Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.10.0","date":"2024-10-19T00:48:30.467Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.10.1","date":"2024-10-21T04:44:45.984Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.10.2","date":"2024-10-22T04:46:43.267Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.10.3","date":"2024-10-26T09:28:06.209Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.11.0","date":"2024-11-03T03:42:23.867Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.11.1","date":"2024-11-09T12:17:29.576Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.12.0","date":"2024-11-20T07:59:55.153Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.13.0","date":"2024-11-21T14:36:34.970Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.13.1","date":"2024-11-23T16:02:10.367Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.13.2","date":"2024-11-26T07:40:06.847Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.14.0","date":"2024-12-01T09:03:30.937Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.14.1","date":"2024-12-06T05:21:59.452Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.15.0","date":"2024-12-10T17:13:10.747Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.15.1","date":"2024-12-13T13:43:03.318Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.15.2","date":"2024-12-14T05:53:00.714Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.15.3","date":"2024-12-17T04:39:59.299Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.15.4","date":"2024-12-30T08:01:33.432Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.15.5","date":"2025-01-02T11:08:44.384Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.15.6","date":"2025-01-13T03:24:16.335Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.15.7","date":"2025-01-19T01:15:18.949Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.15.8","date":"2025-01-24T10:22:03.928Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.15.9","date":"2025-02-01T14:18:38.418Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.15.10","date":"2025-02-06T06:57:45.934Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.15.11","date":"2025-02-16T01:35:34.703Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.15.12","date":"2025-02-24T08:02:07.650Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.15.13","date":"2025-03-04T02:04:43.486Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.15.14","date":"2025-03-11T08:26:40.329Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.15.15","date":"2025-03-13T00:14:26.071Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.16.0","date":"2025-03-16T02:41:07.088Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.16.1","date":"2025-03-20T05:22:15.831Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.16.2","date":"2025-03-21T05:51:34.781Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.16.3","date":"2025-03-25T08:54:59.592Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.16.4","date":"2025-04-01T06:39:42.734Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.16.5","date":"2025-04-07T09:41:27.839Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.16.6","date":"2025-04-14T04:08:50.703Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.16.7","date":"2025-04-21T15:23:38.039Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.16.8","date":"2025-04-27T11:28:31.855Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.16.9","date":"2025-05-03T13:33:04.796Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.16.10","date":"2025-05-09T07:05:35.722Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.16.11","date":"2025-05-16T09:41:40.720Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.16.12","date":"2025-05-25T07:01:01.781Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.17.0","date":"2025-05-30T18:36:26.334Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.18.0","date":"2025-06-06T15:28:23.893Z","total":20,"fullyMigrated":null,"target":21},{"version":"0.18.1","date":"2025-06-09T14:00:05.091Z","total":20,"fullyMigrated":null,"target":21},{"version":"1.0.0","date":"2025-06-10T09:37:47.054Z","total":20,"fullyMigrated":null,"target":21},{"version":"1.1.0","date":"2025-06-12T05:36:53.215Z","total":20,"fullyMigrated":null,"target":21},{"version":"1.2.0","date":"2025-06-19T04:31:55.966Z","total":20,"fullyMigrated":null,"target":21},{"version":"1.3.0","date":"2025-06-23T07:07:14.780Z","total":20,"fullyMigrated":null,"target":21},{"version":"1.4.0","date":"2025-06-30T06:03:32.946Z","total":20,"fullyMigrated":null,"target":21},{"version":"1.5.0","date":"2025-07-02T01:14:37.632Z","total":20,"fullyMigrated":null,"target":21},{"version":"1.6.0","date":"2025-07-07T05:03:24.113Z","total":20,"fullyMigrated":null,"target":21},{"version":"1.7.0","date":"2025-07-16T23:17:05.184Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.8.0","date":"2025-07-22T11:43:53.417Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.9.0","date":"2025-07-29T09:09:28.599Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.10.0","date":"2025-08-06T10:26:15.034Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.11.0","date":"2025-08-07T15:19:22.380Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.11.1","date":"2025-08-09T10:05:49.495Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.11.2","date":"2025-08-12T05:03:07.755Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.12.0","date":"2025-08-17T04:28:14.921Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.13.0","date":"2025-08-26T03:38:06.906Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.14.0","date":"2025-08-30T12:36:33.321Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.15.0","date":"2025-09-11T09:48:39.673Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.16.0","date":"2025-09-16T19:14:53.793Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.17.0-alpha.0","date":"2025-09-17T10:12:47.809Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.17.0","date":"2025-09-23T15:58:09.919Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.18.0","date":"2025-09-24T15:15:11.731Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.19.0","date":"2025-09-29T09:57:36.669Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.20.0","date":"2025-10-06T17:40:26.861Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.21.0","date":"2025-10-08T15:42:35.254Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.22.0","date":"2025-10-08T21:51:48.359Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.23.0","date":"2025-10-13T16:50:22.507Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.24.0","date":"2025-10-22T12:40:55.229Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.25.0","date":"2025-10-30T05:06:21.824Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.26.0","date":"2025-11-05T18:58:31.129Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.27.0","date":"2025-11-10T11:34:13.828Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.28.0","date":"2025-11-10T16:53:21.669Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.29.0","date":"2025-11-17T13:06:52.216Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.30.0","date":"2025-11-24T11:24:58.745Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.31.0","date":"2025-12-01T15:29:00.072Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.32.0","date":"2025-12-08T12:22:30.306Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.33.0","date":"2025-12-15T11:00:56.853Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.34.0","date":"2025-12-19T02:42:34.257Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.35.0","date":"2025-12-22T10:04:01.016Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.36.0","date":"2025-12-29T09:51:48.316Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.37.0","date":"2026-01-05T14:21:55.905Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.38.0","date":"2026-01-06T10:23:38.027Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.39.0","date":"2026-01-12T10:15:57.761Z","total":21,"fullyMigrated":null,"target":21},{"version":"1.40.0","date":"2026-01-19T12:53:26.065Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.41.0","date":"2026-01-19T18:51:17.659Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.42.0","date":"2026-01-26T14:59:50.769Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.43.0","date":"2026-02-02T10:12:33.128Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.45.0","date":"2026-02-10T16:35:31.851Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.46.0","date":"2026-02-10T17:39:25.548Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.47.0","date":"2026-02-12T11:08:30.120Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.48.0","date":"2026-02-16T13:32:39.148Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.49.0","date":"2026-02-19T20:16:03.372Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.50.0","date":"2026-02-23T10:35:31.603Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.51.0","date":"2026-03-02T11:51:53.676Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.52.0","date":"2026-03-10T02:10:09.819Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.53.0","date":"2026-03-11T05:52:54.403Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.54.0","date":"2026-03-12T06:23:36.915Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.55.0","date":"2026-03-12T15:35:09.832Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.56.0","date":"2026-03-16T10:58:28.691Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.57.0","date":"2026-03-24T10:59:51.457Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.58.0","date":"2026-03-31T09:31:28.436Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.59.0","date":"2026-04-07T01:31:55.153Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.60.0","date":"2026-04-13T11:12:53.015Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.61.0","date":"2026-04-20T20:01:24.976Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.62.0","date":"2026-04-27T12:07:33.195Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.63.0","date":"2026-05-05T13:15:22.344Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.64.0","date":"2026-05-11T18:50:11.029Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.65.0","date":"2026-05-15T16:22:28.218Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.66.0","date":"2026-05-19T08:08:22.713Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.67.0","date":"2026-05-26T07:11:22.156Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.68.0","date":"2026-06-01T17:07:54.698Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.69.0","date":"2026-06-08T14:41:01.826Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.70.0","date":"2026-06-15T13:36:55.406Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.71.0","date":"2026-06-22T12:30:29.834Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.72.0","date":"2026-06-29T23:10:49.090Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.73.0","date":"2026-07-06T23:07:23.441Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.74.0","date":"2026-07-14T07:39:29.854Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.75.0","date":"2026-07-21T23:21:17.429Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.76.0","date":"2026-07-27T15:58:10.918Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.77.0","date":"2026-08-03T12:08:03.773Z","total":21,"fullyMigrated":19,"target":21},{"version":"1.78.0","date":"2026-08-10T10:47:19.210Z","total":21,"fullyMigrated":19,"target":21}],"targetTrackingCoverage":{"matchedCount":21,"totalEligible":21,"hasHistory":true}}
+{
+  "generatedAt": "2026-08-12T05:08:18.322Z",
+  "scope": "nextjs",
+  "sourcePackages": ["@next/eslint-plugin-next"],
+  "target": 22,
+  "targetTrackingCoverage": {
+    "matchedCount": 22,
+    "totalEligible": 22,
+    "hasHistory": true
+  },
+  "samples": [
+    {
+      "date": "2023-01-12T23:34:04.769Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.1.2",
+      "target": 20
+    },
+    {
+      "date": "2023-01-20T03:10:10.553Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.1.3",
+      "target": 20
+    },
+    {
+      "date": "2023-01-20T23:09:55.067Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.1.4",
+      "target": 20
+    },
+    {
+      "date": "2023-01-23T19:48:53.363Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.1.5",
+      "target": 20
+    },
+    {
+      "date": "2023-01-28T02:37:54.628Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.1.6",
+      "target": 20
+    },
+    {
+      "date": "2023-02-23T18:22:09.530Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.2.0",
+      "target": 20
+    },
+    {
+      "date": "2023-02-24T02:08:19.084Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.2.1",
+      "target": 20
+    },
+    {
+      "date": "2023-03-01T02:02:57.740Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.2.2",
+      "target": 20
+    },
+    {
+      "date": "2023-03-01T08:59:35.100Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.2.3",
+      "target": 20
+    },
+    {
+      "date": "2023-03-10T00:50:14.870Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.2.4",
+      "target": 20
+    },
+    {
+      "date": "2023-04-06T20:57:37.698Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.3.0",
+      "target": 20
+    },
+    {
+      "date": "2023-04-21T22:15:08.667Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.3.1",
+      "target": 20
+    },
+    {
+      "date": "2023-04-29T19:28:44.144Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.3.2",
+      "target": 20
+    },
+    {
+      "date": "2023-05-01T09:17:30.619Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.3.3",
+      "target": 20
+    },
+    {
+      "date": "2023-05-01T10:45:17.792Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.3.4",
+      "target": 20
+    },
+    {
+      "date": "2023-05-04T16:46:56.727Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.4.0",
+      "target": 20
+    },
+    {
+      "date": "2023-05-05T12:41:53.288Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.4.1",
+      "target": 20
+    },
+    {
+      "date": "2023-05-11T23:48:07.690Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.4.2",
+      "target": 20
+    },
+    {
+      "date": "2023-05-19T06:33:24.142Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.4.3",
+      "target": 20
+    },
+    {
+      "date": "2023-05-25T22:16:33.338Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.4.4",
+      "target": 20
+    },
+    {
+      "date": "2023-06-10T22:16:53.496Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.4.5",
+      "target": 20
+    },
+    {
+      "date": "2023-06-15T21:35:38.802Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.4.6",
+      "target": 20
+    },
+    {
+      "date": "2023-06-21T21:23:50.840Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.4.7",
+      "target": 20
+    },
+    {
+      "date": "2023-07-03T17:07:05.316Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.4.8",
+      "target": 21
+    },
+    {
+      "date": "2023-07-06T20:57:51.113Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.4.9",
+      "target": 21
+    },
+    {
+      "date": "2023-07-14T09:20:24.629Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.4.10",
+      "target": 21
+    },
+    {
+      "date": "2023-07-21T04:38:17.776Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.4.11",
+      "target": 21
+    },
+    {
+      "date": "2023-07-21T20:36:52.132Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.4.12",
+      "target": 21
+    },
+    {
+      "date": "2023-08-07T07:04:56.877Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.4.13",
+      "target": 21
+    },
+    {
+      "date": "2023-08-14T16:47:53.417Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.4.15",
+      "target": 21
+    },
+    {
+      "date": "2023-08-15T01:10:22.035Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.4.16",
+      "target": 21
+    },
+    {
+      "date": "2023-08-17T09:40:10.281Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.4.17",
+      "target": 21
+    },
+    {
+      "date": "2023-08-18T00:22:38.509Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.4.18",
+      "target": 21
+    },
+    {
+      "date": "2023-08-19T00:30:35.021Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.4.19",
+      "target": 21
+    },
+    {
+      "date": "2023-09-19T15:47:06.628Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.5.0",
+      "target": 21
+    },
+    {
+      "date": "2023-09-19T17:28:59.203Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.5.1",
+      "target": 21
+    },
+    {
+      "date": "2023-09-20T16:29:29.832Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.5.2",
+      "target": 21
+    },
+    {
+      "date": "2023-09-25T14:33:28.657Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.5.3",
+      "target": 21
+    },
+    {
+      "date": "2023-10-03T01:49:19.047Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.5.4",
+      "target": 21
+    },
+    {
+      "date": "2023-10-16T15:04:13.576Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.5.5",
+      "target": 21
+    },
+    {
+      "date": "2023-10-18T23:17:01.664Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.5.6",
+      "target": 21
+    },
+    {
+      "date": "2023-10-26T16:13:05.080Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.0.0",
+      "target": 21
+    },
+    {
+      "date": "2023-10-30T19:29:29.535Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.0.1",
+      "target": 21
+    },
+    {
+      "date": "2023-11-09T18:41:31.092Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.0.2",
+      "target": 21
+    },
+    {
+      "date": "2023-11-16T18:45:35.182Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.0.3",
+      "target": 21
+    },
+    {
+      "date": "2023-12-07T21:21:29.386Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.0.4",
+      "target": 21
+    },
+    {
+      "date": "2024-01-18T21:49:09.421Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.1.0",
+      "target": 21
+    },
+    {
+      "date": "2024-02-29T22:24:43.346Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.1.1",
+      "target": 21
+    },
+    {
+      "date": "2024-03-04T21:33:14.340Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.1.2",
+      "target": 21
+    },
+    {
+      "date": "2024-03-06T20:43:34.759Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.1.3",
+      "target": 21
+    },
+    {
+      "date": "2024-03-20T01:00:17.562Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.1.4",
+      "target": 21
+    },
+    {
+      "date": "2024-04-11T19:45:27.259Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.0",
+      "target": 21
+    },
+    {
+      "date": "2024-04-12T20:39:33.744Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.1",
+      "target": 21
+    },
+    {
+      "date": "2024-04-18T00:07:35.253Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.2",
+      "target": 21
+    },
+    {
+      "date": "2024-04-24T17:11:34.795Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.3",
+      "target": 21
+    },
+    {
+      "date": "2024-06-11T21:56:58.058Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.4",
+      "target": 21
+    },
+    {
+      "date": "2024-07-10T14:51:57.180Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.5",
+      "target": 21
+    },
+    {
+      "date": "2024-08-21T23:55:22.822Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.6",
+      "target": 21
+    },
+    {
+      "date": "2024-08-27T15:44:11.260Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.7",
+      "target": 21
+    },
+    {
+      "date": "2024-09-04T20:57:40.645Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.8",
+      "target": 21
+    },
+    {
+      "date": "2024-09-09T18:53:00.679Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.9",
+      "target": 21
+    },
+    {
+      "date": "2024-09-11T23:04:30.512Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.10",
+      "target": 21
+    },
+    {
+      "date": "2024-09-12T19:50:58.737Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.11",
+      "target": 21
+    },
+    {
+      "date": "2024-09-17T20:31:27.577Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.5.7",
+      "target": 21
+    },
+    {
+      "date": "2024-09-17T21:27:46.580Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.12",
+      "target": 21
+    },
+    {
+      "date": "2024-09-20T00:39:31.605Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.13",
+      "target": 21
+    },
+    {
+      "date": "2024-10-01T17:35:37.916Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.14",
+      "target": 21
+    },
+    {
+      "date": "2024-10-08T20:57:34.128Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.15",
+      "target": 21
+    },
+    {
+      "date": "2024-10-21T18:22:11.967Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.0.0",
+      "target": 21
+    },
+    {
+      "date": "2024-10-23T00:14:43.458Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.0.1",
+      "target": 21
+    },
+    {
+      "date": "2024-10-23T01:37:47.230Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.16",
+      "target": 21
+    },
+    {
+      "date": "2024-10-29T15:28:41.883Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.0.2",
+      "target": 21
+    },
+    {
+      "date": "2024-11-05T23:45:14.599Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.17",
+      "target": 21
+    },
+    {
+      "date": "2024-11-07T13:21:14.482Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.0.3",
+      "target": 21
+    },
+    {
+      "date": "2024-11-13T21:22:34.535Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.18",
+      "target": 21
+    },
+    {
+      "date": "2024-12-03T16:10:08.451Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.19",
+      "target": 21
+    },
+    {
+      "date": "2024-12-04T21:12:21.652Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.20",
+      "target": 21
+    },
+    {
+      "date": "2024-12-05T23:46:06.881Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.0.4",
+      "target": 21
+    },
+    {
+      "date": "2024-12-10T20:11:35.693Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.1.0",
+      "target": 21
+    },
+    {
+      "date": "2024-12-17T20:50:58.693Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.1.1",
+      "target": 21
+    },
+    {
+      "date": "2024-12-19T10:50:58.020Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.1.2",
+      "target": 21
+    },
+    {
+      "date": "2024-12-19T11:04:31.404Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.21",
+      "target": 21
+    },
+    {
+      "date": "2024-12-21T02:45:44.968Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.5.8",
+      "target": 21
+    },
+    {
+      "date": "2024-12-26T17:58:41.666Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.22",
+      "target": 21
+    },
+    {
+      "date": "2024-12-26T18:33:48.197Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.1.3",
+      "target": 21
+    },
+    {
+      "date": "2025-01-07T19:13:51.809Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.23",
+      "target": 21
+    },
+    {
+      "date": "2025-01-07T20:44:27.799Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.1.4",
+      "target": 21
+    },
+    {
+      "date": "2025-01-17T12:46:45.836Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.1.5",
+      "target": 21
+    },
+    {
+      "date": "2025-01-22T11:00:53.372Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.1.6",
+      "target": 21
+    },
+    {
+      "date": "2025-02-11T00:45:41.447Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.24",
+      "target": 21
+    },
+    {
+      "date": "2025-02-11T02:25:57.724Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.1.7",
+      "target": 21
+    },
+    {
+      "date": "2025-02-26T23:15:25.216Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.2.0",
+      "target": 21
+    },
+    {
+      "date": "2025-03-03T22:27:18.248Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.2.1",
+      "target": 21
+    },
+    {
+      "date": "2025-03-11T11:10:54.735Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.2.2",
+      "target": 21
+    },
+    {
+      "date": "2025-03-17T22:10:15.586Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.25",
+      "target": 21
+    },
+    {
+      "date": "2025-03-18T00:18:30.288Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.2.3",
+      "target": 21
+    },
+    {
+      "date": "2025-03-22T20:21:04.495Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.5.9",
+      "target": 21
+    },
+    {
+      "date": "2025-03-24T22:10:01.931Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.2.4",
+      "target": 21
+    },
+    {
+      "date": "2025-03-24T22:58:55.252Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.26",
+      "target": 21
+    },
+    {
+      "date": "2025-03-24T23:12:05.750Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.5.10",
+      "target": 21
+    },
+    {
+      "date": "2025-03-27T00:37:08.506Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "13.5.11",
+      "target": 21
+    },
+    {
+      "date": "2025-04-07T20:05:40.187Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.27",
+      "target": 21
+    },
+    {
+      "date": "2025-04-08T19:56:52.496Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.28",
+      "target": 21
+    },
+    {
+      "date": "2025-04-08T22:59:07.439Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.2.5",
+      "target": 21
+    },
+    {
+      "date": "2025-04-09T20:13:41.272Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.3.0",
+      "target": 21
+    },
+    {
+      "date": "2025-04-17T15:35:38.180Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.3.1",
+      "target": 21
+    },
+    {
+      "date": "2025-05-06T22:30:36.037Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.3.2",
+      "target": 21
+    },
+    {
+      "date": "2025-05-20T16:34:58.057Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.29",
+      "target": 21
+    },
+    {
+      "date": "2025-05-22T20:51:37.463Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.1.8",
+      "target": 21
+    },
+    {
+      "date": "2025-05-29T19:13:53.541Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.3.3",
+      "target": 21
+    },
+    {
+      "date": "2025-06-12T09:38:15.905Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.30",
+      "target": 21
+    },
+    {
+      "date": "2025-06-18T17:08:35.725Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.3.4",
+      "target": 21
+    },
+    {
+      "date": "2025-07-03T22:55:14.881Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.3.5",
+      "target": 21
+    },
+    {
+      "date": "2025-07-14T21:22:04.288Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.4.0",
+      "target": 21
+    },
+    {
+      "date": "2025-07-14T21:33:55.396Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.4.1",
+      "target": 21
+    },
+    {
+      "date": "2025-07-18T20:33:41.433Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.4.2",
+      "target": 21
+    },
+    {
+      "date": "2025-07-22T19:40:34.165Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.4.3",
+      "target": 21
+    },
+    {
+      "date": "2025-07-24T20:04:51.434Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.4.4",
+      "target": 21
+    },
+    {
+      "date": "2025-07-29T20:43:21.728Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.4.5",
+      "target": 21
+    },
+    {
+      "date": "2025-07-30T22:53:36.752Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.31",
+      "target": 21
+    },
+    {
+      "date": "2025-08-06T19:20:26.386Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.4.6",
+      "target": 21
+    },
+    {
+      "date": "2025-08-18T21:54:16.081Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.4.7",
+      "target": 21
+    },
+    {
+      "date": "2025-08-18T22:06:54.599Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.32",
+      "target": 21
+    },
+    {
+      "date": "2025-08-20T00:27:48.850Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.0",
+      "target": 21
+    },
+    {
+      "date": "2025-08-26T18:02:50.328Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.1",
+      "target": 21
+    },
+    {
+      "date": "2025-08-26T22:30:31.126Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.2",
+      "target": 21
+    },
+    {
+      "date": "2025-09-10T21:31:13.223Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.3",
+      "target": 21
+    },
+    {
+      "date": "2025-09-23T16:32:28.338Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.4",
+      "target": 21
+    },
+    {
+      "date": "2025-09-23T20:50:32.490Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.33",
+      "target": 21
+    },
+    {
+      "date": "2025-10-13T16:08:10.569Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.5",
+      "target": 21
+    },
+    {
+      "date": "2025-10-17T02:25:21.014Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.6",
+      "target": 21
+    },
+    {
+      "date": "2025-10-22T00:11:48.268Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.0.0",
+      "target": 21
+    },
+    {
+      "date": "2025-10-28T18:21:57.123Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.0.1",
+      "target": 21
+    },
+    {
+      "date": "2025-11-12T16:59:45.089Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.0.2",
+      "target": 21
+    },
+    {
+      "date": "2025-11-13T11:44:33.556Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.0.3",
+      "target": 21
+    },
+    {
+      "date": "2025-11-24T17:08:07.574Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.0.4",
+      "target": 21
+    },
+    {
+      "date": "2025-11-26T23:15:52.329Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.0.5",
+      "target": 21
+    },
+    {
+      "date": "2025-11-30T15:51:42.154Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.0.6",
+      "target": 21
+    },
+    {
+      "date": "2025-12-03T15:15:50.294Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.0.7",
+      "target": 21
+    },
+    {
+      "date": "2025-12-03T15:25:41.165Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.7",
+      "target": 21
+    },
+    {
+      "date": "2025-12-03T15:35:01.179Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.4.8",
+      "target": 21
+    },
+    {
+      "date": "2025-12-03T16:07:52.155Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.1.9",
+      "target": 21
+    },
+    {
+      "date": "2025-12-03T16:10:29.296Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.0.5",
+      "target": 21
+    },
+    {
+      "date": "2025-12-03T16:11:02.957Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.3.6",
+      "target": 21
+    },
+    {
+      "date": "2025-12-03T16:29:11.868Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.2.6",
+      "target": 21
+    },
+    {
+      "date": "2025-12-08T20:32:42.273Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.0.8",
+      "target": 21
+    },
+    {
+      "date": "2025-12-11T20:08:28.666Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.8",
+      "target": 21
+    },
+    {
+      "date": "2025-12-11T20:14:55.216Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.0.9",
+      "target": 21
+    },
+    {
+      "date": "2025-12-11T20:18:37.128Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.4.9",
+      "target": 21
+    },
+    {
+      "date": "2025-12-11T20:59:09.076Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.3.7",
+      "target": 21
+    },
+    {
+      "date": "2025-12-11T21:01:17.012Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.34",
+      "target": 21
+    },
+    {
+      "date": "2025-12-11T21:19:39.253Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.2.7",
+      "target": 21
+    },
+    {
+      "date": "2025-12-11T21:23:47.475Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.1.10",
+      "target": 21
+    },
+    {
+      "date": "2025-12-11T21:25:31.695Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.0.6",
+      "target": 21
+    },
+    {
+      "date": "2025-12-11T22:55:38.283Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.9",
+      "target": 21
+    },
+    {
+      "date": "2025-12-11T22:55:41.257Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.0.10",
+      "target": 21
+    },
+    {
+      "date": "2025-12-11T23:02:19.664Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.4.10",
+      "target": 21
+    },
+    {
+      "date": "2025-12-11T23:07:35.635Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.3.8",
+      "target": 21
+    },
+    {
+      "date": "2025-12-11T23:13:30.317Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.2.8",
+      "target": 21
+    },
+    {
+      "date": "2025-12-11T23:16:32.358Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.1.11",
+      "target": 21
+    },
+    {
+      "date": "2025-12-11T23:20:07.342Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.0.7",
+      "target": 21
+    },
+    {
+      "date": "2025-12-11T23:35:36.528Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "14.2.35",
+      "target": 21
+    },
+    {
+      "date": "2025-12-18T18:30:02.442Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.1.0",
+      "target": 21
+    },
+    {
+      "date": "2025-12-22T17:54:37.501Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.1.1",
+      "target": 21
+    },
+    {
+      "date": "2026-01-14T23:12:03.435Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.1.2",
+      "target": 21
+    },
+    {
+      "date": "2026-01-16T19:29:43.294Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.1.3",
+      "target": 21
+    },
+    {
+      "date": "2026-01-19T23:36:35.599Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.1.4",
+      "target": 21
+    },
+    {
+      "date": "2026-01-26T18:24:34.866Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.1.5",
+      "target": 21
+    },
+    {
+      "date": "2026-01-26T18:32:14.888Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.10",
+      "target": 21
+    },
+    {
+      "date": "2026-01-26T18:33:05.130Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.0.11",
+      "target": 21
+    },
+    {
+      "date": "2026-01-26T18:36:28.352Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.4.11",
+      "target": 21
+    },
+    {
+      "date": "2026-01-26T18:39:15.771Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.3.9",
+      "target": 21
+    },
+    {
+      "date": "2026-01-26T18:41:21.537Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.2.9",
+      "target": 21
+    },
+    {
+      "date": "2026-01-26T18:44:45.827Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.1.12",
+      "target": 21
+    },
+    {
+      "date": "2026-01-26T18:46:52.754Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.0.8",
+      "target": 21
+    },
+    {
+      "date": "2026-01-27T21:53:37.402Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.1.6",
+      "target": 21
+    },
+    {
+      "date": "2026-01-28T23:16:34.429Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.11",
+      "target": 21
+    },
+    {
+      "date": "2026-02-04T17:51:41.546Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.12",
+      "target": 21
+    },
+    {
+      "date": "2026-03-16T22:56:55.027Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.1.7",
+      "target": 21
+    },
+    {
+      "date": "2026-03-16T23:01:07.390Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.13",
+      "target": 21
+    },
+    {
+      "date": "2026-03-18T17:16:52.880Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.2.0",
+      "target": 21
+    },
+    {
+      "date": "2026-03-19T18:02:33.814Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.14",
+      "target": 21
+    },
+    {
+      "date": "2026-03-20T23:30:39.073Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.2.1",
+      "target": 21
+    },
+    {
+      "date": "2026-04-01T00:14:05.492Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.2.2",
+      "target": 21
+    },
+    {
+      "date": "2026-04-08T18:46:02.546Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.2.3",
+      "target": 21
+    },
+    {
+      "date": "2026-04-08T19:04:28.512Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.15",
+      "target": 21
+    },
+    {
+      "date": "2026-04-15T22:33:34.415Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.2.4",
+      "target": 21
+    },
+    {
+      "date": "2026-05-06T17:11:49.637Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.2.5",
+      "target": 21
+    },
+    {
+      "date": "2026-05-06T18:35:18.356Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.16",
+      "target": 21
+    },
+    {
+      "date": "2026-05-07T19:01:24.678Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.2.6",
+      "target": 21
+    },
+    {
+      "date": "2026-05-07T19:30:00.705Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.18",
+      "target": 21
+    },
+    {
+      "date": "2026-06-01T18:18:23.589Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.2.7",
+      "target": 21
+    },
+    {
+      "date": "2026-06-01T18:26:45.340Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.19",
+      "target": 21
+    },
+    {
+      "date": "2026-06-09T21:20:45.522Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.2.8",
+      "target": 21
+    },
+    {
+      "date": "2026-06-09T23:01:50.881Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.2.9",
+      "target": 21
+    },
+    {
+      "date": "2026-07-01T20:11:43.814Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.2.10",
+      "target": 21
+    },
+    {
+      "date": "2026-07-01T21:06:01.395Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.20",
+      "target": 21
+    },
+    {
+      "date": "2026-07-21T15:58:13.838Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.21",
+      "target": 21
+    },
+    {
+      "date": "2026-07-21T15:58:23.261Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.2.11",
+      "target": 21
+    },
+    {
+      "date": "2026-07-25T20:44:00.712Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.22",
+      "target": 21
+    },
+    {
+      "date": "2026-07-25T20:44:15.537Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.2.12",
+      "target": 21
+    },
+    {
+      "date": "2026-08-03T20:30:39.274Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "16.3.0",
+      "target": 22
+    },
+    {
+      "date": "2026-08-06T19:14:39.783Z",
+      "package": "@next/eslint-plugin-next",
+      "version": "15.5.23",
+      "target": 22
+    }
+  ]
+}

@@ -32,13 +32,13 @@ export default function ProgressPage() {
   const first = history.samples[0];
   const last = history.samples.at(-1);
 
-  const points = history.samples.map((s) => ({
+  const implemented = history.samples.map((s) => ({
     date: s.date,
     version: s.version,
     value: s.totalImplemented,
     fullyMigrated: s.fullyMigrated,
-    target: s.target,
   }));
+  const target = history.targetHistory;
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 p-4 md:p-8">
@@ -115,7 +115,7 @@ export default function ProgressPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <MigrationLineChart points={points} />
+          <MigrationLineChart implemented={implemented} target={target} />
         </CardContent>
       </Card>
 

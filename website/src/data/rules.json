@@ -1686,18 +1686,25 @@
       "fixable": false
     },
     "oxlint": {
-      "migrationStatus": "not-implemented",
-      "reason": "Recognized by oxlint but not implemented yet.",
-      "category": null,
+      "migrationStatus": "migrated",
+      "reason": null,
+      "category": "style",
       "nursery": false,
       "typeAware": false,
-      "fixStatus": null,
-      "default": null,
-      "docsUrl": null,
+      "fixStatus": "none",
+      "default": false,
+      "docsUrl": "https://oxc.rs/docs/guide/usage/linter/rules/eslint/id-denylist.html",
       "original": false,
       "configKey": "id-denylist"
     },
-    "presets": []
+    "presets": [
+      { "config": "@eslint/all.json", "severity": "error", "options": null },
+      { "config": "airbnb/base.json", "severity": "off", "options": null },
+      { "config": "airbnb/legacy.json", "severity": "off", "options": null },
+      { "config": "airbnb/whitespace.json", "severity": "off", "options": null },
+      { "config": "airbnb.json", "severity": "off", "options": null },
+      { "config": "alloy.json", "severity": "off", "options": null }
+    ]
   },
   {
     "id": "eslint__id-length",
@@ -8863,7 +8870,7 @@
       "category": "correctness",
       "nursery": false,
       "typeAware": false,
-      "fixStatus": "none",
+      "fixStatus": "planned",
       "default": true,
       "docsUrl": "https://oxc.rs/docs/guide/usage/linter/rules/eslint/no-unused-private-class-members.html",
       "original": false,
@@ -9857,18 +9864,33 @@
       "fixable": true
     },
     "oxlint": {
-      "migrationStatus": "not-implemented",
-      "reason": "Recognized by oxlint but not implemented yet.",
-      "category": null,
+      "migrationStatus": "migrated",
+      "reason": null,
+      "category": "style",
       "nursery": false,
       "typeAware": false,
-      "fixStatus": null,
-      "default": null,
-      "docsUrl": null,
+      "fixStatus": "implemented",
+      "default": false,
+      "docsUrl": "https://oxc.rs/docs/guide/usage/linter/rules/eslint/one-var.html",
       "original": false,
       "configKey": "one-var"
     },
-    "presets": []
+    "presets": [
+      { "config": "@antfu.json", "severity": "error", "options": [{ "initialized": "never" }] },
+      { "config": "@eslint/all.json", "severity": "error", "options": null },
+      { "config": "airbnb/base.json", "severity": "error", "options": ["never"] },
+      { "config": "airbnb/legacy.json", "severity": "error", "options": ["never"] },
+      { "config": "airbnb/whitespace.json", "severity": "warn", "options": ["never"] },
+      { "config": "airbnb.json", "severity": "error", "options": ["never"] },
+      { "config": "alloy.json", "severity": "error", "options": ["never"] },
+      {
+        "config": "google.json",
+        "severity": "error",
+        "options": [{ "var": "never", "let": "never", "const": "never" }]
+      },
+      { "config": "hardcore.json", "severity": "error", "options": ["never"] },
+      { "config": "standard.json", "severity": "error", "options": [{ "initialized": "never" }] }
+    ]
   },
   {
     "id": "eslint__one-var-declaration-per-line",
@@ -10261,7 +10283,7 @@
       "category": "style",
       "nursery": false,
       "typeAware": false,
-      "fixStatus": "none",
+      "fixStatus": "planned",
       "default": false,
       "docsUrl": "https://oxc.rs/docs/guide/usage/linter/rules/eslint/prefer-named-capture-group.html",
       "original": false,
@@ -10400,7 +10422,7 @@
     "oxlint": {
       "migrationStatus": "migrated",
       "reason": null,
-      "category": "style",
+      "category": "pedantic",
       "nursery": false,
       "typeAware": false,
       "fixStatus": "none",
@@ -12008,7 +12030,7 @@
       "category": "style",
       "nursery": false,
       "typeAware": false,
-      "fixStatus": "planned",
+      "fixStatus": "implemented",
       "default": false,
       "docsUrl": "https://oxc.rs/docs/guide/usage/linter/rules/typescript/class-literal-property-style.html",
       "original": false,
@@ -14495,7 +14517,7 @@
       "category": "nursery",
       "nursery": true,
       "typeAware": true,
-      "fixStatus": "none",
+      "fixStatus": "planned",
       "default": false,
       "docsUrl": "https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unnecessary-condition.html",
       "original": false,
@@ -14738,7 +14760,7 @@
       "category": "suspicious",
       "nursery": false,
       "typeAware": true,
-      "fixStatus": "none",
+      "fixStatus": "planned",
       "default": false,
       "docsUrl": "https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unnecessary-type-conversion.html",
       "original": false,
@@ -14772,7 +14794,7 @@
       "category": "suspicious",
       "nursery": false,
       "typeAware": true,
-      "fixStatus": "none",
+      "fixStatus": "planned",
       "default": false,
       "docsUrl": "https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unnecessary-type-parameters.html",
       "original": false,
@@ -15302,7 +15324,7 @@
       "category": "correctness",
       "nursery": false,
       "typeAware": false,
-      "fixStatus": "none",
+      "fixStatus": "planned",
       "default": true,
       "docsUrl": "https://oxc.rs/docs/guide/usage/linter/rules/eslint/no-unused-private-class-members.html",
       "original": false,
@@ -15946,7 +15968,7 @@
       "category": "style",
       "nursery": false,
       "typeAware": true,
-      "fixStatus": "none",
+      "fixStatus": "planned",
       "default": false,
       "docsUrl": "https://oxc.rs/docs/guide/usage/linter/rules/typescript/prefer-find.html",
       "original": false,
@@ -17240,6 +17262,33 @@
     "presets": []
   },
   {
+    "id": "unicorn__consistent-arrow-return-style",
+    "plugin": "unicorn",
+    "pluginLabel": "Unicorn",
+    "name": "consistent-arrow-return-style",
+    "eslint": {
+      "deprecated": false,
+      "recommended": false,
+      "description": "Enforce a consistent return style for multiline arrow function bodies.",
+      "docsUrl": "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-arrow-return-style.md",
+      "type": "suggestion",
+      "fixable": true
+    },
+    "oxlint": {
+      "migrationStatus": "not-implemented",
+      "reason": "Recognized by oxlint but not implemented yet.",
+      "category": null,
+      "nursery": false,
+      "typeAware": false,
+      "fixStatus": null,
+      "default": null,
+      "docsUrl": null,
+      "original": false,
+      "configKey": "unicorn/consistent-arrow-return-style"
+    },
+    "presets": []
+  },
+  {
     "id": "unicorn__consistent-assert",
     "plugin": "unicorn",
     "pluginLabel": "Unicorn",
@@ -18093,6 +18142,33 @@
     "presets": []
   },
   {
+    "id": "unicorn__iteration-fallback-style",
+    "plugin": "unicorn",
+    "pluginLabel": "Unicorn",
+    "name": "iteration-fallback-style",
+    "eslint": {
+      "deprecated": false,
+      "recommended": false,
+      "description": "Enforce a consistent style for optional loop sources.",
+      "docsUrl": "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/iteration-fallback-style.md",
+      "type": "suggestion",
+      "fixable": true
+    },
+    "oxlint": {
+      "migrationStatus": "not-implemented",
+      "reason": "Recognized by oxlint but not implemented yet.",
+      "category": null,
+      "nursery": false,
+      "typeAware": false,
+      "fixStatus": null,
+      "default": null,
+      "docsUrl": null,
+      "original": false,
+      "configKey": "unicorn/iteration-fallback-style"
+    },
+    "presets": []
+  },
+  {
     "id": "unicorn__logical-assignment-operators",
     "plugin": "unicorn",
     "pluginLabel": "Unicorn",
@@ -18552,7 +18628,7 @@
       "category": "restriction",
       "nursery": false,
       "typeAware": false,
-      "fixStatus": "none",
+      "fixStatus": "planned",
       "default": false,
       "docsUrl": "https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-array-reduce.html",
       "original": false,
@@ -18797,6 +18873,33 @@
       { "config": "unicorn/recommended.json", "severity": "error", "options": null },
       { "config": "unicorn/unopinionated.json", "severity": "error", "options": null }
     ]
+  },
+  {
+    "id": "unicorn__no-barrel-files",
+    "plugin": "unicorn",
+    "pluginLabel": "Unicorn",
+    "name": "no-barrel-files",
+    "eslint": {
+      "deprecated": false,
+      "recommended": false,
+      "description": "Disallow barrel files.",
+      "docsUrl": "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-barrel-files.md",
+      "type": "suggestion",
+      "fixable": false
+    },
+    "oxlint": {
+      "migrationStatus": "not-portable",
+      "reason": "No need to implement separately; similar functionality is available via `oxc/no-barrel-file`",
+      "category": null,
+      "nursery": false,
+      "typeAware": false,
+      "fixStatus": null,
+      "default": null,
+      "docsUrl": null,
+      "original": false,
+      "configKey": "unicorn/no-barrel-files"
+    },
+    "presets": []
   },
   {
     "id": "unicorn__no-blob-to-file",
@@ -19708,8 +19811,8 @@
       "fixable": false
     },
     "oxlint": {
-      "migrationStatus": "not-implemented",
-      "reason": "Recognized by oxlint but not implemented yet.",
+      "migrationStatus": "not-portable",
+      "reason": "No need to implement, already covered by `oxc/bad-char-at-comparison`.",
       "category": null,
       "nursery": false,
       "typeAware": false,
@@ -21062,8 +21165,8 @@
       "fixable": false
     },
     "oxlint": {
-      "migrationStatus": "not-implemented",
-      "reason": "Recognized by oxlint but not implemented yet.",
+      "migrationStatus": "not-portable",
+      "reason": "No need to implement, TypeScript type checking reports accesses to undeclared class members.",
       "category": null,
       "nursery": false,
       "typeAware": false,
@@ -21494,7 +21597,7 @@
       "category": "pedantic",
       "nursery": false,
       "typeAware": false,
-      "fixStatus": "none",
+      "fixStatus": "planned",
       "default": false,
       "docsUrl": "https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-unreadable-iife.html",
       "original": false,
@@ -21629,8 +21732,8 @@
       "fixable": false
     },
     "oxlint": {
-      "migrationStatus": "not-implemented",
-      "reason": "Recognized by oxlint but not implemented yet.",
+      "migrationStatus": "not-portable",
+      "reason": "No need to implement, TypeScript type checking reports accessing `value` on `Promise.allSettled()` results that have not been narrowed to the fulfilled variant.",
       "category": null,
       "nursery": false,
       "typeAware": false,
@@ -21666,6 +21769,33 @@
       "docsUrl": null,
       "original": false,
       "configKey": "unicorn/no-unsafe-property-key"
+    },
+    "presets": []
+  },
+  {
+    "id": "unicorn__no-unsafe-sqlite-interpolation",
+    "plugin": "unicorn",
+    "pluginLabel": "Unicorn",
+    "name": "no-unsafe-sqlite-interpolation",
+    "eslint": {
+      "deprecated": false,
+      "recommended": true,
+      "description": "Disallow interpolation into SQL strings passed to Node’s `node:sqlite` APIs.",
+      "docsUrl": "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unsafe-sqlite-interpolation.md",
+      "type": "problem",
+      "fixable": false
+    },
+    "oxlint": {
+      "migrationStatus": "not-implemented",
+      "reason": "Recognized by oxlint but not implemented yet.",
+      "category": null,
+      "nursery": false,
+      "typeAware": false,
+      "fixStatus": null,
+      "default": null,
+      "docsUrl": null,
+      "original": false,
+      "configKey": "unicorn/no-unsafe-sqlite-interpolation"
     },
     "presets": []
   },
@@ -21876,8 +22006,8 @@
       "fixable": true
     },
     "oxlint": {
-      "migrationStatus": "not-implemented",
-      "reason": "Recognized by oxlint but not implemented yet.",
+      "migrationStatus": "not-portable",
+      "reason": "No need to implement separately; `eslint/no-useless-concat` already covers the diagnostics and will implement the suggestion fixer.",
       "category": null,
       "nursery": false,
       "typeAware": false,
@@ -26769,6 +26899,33 @@
       "docsUrl": null,
       "original": false,
       "configKey": "unicorn/require-proxy-trap-boolean-return"
+    },
+    "presets": []
+  },
+  {
+    "id": "unicorn__single-line-block-comment-style",
+    "plugin": "unicorn",
+    "pluginLabel": "Unicorn",
+    "name": "single-line-block-comment-style",
+    "eslint": {
+      "deprecated": false,
+      "recommended": true,
+      "description": "Enforce a consistent style for single-line block comments.",
+      "docsUrl": "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/single-line-block-comment-style.md",
+      "type": "layout",
+      "fixable": true
+    },
+    "oxlint": {
+      "migrationStatus": "not-implemented",
+      "reason": "Recognized by oxlint but not implemented yet.",
+      "category": null,
+      "nursery": false,
+      "typeAware": false,
+      "fixStatus": null,
+      "default": null,
+      "docsUrl": null,
+      "original": false,
+      "configKey": "unicorn/single-line-block-comment-style"
     },
     "presets": []
   },
@@ -33349,18 +33506,34 @@
       "fixable": true
     },
     "oxlint": {
-      "migrationStatus": "not-implemented",
-      "reason": "Recognized by oxlint but not implemented yet.",
-      "category": null,
+      "migrationStatus": "migrated",
+      "reason": null,
+      "category": "style",
       "nursery": false,
       "typeAware": false,
-      "fixStatus": null,
-      "default": null,
-      "docsUrl": null,
+      "fixStatus": "implemented",
+      "default": false,
+      "docsUrl": "https://oxc.rs/docs/guide/usage/linter/rules/jsdoc/no-blank-blocks.html",
       "original": false,
       "configKey": "jsdoc/no-blank-blocks"
     },
-    "presets": []
+    "presets": [
+      { "config": "eslint/base.json", "severity": "off", "options": null },
+      { "config": "eslint.json", "severity": "off", "options": null },
+      { "config": "jsdoc/recommended-error.json", "severity": "off", "options": null },
+      { "config": "jsdoc/recommended-tsdoc-error.json", "severity": "off", "options": null },
+      { "config": "jsdoc/recommended-tsdoc.json", "severity": "off", "options": null },
+      { "config": "jsdoc/recommended-typescript-error.json", "severity": "off", "options": null },
+      {
+        "config": "jsdoc/recommended-typescript-flavor-error.json",
+        "severity": "off",
+        "options": null
+      },
+      { "config": "jsdoc/recommended-typescript-flavor.json", "severity": "off", "options": null },
+      { "config": "jsdoc/recommended-typescript.json", "severity": "off", "options": null },
+      { "config": "jsdoc/recommended.json", "severity": "off", "options": null },
+      { "config": "wikimedia.json", "severity": "warn", "options": null }
+    ]
   },
   {
     "id": "jsdoc__no-defaults",
@@ -39198,8 +39371,8 @@
       "configKey": "jsx-a11y/anchor-has-content"
     },
     "presets": [
-      { "config": "airbnb/whitespace.json", "severity": "warn", "options": null },
-      { "config": "airbnb.json", "severity": "error", "options": null },
+      { "config": "airbnb/whitespace.json", "severity": "warn", "options": [{ "components": [] }] },
+      { "config": "airbnb.json", "severity": "error", "options": [{ "components": [] }] },
       { "config": "jsx-a11y/recommended.json", "severity": "error", "options": null },
       { "config": "jsx-a11y/strict.json", "severity": "error", "options": null }
     ]
@@ -41066,6 +41239,33 @@
     ]
   },
   {
+    "id": "nextjs__no-location-assign-relative-destination",
+    "plugin": "nextjs",
+    "pluginLabel": "Next.js",
+    "name": "no-location-assign-relative-destination",
+    "eslint": {
+      "deprecated": false,
+      "recommended": true,
+      "description": "Prevent usage of `location.assign` or `location.href` assignment to navigate to internal Next.js pages.",
+      "docsUrl": "https://nextjs.org/docs/messages/no-location-assign-relative-destination",
+      "type": "problem",
+      "fixable": false
+    },
+    "oxlint": {
+      "migrationStatus": "not-implemented",
+      "reason": "Recognized by oxlint but not implemented yet.",
+      "category": null,
+      "nursery": false,
+      "typeAware": false,
+      "fixStatus": null,
+      "default": null,
+      "docsUrl": null,
+      "original": false,
+      "configKey": "nextjs/no-location-assign-relative-destination"
+    },
+    "presets": []
+  },
+  {
     "id": "nextjs__no-page-custom-font",
     "plugin": "nextjs",
     "pluginLabel": "Next.js",
@@ -41926,14 +42126,14 @@
       "fixable": true
     },
     "oxlint": {
-      "migrationStatus": "not-implemented",
-      "reason": "Recognized by oxlint but not implemented yet.",
-      "category": null,
+      "migrationStatus": "migrated",
+      "reason": null,
+      "category": "style",
       "nursery": false,
       "typeAware": false,
-      "fixStatus": null,
-      "default": null,
-      "docsUrl": null,
+      "fixStatus": "planned",
+      "default": false,
+      "docsUrl": "https://oxc.rs/docs/guide/usage/linter/rules/node/exports-style.html",
       "original": false,
       "configKey": "node/exports-style"
     },
@@ -42330,7 +42530,7 @@
     "eslint": {
       "deprecated": false,
       "recommended": false,
-      "description": "disallow string concatenation with `__dirname` and `__filename`",
+      "description": "disallow string concatenation with `__dirname`, `__filename`, and `import.meta` paths",
       "docsUrl": "https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-path-concat.md",
       "type": "suggestion",
       "fixable": false
@@ -42917,6 +43117,33 @@
     "presets": []
   },
   {
+    "id": "node__prefer-import/assert-strict",
+    "plugin": "node",
+    "pluginLabel": "Node (n)",
+    "name": "prefer-import/assert-strict",
+    "eslint": {
+      "deprecated": false,
+      "recommended": false,
+      "description": "enforce using `node:assert/strict` instead of `node:assert`.",
+      "docsUrl": "https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-import/assert-strict.md",
+      "type": "suggestion",
+      "fixable": false
+    },
+    "oxlint": {
+      "migrationStatus": "not-implemented",
+      "reason": "Recognized by oxlint but not implemented yet.",
+      "category": null,
+      "nursery": false,
+      "typeAware": false,
+      "fixStatus": null,
+      "default": null,
+      "docsUrl": null,
+      "original": false,
+      "configKey": "node/prefer-import/assert-strict"
+    },
+    "presets": []
+  },
+  {
     "id": "node__prefer-node-protocol",
     "plugin": "node",
     "pluginLabel": "Node (n)",
@@ -42940,6 +43167,33 @@
       "docsUrl": null,
       "original": false,
       "configKey": "node/prefer-node-protocol"
+    },
+    "presets": []
+  },
+  {
+    "id": "node__prefer-process-get-builtin-module",
+    "plugin": "node",
+    "pluginLabel": "Node (n)",
+    "name": "prefer-process-get-builtin-module",
+    "eslint": {
+      "deprecated": false,
+      "recommended": false,
+      "description": "enforce using `process.getBuiltinModule()` to load Node.js built-in modules",
+      "docsUrl": "https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/prefer-process-get-builtin-module.md",
+      "type": "suggestion",
+      "fixable": false
+    },
+    "oxlint": {
+      "migrationStatus": "not-implemented",
+      "reason": "Recognized by oxlint but not implemented yet.",
+      "category": null,
+      "nursery": false,
+      "typeAware": false,
+      "fixStatus": null,
+      "default": null,
+      "docsUrl": null,
+      "original": false,
+      "configKey": "node/prefer-process-get-builtin-module"
     },
     "presets": []
   },
@@ -50084,6 +50338,33 @@
       "docsUrl": "https://oxc.rs/docs/guide/usage/linter/rules/oxc/bad-comparison-sequence.html",
       "original": true,
       "configKey": "oxc/bad-comparison-sequence"
+    },
+    "presets": []
+  },
+  {
+    "id": "oxc__bad-match-all-arg",
+    "plugin": "oxc",
+    "pluginLabel": "Oxlint original",
+    "name": "bad-match-all-arg",
+    "eslint": {
+      "deprecated": false,
+      "recommended": false,
+      "description": null,
+      "docsUrl": null,
+      "type": null,
+      "fixable": false
+    },
+    "oxlint": {
+      "migrationStatus": "migrated",
+      "reason": null,
+      "category": "correctness",
+      "nursery": false,
+      "typeAware": false,
+      "fixStatus": "none",
+      "default": true,
+      "docsUrl": "https://oxc.rs/docs/guide/usage/linter/rules/oxc/bad-match-all-arg.html",
+      "original": true,
+      "configKey": "oxc/bad-match-all-arg"
     },
     "presets": []
   },

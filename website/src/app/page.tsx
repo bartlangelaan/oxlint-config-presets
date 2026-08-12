@@ -12,13 +12,13 @@ export default function Home() {
   const history = getMigrationHistory();
   const pct = summary.eligible > 0 ? ((summary.migrated / summary.eligible) * 100).toFixed(1) : '0';
 
-  const points = history.samples.map((s) => ({
+  const implemented = history.samples.map((s) => ({
     date: s.date,
     version: s.version,
     value: s.totalImplemented,
     fullyMigrated: s.fullyMigrated,
-    target: s.target,
   }));
+  const target = history.targetHistory;
 
   const topPlugins = plugins
     .slice()
@@ -69,7 +69,7 @@ export default function Home() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <MigrationLineChart points={points} />
+          <MigrationLineChart implemented={implemented} target={target} />
         </CardContent>
       </Card>
 

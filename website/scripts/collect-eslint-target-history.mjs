@@ -14,6 +14,17 @@
  * per plugin, a cumulative count of *eligible* (portable) rules over time —
  * a real, growing target denominator instead of a constant.
  *
+ * Writes one oxlint-migration-history-<scope>.json per plugin, sampled at
+ * that plugin's OWN release dates (not oxlint's) — a bucket with multiple
+ * source packages (e.g. "react" = eslint-plugin-react + -react-hooks +
+ * -react-refresh) merges all of their release events into one timeline. This
+ * is deliberately a different, independent time axis from
+ * oxlint-migration-history.json's oxlint-release-indexed samples: plugins
+ * release on their own schedule. It also merges every bucket's timeline into
+ * one global target-over-time series, written into
+ * oxlint-migration-history.json's `targetHistory` field (that file must
+ * already exist — run collect-history.mjs first).
+ *
  * A few plugins (@vitest/eslint-plugin, eslint-plugin-react-hooks,
  * eslint-plugin-react-refresh) ship as a single pre-bundled file with no
  * discoverable per-rule listing in any published version. There's no safe
@@ -24,11 +35,6 @@
  * affects the "vitest" bucket (a standalone plugin); for "react" it's a
  * minor share of a bucket eslint-plugin-react (which *is* trackable)
  * dominates.
- *
- * Reads: src/data/rules.json (for eligibility) and the
- * oxlint-migration-history*.json files already written by collect-history.mjs
- * (for the sample dates to evaluate the target at). Adds a `target` number to
- * every sample in those files, in place.
  *
  * Run with: pnpm collect-eslint-history (after pnpm collect-history)
  */
@@ -223,13 +229,15 @@ for (const rule of rulesData) {
   eligibleNamesByBucket.get(rule.plugin).add(rule.name);
 }
 
-// ---- 2. Per-bucket "eligible rule -> date first seen" timelines --------------
+// ---- 2. Per-bucket "eligible rule -> date first seen" timelines, plus the
+//         bucket's own native release events (its packages' own versions) ---
 
 const bucketResults = new Map();
 
 for (const bucket of BUCKETS) {
   const eligibleNames = eligibleNamesByBucket.get(bucket.id) ?? new Set();
   const firstSeen = new Map();
+  const events = []; // { package, version, date } — this bucket's own release timeline
   let hasHistory = false;
 
   for (const pkg of bucket.packages) {
@@ -240,6 +248,7 @@ for (const bucket of BUCKETS) {
       const names = fetchVersionRuleNames(pkg.name, version, pkg.dirs, pkg.camelCase);
       if (names === null) continue;
       hasHistory = true;
+      events.push({ package: pkg.name, version, date });
       for (const name of names) {
         if (!eligibleNames.has(name)) continue;
         const prev = firstSeen.get(name);
@@ -247,6 +256,7 @@ for (const bucket of BUCKETS) {
       }
     }
   }
+  events.sort((a, b) => a.date.localeCompare(b.date));
 
   const matchedCount = firstSeen.size;
   const totalEligible = eligibleNames.size;
@@ -258,19 +268,21 @@ for (const bucket of BUCKETS) {
 
   bucketResults.set(bucket.id, {
     oxlintScope: bucket.oxlintScope,
+    sourcePackages: bucket.packages.map((p) => p.name),
     hasHistory,
     matchedCount,
     totalEligible,
     unmatchedCount,
     firstSeenDates: [...firstSeen.values()].sort((a, b) => a.localeCompare(b)),
+    events,
   });
 
   console.log(
-    `  -> ${bucket.id}: ${matchedCount}/${totalEligible} eligible rules dated, ${unmatchedCount} baseline`,
+    `  -> ${bucket.id}: ${matchedCount}/${totalEligible} eligible rules dated, ${unmatchedCount} baseline, ${events.length} release events`,
   );
 }
 
-// ---- 3. Inject a `target` value into every existing sample -------------------
+// ---- 3. Write each bucket's own release-indexed target file ------------------
 
 function eligibleCountAt(result, isoDate) {
   let count = result.unmatchedCount;
@@ -281,35 +293,70 @@ function eligibleCountAt(result, isoDate) {
   return count;
 }
 
+const generatedAt = new Date().toISOString();
+
 for (const bucket of BUCKETS) {
   const result = bucketResults.get(bucket.id);
-  const filePath = join(dataDir, `oxlint-migration-history-${bucket.oxlintScope}.json`);
-  if (!existsSync(filePath)) {
-    console.warn(`  [warn] ${filePath} doesn't exist yet — run collect-history first.`);
-    continue;
+  const samples = result.events.map((e) => ({
+    date: e.date,
+    package: e.package,
+    version: e.version,
+    target: eligibleCountAt(result, e.date),
+  }));
+  // No trackable release events at all (e.g. vitest, entirely bundled): fall
+  // back to a single point at today's value, rather than an empty series.
+  if (samples.length === 0) {
+    samples.push({
+      date: generatedAt,
+      package: null,
+      version: null,
+      target: result.unmatchedCount,
+    });
   }
-  const fileData = JSON.parse(readFileSync(filePath, 'utf-8'));
-  for (const sample of fileData.samples) {
-    sample.target = eligibleCountAt(result, sample.date);
-  }
-  fileData.targetTrackingCoverage = {
-    matchedCount: result.matchedCount,
-    totalEligible: result.totalEligible,
-    hasHistory: result.hasHistory,
-  };
-  writeFileSync(filePath, JSON.stringify(fileData));
+  writeFileSync(
+    join(dataDir, `oxlint-migration-history-${result.oxlintScope}.json`),
+    JSON.stringify(
+      {
+        generatedAt,
+        scope: result.oxlintScope,
+        sourcePackages: result.sourcePackages,
+        target: eligibleCountAt(result, generatedAt),
+        targetTrackingCoverage: {
+          matchedCount: result.matchedCount,
+          totalEligible: result.totalEligible,
+          hasHistory: result.hasHistory,
+        },
+        samples,
+      },
+      null,
+      2,
+    ),
+  );
+  console.log(
+    `Wrote oxlint-migration-history-${result.oxlintScope}.json (${samples.length} of this plugin's own release events)`,
+  );
 }
+
+// ---- 4. Merge every bucket's timeline into one global target-over-time series -
+
+const allDates = [
+  ...new Set(BUCKETS.flatMap((b) => bucketResults.get(b.id).events.map((e) => e.date))),
+].sort((a, b) => a.localeCompare(b));
+const targetHistory = allDates.map((date) => ({
+  date,
+  target: BUCKETS.reduce((sum, b) => sum + eligibleCountAt(bucketResults.get(b.id), date), 0),
+}));
 
 const globalFilePath = join(dataDir, 'oxlint-migration-history.json');
 if (existsSync(globalFilePath)) {
   const globalData = JSON.parse(readFileSync(globalFilePath, 'utf-8'));
-  for (const sample of globalData.samples) {
-    let total = 0;
-    for (const bucket of BUCKETS)
-      total += eligibleCountAt(bucketResults.get(bucket.id), sample.date);
-    sample.target = total;
-  }
-  writeFileSync(globalFilePath, JSON.stringify(globalData));
+  globalData.targetHistory = targetHistory;
+  writeFileSync(globalFilePath, JSON.stringify(globalData, null, 2));
+  console.log(
+    `\nWrote targetHistory (${targetHistory.length} points, merged across all plugins' own release dates) into oxlint-migration-history.json`,
+  );
+} else {
+  console.warn(`  [warn] ${globalFilePath} doesn't exist yet — run collect-history first.`);
 }
 
-console.log('\nDone. Injected per-sample `target` values into oxlint-migration-history*.json.');
+console.log('\nDone.');
