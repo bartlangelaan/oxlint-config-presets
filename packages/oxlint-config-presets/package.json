@@ -39,8 +39,8 @@
     "@eslint/js": "^10.0.1",
     "@oxlint/migrate": "^1.78.0",
     "@types/node": "^26.2.0",
-    "@typescript-eslint/eslint-plugin": "^8.66.0",
-    "@typescript-eslint/parser": "^8.66.0",
+    "@typescript-eslint/eslint-plugin": "^8.67.0",
+    "@typescript-eslint/parser": "^8.67.0",
     "eslint": "^10.8.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -60,13 +60,13 @@
     "eslint-plugin-promise": "^7.3.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.3",
+    "eslint-plugin-react-refresh": "^0.5.4",
     "eslint-plugin-unicorn": "^73.0.0",
     "eslint8": "npm:eslint@^8.57.1",
     "next": "^16.3.0",
     "oxfmt": "^0.63.0",
     "oxlint": "^1.78.0",
-    "tsx": "^4.23.11"
+    "tsx": "^4.23.12"
   },
   "peerDependencies": {
     "oxlint": ">=0.15.0"
