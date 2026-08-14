@@ -19,7 +19,8 @@
           "generateViewport",
           "generateImageMetadata",
           "generateSitemaps",
-          "generateStaticParams"
+          "generateStaticParams",
+          "instant"
         ]
       }
     ]
