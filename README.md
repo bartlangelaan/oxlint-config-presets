@@ -451,7 +451,7 @@ Extracted from `eslint-config-google@0.14.0`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/recommended.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
+Extracted from `@typescript-eslint/eslint-plugin@8.67.0`.
 
 <details>
 <summary>20 rules successfully migrated</summary>
@@ -466,7 +466,7 @@ Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/recommended-type-checked.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
+Extracted from `@typescript-eslint/eslint-plugin@8.67.0`.
 
 <details>
 <summary>47 rules successfully migrated</summary>
@@ -481,7 +481,7 @@ Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/strict.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
+Extracted from `@typescript-eslint/eslint-plugin@8.67.0`.
 
 <details>
 <summary>28 rules successfully migrated</summary>
@@ -496,7 +496,7 @@ Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/strict-type-checked.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
+Extracted from `@typescript-eslint/eslint-plugin@8.67.0`.
 
 <details>
 <summary>72 rules successfully migrated</summary>
@@ -511,7 +511,7 @@ Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/stylistic.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
+Extracted from `@typescript-eslint/eslint-plugin@8.67.0`.
 
 <details>
 <summary>13 rules successfully migrated</summary>
@@ -526,7 +526,7 @@ Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/stylistic-type-checked.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
+Extracted from `@typescript-eslint/eslint-plugin@8.67.0`.
 
 <details>
 <summary>21 rules successfully migrated</summary>
@@ -541,7 +541,7 @@ Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
 "./node_modules/oxlint-config-presets/@typescript-eslint/all.json"
 ```
 
-Extracted from `@typescript-eslint/eslint-plugin@8.66.0`.
+Extracted from `@typescript-eslint/eslint-plugin@8.67.0`.
 
 <details>
 <summary>126 rules successfully migrated</summary>
@@ -1205,7 +1205,7 @@ Extracted from `eslint-plugin-import-x@4.17.1`.
 "./node_modules/oxlint-config-presets/next/recommended.json"
 ```
 
-Extracted from `eslint-config-next@16.3.0`.
+Extracted from `eslint-config-next@16.3.1`.
 
 <details>
 <summary>48 rules successfully migrated</summary>
@@ -1233,7 +1233,7 @@ Extracted from `eslint-config-next@16.3.0`.
 "./node_modules/oxlint-config-presets/next/core-web-vitals.json"
 ```
 
-Extracted from `eslint-config-next@16.3.0`.
+Extracted from `eslint-config-next@16.3.1`.
 
 <details>
 <summary>48 rules successfully migrated</summary>
@@ -1376,7 +1376,7 @@ Extracted from `eslint-plugin-react-hooks@7.1.1`.
 "./node_modules/oxlint-config-presets/react-refresh/recommended.json"
 ```
 
-Extracted from `eslint-plugin-react-refresh@0.5.3`.
+Extracted from `eslint-plugin-react-refresh@0.5.4`.
 
 <details>
 <summary>1 rule successfully migrated</summary>
@@ -1391,7 +1391,7 @@ Extracted from `eslint-plugin-react-refresh@0.5.3`.
 "./node_modules/oxlint-config-presets/react-refresh/next.json"
 ```
 
-Extracted from `eslint-plugin-react-refresh@0.5.3`.
+Extracted from `eslint-plugin-react-refresh@0.5.4`.
 
 <details>
 <summary>1 rule successfully migrated</summary>
@@ -1406,7 +1406,7 @@ Extracted from `eslint-plugin-react-refresh@0.5.3`.
 "./node_modules/oxlint-config-presets/react-refresh/vite.json"
 ```
 
-Extracted from `eslint-plugin-react-refresh@0.5.3`.
+Extracted from `eslint-plugin-react-refresh@0.5.4`.
 
 <details>
 <summary>1 rule successfully migrated</summary>
@@ -1878,7 +1878,7 @@ Extracted from `eslint-plugin-jest@28.14.0`.
 "./node_modules/oxlint-config-presets/@vitest/recommended.json"
 ```
 
-Extracted from `@vitest/eslint-plugin@1.6.26`.
+Extracted from `@vitest/eslint-plugin@1.6.27`.
 
 <details>
 <summary>17 rules successfully migrated</summary>
@@ -1893,7 +1893,7 @@ Extracted from `@vitest/eslint-plugin@1.6.26`.
 "./node_modules/oxlint-config-presets/@vitest/all.json"
 ```
 
-Extracted from `@vitest/eslint-plugin@1.6.26`.
+Extracted from `@vitest/eslint-plugin@1.6.27`.
 
 <details>
 <summary>71 rules successfully migrated</summary>
