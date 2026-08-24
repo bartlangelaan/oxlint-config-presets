@@ -15,8 +15,8 @@
   "devDependencies": {
     "@types/node": "^26.2.0",
     "@typescript/native": "npm:typescript@^7.0.2",
-    "oxfmt": "^0.63.0",
-    "oxlint": "^1.78.0",
+    "oxfmt": "^0.65.0",
+    "oxlint": "^1.80.0",
     "oxlint-tsgolint": "^7.0.2001",
     "typescript": "npm:@typescript/typescript6@^6.0.2"
   },
@@ -26,7 +26,7 @@
       "typescript": "npm:@typescript/typescript6@^6.0.2"
     },
     "patchedDependencies": {
-      "@oxlint/migrate@1.78.0": "patches/@oxlint__migrate@1.78.0.patch"
+      "@oxlint/migrate@1.79.0": "patches/@oxlint__migrate@1.79.0.patch"
     }
   }
 }
