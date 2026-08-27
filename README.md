@@ -171,7 +171,7 @@ export default defineConfig({
   - all `unicorn/all.json`
   - unopinionated `unicorn/unopinionated.json`
 
-Generated with `@oxlint/migrate@1.78.0`.
+Generated with `@oxlint/migrate@1.80.0`.
 
 ### `airbnb.json`
 
@@ -1208,14 +1208,14 @@ Extracted from `eslint-plugin-import-x@4.17.1`.
 Extracted from `eslint-config-next@16.3.1`.
 
 <details>
-<summary>48 rules successfully migrated</summary>
+<summary>60 rules successfully migrated</summary>
 
-`react/display-name`, `react/jsx-key`, `react/jsx-no-comment-textnodes`, `react/jsx-no-duplicate-props`, `react/jsx-no-target-blank`, `react/jsx-no-undef`, `react/no-children-prop`, `react/no-danger-with-children`, `react/no-direct-mutation-state`, `react/no-find-dom-node`, `react/no-is-mounted`, `react/no-render-return-value`, `react/no-string-refs`, `react/no-unescaped-entities`, `react/no-unknown-property`, `react/no-unsafe`, `react/react-in-jsx-scope`, `react/require-render-return`, `import/no-anonymous-default-export`, `jsx-a11y/alt-text`, `jsx-a11y/aria-props`, `jsx-a11y/aria-proptypes`, `jsx-a11y/aria-unsupported-elements`, `jsx-a11y/role-has-required-aria-props`, `jsx-a11y/role-supports-aria-props`, `nextjs/google-font-display`, `nextjs/google-font-preconnect`, `nextjs/next-script-for-ga`, `nextjs/no-async-client-component`, `nextjs/no-before-interactive-script-outside-document`, `nextjs/no-css-tags`, `nextjs/no-head-element`, `nextjs/no-html-link-for-pages`, `nextjs/no-img-element`, `nextjs/no-page-custom-font`, `nextjs/no-styled-jsx-in-document`, `nextjs/no-sync-scripts`, `nextjs/no-title-in-document-head`, `nextjs/no-typos`, `nextjs/no-unwanted-polyfillio`, `nextjs/inline-script-id`, `nextjs/no-assign-module-variable`, `nextjs/no-document-import-in-page`, `nextjs/no-duplicate-head`, `nextjs/no-head-import-in-document`, `nextjs/no-script-component-in-head`, `react/rules-of-hooks`, `react/exhaustive-deps`
+`react/display-name`, `react/jsx-key`, `react/jsx-no-comment-textnodes`, `react/jsx-no-duplicate-props`, `react/jsx-no-target-blank`, `react/jsx-no-undef`, `react/no-children-prop`, `react/no-danger-with-children`, `react/no-direct-mutation-state`, `react/no-find-dom-node`, `react/no-is-mounted`, `react/no-render-return-value`, `react/no-string-refs`, `react/no-unescaped-entities`, `react/no-unknown-property`, `react/no-unsafe`, `react/react-in-jsx-scope`, `react/require-render-return`, `import/no-anonymous-default-export`, `jsx-a11y/alt-text`, `jsx-a11y/aria-props`, `jsx-a11y/aria-proptypes`, `jsx-a11y/aria-unsupported-elements`, `jsx-a11y/role-has-required-aria-props`, `jsx-a11y/role-supports-aria-props`, `nextjs/google-font-display`, `nextjs/google-font-preconnect`, `nextjs/next-script-for-ga`, `nextjs/no-async-client-component`, `nextjs/no-before-interactive-script-outside-document`, `nextjs/no-css-tags`, `nextjs/no-head-element`, `nextjs/no-html-link-for-pages`, `nextjs/no-img-element`, `nextjs/no-page-custom-font`, `nextjs/no-styled-jsx-in-document`, `nextjs/no-sync-scripts`, `nextjs/no-title-in-document-head`, `nextjs/no-typos`, `nextjs/no-unwanted-polyfillio`, `nextjs/inline-script-id`, `nextjs/no-assign-module-variable`, `nextjs/no-document-import-in-page`, `nextjs/no-duplicate-head`, `nextjs/no-head-import-in-document`, `nextjs/no-script-component-in-head`, `react/rules-of-hooks`, `react/exhaustive-deps`, `react/static-components`, `react/use-memo`, `react/preserve-manual-memoization`, `react/incompatible-library`, `react/immutability`, `react/globals`, `react/refs`, `react/set-state-in-effect`, `react/error-boundaries`, `react/purity`, `react/set-state-in-render`, `react/unsupported-syntax`
 
 </details>
 
 <details>
-<summary>18 rules have no oxlint equivalent</summary>
+<summary>6 rules have no oxlint equivalent</summary>
 
 **Not yet implemented in oxlint**
 
@@ -1223,7 +1223,7 @@ Extracted from `eslint-config-next@16.3.1`.
 
 **Not portable to oxlint**
 
-`react/jsx-uses-react`, `react/jsx-uses-vars`, `react/no-deprecated`, `react-hooks/static-components`, `react-hooks/use-memo`, `react-hooks/preserve-manual-memoization`, `react-hooks/incompatible-library`, `react-hooks/immutability`, `react-hooks/globals`, `react-hooks/refs`, `react-hooks/set-state-in-effect`, `react-hooks/error-boundaries`, `react-hooks/purity`, `react-hooks/set-state-in-render`, `react-hooks/unsupported-syntax`, `react-hooks/config`, `react-hooks/gating`
+`react/jsx-uses-react`, `react/jsx-uses-vars`, `react/no-deprecated`, `react-hooks/config`, `react-hooks/gating`
 
 </details>
 
@@ -1236,14 +1236,14 @@ Extracted from `eslint-config-next@16.3.1`.
 Extracted from `eslint-config-next@16.3.1`.
 
 <details>
-<summary>48 rules successfully migrated</summary>
+<summary>60 rules successfully migrated</summary>
 
-`react/display-name`, `react/jsx-key`, `react/jsx-no-comment-textnodes`, `react/jsx-no-duplicate-props`, `react/jsx-no-target-blank`, `react/jsx-no-undef`, `react/no-children-prop`, `react/no-danger-with-children`, `react/no-direct-mutation-state`, `react/no-find-dom-node`, `react/no-is-mounted`, `react/no-render-return-value`, `react/no-string-refs`, `react/no-unescaped-entities`, `react/no-unknown-property`, `react/no-unsafe`, `react/react-in-jsx-scope`, `react/require-render-return`, `import/no-anonymous-default-export`, `jsx-a11y/alt-text`, `jsx-a11y/aria-props`, `jsx-a11y/aria-proptypes`, `jsx-a11y/aria-unsupported-elements`, `jsx-a11y/role-has-required-aria-props`, `jsx-a11y/role-supports-aria-props`, `nextjs/google-font-display`, `nextjs/google-font-preconnect`, `nextjs/next-script-for-ga`, `nextjs/no-async-client-component`, `nextjs/no-before-interactive-script-outside-document`, `nextjs/no-css-tags`, `nextjs/no-head-element`, `nextjs/no-html-link-for-pages`, `nextjs/no-img-element`, `nextjs/no-page-custom-font`, `nextjs/no-styled-jsx-in-document`, `nextjs/no-sync-scripts`, `nextjs/no-title-in-document-head`, `nextjs/no-typos`, `nextjs/no-unwanted-polyfillio`, `nextjs/inline-script-id`, `nextjs/no-assign-module-variable`, `nextjs/no-document-import-in-page`, `nextjs/no-duplicate-head`, `nextjs/no-head-import-in-document`, `nextjs/no-script-component-in-head`, `react/rules-of-hooks`, `react/exhaustive-deps`
+`react/display-name`, `react/jsx-key`, `react/jsx-no-comment-textnodes`, `react/jsx-no-duplicate-props`, `react/jsx-no-target-blank`, `react/jsx-no-undef`, `react/no-children-prop`, `react/no-danger-with-children`, `react/no-direct-mutation-state`, `react/no-find-dom-node`, `react/no-is-mounted`, `react/no-render-return-value`, `react/no-string-refs`, `react/no-unescaped-entities`, `react/no-unknown-property`, `react/no-unsafe`, `react/react-in-jsx-scope`, `react/require-render-return`, `import/no-anonymous-default-export`, `jsx-a11y/alt-text`, `jsx-a11y/aria-props`, `jsx-a11y/aria-proptypes`, `jsx-a11y/aria-unsupported-elements`, `jsx-a11y/role-has-required-aria-props`, `jsx-a11y/role-supports-aria-props`, `nextjs/google-font-display`, `nextjs/google-font-preconnect`, `nextjs/next-script-for-ga`, `nextjs/no-async-client-component`, `nextjs/no-before-interactive-script-outside-document`, `nextjs/no-css-tags`, `nextjs/no-head-element`, `nextjs/no-html-link-for-pages`, `nextjs/no-img-element`, `nextjs/no-page-custom-font`, `nextjs/no-styled-jsx-in-document`, `nextjs/no-sync-scripts`, `nextjs/no-title-in-document-head`, `nextjs/no-typos`, `nextjs/no-unwanted-polyfillio`, `nextjs/inline-script-id`, `nextjs/no-assign-module-variable`, `nextjs/no-document-import-in-page`, `nextjs/no-duplicate-head`, `nextjs/no-head-import-in-document`, `nextjs/no-script-component-in-head`, `react/rules-of-hooks`, `react/exhaustive-deps`, `react/static-components`, `react/use-memo`, `react/preserve-manual-memoization`, `react/incompatible-library`, `react/immutability`, `react/globals`, `react/refs`, `react/set-state-in-effect`, `react/error-boundaries`, `react/purity`, `react/set-state-in-render`, `react/unsupported-syntax`
 
 </details>
 
 <details>
-<summary>18 rules have no oxlint equivalent</summary>
+<summary>6 rules have no oxlint equivalent</summary>
 
 **Not yet implemented in oxlint**
 
@@ -1251,7 +1251,7 @@ Extracted from `eslint-config-next@16.3.1`.
 
 **Not portable to oxlint**
 
-`react/jsx-uses-react`, `react/jsx-uses-vars`, `react/no-deprecated`, `react-hooks/static-components`, `react-hooks/use-memo`, `react-hooks/preserve-manual-memoization`, `react-hooks/incompatible-library`, `react-hooks/immutability`, `react-hooks/globals`, `react-hooks/refs`, `react-hooks/set-state-in-effect`, `react-hooks/error-boundaries`, `react-hooks/purity`, `react-hooks/set-state-in-render`, `react-hooks/unsupported-syntax`, `react-hooks/config`, `react-hooks/gating`
+`react/jsx-uses-react`, `react/jsx-uses-vars`, `react/no-deprecated`, `react-hooks/config`, `react-hooks/gating`
 
 </details>
 
@@ -1331,18 +1331,18 @@ Extracted from `eslint-plugin-react@7.37.5`.
 Extracted from `eslint-plugin-react-hooks@7.1.1`.
 
 <details>
-<summary>2 rules successfully migrated</summary>
+<summary>14 rules successfully migrated</summary>
 
-`react/rules-of-hooks`, `react/exhaustive-deps`
+`react/rules-of-hooks`, `react/exhaustive-deps`, `react/static-components`, `react/use-memo`, `react/preserve-manual-memoization`, `react/incompatible-library`, `react/immutability`, `react/globals`, `react/refs`, `react/set-state-in-effect`, `react/error-boundaries`, `react/purity`, `react/set-state-in-render`, `react/unsupported-syntax`
 
 </details>
 
 <details>
-<summary>14 rules have no oxlint equivalent</summary>
+<summary>2 rules have no oxlint equivalent</summary>
 
 **Not portable to oxlint**
 
-`react-hooks/static-components`, `react-hooks/use-memo`, `react-hooks/preserve-manual-memoization`, `react-hooks/incompatible-library`, `react-hooks/immutability`, `react-hooks/globals`, `react-hooks/refs`, `react-hooks/set-state-in-effect`, `react-hooks/error-boundaries`, `react-hooks/purity`, `react-hooks/set-state-in-render`, `react-hooks/unsupported-syntax`, `react-hooks/config`, `react-hooks/gating`
+`react-hooks/config`, `react-hooks/gating`
 
 </details>
 
@@ -1355,18 +1355,18 @@ Extracted from `eslint-plugin-react-hooks@7.1.1`.
 Extracted from `eslint-plugin-react-hooks@7.1.1`.
 
 <details>
-<summary>2 rules successfully migrated</summary>
+<summary>15 rules successfully migrated</summary>
 
-`react/rules-of-hooks`, `react/exhaustive-deps`
+`react/rules-of-hooks`, `react/exhaustive-deps`, `react/static-components`, `react/use-memo`, `react/void-use-memo`, `react/preserve-manual-memoization`, `react/incompatible-library`, `react/immutability`, `react/globals`, `react/refs`, `react/set-state-in-effect`, `react/error-boundaries`, `react/purity`, `react/set-state-in-render`, `react/unsupported-syntax`
 
 </details>
 
 <details>
-<summary>15 rules have no oxlint equivalent</summary>
+<summary>2 rules have no oxlint equivalent</summary>
 
 **Not portable to oxlint**
 
-`react-hooks/static-components`, `react-hooks/use-memo`, `react-hooks/void-use-memo`, `react-hooks/preserve-manual-memoization`, `react-hooks/incompatible-library`, `react-hooks/immutability`, `react-hooks/globals`, `react-hooks/refs`, `react-hooks/set-state-in-effect`, `react-hooks/error-boundaries`, `react-hooks/purity`, `react-hooks/set-state-in-render`, `react-hooks/unsupported-syntax`, `react-hooks/config`, `react-hooks/gating`
+`react-hooks/config`, `react-hooks/gating`
 
 </details>
 
