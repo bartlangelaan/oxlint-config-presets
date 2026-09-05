@@ -1,7 +1,7 @@
-diff --git a/dist/src-Bn5kidka.mjs b/dist/src-Bn5kidka.mjs
-index ad63ef58d85a049cda1172a6e4b461c6a755ff95..caa9f6fe99064a380e367c677a3c209a8eca4f6d 100644
---- a/dist/src-Bn5kidka.mjs
-+++ b/dist/src-Bn5kidka.mjs
+diff --git a/dist/src-BFQg_u9b.mjs b/dist/src-BFQg_u9b.mjs
+index f208b3d1e6520511d019079c7486eec385e027b5..abb8a29b2f0a6ad3008307b19e62eccdd2164c53 100644
+--- a/dist/src-BFQg_u9b.mjs
++++ b/dist/src-BFQg_u9b.mjs
 @@ -1,4 +1,6 @@
  import globals from "globals";
 +import { readFileSync } from "node:fs";
