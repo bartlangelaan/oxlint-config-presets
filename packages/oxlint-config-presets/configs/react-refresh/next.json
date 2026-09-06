@@ -20,7 +20,9 @@
           "generateImageMetadata",
           "generateSitemaps",
           "generateStaticParams",
-          "instant"
+          "instant",
+          "contentType",
+          "size"
         ]
       }
     ]
