@@ -64,8 +64,8 @@
     "eslint-plugin-unicorn": "^74.0.0",
     "eslint8": "npm:eslint@^8.57.1",
     "next": "^16.3.4",
-    "oxfmt": "^0.66.0",
-    "oxlint": "^1.81.0",
+    "oxfmt": "^0.67.0",
+    "oxlint": "^1.82.0",
     "tsx": "^4.23.13"
   },
   "peerDependencies": {
